@@ -1,0 +1,71 @@
+{
+  "modes": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    "Defueled"
+  ],
+  "recognition_categories": [
+    {
+      "name": "Hazard and other conditions\n",
+      "emergency_categories": [
+        {
+          "name": "General Emergency",
+          "criterions": [
+            {
+              "name": "H-2 Security",
+              "description": {
+                "text": "HOSTILE ACTION resulting in Loss of Physical Control of the Facility",
+                "ref": 55
+              },
+              "look_up": true,
+              "conditions": {
+                "type": "OR",
+                "description": {},
+                "children": [
+                  {
+                    "type": "Leaf",
+                    "description": {
+                      "text": "A HOSTILE ACTION has occurred such that plant personnel are unable to operate equipment required to maintain safety functions listed below: • Reactivity Control (ability to shut down the reactor and keep it shutdown) • RCS Inventory (ability to cool the core) • Secondary Heat Removal (ability to maintain heat sink) .[Ref. 5.2.1i]",
+                      "ref": "Ref. 5.2.1i"
+                    }
+                  },
+                  {
+                    "type": "Leaf",
+                    "description": {
+                      "text": "A HOSTILE ACTION has caused failure of spent fuel cooling systems and IMMINENT fuel damage is likely",
+                      "ref": ""
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Site Area Emergency",
+          "criterions": [
+            {
+              "name": "H-2 Security",
+              "description": {
+                "text": "HOSTILE ACTION within the PROTECTED AREA ",
+                "ref": 53
+              },
+              "look_up": true,
+              "conditions": {
+                "type": "Leaf",
+                "desciption": {
+                  "text": "A HOSTILE ACTION is occurring or has occurred within the PROTECTED AREA as reported by the Security Shift Supervisor. [Ref. 5.2.1i]",
+                  "ref": "Ref. 5.2.1i"
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
