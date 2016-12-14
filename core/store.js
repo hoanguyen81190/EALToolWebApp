@@ -12,16 +12,23 @@ import { createStore } from 'redux';
 
 // Centralized application state
 // For more information visit http://redux.js.org/
-const initialState = { count: 0 };
+const initialState = {
+  mode: null,
+  category: null
+};
 
 const store = createStore((state = initialState, action) => {
   // TODO: Add action handlers (aka "reducers")
   switch (action.type) {
-    case 'COUNT':
-      return { ...state, count: (state.count) + 1 };
+    case 'SETMODE':
+      return { ...state, mode: action.mode, category: action.category};
     default:
       return state;
   }
+
+
 });
+
+
 
 export default store;

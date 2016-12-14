@@ -10,10 +10,22 @@
 
 import React, { PropTypes } from 'react';
 import Layout from '../../components/Layout';
+import Button from '../../components/Button';
 import s from './styles.css';
 import { title, html } from './index.md';
+import {eALDocument} from '../../database-loader';
+
+import store from '../../core/store';
+import history from '../../core/history';
 
 class HomePage extends React.Component {
+  constructor(){
+    super();
+    this.state = {
+      mode: null,
+      category: null
+    }
+  }
 
   static propTypes = {
     articles: PropTypes.array.isRequired,
@@ -23,18 +35,58 @@ class HomePage extends React.Component {
     document.title = title;
   }
 
+  handleModes(_mode){
+    var element = document.getElementById(this.state.mode);
+    if (element != null)
+      element.style.backgroundColor = 'LightGray';
+    document.getElementById(_mode).style.backgroundColor = 'Red';
+    this.setState({mode: _mode});
+  }
+
+  handleCategories(_cat){
+    var element = document.getElementById(this.state.category);
+    if (element != null)
+      element.style.backgroundColor = 'LightGray';
+    document.getElementById(_cat).style.backgroundColor = 'Red';
+    this.setState({category: _cat});
+  }
+
+  handleSubmit() {
+    //TODO: check if the selection is valid
+    if(this.state.mode == null || this.state.category == null)
+    {
+        alert("Please select the mode and the recognition category before pressing submit!");
+    }
+    else {
+      var action = {
+        type : 'SETMODE',
+        mode : this.state.mode,
+        category : this.state.category
+      }
+      store.dispatch(action);
+      history.push("/overview");
+    }
+  }
+
   render() {
     return (
       <Layout className={s.content}>
-        <div dangerouslySetInnerHTML={{ __html: html }} />
-        <h4>Articles</h4>
-        <ul>
-          {this.props.articles.map((article, i) =>
-            <li key={i}><a href={article.url}>{article.title}</a> by {article.author}</li>
+        <h4>Choose Modes</h4>
+          {eALDocument.data.modes.map((mode, i) =>
+            {
+              return <Button className={s.home_button} id={mode} type='raised' key={i} onClick={() => this.handleModes(mode)} >{mode}</Button>}
           )}
-        </ul>
+        <h4>Choose Categories</h4>
+          {eALDocument.data.recognition_categories.map((cat, i) =>
+            {
+              return <Button className={s.home_button} id={cat.name} type='raised' key={i} onClick={() => this.handleCategories(cat.name)} >{cat.name}</Button>}
+        )}
+        <p/>
         <p>
-          <br /><br />
+          <Button className={s.home_button} type='raised'
+            onClick={()=>this.handleSubmit()}>
+            Submit
+          </Button>
         </p>
       </Layout>
     );

@@ -95,6 +95,7 @@ const config = {
           path.resolve(__dirname, './core'),
           path.resolve(__dirname, './pages'),
           path.resolve(__dirname, './main.js'),
+          path.resolve(__dirname, './database-loader.js'),
         ],
         loader: `babel-loader?${JSON.stringify(babelConfig)}`,
       },

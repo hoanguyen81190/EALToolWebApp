@@ -12,6 +12,11 @@
 
   .content {
     padding: 0 16px;
+    background-color: inherit;
   }
 
+}
+
+.home_button{
+  background-color: LightGray;
 }

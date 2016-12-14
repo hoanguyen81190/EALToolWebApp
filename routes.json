@@ -17,6 +17,10 @@
     "page": "./pages/about"
   },
   {
+    "path": "/overview",
+    "page": "./pages/overview"
+  },
+  {
     "path": "/tasks/:status(pending|completed)?",
     "page": "./pages/home"
   }
