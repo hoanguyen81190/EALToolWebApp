@@ -61,7 +61,8 @@ class HomePage extends React.Component {
       var action = {
         type : 'SETMODE',
         mode : this.state.mode,
-        category : this.state.category
+        category : this.state.category,
+        object: null
       }
       store.dispatch(action);
       history.push("/overview");

@@ -21,6 +21,10 @@
     "page": "./pages/overview"
   },
   {
+    "path": "/classifying",
+    "page": "./pages/classifying"
+  },
+  {
     "path": "/tasks/:status(pending|completed)?",
     "page": "./pages/home"
   }

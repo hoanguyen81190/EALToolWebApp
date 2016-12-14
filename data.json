@@ -32,7 +32,7 @@
                   {
                     "type": "Leaf",
                     "description": {
-                      "text": "A HOSTILE ACTION has occurred such that plant personnel are unable to operate equipment required to maintain safety functions listed below: • Reactivity Control (ability to shut down the reactor and keep it shutdown) • RCS Inventory (ability to cool the core) • Secondary Heat Removal (ability to maintain heat sink) .[Ref. 5.2.1i]",
+                      "text": "A HOSTILE ACTION has occurred such that plant personnel are unable to operate equipment required to maintain safety functions listed below:\n • Reactivity Control (ability to shut down the reactor and keep it shutdown)\n • RCS Inventory (ability to cool the core)\n • Secondary Heat Removal (ability to maintain heat sink) .[Ref. 5.2.1i]",
                       "ref": "Ref. 5.2.1i"
                     },
                     "children": ""
@@ -62,7 +62,7 @@
               "look_up": true,
               "conditions": {
                 "type": "Leaf",
-                "desciption": {
+                "description": {
                   "text": "A HOSTILE ACTION is occurring or has occurred within the PROTECTED AREA as reported by the Security Shift Supervisor. [Ref. 5.2.1i]",
                   "ref": "Ref. 5.2.1i"
                 },

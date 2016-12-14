@@ -8,8 +8,19 @@
  * LICENSE.txt file in the root directory of this source tree.
  */
 
+ .headerlayout {
+   height: 5vh;
+   width: 100vw;
+ }
+
 .content {
-  margin: 0 auto;
-  max-width: 1000px;
-  width: 100%;
+  margin-top: 5vh;
+  height: 90vh;
+  width: 100vw;
+}
+
+.footerlayout {
+  margin-top: 95vh;
+  height: 5vh;
+  width: 100vw;
 }
