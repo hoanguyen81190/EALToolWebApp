@@ -9,6 +9,8 @@
  */
 
 import React, { PropTypes } from 'react';
+import markdown from 'marked';
+
 import Layout from '../../components/Layout';
 import Button from '../../components/Button';
 
@@ -19,16 +21,50 @@ import store from '../../core/store';
 import {eALDocument} from '../../database-loader';
 
 class Condition extends React.Component {
-  render() {
-    if(this.props.mode === 'classification')
-    {
-      return <div></div>
-    }
-    else {
+  constructor() {
+    super();
+    this.type = null;
+    this.value = false;
+    this.children = [];
+  }
+  handleChangeChk(event) {
+    this.value = event.target.checked;
+  }
 
+  getValue() {
+    if (this.type === 'Leaf') {
+      return this.value;
+    }
+    var children = [];
+    this.children.map((item) => {children.push(this.refs[item])})
+    switch (this.type) {
+      case 'OR':
+        return children.reduce((a, b) => a.getValue() | b.getValue());
+        break;
+      case 'AND':
+        return children.reduce((a, b) => a.getValue() & b.getValue());
+      case 'XOR':
+        return children.reduce((a, b) => a.getValue() ^ b.getValue());
+      default:
+        return false;
+    }
+  }
+
+  render() {
+    this.type = this.props.object.type;
     if(this.props.object.type === "Leaf") {
+      if(this.props.mode === 'classification') {
+        var checkbox = React.createElement('input',{type: 'checkbox', defaultChecked: false});
+        var element =
+        <div className={s.wrapper}>
+           <input className={s.checkbox} type="checkbox" defaultChecked={false} onChange={this.handleChangeChk.bind(this)} />
+           <div className={s.checkboxtext} dangerouslySetInnerHTML={{__html: this.props.object.description.text}}/>
+         </div>;
+        return element;
+      }
       var element =
       <div>
+         {checkbox}
          Condition {(this.props.index + 1)}
       </div>;
       return element;
@@ -38,16 +74,18 @@ class Condition extends React.Component {
        <div>
          {
            this.props.object.children.map((ele, index) => {
-             if(index != this.props.object.children.length - 1) {
+             if((index != this.props.object.children.length - 1)) {
                return <div key={index}>
-                 <Condition object = {ele} index = {index}/>
-                 <div>
-                   {this.props.object.type}
+                 <Condition object = {ele} index = {index} mode = {this.props.mode}/>
+                 <div className={s.operator}>
+                   <strong>{this.props.object.type}</strong>
                  </div>
                </div>;
              }
+             var child = "child" + index;
+             this.children.push(child);
              return <div key={index}>
-               <Condition object = {ele} index = {index}/>
+               <Condition object = {ele} index = {index} mode = {this.props.mode} ref={child}/>
              </div>;
            })
          }
@@ -56,7 +94,7 @@ class Condition extends React.Component {
     }
 
   }
-  }
+  // }
 }
 
 class Criterion extends React.Component {
@@ -74,7 +112,7 @@ class Criterion extends React.Component {
         this.props.criterion.name
       }
       <Condition
-        object = {this.props.criterion.conditions} index = {0} mode = 'classification'/>
+        object = {this.props.criterion.conditions} index = {0} mode = {this.props.mode} />
     </div>;
     return element;
   }
@@ -84,24 +122,28 @@ class TreeNode extends React.Component {
   constructor () {
     super();
   }
+
+  getValue() {
+    if(this.refs.conditionTree != null)
+      return this.refs.conditionTree.getValue();
+    return false;
+  }
+
   render() {
     var element;
-    console.log(this.props.mode);
     if(this.props.mode === 'overview') {
       element =
       <div>
         <div>
           {this.props.emergencyLevel}
         </div>
-        <Criterion criterion={this.props.criterion}/>
+        <Criterion criterion={this.props.criterion} mode = {this.props.mode}/>
       </div>;
     }
     else {
-      var checkbox = React.createElement('input',{type: 'checkbox', defaultChecked: false});
       element =
-      <div>
-        {checkbox}
-        <Condition object = {this.props.criterion.conditions} index = {0}/>
+      <div className={s.table}>
+        <Condition object = {this.props.criterion.conditions} index = {0} mode = {this.props.mode} ref = "conditionTree"/>
       </div>;
     }
     return element;
@@ -114,12 +156,8 @@ class ClassifyingPage extends React.Component {
     this.state = {
       mode: store.getState().mode,
       category: store.getState().category
-    }
+    };
   }
-
-  // static propTypes = {
-  //   articles: PropTypes.array.isRequired,
-  // };
 
   componentDidMount() {
     document.title = title;
@@ -144,26 +182,13 @@ class ClassifyingPage extends React.Component {
           break;
         }
       }
-      // if (!hasCriterion) {
-      //   var treeNode = {
-      //     category : emer_cat.name,
-      //     criterion : null
-      //   };
-      //   leftTree.push(treeNode);
-      // }
     };
     return leftTree;
   }
 
-  // extractCriterion(criterion, _mode) {
-  //   for (var i = 0; i < criterion.conditions; i++) {
-  //       var treeNode = <TreeNode key={leftTree.length}
-  //         category={emer_cat.name}
-  //         criterion={emer_cat.criterions[i]}
-  //         mode={_mode}/>;
-  //       hasCriterion = true;
-  //   }
-  // }
+  handleSubmit(){
+    console.log(this.refs.classificationCriterion.getValue());
+  }
 
   render() {
     return (
@@ -179,9 +204,9 @@ class ClassifyingPage extends React.Component {
               <TreeNode
                 emergencyLevel = {store.getState().level}
                 criterion={store.getState().object}
-                mode='classification'/>
+                mode='classification' ref="classificationCriterion"/>
 
-              <Button className={s.submit_button} type='raised'>
+              <Button className={s.submit_button} type='raised' onClick={()=>{this.handleSubmit()}}>
                   Submit
               </Button>
             </div>
