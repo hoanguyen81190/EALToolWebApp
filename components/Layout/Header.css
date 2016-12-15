@@ -9,7 +9,7 @@
 */
 
 .row {
-  padding: 40px;
+/*  padding: 40px;*/
 }
 
 .title {
@@ -20,13 +20,13 @@
 @media screen and (max-width: 1024px) {
 
   .header {
-    display: flex;
+  /*  display: flex;*/
   }
 
-  
+
 
   .row {
-    padding: 0 16px;
+    /*padding: 0 16px;*/
   }
 
 }

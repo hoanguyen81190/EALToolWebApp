@@ -18,6 +18,8 @@ import { title, html } from './index.md';
 import store from '../../core/store';
 import {eALDocument} from '../../database-loader';
 
+import spdf from "./PDFViewer";
+
 class Condition extends React.Component {
   render() {
     if(this.props.mode === 'classification')
@@ -113,7 +115,7 @@ class ClassifyingPage extends React.Component {
     super();
     this.state = {
       mode: store.getState().mode,
-      category: store.getState().category
+      category: store.getState().category,
     }
   }
 
@@ -166,9 +168,10 @@ class ClassifyingPage extends React.Component {
   // }
 
   render() {
+
     return (
       <Layout className={s.content}>
-            <div className={s.leftcontent}>
+            <div className={s.leftcontent} >
               {
                 this.extractLeftPanelTree('overview').map((item) => {
                   return <div>{item}</div>
@@ -186,12 +189,8 @@ class ClassifyingPage extends React.Component {
               </Button>
             </div>
               <div className={s.descriptioncontent}>
-                  <ul id="description">
-                      <li>right</li>
-                      <li>right</li>
-                  </ul>
+                <spdf.SimplePDF className={s.SimplePDF} file='./classification_procedures.pdf' startPage='2' endPage='5'/>
               </div>
-
       </Layout>
     );
   }

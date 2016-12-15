@@ -8,14 +8,14 @@
  * LICENSE.txt file in the root directory of this source tree.
  */
 
-@media screen and (max-width: 1024px) {
+/*@media screen and (max-width: 1024px) {
 
   .content {
     padding: 0 0px;
     background-color: inherit;
   }
 
-}
+}*/
 
 .maincontent {
     margin-left: 20%;
@@ -23,23 +23,35 @@
     height: 100%;
     position: absolute;
     background-color: #cc1111;
+    padding: 0;
 }
 .leftcontent{
     width: 20%;
     height: 100%;
     background-color: #ccff99;
     position: absolute;
+    padding: 0;
 }
+
+.submit_button {
+  margin-top: 91%;
+  margin-left: 85%;
+  position: absolute;
+}
+
+
+/* Document side css (Right side) */
 .descriptioncontent {
     margin-left: 60%;
     width: 40%;
     height: 100%;
     background-color: #CCCCCC;
     position: absolute;
+    padding: 0;
+    overflow-y:auto;
+    overflow-x:hidden;
 }
 
-.submit_button {
-  margin-top: 91%;
-  margin-left: 85%;
-  position: relative;
+.SimplePDF {
+  position: absolute;
 }

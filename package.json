@@ -17,6 +17,7 @@
     "react-infinite-grid": "^0.4.0",
     "react-mdl": "^1.6.1",
     "react-panels": "^2.5.1",
+    "react-pdfjs": "^1.0.7",
     "react-redux": "^4.4.5",
     "react-split-panel": "^2.0.1",
     "redux": "^3.5.2",
