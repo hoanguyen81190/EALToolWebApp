@@ -20,6 +20,8 @@ import { title, html } from './index.md';
 import store from '../../core/store';
 import {eALDocument} from '../../database-loader';
 
+import spdf from "./PDFViewer";
+
 class Condition extends React.Component {
   constructor() {
     super();
@@ -74,8 +76,10 @@ class Condition extends React.Component {
        <div>
          {
            this.props.object.children.map((ele, index) => {
+
              if((index != this.props.object.children.length - 1)) {
                return <div key={index}>
+
                  <Condition object = {ele} index = {index} mode = {this.props.mode}/>
                  <div className={s.operator}>
                    <strong>{this.props.object.type}</strong>
@@ -85,6 +89,7 @@ class Condition extends React.Component {
              var child = "child" + index;
              this.children.push(child);
              return <div key={index}>
+
                <Condition object = {ele} index = {index} mode = {this.props.mode} ref={child}/>
              </div>;
            })
@@ -94,6 +99,7 @@ class Condition extends React.Component {
     }
 
   }
+
   // }
 }
 
@@ -112,6 +118,7 @@ class Criterion extends React.Component {
         this.props.criterion.name
       }
       <Condition
+
         object = {this.props.criterion.conditions} index = {0} mode = {this.props.mode} />
     </div>;
     return element;
@@ -131,17 +138,21 @@ class TreeNode extends React.Component {
 
   render() {
     var element;
+
     if(this.props.mode === 'overview') {
       element =
       <div>
         <div>
           {this.props.emergencyLevel}
         </div>
+
         <Criterion criterion={this.props.criterion} mode = {this.props.mode}/>
       </div>;
     }
     else {
+
       element =
+
       <div className={s.table}>
         <Condition object = {this.props.criterion.conditions} index = {0} mode = {this.props.mode} ref = "conditionTree"/>
       </div>;
@@ -155,9 +166,11 @@ class ClassifyingPage extends React.Component {
     super();
     this.state = {
       mode: store.getState().mode,
-      category: store.getState().category
+
+      category: store.getState().category,
     };
   }
+
 
   componentDidMount() {
     document.title = title;
@@ -182,18 +195,22 @@ class ClassifyingPage extends React.Component {
           break;
         }
       }
+
     };
     return leftTree;
   }
+
 
   handleSubmit(){
     console.log(this.refs.classificationCriterion.getValue());
   }
 
   render() {
+
     return (
       <Layout className={s.content}>
-            <div className={s.leftcontent}>
+
+            <div className={s.leftcontent} >
               {
                 this.extractLeftPanelTree('overview').map((item) => {
                   return <div>{item}</div>
@@ -204,6 +221,7 @@ class ClassifyingPage extends React.Component {
               <TreeNode
                 emergencyLevel = {store.getState().level}
                 criterion={store.getState().object}
+
                 mode='classification' ref="classificationCriterion"/>
 
               <Button className={s.submit_button} type='raised' onClick={()=>{this.handleSubmit()}}>
@@ -211,12 +229,9 @@ class ClassifyingPage extends React.Component {
               </Button>
             </div>
               <div className={s.descriptioncontent}>
-                  <ul id="description">
-                      <li>right</li>
-                      <li>right</li>
-                  </ul>
-              </div>
 
+                <spdf.SimplePDF className={s.SimplePDF} file='./classification_procedures.pdf' startPage='2' endPage='5'/>
+              </div>
       </Layout>
     );
   }
