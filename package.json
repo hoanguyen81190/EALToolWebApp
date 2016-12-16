@@ -110,6 +110,7 @@
     "build:debug": "node run build --debug",
     "publish": "node run publish",
     "publish:debug": "node run publish --debug",
-    "start": "node run"
+    "start": "node run",
+    "build:production": "NODE_ENV=production webpack --optimize-minimize"
   }
 }

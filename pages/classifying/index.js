@@ -173,8 +173,8 @@ class ClassifyingPage extends React.Component {
       <Layout className={s.content}>
             <div className={s.leftcontent} >
               {
-                this.extractLeftPanelTree('overview').map((item) => {
-                  return <div>{item}</div>
+                this.extractLeftPanelTree('overview').map((item, i) => {
+                  return <div key={i}>{item}</div>
                 })
               }
             </div>
@@ -189,7 +189,7 @@ class ClassifyingPage extends React.Component {
               </Button>
             </div>
               <div className={s.descriptioncontent}>
-                <spdf.SimplePDF className={s.SimplePDF} file='./classification_procedures.pdf' startPage='2' endPage='5'/>
+                <spdf.SimplePDF className={s.SimplePDF} file='./classification_procedures.pdf' startPage={3} endPage={4}/>
               </div>
       </Layout>
     );
