@@ -25,7 +25,8 @@ class Condition extends React.Component {
     if(this.props.object.type === "Leaf") {
       var element =
       <div>
-         {(this.props.index + 1) + '. ' + this.props.object.description.text}
+         {(this.props.index + 1) + '. '}
+         <div dangerouslySetInnerHTML={{__html: this.props.object.description.text}}/>
       </div>;
       return element;
     }
@@ -37,9 +38,7 @@ class Condition extends React.Component {
              if(index != this.props.object.children.length - 1) {
                return <div key={index}>
                  <Condition object = {ele} index = {index}/>
-                 <div href="#">
-                   {this.props.object.type}
-                 </div>
+                 {this.props.object.type}
                </div>;
              }
              return <div key={index}>
@@ -71,13 +70,21 @@ class Criterion extends React.Component {
   }
 
   render() {
+    console.log(this.props.criterion.conditions);
+    if(typeof(this.props.criterion.conditions) == "undefined" ||
+        (Object.keys(this.props.criterion.conditions).length === 0 && this.props.criterion.conditions.constructor === Object)) {
+      var condition = <div/>;
+    }
+    else {
+      var condition = <Condition
+          object = {this.props.criterion.conditions} index = {0}/>;
+    }
     var element =
     <div className={s.box} onClick={() => this.handleClick(this.props.criterion)}>
       {
         this.props.criterion.name
       }
-      <Condition
-        object = {this.props.criterion.conditions} index = {0}/>
+      {condition}
     </div>;
     return element;
   }

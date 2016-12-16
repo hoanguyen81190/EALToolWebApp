@@ -38,15 +38,14 @@ class Condition extends React.Component {
       return this.value;
     }
     var children = [];
-    this.children.map((item) => {children.push(this.refs[item])})
+    this.children.map((item) => {children.push(this.refs[item].getValue())});
     switch (this.type) {
       case 'OR':
-        return children.reduce((a, b) => a.getValue() | b.getValue());
-        break;
+        return children.reduce((a, b) => a || b);
       case 'AND':
-        return children.reduce((a, b) => a.getValue() & b.getValue());
+        return children.reduce((a, b) => a && b);
       case 'XOR':
-        return children.reduce((a, b) => a.getValue() ^ b.getValue());
+        return children.reduce((a, b) => a ^ b);
       default:
         return false;
     }
@@ -76,18 +75,17 @@ class Condition extends React.Component {
        <div>
          {
            this.props.object.children.map((ele, index) => {
-
+             var child = "child" + index;
+             this.children.push(child);
              if((index != this.props.object.children.length - 1)) {
                return <div key={index}>
 
-                 <Condition object = {ele} index = {index} mode = {this.props.mode}/>
+                 <Condition object = {ele} index = {index} mode = {this.props.mode} ref={child}/>
                  <div className={s.operator}>
                    <strong>{this.props.object.type}</strong>
                  </div>
                </div>;
              }
-             var child = "child" + index;
-             this.children.push(child);
              return <div key={index}>
 
                <Condition object = {ele} index = {index} mode = {this.props.mode} ref={child}/>
