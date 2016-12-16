@@ -21,14 +21,14 @@ export default class SimplePDF extends React.Component {
     node.innerHTML = "";
 
     // set styles
-    node.style.width = "100%";
-    node.style.height = "100%";
+  //  node.style.width = "100%";
+  //  node.style.height = "25%";
   //  node.style.overflowX = "hidden";
   //  node.style.overflowY = "scroll";
     node.style.padding = '0px';
 
+    var safeEndPage = this.props.endPage; //> pdf.mumPages ? pdf.numPages : this.state.endPage;
     var startPage = this.props.startPage;
-    var endPage = this.props.endPage;
 
     PDF.getDocument(this.props.file).then(function(pdf) {
 
@@ -37,8 +37,7 @@ export default class SimplePDF extends React.Component {
         node.style.overflowY = "hidden";
       }
 
-    //  for (var id=1,i=1; i<=pdf.numPages; i++) {
-    for (var id=1,i=startPage; i<=endPage; i++) {
+    for (var id=1,i=startPage; i<=safeEndPage; i++) {
         pdf.getPage(i).then(function(page) {
 
           // calculate scale according to the box size
@@ -65,6 +64,10 @@ export default class SimplePDF extends React.Component {
     });
   }
 
+  updateDimensions() {
+    this.loadPDF();
+  }
+
   render() {
     return (
       <div className="SimplePDF">
@@ -75,10 +78,12 @@ export default class SimplePDF extends React.Component {
 
   componentDidMount() {
     this.loadPDF();
+    window.addEventListener("resize", this.updateDimensions.bind(this));
   }
 
   componentDidUpdate() {
     this.loadPDF();
+    window.removeEventListener("resize", this.updateDimensions.bind(this));
   }
 }
 
