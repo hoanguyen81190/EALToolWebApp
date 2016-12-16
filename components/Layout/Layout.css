@@ -15,8 +15,8 @@ body, html{
 }
 
  .headerlayout {
-   height: 5vh;
-   width: 100vw;
+   height: 100%;
+   width: 100%;
    margin:0;
    padding:0;
    position:absolute;
@@ -24,8 +24,8 @@ body, html{
 
 .content {
 /*  margin-top: 5vh;*/
-  height: 86vh;
-  width: 100vw;
+  height: 100%;
+  width: 100%;
   margin:0;
   padding:0;
   position:absolute;
@@ -33,8 +33,8 @@ body, html{
 
 .footerlayout {
 /*  margin-top: 95vh;*/
-  height: 5vh;
-  width: 100vw;
+  height: 100%;
+  width: 100%;
   margin:0;
   padding:0;
   position:absolute;

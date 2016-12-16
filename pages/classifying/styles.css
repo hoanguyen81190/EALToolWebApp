@@ -34,9 +34,8 @@
 }
 
 .submit_button {
-  margin-top: 91%;
-  margin-left: 85%;
-  position: absolute;
+
+
 }
 
 
@@ -53,7 +52,9 @@
 }
 
 .SimplePDF {
-  position: absolute;
+  width: 100%;
+  height: 100%;
+  position: inherit;
 }
 
 .table{
