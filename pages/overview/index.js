@@ -104,23 +104,23 @@ class OverviewPage extends React.Component {
   render() {
     return (
       <Layout className={s.content}>
-        <h1>{store.getState().category}</h1>
-        <div id="relative">
+        <div className={s.recognitionCategory}> <h1>{store.getState().category}</h1> </div>
+        <div className={s.table}>
         {
             eALDocument.getRecognitionCategoryData(store.getState().category).emergency_categories.map(
               (ele, index) => {
-                var element = <div className={s.wrapper} key={index}>
-                  <div className={s.box}>
+                var element = <div className={s.column} key={index}>
+                  <div className={s.row}>
                     {ele.name}
-                  </div>
-                                {
-                                  ele.criterions.map(
-                                    (criterion, i) => {
-                                      return <Criterion criterion = {criterion} key={i} level = {ele.name}/>;
-                                    }
-                                  )
-                                }
-                              </div>
+                    </div>
+                      {
+                        ele.criterions.map(
+                          (criterion, i) => {
+                            return <Criterion criterion = {criterion} key={i} level = {ele.name}/>;
+                          }
+                        )
+                      }
+                    </div>
                 return element;
               }
             )

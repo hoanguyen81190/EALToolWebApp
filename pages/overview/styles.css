@@ -11,38 +11,40 @@
 @media screen and (max-width: 1024px) {
 
   .content {
-    padding: 0 16px;
-    background-color: inherit;
+    height: 100%;
+    width: 100%;
   }
-
 }
 
-.home_button{
-  background-color: LightGray;
-
+.recognitionCategory{
+  height: 10%;
+  width: 100%;
+  position:relative;
 }
 
-.overview_panel{
- border-style: groove;
- width: 25vw;
-
-}
-
-.wrapper {
-  display: grid;
-  grid-template-columns: 100px 100px 100px;
-  grid-gap: 10px;
-  background-color: #fff;
-  color: #444;
-  float: left;
-}
-
-.box {
+.table{
+  display: table;
   background-color: #444;
+  font-size: 100%;
+  position:relative;
+  height: 90%;
+  width: 100%;
+  table-layout: fixed;
+}
+
+.column {
+  display: table-column;
+  background-color: #fff;
   color: #fff;
-  border-radius: 5px;
-  padding: 20px;
-  font-size: 150%;
+  font-size: 100%;
+  column-fill: auto;
+}
+
+.row {
+  display:table-cell;
+  background-color: #fff;
+  color: #fff;
+  font-size: 100%;
 }
 
 #relative {
