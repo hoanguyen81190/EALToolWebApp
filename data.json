@@ -19,7 +19,10 @@
               "name": "H-2 Security",
               "description": {
                 "text": "HOSTILE ACTION resulting in Loss of Physical Control of the Facility",
-                "ref": 55
+                "ref": {
+                  "page": 57,
+                  "range": 2
+                }
               },
               "look_up": true,
               "conditions": {
@@ -57,7 +60,10 @@
               "name": "H-2 Security",
               "description": {
                 "text": "HOSTILE ACTION within the PROTECTED AREA ",
-                "ref": 53
+                "ref": {
+                  "page": 55,
+                  "range": 2
+                }
               },
               "look_up": true,
               "conditions": {
@@ -67,6 +73,152 @@
                   "ref": "Ref. 5.2.1i"
                 },
                 "children": ""
+              }
+            },
+            {
+              "name": "H-3 Control Room Evacuation",
+              "description": {
+                "text": "Control Room evacuated AND control not established in 15 minutes.",
+                "ref": {
+                  "page": 60,
+                  "range": 1
+                }
+			  },
+              "look_up": true,
+              "conditions": {
+                "type": "AND",
+                "description": "",
+                "children": [
+                    {
+                      "type": "Leaf",
+                      "description": {
+                        "text": "<p>Control Room evacuation has been initiated.</p>",
+                        "ref": ""
+                      }
+                    },
+                    {
+                      "type": "Leaf",
+                      "description": {
+                        "text": "<p>CONTROL of any one of the following processes is not established within 15 minutes:</p><ul><li>Reactivity</li><li>RCS inventory</li><li>RCS temperature</li><li>SG heat sink</li></ul>",
+                        "ref": ""
+                      }
+                    }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Alert",
+          "criterions": [
+            {
+              "name": "H-2 Security",
+              "description": {
+                "text": "HOSTILE ACTION within the OWNER CONTROLLED AREA or airborne attack threat.",
+                "ref": {
+                  "page": 53,
+                  "range": 2
+                }
+              },
+              "look_up": true,
+              "conditions": {
+                "type": "OR",
+                "description": {},
+                "children": [
+                  {
+                    "type": "Leaf",
+                    "description": {
+                      "text": "<p>A HOSTILE ACTION is occurring or has occurred within the OWNER CONTROLLED AREA as reported by the Security Shift Supervisor</p>",
+                      "ref": ""
+                    }
+                  },
+                  {
+                    "type": "Leaf",
+                    "description": {
+                      "text": "<p>A validated notification from the NRC of a LARGE AIRCRAFT attack threat within <strong>30 minutes</strong> of the site.</p>",
+                      "ref": " [Ref. 5.2.1i] "
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "name": "H-3 Control Room Evacuation",
+              "description": {
+                "text": "Control Room evacuation initiated.",
+                "ref": {
+                  "page": 59,
+                  "range": 1
+                }
+              },
+              "look_up": false,
+              "conditions": {}
+            },
+            {
+              "name": "H-4 FIRE",
+              "description": {
+                "text": "FIRE OR EXPLOSION affecting plant operations. ",
+                "ref": {
+                  "page": 62,
+                  "range": 1
+                }
+              },
+              "look_up": true,
+              "conditions": {}
+            },
+            {
+              "name": "H-5 TOXIC Gas",
+              "description": {
+                "text": "TOXIC OR flammable gas release that  threatens lives OR affects ability to  achieve and maintain Mode 5.",
+                "ref": {
+                  "page": 64,
+                  "range": 2
+                }
+              },
+              "look_up": true,
+              "conditions": {}
+            }
+          ]
+        },
+        {
+          "name": "Unusual Event",
+          "criterions": [
+            {
+              "name": "H-2 Security",
+              "description": {
+                "text": "Confirmed Security Condition which indicates a potential degradation in the level of safety of the plant",
+                "ref": {
+                  "page": 51,
+                  "range": 2
+                }
+              },
+              "look_up": true,
+              "conditions": {
+                "type": "OR",
+                "description": "",
+                "children": [
+                  {
+                    "type": "Leaf",
+                    "description": {
+                      "text": "<p>SECURITY CONDITION that does not involve a HOSTILE ACTION as reported by Security Shift Supervision.</p>",
+                      "ref": ""
+                    }
+                  },
+                  {
+                    "type": "Leaf",
+                    "description": {
+                      "text": "<p>A credible site-specific security threat notification.</p>",
+                      "ref": ""
+                    }
+                  },
+                  {
+                    "type": "Leaf",
+                    "description": {
+                      "text": "<p>A validated notification from NRC providing information of an aircraft threat. [Ref: 5.2.1i]</p>",
+                      "ref": ""
+                    }
+                  }
+                ]
               }
             }
           ]

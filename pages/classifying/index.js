@@ -38,15 +38,14 @@ class Condition extends React.Component {
       return this.value;
     }
     var children = [];
-    this.children.map((item) => {children.push(this.refs[item])})
+    this.children.map((item) => {children.push(this.refs[item].getValue())});
     switch (this.type) {
       case 'OR':
-        return children.reduce((a, b) => a.getValue() | b.getValue());
-        break;
+        return children.reduce((a, b) => a || b);
       case 'AND':
-        return children.reduce((a, b) => a.getValue() & b.getValue());
+        return children.reduce((a, b) => a && b);
       case 'XOR':
-        return children.reduce((a, b) => a.getValue() ^ b.getValue());
+        return children.reduce((a, b) => a ^ b);
       default:
         return false;
     }
@@ -72,22 +71,22 @@ class Condition extends React.Component {
       return element;
     }
     else {
+      console.log(this.props.object);
       var element =
        <div>
          {
            this.props.object.children.map((ele, index) => {
-
+             var child = "child" + index;
+             this.children.push(child);
              if((index != this.props.object.children.length - 1)) {
                return <div key={index}>
 
-                 <Condition object = {ele} index = {index} mode = {this.props.mode}/>
+                 <Condition object = {ele} index = {index} mode = {this.props.mode} ref={child}/>
                  <div className={s.operator}>
                    <strong>{this.props.object.type}</strong>
                  </div>
                </div>;
              }
-             var child = "child" + index;
-             this.children.push(child);
              return <div key={index}>
 
                <Condition object = {ele} index = {index} mode = {this.props.mode} ref={child}/>
@@ -112,14 +111,20 @@ class Criterion extends React.Component {
   }
 
   render() {
+    if(typeof(this.props.criterion.conditions) == "undefined" ||
+        (Object.keys(this.props.criterion.conditions).length === 0 && this.props.criterion.conditions.constructor === Object)) {
+      var condition = <div/>;
+    }
+    else {
+      var condition = <Condition
+          object = {this.props.criterion.conditions} index = {0} mode = {this.props.mode}/>;
+    }
     var element =
     <div className={s.box} onClick={() => this.handleClick(this.props.criterion)}>
       {
         this.props.criterion.name
       }
-      <Condition
-
-        object = {this.props.criterion.conditions} index = {0} mode = {this.props.mode} />
+      {condition}
     </div>;
     return element;
   }
