@@ -12,6 +12,7 @@
     "fastclick": "^1.0.6",
     "fixed-data-table": "^0.6.3",
     "history": "^3.0.0",
+    "marked": "^0.3.6",
     "react": "^15.2.1",
     "react-dom": "^15.2.1",
     "react-infinite-grid": "^0.4.0",

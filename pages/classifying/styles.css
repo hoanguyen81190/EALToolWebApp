@@ -55,3 +55,30 @@
 .SimplePDF {
   position: absolute;
 }
+
+.table{
+  display: table;
+}
+
+.wrapper {
+  display: table-row;
+  float:left;
+ position: relative;
+ vertical-align: middle;
+ margin-bottom: 2%;
+ margin-top: 2%;
+}
+
+.checkbox {
+ float: left;
+
+}
+
+.operator{
+  align-self: center;
+  margin-left: 48%;
+}
+
+.indent1{
+  margin-left: 15%;
+}
