@@ -76,7 +76,7 @@
               }
             },
             {
-              "name": "H-3 CR Evacuation",
+              "name": "H-3 Control Room Evacuation",
               "description": {
                 "text": "Control Room evacuated AND control not established in 15 minutes.",
                 "ref": {
@@ -143,7 +143,7 @@
               }
             },
             {
-              "name": "H-3 CR Evacuation",
+              "name": "H-3 Control Room Evacuation",
               "description": {
                 "text": "Control Room evacuation initiated.",
                 "ref": {

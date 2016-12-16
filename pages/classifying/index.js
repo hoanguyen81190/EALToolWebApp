@@ -71,6 +71,7 @@ class Condition extends React.Component {
       return element;
     }
     else {
+      console.log(this.props.object);
       var element =
        <div>
          {
@@ -110,14 +111,20 @@ class Criterion extends React.Component {
   }
 
   render() {
+    if(typeof(this.props.criterion.conditions) == "undefined" ||
+        (Object.keys(this.props.criterion.conditions).length === 0 && this.props.criterion.conditions.constructor === Object)) {
+      var condition = <div/>;
+    }
+    else {
+      var condition = <Condition
+          object = {this.props.criterion.conditions} index = {0} mode = {this.props.mode}/>;
+    }
     var element =
     <div className={s.box} onClick={() => this.handleClick(this.props.criterion)}>
       {
         this.props.criterion.name
       }
-      <Condition
-
-        object = {this.props.criterion.conditions} index = {0} mode = {this.props.mode} />
+      {condition}
     </div>;
     return element;
   }
