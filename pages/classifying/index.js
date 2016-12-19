@@ -15,6 +15,8 @@ import Layout from '../../components/Layout';
 import Button from '../../components/Button';
 
 import s from './styles.css';
+import 'react-mdl/extra/material.css';
+import 'react-mdl/extra/material.js';
 
 import { title, html } from './index.md';
 import store from '../../core/store';
@@ -71,7 +73,7 @@ class Condition extends React.Component {
       return element;
     }
     else {
-      console.log(this.props.object);
+
       var element =
        <div>
          {
@@ -108,6 +110,15 @@ class Criterion extends React.Component {
   }
 
   handleClick(criterion) {
+    var action = {
+      type : 'SET_STATE',
+      mode : store.getState().mode,
+      recognitionCategory : store.getState().recognitionCategory,
+      emergencyLevel : this.props.emergencyLevel,
+      criterionObject: criterion
+    }
+    store.dispatch(action);
+    this.props.callback.forceUpdate();
   }
 
   render() {
@@ -151,7 +162,10 @@ class TreeNode extends React.Component {
           {this.props.emergencyLevel}
         </div>
 
-        <Criterion criterion={this.props.criterion} mode = {this.props.mode}/>
+        <Criterion criterion={this.props.criterion}
+          mode = {this.props.mode}
+          callback={this.props.callback}
+          emergencyLevel={this.props.emergencyLevel}/>
       </div>;
     }
     else {
@@ -171,8 +185,8 @@ class ClassifyingPage extends React.Component {
     super();
     this.state = {
       mode: store.getState().mode,
-
-      category: store.getState().category,
+      recognitionCategory: store.getState().recognitionCategory,
+      emergencyLevel: store.getState().emergencyLevel
     };
   }
 
@@ -182,18 +196,18 @@ class ClassifyingPage extends React.Component {
   }
 
   extractLeftPanelTree(_mode) {
-
-    var regCat = eALDocument.getRecognitionCategoryData(store.getState().category);
+    var regCat = eALDocument.getRecognitionCategoryData(store.getState().recognitionCategory);
     var leftTree = [];
 
     for(var index = 0; index < regCat.emergency_categories.length; index++) {
       var emer_cat = regCat.emergency_categories[index];
       var hasCriterion = false;
       for (var i = 0; i < emer_cat.criterions.length; i++) {
-        if(emer_cat.criterions[i].name === store.getState().object.name) {
+        if(emer_cat.criterions[i].name === store.getState().criterionObject.name) {
           var treeNode = <TreeNode key={leftTree.length}
             emergencyLevel={emer_cat.name}
             criterion={emer_cat.criterions[i]}
+            callback={this}
             mode={_mode}/>;
           hasCriterion = true;
           leftTree.push(treeNode);
@@ -207,7 +221,14 @@ class ClassifyingPage extends React.Component {
 
 
   handleSubmit(){
-    console.log(this.refs.classificationCriterion.getValue());
+    if(this.refs.classificationCriterion.getValue()) {
+      var message = "It is likely that an " + store.getState().recognitionCategory + " event with "
+      +  store.getState().emergencyLevel + " level has happened";
+    }
+    else {
+      var message = "It is likely that there is no emergency event";
+    }
+    alert(message);
   }
 
   render() {
@@ -222,19 +243,23 @@ class ClassifyingPage extends React.Component {
                 })
               }
             </div>
-            <div className={s.maincontent}>
+            <div className={s.maincontent} id="mainPanel">
               <TreeNode
-                emergencyLevel = {store.getState().level}
-                criterion={store.getState().object}
+                emergencyLevel = {store.getState().emergencyLevel}
+                criterion={store.getState().criterionObject}
 
                 mode='classification' ref="classificationCriterion"/>
 
               <Button className={s.submit_button} type='raised' onClick={()=>{this.handleSubmit()}}>
                   Submit
               </Button>
+
             </div>
               <div className={s.descriptioncontent}>
-                <spdf.SimplePDF className={s.SimplePDF} file='./classification_procedures.pdf' startPage={3} endPage={4}/>
+                <spdf.SimplePDF className={s.SimplePDF}
+                  file='./classification_procedures.pdf'
+                  startPage={store.getState().criterionObject.description.ref.page}
+                  endPage={store.getState().criterionObject.description.ref.page + store.getState().criterionObject.description.ref.range - 1}/>
               </div>
       </Layout>
     );

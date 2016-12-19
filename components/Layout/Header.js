@@ -13,6 +13,8 @@ import Navigation from './Navigation';
 import Link from '../Link';
 import s from './Header.css';
 
+import store from '../../core/store';
+
 class Header extends React.Component {
 
   componentDidMount() {
@@ -27,9 +29,28 @@ class Header extends React.Component {
     return (
       <header className={`mdl-layout__header ${s.header}`} ref={node => (this.root = node)}>
         <div className={`mdl-layout__header-row ${s.row}`}>
-          <Link className={`mdl-layout-title ${s.title}`} to="/">
-            React Static Boilerplate
-          </Link>
+          <div className={s.wrap}>
+            <div className={s.progress}>
+              STEP 1
+              <br/>
+              Choose Mode
+            </div>
+            <div className={s.progress}>
+              STEP 2
+              <br/>
+              Choose Recognition Category
+            </div>
+            <div className={s.progress}>
+              STEP 3
+              <br/>
+              Choose Condition
+            </div>
+            <div className={s.progress}>
+              STEP 4
+              <br/>
+              Classification
+            </div>
+          </div>
           <div className="mdl-layout-spacer"></div>
           <Navigation />
         </div>

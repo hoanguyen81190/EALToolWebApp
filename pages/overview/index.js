@@ -59,18 +59,17 @@ class Criterion extends React.Component {
 
   handleClick(criterion) {
     var action = {
-      type : 'SETMODE',
+      type : 'SET_STATE',
       mode : store.getState().mode,
-      category : store.getState().category,
-      level : this.props.level,
-      object: criterion
+      recognitionCategory : store.getState().recognitionCategory,
+      emergencyLevel : this.props.emergencyLevel,
+      criterionObject: criterion
     }
     store.dispatch(action);
     history.push("/classifying");
   }
 
   render() {
-    console.log(this.props.criterion.conditions);
     if(typeof(this.props.criterion.conditions) == "undefined" ||
         (Object.keys(this.props.criterion.conditions).length === 0 && this.props.criterion.conditions.constructor === Object)) {
       var condition = <div/>;
@@ -95,26 +94,21 @@ class OverviewPage extends React.Component {
     super();
     this.state = {
       mode: store.getState().mode,
-      category: store.getState().category
+      recognitionCategory: store.getState().recognitionCategory
     }
   }
-
-  // static propTypes = {
-  //   articles: PropTypes.array.isRequired,
-  // };
 
   componentDidMount() {
     document.title = title;
   }
 
-
   render() {
     return (
       <Layout className={s.content}>
-        <h1>{store.getState().category}</h1>
+        <h1>{store.getState().recognitionCategory}</h1>
         <div id="relative">
         {
-            eALDocument.getRecognitionCategoryData(store.getState().category).emergency_categories.map(
+            eALDocument.getRecognitionCategoryData(store.getState().recognitionCategory).emergency_categories.map(
               (ele, index) => {
                 var element = <div className={s.wrapper} key={index}>
                   <div className={s.box}>
@@ -123,7 +117,7 @@ class OverviewPage extends React.Component {
                                 {
                                   ele.criterions.map(
                                     (criterion, i) => {
-                                      return <Criterion criterion = {criterion} key={i} level = {ele.name}/>;
+                                      return <Criterion criterion = {criterion} key={i} emergencyLevel = {ele.name}/>;
                                     }
                                   )
                                 }
