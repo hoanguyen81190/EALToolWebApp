@@ -19,6 +19,7 @@ import store from '../../core/store';
 import history from '../../core/history';
 
 import {eALDocument} from '../../database-loader';
+import OverviewTable from './flexGridTest';
 
 class Condition extends React.Component {
   render() {
@@ -81,9 +82,8 @@ class Criterion extends React.Component {
     }
     var element =
     <div className={s.box} onClick={() => this.handleClick(this.props.criterion)}>
-      {
-        this.props.criterion.name
-      }
+      {this.props.criterion.name}
+      <div>{this.props.criterion.description.text}</div>
       {condition}
     </div>;
     return element;
@@ -111,28 +111,41 @@ class OverviewPage extends React.Component {
   render() {
     return (
       <Layout className={s.content}>
-        <div className={s.recognitionCategory}> <h1>{store.getState().category}</h1> </div>
-        <div className={s.table}>
+        <div className={s.tableWrapper}>
+          <OverviewTable />
+        </div>
         {
+        /*
+        <div className={s.recognitionCategory}>
+          <h1>{store.getState().category} - Mode: {store.getState().mode}</h1>
+        </div>
+
+        <div className={s.overviewTable}>
+
             eALDocument.getRecognitionCategoryData(store.getState().category).emergency_categories.map(
               (ele, index) => {
-                var element = <div className={s.column} key={index}>
-                  <div className={s.row}>
-                    {ele.name}
+                var element = <div key={index}>
+                  <div className={s.columnWrapper}>
+                    <div className={s.emergencyCategory}>
+                      {ele.name}
                     </div>
+                    <div className={s.categories}>
                       {
                         ele.criterions.map(
                           (criterion, i) => {
-                            return <Criterion criterion = {criterion} key={i} level = {ele.name}/>;
+                            return <div className={s.criterion}><Criterion criterion = {criterion} key={i} level = {ele.name}/></div>;
                           }
                         )
                       }
                     </div>
+                  </div>
+                </div>
                 return element;
               }
             )
           }
-        </div>
+        </div> */
+      }
       </Layout>
     );
   }

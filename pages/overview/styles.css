@@ -10,43 +10,41 @@
 
 @media screen and (max-width: 1024px) {
 
-  .content {
-    height: 100%;
-    width: 100%;
-  }
+
 }
 
-.recognitionCategory{
-  height: 10%;
+.gridCell {
+  box-sizing: border-box;
+  background-color: #BDBDBD;
+  height: 250px;
+  padding-left: 8px;
+  padding-top: 4px;
+  color: white;
+}
+
+.gridHeader:first-of-type .gridCell {
+  height: 50px;
+}
+
+.content {
+  height: 100%;
   width: 100%;
-  position:relative;
 }
 
-.table{
-  display: table;
-  background-color: #444;
-  font-size: 100%;
-  position:relative;
-  height: 90%;
+.overviewColumn{
+  height: 100%;
+  width: 25%;
+  position:absolute;
+  margin-left: 25%;
+}
+
+.tableWrapper{
+  height: 100%;
   width: 100%;
-  table-layout: fixed;
 }
 
-.column {
-  display: table-column;
-  background-color: #fff;
-  color: #fff;
-  font-size: 100%;
-  column-fill: auto;
-}
-
-.row {
-  display:table-cell;
-  background-color: #fff;
-  color: #fff;
-  font-size: 100%;
-}
-
-#relative {
-  position: relative;
+.tableWrapper td, th{
+  height:100%;
+  width:25%;
+  overflow:hidden;
 }
