@@ -46,11 +46,11 @@ class Criterion extends React.Component {
 
   handleClick(criterion) {
     var action = {
-      type : 'SETMODE',
+      type : 'SET_STATE',
       mode : store.getState().mode,
-      category : store.getState().category,
-      level : this.props.level,
-      object: criterion
+      recognitionCategory : store.getState().recognitionCategory,
+      emergencyLevel : this.props.emergencyLevel,
+      criterionObject: criterion
     }
     store.dispatch(action);
     history.push("/classifying");
@@ -75,14 +75,13 @@ class Criterion extends React.Component {
   }
 }
 
+
 class OverviewTable extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      numberOfRows : 0,
-      lowestCriterionConditionNumber : 0,
-      highestCriterionConditionNumber : 0
+      conditionNumbers : []
     }
   }
 
@@ -96,11 +95,7 @@ class OverviewTable extends React.Component {
 
 getRowsData2(tableData){
   var emergencyCatArray = ["General Emergency","Site Area Emergency","Alert","Unusual Event"];
-  var conditionNumberArray = [];
-  for(var i = this.state.lowestCriterionConditionNumber; i <= this.state.highestCriterionConditionNumber; i++)
-  {
-    conditionNumberArray.push(i);
-  }
+  var conditionNumberArray = this.state.conditionNumbers;
 
   //Add all the rows to this container div
   var rowsData = <div>
@@ -112,7 +107,9 @@ getRowsData2(tableData){
         {
         //Loop through the emergency categories
         emergencyCatArray.map((emergencyCategory, emergencyCategoryIndex) => {
-          var tableDataCell = tableData[conditionNumberIndex + emergencyCatArray.length * emergencyCategoryIndex];
+          console.log(conditionNumberIndex + emergencyCatArray.length * emergencyCategoryIndex);
+
+          var tableDataCell = tableData[conditionNumberIndex + emergencyCatArray.length * emergencyCategoryIndex + emergencyCategoryIndex];
 
           var cellContent;
 
@@ -132,23 +129,6 @@ getRowsData2(tableData){
           }
 
           return(cellContent);
-
-          //Loop through all the cell data in the table map
-          /*tableData.map((cellData, cellIndex) => {
-            if(cellData.content != "")
-            {
-              var cellDataCriterionNumber = this.getCriterionConditionNumber(cellData.content.name);
-              if(cellDataCriterionNumber === conditionNumber && cellData.emergencyLevel === emergencyCat)
-              {
-                var cellContent = <div key={cellIndex} className="mdl-cell mdl-cell--3-col"><div className={s.gridCell}>
-                  <Criterion criterion = {cellData.content} key={index} level = {cellData.name}/>
-                </div> </div>;
-                hasData = true;
-                return(cellContent);
-              }
-            }
-          })*/
-          //End of the table data map
       })
       //End of the emergency map
       } </div></div>;
@@ -156,17 +136,6 @@ getRowsData2(tableData){
       })
     }
   </div>;
-
-
-
-{/*  else
-    var emptyCell =
-    <div key={index} className="mdl-cell mdl-cell--3-col"><div className={s.gridCell}>
-
-    </div> </div>;
-
-    return(emptyCell);
-  } */}
 
   return rowsData;
 }
@@ -224,18 +193,6 @@ getRowsData(tableData){
     //End of the emergency category map
   }
   </div>;
-
-
-
-{/*  else
-    var emptyCell =
-    <div key={index} className="mdl-cell mdl-cell--3-col"><div className={s.gridCell}>
-
-    </div> </div>;
-
-    return(emptyCell);
-  } */}
-
   return rowsData;
 }
 
@@ -250,60 +207,67 @@ getRowsData(tableData){
     return conditionNumber;
   }
 
-  getTableData()
+  /**
+  * Extracts the condition numbers of the emergency categories
+  * @param {Object Array} emergencyCategories
+  * @return {Integer Array} conditionNumbers
+  */
+  getConditionNumbers(emergencyCategories)
   {
-    //Find the required number of rows
-    var rawData = eALDocument.getRecognitionCategoryData(store.getState().category).emergency_categories;
-    var lowestCriterionConditionNumber = 10; //E.G the number of the criterion after the letter category: H-2
-    var highestCriterionConditionNumber = 0;
-    var numberOfRows = 0; //The number of rows the table should have
-    for(var i = 0; i < rawData.length; i++)
+    var conditionNumbers = [];
+    for(var i = 0; i < emergencyCategories.length; i++)
     {
-      for(var y = 0; y < rawData[i].criterions.length; y++)
+      for(var y = 0; y < emergencyCategories[i].criterions.length; y++)
       {
         //Find the first occurence of a number inside a string. The first number is the criterion condition number
-        var criterionNumber = this.getCriterionConditionNumber(rawData[i].criterions[y].name);
-        if(criterionNumber > highestCriterionConditionNumber)
+        var conditionNumber = this.getCriterionConditionNumber(emergencyCategories[i].criterions[y].name);
+        if(conditionNumbers.indexOf(conditionNumber) === -1)
         {
-          highestCriterionConditionNumber = criterionNumber;
-        }
-
-        if(criterionNumber < lowestCriterionConditionNumber)
-        {
-          lowestCriterionConditionNumber = criterionNumber;
+          conditionNumbers.push(conditionNumber);
         }
       }
     }
 
-    //Calculate the number of rows that are needed in the table
-    numberOfRows = highestCriterionConditionNumber - lowestCriterionConditionNumber + 1; //Add one for the header TODO might have to add one more, if the table does not start at Zero.
-    //Store the calculated values for use in the table later
-    this.state.numberOfRows = numberOfRows;
-    this.state.lowestCriterionConditionNumber = lowestCriterionConditionNumber;
-    this.state.highestCriterionConditionNumber = highestCriterionConditionNumber;
+    return conditionNumbers;
+  }
 
+  /**
+  * Extracts the conditions of the emergency categories in the selected recognition category. Fills inn missing conditions with empty content.
+  * The returned object has the properties
+  *   emergencyLevel, the name of the emergency level {String}
+  *   content, a Criterion object or an empty string if the emergency level did not have that criterion
+  * @return {Object Array} tableData
+  */
+  getTableData()
+  {
     //Get the emergency criterion data of the selected emergency category
-    var emergencyCategories = eALDocument.getRecognitionCategoryData(store.getState().category).emergency_categories;
+    var emergencyCategories = eALDocument.getRecognitionCategoryData(store.getState().recognitionCategory).emergency_categories;
+    //Get the condition numbers of the emergency categories
+    var conditionNumbers = this.getConditionNumbers(emergencyCategories);
+    //Store the found condition numbers for use with the table
+    this.state.conditionNumbers = conditionNumbers;
+    console.log(conditionNumbers);
+
 
     //Fill the table data and add in empty elements if a emergency category does not have the current criterion condition number
-    var myTableData = [];
+    var tableData = [];
 
     //Go through every emergency category
     for(var y = 0; y < emergencyCategories.length; y++)
     {
       //Check if the current emergency category has all the criterions between the lowest and highest found criterions.
-      for(var i = lowestCriterionConditionNumber; i <= highestCriterionConditionNumber; i++)
+      for(var i = 0; i < conditionNumbers.length; i++)
       {
         var categoryHasCriterion = false;
         for(var z = 0; z < emergencyCategories[y].criterions.length; z++)
         {
           //Find the first occurence of a number inside a string. The first number is the criterion condition number
           var criterionNumber = this.getCriterionConditionNumber(emergencyCategories[y].criterions[z].name);
-          if(criterionNumber === i)
+          if(criterionNumber === conditionNumbers[i])
           {
             //myTableData.push(this.createRowData(emergencyCategories[y].name, emergencyCategories[y].criterions[z].name
               //+ " - " + emergencyCategories[y].criterions[z].description.text));
-            myTableData.push(this.createRowData(emergencyCategories[y].name, emergencyCategories[y].criterions[z]));
+            tableData.push(this.createRowData(emergencyCategories[y].name, emergencyCategories[y].criterions[z]));
             categoryHasCriterion = true;
             break;
           }
@@ -312,12 +276,13 @@ getRowsData(tableData){
         //If the emergency category did not have the criterion we add an empty object to fill the gap in the overview table.
         if(categoryHasCriterion === false)
         {
-          myTableData.push(this.createRowData(emergencyCategories[y].name, ""));
+          tableData.push(this.createRowData(emergencyCategories[y].name, ""));
         }
       }
     }
-    console.table(myTableData);
-    return myTableData;
+
+    console.table(tableData);
+    return tableData;
   }
 
   render() {
