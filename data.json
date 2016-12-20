@@ -17,6 +17,16 @@
           "criterions": [
             {
               "name": "H-2 Security",
+              "full_name": "Security Events",
+              "mode_applicability": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                "Defueled"
+              ],
               "description": {
                 "text": "HOSTILE ACTION resulting in Loss of Physical Control of the Facility",
                 "ref": {
@@ -58,6 +68,16 @@
           "criterions": [
             {
               "name": "H-2 Security",
+              "full_name": "Security Events",
+              "mode_applicability": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                "Defueled"
+              ],
               "description": {
                 "text": "HOSTILE ACTION within the PROTECTED AREA ",
                 "ref": {
@@ -76,33 +96,43 @@
               }
             },
             {
-              "name": "H-3 Control Room Evacuation",
+              "name": "H-3 CR Evacuation",
+              "full_name": "Control Room Evacuation",
+              "mode_applicability": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                "Defueled"
+              ],
               "description": {
                 "text": "Control Room evacuated AND control not established in 15 minutes.",
                 "ref": {
                   "page": 60,
                   "range": 1
                 }
-			  },
+              },
               "look_up": true,
               "conditions": {
                 "type": "AND",
                 "description": "",
                 "children": [
-                    {
-                      "type": "Leaf",
-                      "description": {
-                        "text": "<p>Control Room evacuation has been initiated.</p>",
-                        "ref": ""
-                      }
-                    },
-                    {
-                      "type": "Leaf",
-                      "description": {
-                        "text": "<p>CONTROL of any one of the following processes is not established within 15 minutes:</p><ul><li>Reactivity</li><li>RCS inventory</li><li>RCS temperature</li><li>SG heat sink</li></ul>",
-                        "ref": ""
-                      }
+                  {
+                    "type": "Leaf",
+                    "description": {
+                      "text": "<p>Control Room evacuation has been initiated.</p>",
+                      "ref": ""
                     }
+                  },
+                  {
+                    "type": "Leaf",
+                    "description": {
+                      "text": "<p>CONTROL of any one of the following processes is not established within 15 minutes:</p><ul><li>Reactivity</li><li>RCS inventory</li><li>RCS temperature</li><li>SG heat sink</li></ul>",
+                      "ref": ""
+                    }
+                  }
                 ]
               }
             }
@@ -113,6 +143,16 @@
           "criterions": [
             {
               "name": "H-2 Security",
+              "full_name": "Security Events",
+              "mode_applicability": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                "Defueled"
+              ],
               "description": {
                 "text": "HOSTILE ACTION within the OWNER CONTROLLED AREA or airborne attack threat.",
                 "ref": {
@@ -143,7 +183,17 @@
               }
             },
             {
-              "name": "H-3 Control Room Evacuation",
+              "name": "H-3 CR Evacuation",
+              "full_name": "Control Room Evacuation",
+              "mode_applicability": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                "Defueled"
+              ],
               "description": {
                 "text": "Control Room evacuation initiated.",
                 "ref": {
@@ -152,31 +202,95 @@
                 }
               },
               "look_up": false,
-              "conditions": {}
+              "conditions": {
+                "type": "Leaf",
+                "description": {
+                  "text": "<p>Control room evacuation has been initiated.</p>",
+                  "ref": ""
+                }
+              }
             },
             {
               "name": "H-4 FIRE",
+              "full_name": "FIRE or EXPLOSION affecting OPERABILITY Of safety equipment",
+              "mode_applicability": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                "Defueled"
+              ],
               "description": {
-                "text": "FIRE OR EXPLOSION affecting plant operations. ",
+                "text": "FIRE or EXPLOSION affecting OPERABILITY of plant safety systems required to establish or maintain safe shutdown.",
                 "ref": {
                   "page": 62,
                   "range": 1
                 }
               },
               "look_up": true,
-              "conditions": {}
+              "conditions": {
+                "type": "OR",
+                "descriptions": "",
+                "children": [
+                  {
+                    "type": "Leaf",
+                    "description": {
+                      "text": "<p>FIRE or EXPLOSION that affects the OPERABILITY of systems required for the current operating mode OR for safe shutdown.</p>",
+                      "ref": ""
+                    }
+                  },
+                  {
+                    "type": "Leaf",
+                    "description": {
+                      "text": "<p>FIRE or EXPLOSION that causes visible damage to any of the following structures: containments, auxiliary buildings, essential service water system enclosures, auxiliary feedwater pump rooms, refueling water storage tank, or condensate storage tank.</p>",
+                      "ref": ""
+                    }
+                  }
+                ]
+              }
             },
             {
               "name": "H-5 TOXIC Gas",
+              "full_name": "TOXIC or flammable gases",
+              "mode_applicability": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                "Defueled"
+              ],
               "description": {
-                "text": "TOXIC OR flammable gas release that  threatens lives OR affects ability to  achieve and maintain Mode 5.",
+                "text": "Release of TOXIC of flammable gases within a facility structure which jeopardizes operation of systems required to maintain safe operations or to establish or maintain cold shutdown. ",
                 "ref": {
                   "page": 64,
                   "range": 2
                 }
               },
               "look_up": true,
-              "conditions": {}
+              "conditions": {
+                "type": "OR",
+                "description": "",
+                "children": [
+                  {
+                    "type": "Leaf",
+                    "description": {
+                      "text": "<p>Report or detection of TOXIC gases within a facility structure in concentrations that will be life threatening to plant personnel. </p>",
+                      "ref": ""
+                    }
+                  },
+                  {
+                    "type": "Leaf",
+                    "description": {
+                      "text": "<p>Report or detection of flammable gases within a facility structure in concentrations that will affect the safe operation of the plant.</p>",
+                      "ref": ""
+                    }
+                  }
+                ]
+              }
             }
           ]
         },
@@ -185,8 +299,18 @@
           "criterions": [
             {
               "name": "H-2 Security",
+              "full_name": "Security Events",
+              "mode_applicability": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                "Defueled"
+              ],
               "description": {
-                "text": "Confirmed Security Condition which indicates a potential degradation in the level of safety of the plant",
+                "text": "Confirmed SECURITY CONDITION or threat which indicates a potential degradation in the level of safety of the plant.",
                 "ref": {
                   "page": 51,
                   "range": 2
@@ -200,7 +324,7 @@
                   {
                     "type": "Leaf",
                     "description": {
-                      "text": "<p>SECURITY CONDITION that does not involve a HOSTILE ACTION as reported by Security Shift Supervision.</p>",
+                      "text": "<p>A SECURITY CONDITION that does not involve a HOSTILE ACTION as reported by Security Shift Supervision.</p>",
                       "ref": ""
                     }
                   },
@@ -219,6 +343,94 @@
                     }
                   }
                 ]
+              }
+            },
+            {
+              "name": "H-4 FIRE",
+              "full_name": "Fire",
+              "mode_applicability": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                "Defueled"
+              ],
+              "description": {
+                "text": "FIRE in protected area boundary NOT extinguished within 15 minutes of detection.",
+                "ref": {
+                  "page": 61,
+                  "range": 1
+                }
+              },
+              "look_up": false,
+              "conditions": {
+                "type": "Leaf",
+                "description": {
+                  "text": "<p>FIRE within the protected area boundary not extinguished within 15 minutes of detection.</p>",
+                  "ref": ""
+                }
+              }
+            },
+            {
+              "name": "H-5 TOXIC Gas",
+              "full_name": "TOXIC or flammable gases",
+              "mode_applicability": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                "Defueled"
+              ],
+              "description": {
+                "text": "Release of TOXIC or flammable gases deemed detrimental to safe operation of the plant.",
+                "ref": {
+                  "page": 63,
+                  "range": 1
+                }
+              },
+              "look_up": true,
+              "conditions": {
+                "type": "OR",
+                "description": "",
+                "children": [
+                  {
+                    "type": "Leaf",
+                    "description": {
+                      "text": "<p>Release of TOXIC or flammable gases within or near site boundary that may affect normal operation of the plant.</p>",
+                      "ref": ""
+                    }
+                  },
+                  {
+                    "type": "Leaf",
+                    "description": {
+                      "text": "<p>Report by local, county, or state officials of potential evacuation of site personnel based on offsite event.</p>"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "name": "H-8 ISFSI",
+              "full_name": "ISFSI",
+              "mode_applicability": [],
+              "description": {
+                "text": "Damage to a loaded cask CONFINEMENT BOUNDARY.",
+                "ref": {
+                  "page": 66,
+                  "range": 1
+                }
+              },
+              "look_up": false,
+              "conditions": {
+                "type": "Leaf",
+                "description": {
+                  "text": "<p>Damage to a loaded cask CONFINEMENT BOUNDARY.</p>",
+                  "ref": ""
+                }
               }
             }
           ]

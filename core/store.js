@@ -14,16 +14,16 @@ import { createStore } from 'redux';
 // For more information visit http://redux.js.org/
 const initialState = {
   mode: null,
-  category: null,
-  level: null,
-  object: null
+  recognitionCategory: null,
+  emergencyLevel: null,
+  criterionObject: null
 };
 
 const store = createStore((state = initialState, action) => {
   // TODO: Add action handlers (aka "reducers")
   switch (action.type) {
-    case 'SETMODE':
-      return { ...state, mode: action.mode, category: action.category, level: action.level, object: action.object};
+    case 'SET_STATE':
+      return { ...state, mode: action.mode, recognitionCategory: action.recognitionCategory, emergencyLevel: action.emergencyLevel, criterionObject: action.criterionObject};
     default:
       return state;
   }

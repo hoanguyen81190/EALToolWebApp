@@ -23,7 +23,7 @@ class HomePage extends React.Component {
     super();
     this.state = {
       mode: null,
-      category: null
+      recognitionCategory: null
     }
   }
 
@@ -44,21 +44,22 @@ class HomePage extends React.Component {
     if (element != null)
       element.style.backgroundColor = 'LightGray';
     document.getElementById(_cat).style.backgroundColor = 'Red';
-    this.setState({category: _cat});
+    this.setState({recognitionCategory: _cat});
   }
 
   handleSubmit() {
     //TODO: check if the selection is valid
-    if(this.state.mode == null || this.state.category == null)
+    if(this.state.mode == null || this.state.recognitionCategory == null)
     {
         alert("Please select the mode and the recognition category before pressing submit!");
     }
     else {
       var action = {
-        type : 'SETMODE',
+        type : 'SET_STATE',
         mode : this.state.mode,
-        category : this.state.category,
-        object: null
+        recognitionCategory : this.state.recognitionCategory,
+        emergencyLevel: null,
+        criterionObject: null
       }
       store.dispatch(action);
       history.push("/overview");
