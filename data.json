@@ -45,7 +45,7 @@
                   {
                     "type": "Leaf",
                     "description": {
-                      "text": "<p>A HOSTILE ACTION has occurred such that plant personnel are unable to operate equipment required to maintain safety functions listed below:</p><ul><li>Reactivity Control (ability to shut down the reactor and keep it shutdown)</li> <li>RCS Inventory (ability to cool the core)</li><li>Secondary Heat Removal (ability to maintain heat sink) .[Ref. 5.2.1i]</li>",
+                      "text": "A HOSTILE ACTION has occurred such that plant personnel are unable to operate equipment required to maintain safety functions listed below:<ul><li>Reactivity Control (ability to shut down the reactor and keep it shutdown)</li> <li>RCS Inventory (ability to cool the core)</li><li>Secondary Heat Removal (ability to maintain heat sink) .[Ref. 5.2.1i]</li>",
                       "ref": "Ref. 5.2.1i"
                     },
                     "children": ""
@@ -122,14 +122,14 @@
                   {
                     "type": "Leaf",
                     "description": {
-                      "text": "<p>Control Room evacuation has been initiated.</p>",
+                      "text": "Control Room evacuation has been initiated.",
                       "ref": ""
                     }
                   },
                   {
                     "type": "Leaf",
                     "description": {
-                      "text": "<p>CONTROL of any one of the following processes is not established within 15 minutes:</p><ul><li>Reactivity</li><li>RCS inventory</li><li>RCS temperature</li><li>SG heat sink</li></ul>",
+                      "text": "CONTROL of any one of the following processes is not established within 15 minutes:<ul><li>Reactivity</li><li>RCS inventory</li><li>RCS temperature</li><li>SG heat sink</li></ul>",
                       "ref": ""
                     }
                   }
@@ -168,14 +168,14 @@
                   {
                     "type": "Leaf",
                     "description": {
-                      "text": "<p>A HOSTILE ACTION is occurring or has occurred within the OWNER CONTROLLED AREA as reported by the Security Shift Supervisor</p>",
+                      "text": "A HOSTILE ACTION is occurring or has occurred within the OWNER CONTROLLED AREA as reported by the Security Shift Supervisor",
                       "ref": ""
                     }
                   },
                   {
                     "type": "Leaf",
                     "description": {
-                      "text": "<p>A validated notification from the NRC of a LARGE AIRCRAFT attack threat within <strong>30 minutes</strong> of the site.</p>",
+                      "text": "A validated notification from the NRC of a LARGE AIRCRAFT attack threat within <strong>30 minutes</strong> of the site.",
                       "ref": " [Ref. 5.2.1i] "
                     }
                   }
@@ -205,7 +205,7 @@
               "conditions": {
                 "type": "Leaf",
                 "description": {
-                  "text": "<p>Control room evacuation has been initiated.</p>",
+                  "text": "Control room evacuation has been initiated.",
                   "ref": ""
                 }
               }
@@ -237,14 +237,14 @@
                   {
                     "type": "Leaf",
                     "description": {
-                      "text": "<p>FIRE or EXPLOSION that affects the OPERABILITY of systems required for the current operating mode OR for safe shutdown.</p>",
+                      "text": "FIRE or EXPLOSION that affects the OPERABILITY of systems required for the current operating mode OR for safe shutdown.",
                       "ref": ""
                     }
                   },
                   {
                     "type": "Leaf",
                     "description": {
-                      "text": "<p>FIRE or EXPLOSION that causes visible damage to any of the following structures: containments, auxiliary buildings, essential service water system enclosures, auxiliary feedwater pump rooms, refueling water storage tank, or condensate storage tank.</p>",
+                      "text": "FIRE or EXPLOSION that causes visible damage to any of the following structures: containments, auxiliary buildings, essential service water system enclosures, auxiliary feedwater pump rooms, refueling water storage tank, or condensate storage tank.",
                       "ref": ""
                     }
                   }
@@ -278,14 +278,14 @@
                   {
                     "type": "Leaf",
                     "description": {
-                      "text": "<p>Report or detection of TOXIC gases within a facility structure in concentrations that will be life threatening to plant personnel. </p>",
+                      "text": "Report or detection of TOXIC gases within a facility structure in concentrations that will be life threatening to plant personnel. ",
                       "ref": ""
                     }
                   },
                   {
                     "type": "Leaf",
                     "description": {
-                      "text": "<p>Report or detection of flammable gases within a facility structure in concentrations that will affect the safe operation of the plant.</p>",
+                      "text": "Report or detection of flammable gases within a facility structure in concentrations that will affect the safe operation of the plant.",
                       "ref": ""
                     }
                   }
@@ -324,21 +324,21 @@
                   {
                     "type": "Leaf",
                     "description": {
-                      "text": "<p>A SECURITY CONDITION that does not involve a HOSTILE ACTION as reported by Security Shift Supervision.</p>",
+                      "text": "A SECURITY CONDITION that does not involve a HOSTILE ACTION as reported by Security Shift Supervision.",
                       "ref": ""
                     }
                   },
                   {
                     "type": "Leaf",
                     "description": {
-                      "text": "<p>A credible site-specific security threat notification.</p>",
+                      "text": "A credible site-specific security threat notification.",
                       "ref": ""
                     }
                   },
                   {
                     "type": "Leaf",
                     "description": {
-                      "text": "<p>A validated notification from NRC providing information of an aircraft threat. [Ref: 5.2.1i]</p>",
+                      "text": "A validated notification from NRC providing information of an aircraft threat. [Ref: 5.2.1i]",
                       "ref": ""
                     }
                   }
@@ -368,7 +368,7 @@
               "conditions": {
                 "type": "Leaf",
                 "description": {
-                  "text": "<p>FIRE within the protected area boundary not extinguished within 15 minutes of detection.</p>",
+                  "text": "FIRE within the protected area boundary not extinguished within 15 minutes of detection.",
                   "ref": ""
                 }
               }
@@ -400,14 +400,14 @@
                   {
                     "type": "Leaf",
                     "description": {
-                      "text": "<p>Release of TOXIC or flammable gases within or near site boundary that may affect normal operation of the plant.</p>",
+                      "text": "Release of TOXIC or flammable gases within or near site boundary that may affect normal operation of the plant.",
                       "ref": ""
                     }
                   },
                   {
                     "type": "Leaf",
                     "description": {
-                      "text": "<p>Report by local, county, or state officials of potential evacuation of site personnel based on offsite event.</p>"
+                      "text": "Report by local, county, or state officials of potential evacuation of site personnel based on offsite event."
                     }
                   }
                 ]
@@ -428,7 +428,7 @@
               "conditions": {
                 "type": "Leaf",
                 "description": {
-                  "text": "<p>Damage to a loaded cask CONFINEMENT BOUNDARY.</p>",
+                  "text": "Damage to a loaded cask CONFINEMENT BOUNDARY.",
                   "ref": ""
                 }
               }

@@ -26,6 +26,8 @@
     padding: 0;
 }
 .leftcontent{
+  overflow-x: hidden;
+   overflow-y: auto;
     width: 20%;
     height: 100%;
     background-color: #ccff99;
@@ -57,24 +59,6 @@
   position: inherit;
 }
 
-.table{
-  display: table;
-}
-
-.wrapper {
-  display: table-row;
-  float:left;
- position: relative;
- vertical-align: middle;
- margin-bottom: 2%;
- margin-top: 2%;
-}
-
-.checkbox {
- float: left;
-
-}
-
 .operator{
   align-self: center;
   margin-left: 48%;
@@ -83,3 +67,36 @@
 .indent1{
   margin-left: 15%;
 }
+
+.treeIndent{
+  margin-left: 5%;
+}
+
+.conditionwrap {
+ margin-top: -20px;
+ margin-bottom: 50px;
+}
+
+.condition {
+    position: relative;
+    bottom: -1.25em;
+}
+
+.condition:before {
+    content: attr(operator);
+    font-size: 75%;
+    align-content: center;
+    font-weight: bold;
+    display: inline-block;
+    width: 1em;
+    height: 100%;
+    margin-left: 0px;
+    margin-top: 20px;
+    position: absolute;
+    border: 2px solid gray;
+    border-width: 2px 0 0 2px;
+}
+.condition:last-child::before {
+      border-width: 2px 0 0;
+      content: "";
+      }
