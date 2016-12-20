@@ -13,38 +13,114 @@
 
 }
 
-.gridCell {
-  box-sizing: border-box;
-  background-color: #BDBDBD;
-  height: 250px;
-  padding-left: 8px;
-  padding-top: 4px;
-  color: white;
+body, html{
+  -ms-overflow-style: none;
 }
 
-.gridHeader:first-of-type .gridCell {
-  height: 50px;
+::-webkit-scrollbar {
+    display: none;
 }
 
+/* main page properties */
 .content {
   height: 100%;
   width: 100%;
 }
 
-.overviewColumn{
-  height: 100%;
-  width: 25%;
-  position:absolute;
-  margin-left: 25%;
+.recognitionCategoryText{
+  height: 5%;
+  width: 100%;
+  color: black;
+  position:fixed;
+  z-index: 2;
+  background-color: white;
+  font-weight: bolder;
+  font-size: xx-large;
+  text-align: left;
+  display:flex;
+  align-items: center;
+  padding-left: 1%;
 }
 
 .tableWrapper{
+  height:95%;
+  width: 100%;
+  margin-top: 2.8%;
+  position:absolute;
+}
+
+/* cell text properties */
+.criterionName{
+  font-weight:bold;
+}
+
+.criterionDescription{
+  font-weight: normal;
+}
+
+.conditionText{
+  margin-top: 5%;
+}
+
+/* Condition text properties */
+.test{
+
+}
+
+.test2{
+
+}
+
+.test3{
+
+}
+
+.operator{
+  font-weight: bold;
+  text-align:center;
+}
+
+.leafText{
+
+}
+
+.leafText p{
+  
+}
+
+/* overview grid properties */
+.overviewGridContainer{
   height: 100%;
   width: 100%;
 }
 
-.tableWrapper td, th{
-  height:100%;
-  width:25%;
-  overflow:hidden;
+.headerContainer{
+  text-align:center;
+  font-weight: bold;
+  width: 100%;
+  height: 2.5%;
+  position:fixed;
+  z-index: 2;
+  background-color: white;
+}
+
+.dataContainer{
+  width: 100%;
+  padding-top:1.3%;
+}
+
+.gridDataRow{
+  width: 100%;
+  height: 100%;
+}
+
+.gridCell {
+  box-sizing: border-box;
+  border: 1px;
+  border-style: solid;
+  color: black;
+  width: 100%;
+  height: 100%;
+  padding-left: 8px;
+  padding-top: 4px;
 }

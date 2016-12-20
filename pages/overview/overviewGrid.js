@@ -10,10 +10,11 @@ const React = require('react');
 class Condition extends React.Component {
   render() {
     if(this.props.object.type === "Leaf") {
+      var leafText = (this.props.index + 1) + '. ' + this.props.object.description.text;
       var element =
-      <div>
-         {(this.props.index + 1) + '. '}
-         <div dangerouslySetInnerHTML={{__html: this.props.object.description.text}}/>
+      <div className={s.test3}>
+
+         <div className={s.test4} dangerouslySetInnerHTML={{__html: leafText}}/>
       </div>;
       return element;
     }
@@ -23,12 +24,12 @@ class Condition extends React.Component {
          {
            this.props.object.children.map((ele, index) => {
              if(index != this.props.object.children.length - 1) {
-               return <div key={index}>
+               return <div className={s.test} key={index}>
                  <Condition object = {ele} index = {index}/>
-                 {this.props.object.type}
+                 <div className={s.operator}>{this.props.object.type}</div>
                </div>;
              }
-             return <div key={index}>
+             return <div className={s.test2} key={index}>
                <Condition object = {ele} index = {index}/>
              </div>;
            })
@@ -67,14 +68,13 @@ class Criterion extends React.Component {
     }
     var element =
     <div className={s.box} onClick={() => this.handleClick(this.props.criterion)}>
-      {this.props.criterion.name}
-      <div>{this.props.criterion.description.text}</div>
-      {condition}
+      <div className={s.criterionName}>{this.props.criterion.name}</div>
+      <div className={s.criterionDescription}>{this.props.criterion.description.text}</div>
+      <div className={s.conditionText}>{condition}</div>
     </div>;
     return element;
   }
 }
-
 
 class OverviewTable extends React.Component {
   constructor(props) {
@@ -93,7 +93,7 @@ class OverviewTable extends React.Component {
     }
   }
 
-getRowsData2(tableData){
+getRecognitionCategoryDataGrid(tableData){
   var emergencyCatArray = ["General Emergency","Site Area Emergency","Alert","Unusual Event"];
   var conditionNumberArray = this.state.conditionNumbers;
 
@@ -103,17 +103,24 @@ getRowsData2(tableData){
       //Loop through the condition numbers
       conditionNumberArray.map((conditionNumber, conditionNumberIndex) => {
         //Add one row for each condition number
-        var rowData = <div key={conditionNumberIndex} className={s.testRow}><div className="mdl-grid ">
+        var rowData = <div key={conditionNumberIndex} className={s.gridDataRow}><div className="mdl-grid mdl-grid--no-spacing">
         {
         //Loop through the emergency categories
         emergencyCatArray.map((emergencyCategory, emergencyCategoryIndex) => {
-          console.log(conditionNumberIndex + emergencyCatArray.length * emergencyCategoryIndex);
-
           var tableDataCell = tableData[conditionNumberIndex + emergencyCatArray.length * emergencyCategoryIndex + emergencyCategoryIndex];
+          var modeApplicable = true;
+
+          var modeApplicability = tableDataCell.content.mode_applicability;
+
+
+          /*if(tableDataCell.content.mode_applicability.indexOf(store.getState().mode) === -1)
+          {
+            modeApplicable = false;
+          }*/
+
 
           var cellContent;
-
-          if(tableDataCell.content === "")
+          if(tableDataCell.content === "" || !modeApplicable)
           {
             var emptyCell =
             <div key={emergencyCategoryIndex} className="mdl-cell mdl-cell--3-col"><div className={s.gridCell}>
@@ -137,62 +144,6 @@ getRowsData2(tableData){
     }
   </div>;
 
-  return rowsData;
-}
-
-getRowsData(tableData){
-  //Work around to get a map
-  var conditionNumbersArray = [];
-  for(var i = this.state.lowestCriterionConditionNumber; i <= this.state.highestCriterionConditionNumber; i++)
-  {
-    conditionNumbersArray.push(i);
-  }
-
-  var emergencyCategoriesArray = ["General Emergency", "Site Area Emergency", "Alert", "Unusual Event"];
-
-  //Add all the rows to this container div
-  var rowsData = <div>
-    {
-      //Loop through the emergency categories
-      emergencyCategoriesArray.map((emergencyCat, emerIndex) => {
-      {
-        //Used to pass the value from the inner map to the outer map
-        var rowData =
-        //Loop through all the condition numbers
-        conditionNumbersArray.map((conditionNumber, outerIndex) => {
-
-          var hasData = false;
-          //Add a row data to this container div
-          var rowData = <div key={outerIndex} className={s.testRow}><div className="mdl-grid ">
-            {
-              //Loop through all the cell data in the table map
-
-              tableData.map((cellData, index) => {
-                if(cellData.content != "")
-                {
-                  var cellDataCriterionNumber = this.getCriterionConditionNumber(cellData.content.name);
-                  if(cellDataCriterionNumber === conditionNumber && cellData.emergencyLevel === emergencyCat)
-                  {
-                    var cellContent = <div key={index} className="mdl-cell mdl-cell--3-col"><div className={s.gridCell}>
-                      <Criterion criterion = {cellData.content} key={index} level = {cellData.name}/>
-                    </div> </div>;
-                    hasData = true;
-                    return(cellContent);
-                  }
-                }
-              })
-              //End of the table data map
-            }
-          </div></div>;
-          return (rowData);
-        })
-        //End of conditionNumber map
-      }
-      return rowData;
-    })
-    //End of the emergency category map
-  }
-  </div>;
   return rowsData;
 }
 
@@ -246,8 +197,6 @@ getRowsData(tableData){
     var conditionNumbers = this.getConditionNumbers(emergencyCategories);
     //Store the found condition numbers for use with the table
     this.state.conditionNumbers = conditionNumbers;
-    console.log(conditionNumbers);
-
 
     //Fill the table data and add in empty elements if a emergency category does not have the current criterion condition number
     var tableData = [];
@@ -281,25 +230,44 @@ getRowsData(tableData){
       }
     }
 
-    console.table(tableData);
     return tableData;
   }
 
   render() {
-    var tableData = this.getTableData();
+    var recognitionCategoryData = this.getTableData();
 
     var table =
-    <div>
-      <div className={s.gridHeader}><div className="mdl-grid ">
+    <div className={s.overviewGridContainer}>
+      <div className={s.headerContainer}><div className="mdl-grid mdl-grid--no-spacing">
+        <div className="mdl-cell mdl-cell--3-col "><div className={s.gridCell}> General Emergency </div> </div>
+        <div className="mdl-cell mdl-cell--3-col "><div className={s.gridCell}> Site Area Emergency </div> </div>
+        <div className="mdl-cell mdl-cell--3-col "><div className={s.gridCell}> Alert </div> </div>
+        <div className="mdl-cell mdl-cell--3-col "><div className={s.gridCell}> Unusual Event </div> </div>
+      </div></div>
+      <div className={s.dataContainer}>
+        {this.getRecognitionCategoryDataGrid(recognitionCategoryData)}
+      </div>
+
+    </div>
+    return(table);
+  }
+
+
+  /*render() {
+    var recognitionCategoryData = this.getTableData();
+
+    var table =
+    <div className={s.gridContainer}>
+      <div className={s.gridHeader}><div className="mdl-grid mdl-grid--no-spacing">
         <div className="mdl-cell mdl-cell--3-col"><div className={s.gridCell}> General Emergency </div> </div>
         <div className="mdl-cell mdl-cell--3-col"><div className={s.gridCell}> Site Area Emergency </div> </div>
         <div className="mdl-cell mdl-cell--3-col"><div className={s.gridCell}> Alert </div> </div>
         <div className="mdl-cell mdl-cell--3-col"><div className={s.gridCell}> Unusual Event </div> </div>
       </div></div>
-      {this.getRowsData2(tableData)}
+      {this.getRecognitionCategoryDataGrid(recognitionCategoryData)}
     </div>
     return(table);
-  }
+  }*/
 }
 
 export default OverviewTable;
