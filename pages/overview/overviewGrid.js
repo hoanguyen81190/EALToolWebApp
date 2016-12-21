@@ -96,7 +96,6 @@ class OverviewTable extends React.Component {
 getRecognitionCategoryDataGrid(tableData){
   var emergencyCatArray = ["General Emergency","Site Area Emergency","Alert","Unusual Event"];
   var conditionNumberArray = this.state.conditionNumbers;
-
   //Add all the rows to this container div
   var rowsData = <div>
     {
@@ -107,17 +106,15 @@ getRecognitionCategoryDataGrid(tableData){
         {
         //Loop through the emergency categories
         emergencyCatArray.map((emergencyCategory, emergencyCategoryIndex) => {
-          var tableDataCell = tableData[conditionNumberIndex + emergencyCatArray.length * emergencyCategoryIndex + emergencyCategoryIndex];
-
+          console.log(conditionNumberIndex + (emergencyCatArray.length * emergencyCategoryIndex));
+          var tableDataCell = tableData[conditionNumberIndex + (emergencyCatArray.length * emergencyCategoryIndex)];
           var cellContent;
           if(tableDataCell.content === "")
           {
-            var emptyCell =
+            cellContent =
             <div key={emergencyCategoryIndex} className="mdl-cell mdl-cell--3-col"><div className={s.gridCell}>
 
             </div> </div>;
-
-            return(emptyCell);
           }
           else {
             cellContent = <div key={emergencyCategoryIndex} className="mdl-cell mdl-cell--3-col"><div className={s.gridCell}>
@@ -160,12 +157,16 @@ getRecognitionCategoryDataGrid(tableData){
     {
       for(var y = 0; y < emergencyCategories[i].criterions.length; y++)
       {
-        //Find the first occurence of a number inside a string. The first number is the criterion condition number
-        var conditionNumber = this.getCriterionConditionNumber(emergencyCategories[i].criterions[y].name);
-        if(conditionNumbers.indexOf(conditionNumber) === -1)
-        {
-          conditionNumbers.push(conditionNumber);
-        }
+        //if(this.checkIfModeApplicable(emergencyCategories[i].criterions[y]))
+        //{
+          //Find the first occurence of a number inside a string. The first number is the criterion condition number
+          var conditionNumber = this.getCriterionConditionNumber(emergencyCategories[i].criterions[y].name);
+          if(conditionNumbers.indexOf(conditionNumber) === -1)
+          {
+            conditionNumbers.push(conditionNumber);
+          }
+        //}
+
       }
     }
 
@@ -175,7 +176,7 @@ getRecognitionCategoryDataGrid(tableData){
   /**
   * Check if the provided criterion is applicable with the current selected mode configuration
   * @param {Criterion object} criterion
-  * @return {Boolean} modeApplicable
+  * @return {Boolean}
   */
   checkIfModeApplicable(criterion){
     var modeApplicable = true;
@@ -219,12 +220,9 @@ getRecognitionCategoryDataGrid(tableData){
         var categoryHasCriterion = false;
         for(var z = 0; z < emergencyCategories[y].criterions.length; z++)
         {
-          //Find the first occurence of a number inside a string. The first number is the criterion condition number
           var criterionNumber = this.getCriterionConditionNumber(emergencyCategories[y].criterions[z].name);
-          if(criterionNumber === conditionNumbers[i] && this.checkIfModeApplicable(emergencyCategories[y].criterions[z]))
+          if(criterionNumber === conditionNumbers[i])
           {
-            //myTableData.push(this.createRowData(emergencyCategories[y].name, emergencyCategories[y].criterions[z].name
-              //+ " - " + emergencyCategories[y].criterions[z].description.text));
             tableData.push(this.createRowData(emergencyCategories[y].name, emergencyCategories[y].criterions[z]));
             categoryHasCriterion = true;
             break;
@@ -238,6 +236,8 @@ getRecognitionCategoryDataGrid(tableData){
         }
       }
     }
+
+    console.table(tableData);
 
     return tableData;
   }
@@ -260,23 +260,6 @@ getRecognitionCategoryDataGrid(tableData){
     </div>
     return(table);
   }
-
-
-  /*render() {
-    var recognitionCategoryData = this.getTableData();
-
-    var table =
-    <div className={s.gridContainer}>
-      <div className={s.gridHeader}><div className="mdl-grid mdl-grid--no-spacing">
-        <div className="mdl-cell mdl-cell--3-col"><div className={s.gridCell}> General Emergency </div> </div>
-        <div className="mdl-cell mdl-cell--3-col"><div className={s.gridCell}> Site Area Emergency </div> </div>
-        <div className="mdl-cell mdl-cell--3-col"><div className={s.gridCell}> Alert </div> </div>
-        <div className="mdl-cell mdl-cell--3-col"><div className={s.gridCell}> Unusual Event </div> </div>
-      </div></div>
-      {this.getRecognitionCategoryDataGrid(recognitionCategoryData)}
-    </div>
-    return(table);
-  }*/
 }
 
 export default OverviewTable;
