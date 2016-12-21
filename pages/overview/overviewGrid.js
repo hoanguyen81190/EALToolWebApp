@@ -108,19 +108,9 @@ getRecognitionCategoryDataGrid(tableData){
         //Loop through the emergency categories
         emergencyCatArray.map((emergencyCategory, emergencyCategoryIndex) => {
           var tableDataCell = tableData[conditionNumberIndex + emergencyCatArray.length * emergencyCategoryIndex + emergencyCategoryIndex];
-          var modeApplicable = true;
-
-          var modeApplicability = tableDataCell.content.mode_applicability;
-
-
-          /*if(tableDataCell.content.mode_applicability.indexOf(store.getState().mode) === -1)
-          {
-            modeApplicable = false;
-          }*/
-
 
           var cellContent;
-          if(tableDataCell.content === "" || !modeApplicable)
+          if(tableDataCell.content === "")
           {
             var emptyCell =
             <div key={emergencyCategoryIndex} className="mdl-cell mdl-cell--3-col"><div className={s.gridCell}>
@@ -183,6 +173,25 @@ getRecognitionCategoryDataGrid(tableData){
   }
 
   /**
+  * Check if the provided criterion is applicable with the current selected mode configuration
+  * @param {Criterion object} criterion
+  * @return {Boolean} modeApplicable
+  */
+  checkIfModeApplicable(criterion){
+    var modeApplicable = true;
+    if(criterion.content != "")
+    {
+      var result = criterion.mode_applicability.indexOf(store.getState().mode);
+      if(result === -1)
+      {
+        modeApplicable = false;
+      }
+    }
+
+    return modeApplicable;
+  }
+
+  /**
   * Extracts the conditions of the emergency categories in the selected recognition category. Fills inn missing conditions with empty content.
   * The returned object has the properties
   *   emergencyLevel, the name of the emergency level {String}
@@ -212,7 +221,7 @@ getRecognitionCategoryDataGrid(tableData){
         {
           //Find the first occurence of a number inside a string. The first number is the criterion condition number
           var criterionNumber = this.getCriterionConditionNumber(emergencyCategories[y].criterions[z].name);
-          if(criterionNumber === conditionNumbers[i])
+          if(criterionNumber === conditionNumbers[i] && this.checkIfModeApplicable(emergencyCategories[y].criterions[z]))
           {
             //myTableData.push(this.createRowData(emergencyCategories[y].name, emergencyCategories[y].criterions[z].name
               //+ " - " + emergencyCategories[y].criterions[z].description.text));
