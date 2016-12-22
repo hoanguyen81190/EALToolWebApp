@@ -236,8 +236,6 @@ class ClassifyingPage extends React.Component {
 
 
   handleSubmit(){
-
-
     var text;
     if(this.refs.classificationCriterion.getValue()) {
      text = "It is likely that an " + store.getState().recognitionCategory + " event with "
