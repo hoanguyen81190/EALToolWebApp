@@ -56,44 +56,37 @@ class Condition extends React.Component {
   }
 
   render() {
-    this.type = this.props.object.type;
-    if(this.props.object.type === "Leaf") {
+    this.type = this.props.conditionBody.type;
+    if(this.props.conditionBody.type === "Leaf") {
       if(this.props.mode === 'classification') {
         var checkbox = React.createElement('input',{type: 'checkbox', defaultChecked: false});
         var element =
-        <div className={s.wrapper}>
+        <div  className={s.conditionwrap}>
            <input className={s.checkbox} type="checkbox" defaultChecked={false} onChange={this.handleChangeChk.bind(this)} />
-           <div className={s.checkboxtext} dangerouslySetInnerHTML={{__html: this.props.object.description.text}}/>
+           <div  dangerouslySetInnerHTML={{__html: this.props.conditionBody.description.text}}/>
          </div>;
         return element;
       }
       var element =
-      <div>
-         {checkbox}
-         Condition {(this.props.index + 1)}
+      <div className={s.treeIndent}>
+        <span className="mdl-chip mdl-chip--contact mdl-color--green-300">
+          <span className="mdl-chip__contact mdl-color--teal-200 mdl-color-text--white">C</span>
+          <span className="mdl-chip__text">Condition {(this.props.index + 1)}</span>
+        </span>
       </div>;
       return element;
     }
     else {
 
       var element =
-       <div>
+       <div className={s.conditionwrap}>
          {
-           this.props.object.children.map((ele, index) => {
+           this.props.conditionBody.children.map((ele, index) => {
              var child = "child" + index;
              this.children.push(child);
-             if((index != this.props.object.children.length - 1)) {
-               return <div key={index}>
-
-                 <Condition object = {ele} index = {index} mode = {this.props.mode} ref={child}/>
-                 <div className={s.operator}>
-                   <strong>{this.props.object.type}</strong>
-                 </div>
-               </div>;
-             }
-             return <div key={index}>
-
-               <Condition object = {ele} index = {index} mode = {this.props.mode} ref={child}/>
+             return <div key={index} className={s.condition} operator={this.props.conditionBody.type}>
+               <Condition
+                 conditionBody = {ele} index = {index} mode = {this.props.mode} ref={child}/>
              </div>;
            })
          }
@@ -130,13 +123,30 @@ class Criterion extends React.Component {
     }
     else {
       var condition = <Condition
-          object = {this.props.criterion.conditions} index = {0} mode = {this.props.mode}/>;
+          conditionBody = {this.props.criterion.conditions} index = {0} mode = {this.props.mode}/>;
+    }
+    if (this.props.criterion.description.text === store.getState().criterionObject.description.text)
+    {
+      var element =
+      <div className={s.treeIndent}>
+        <div className={s.criterion} onClick={() => this.handleClick(this.props.criterion)}>
+          <span className="mdl-chip mdl-chip--contact mdl-color--red-400">
+            <span className="mdl-chip__contact mdl-color--teal-300 mdl-color-text--white">E</span>
+            <span className="mdl-chip__text">{this.props.criterion.name}</span>
+          </span>
+        </div>
+        {condition}
+      </div>;
+      return element;
     }
     var element =
-    <div className={s.box} onClick={() => this.handleClick(this.props.criterion)}>
-      {
-        this.props.criterion.name
-      }
+    <div className={s.treeIndent}>
+      <div className={s.criterion} onClick={() => this.handleClick(this.props.criterion)}>
+        <span className="mdl-chip mdl-chip--contact mdl-color--green-300">
+          <span className="mdl-chip__contact mdl-color--teal-300 mdl-color-text--white">E</span>
+          <span className="mdl-chip__text">{this.props.criterion.name}</span>
+        </span>
+      </div>
       {condition}
     </div>;
     return element;
@@ -159,23 +169,26 @@ class TreeNode extends React.Component {
 
     if(this.props.mode === 'overview') {
       element =
-      <div>
+      <div className={s.treeIndent}>
         <div>
-          {this.props.emergencyLevel}
+          <span className="mdl-chip mdl-chip--contact mdl-color--green-300">
+            <span className="mdl-chip__contact mdl-color--teal mdl-color-text--white">L</span>
+            <span className="mdl-chip__text">{this.props.emergencyLevel}</span>
+          </span>
         </div>
 
-        <Criterion criterion={this.props.criterion}
-          mode = {this.props.mode}
-          callback={this.props.callback}
-          emergencyLevel={this.props.emergencyLevel}/>
+        <Criterion {...this.props}/>
       </div>;
     }
     else {
 
       element =
-
-      <div className={s.table}>
-        <Condition object = {this.props.criterion.conditions} index = {0} mode = {this.props.mode} ref = "conditionTree"/>
+      <div className={s.mainTreeIndent} >
+        <Condition className={s.condition}
+          conditionBody = {this.props.criterion.conditions}
+          index = {0}
+          mode = {this.props.mode}
+          ref = "conditionTree"/>
       </div>;
     }
     return element;
@@ -254,7 +267,7 @@ class ClassifyingPage extends React.Component {
             <div className={s.leftcontent} >
               {
                 this.extractLeftPanelTree('overview').map((item, i) => {
-                  return <div key={i}>{item}</div>
+                  return <div key={i}>{item}<hr className={s.hr}/></div>
                 })
               }
             </div>

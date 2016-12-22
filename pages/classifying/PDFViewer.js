@@ -14,6 +14,8 @@ export default class SimplePDF extends React.Component {
   loadPDF() {
 
     // get node for this react component
+    try {
+
     var node = ReactDOM.findDOMNode(this).getElementsByClassName("S-PDF-ID")[0];
     //var node = ReactDOM.findDOMNode(this).getElementsByClassName("SimplePDF")[0];
 
@@ -61,7 +63,14 @@ export default class SimplePDF extends React.Component {
           page.render(renderContext);
         });
       }
+
+
     });
+  } catch (e) {
+    console.log(e);
+  } finally {
+
+  }
   }
 
   updateDimensions() {

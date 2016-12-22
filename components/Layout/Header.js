@@ -43,7 +43,7 @@ class Header extends React.Component {
             <div className={s.progress}>
               STEP 3
               <br/>
-              Choose Condition
+              Choose Event
             </div>
             <div className={s.progress}>
               STEP 4

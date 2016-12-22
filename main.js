@@ -23,6 +23,21 @@ import history from './core/history';
 
 import {eALDocument} from './database-loader';
 
+
+//Check for ServiceWorker support before trying to install it
+// if ('serviceWorker' in navigator) {
+//     // Install ServiceWorker
+//   console.log(navigator.serviceWorker);
+//   navigator.serviceWorker.register('./service-worker.js').then(() => {
+//   }).catch((err) => {
+//     // Installation failed
+//     console.log('ServiceWorker registration failed, error:', err);
+//   });
+// } else {
+//   // No ServiceWorker Support
+//   console.log('ServiceWorker is not supported in this browser');
+// }
+
 let routes = require('./routes.json'); // Loaded with utils/routes-loader.js
 const container = document.getElementById('container');
 
@@ -55,3 +70,5 @@ if (module.hot) {
     render(history.getCurrentLocation());
   });
 }
+
+require('offline-plugin/runtime').install();
