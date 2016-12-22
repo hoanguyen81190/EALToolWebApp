@@ -10,7 +10,7 @@ class DialogDemo extends React.Component {
     this.handleCloseDialog = this.handleCloseDialog.bind(this);
   }
 
-  handleOpenDialog() {
+  handleOpenDialog(event) {
     this.setState({
       openDialog: true
     });
@@ -24,7 +24,6 @@ class DialogDemo extends React.Component {
 
   render() {
     var dialog = <div>
-      <Button colored onClick={this.handleOpenDialog} raised ripple>{this.props.text}</Button>
       <Dialog open={this.state.openDialog}>
         <DialogTitle>{this.props.title}</DialogTitle>
         <DialogContent>

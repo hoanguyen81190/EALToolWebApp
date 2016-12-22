@@ -223,6 +223,8 @@ class ClassifyingPage extends React.Component {
 
 
   handleSubmit(){
+
+
     var text;
     if(this.refs.classificationCriterion.getValue()) {
      text = "It is likely that an " + store.getState().recognitionCategory + " event with "
@@ -231,6 +233,14 @@ class ClassifyingPage extends React.Component {
     else {
      text = "It is likely that there is no emergency event";
     }
+
+    this.refs.classificationDialog.setState({
+      openDialog: true,
+      content: text,
+      title: "",
+      buttonText: ""
+    });
+
     console.log("button pressed");
   }
 
@@ -260,9 +270,7 @@ class ClassifyingPage extends React.Component {
               </Button>
 
               <div className={s.submitButton}>
-                <DialogDemo  text="SUBMIT" title="Emergency Classification" content={this.state.classificationResult}
-                   recognitionCategory={store.getState().recognitionCategory}
-                  emergencyLevel={store.getState().emergencyLevel}/>
+                <DialogDemo ref="classificationDialog"/>
               </div>
 
             </div>
