@@ -24,6 +24,8 @@ import {eALDocument} from '../../database-loader';
 
 import spdf from "./PDFViewer";
 
+import DialogDemo from './dialog';
+
 class Condition extends React.Component {
   constructor() {
     super();
@@ -186,10 +188,10 @@ class ClassifyingPage extends React.Component {
     this.state = {
       mode: store.getState().mode,
       recognitionCategory: store.getState().recognitionCategory,
-      emergencyLevel: store.getState().emergencyLevel
+      emergencyLevel: store.getState().emergencyLevel,
+      classificationResult: ""
     };
   }
-
 
   componentDidMount() {
     document.title = title;
@@ -221,18 +223,21 @@ class ClassifyingPage extends React.Component {
 
 
   handleSubmit(){
+    var text;
     if(this.refs.classificationCriterion.getValue()) {
-      var message = "It is likely that an " + store.getState().recognitionCategory + " event with "
+     text = "It is likely that an " + store.getState().recognitionCategory + " event with "
       +  store.getState().emergencyLevel + " level has happened";
     }
     else {
-      var message = "It is likely that there is no emergency event";
+     text = "It is likely that there is no emergency event";
     }
-    alert(message);
+    console.log("button pressed");
   }
 
   render() {
-
+    //console.log(this.refs);
+    //var criterionValue = this.refs.classificationCriterion.getValue();
+    console.log(this.refs.classificationCriterion);
     return (
       <Layout className={s.content}>
 
@@ -254,6 +259,12 @@ class ClassifyingPage extends React.Component {
                   Submit
               </Button>
 
+              <div className={s.submitButton}>
+                <DialogDemo  text="SUBMIT" title="Emergency Classification" content={this.state.classificationResult}
+                   recognitionCategory={store.getState().recognitionCategory}
+                  emergencyLevel={store.getState().emergencyLevel}/>
+              </div>
+
             </div>
               <div className={s.descriptioncontent}>
                 <spdf.SimplePDF className={s.SimplePDF}
@@ -264,7 +275,6 @@ class ClassifyingPage extends React.Component {
       </Layout>
     );
   }
-
 }
 
 export default ClassifyingPage;

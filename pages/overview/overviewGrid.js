@@ -93,46 +93,46 @@ class OverviewTable extends React.Component {
     }
   }
 
-getRecognitionCategoryDataGrid(tableData){
-  var emergencyCatArray = ["General Emergency","Site Area Emergency","Alert","Unusual Event"];
-  var conditionNumberArray = this.state.conditionNumbers;
-  //Add all the rows to this container div
-  var rowsData = <div>
-    {
-      //Loop through the condition numbers
-      conditionNumberArray.map((conditionNumber, conditionNumberIndex) => {
-        //Add one row for each condition number
-        var rowData = <div key={conditionNumberIndex} className={s.gridDataRow}><div className="mdl-grid mdl-grid--no-spacing">
-        {
-        //Loop through the emergency categories
-        emergencyCatArray.map((emergencyCategory, emergencyCategoryIndex) => {
-          console.log(conditionNumberIndex + (emergencyCatArray.length * emergencyCategoryIndex));
-          var tableDataCell = tableData[conditionNumberIndex + (emergencyCatArray.length * emergencyCategoryIndex)];
-          var cellContent;
-          if(tableDataCell.content === "")
+  getRecognitionCategoryDataGrid(tableData){
+    var emergencyCatArray = ["General Emergency","Site Area Emergency","Alert","Unusual Event"];
+    var conditionNumberArray = this.state.conditionNumbers;
+
+    //Add all the rows to this container div
+    var rowsData = <div>
+      {
+        //Loop through the condition numbers
+        conditionNumberArray.map((conditionNumber, conditionNumberIndex) => {
+          //Add one row for each condition number
+          var rowData = <div key={conditionNumber + ":" + conditionNumberIndex} className={s.gridDataRow}><div className="mdl-grid mdl-grid--no-spacing">
           {
-            cellContent =
-            <div key={emergencyCategoryIndex} className="mdl-cell mdl-cell--3-col"><div className={s.gridCell}>
+          //Loop through the emergency categories
+          emergencyCatArray.map((emergencyCategory, emergencyCategoryIndex) => {
+            var tableDataCell = tableData[conditionNumberIndex + (((conditionNumberArray.length*emergencyCatArray.length)/emergencyCatArray.length) * emergencyCategoryIndex)];
+            var cellContent;
+            if(tableDataCell.content === "")
+            {
+              cellContent =
+              <div key={emergencyCategoryIndex} className="mdl-cell mdl-cell--3-col"><div className={s.gridCell}>
 
-            </div> </div>;
-          }
-          else {
-            cellContent = <div key={emergencyCategoryIndex} className="mdl-cell mdl-cell--3-col"><div className={s.gridCell}>
-              <Criterion criterion={tableDataCell.content}  key={emergencyCategoryIndex} level = {tableDataCell.name}/>
-            </div> </div>;
-          }
+              </div> </div>;
+            }
+            else {
+              cellContent = <div key={emergencyCategoryIndex} className="mdl-cell mdl-cell--3-col"><div className={s.gridCell}>
+                <Criterion criterion={tableDataCell.content}  key={emergencyCategoryIndex} level = {tableDataCell.name}/>
+              </div> </div>;
+            }
 
-          return(cellContent);
-      })
-      //End of the emergency map
-      } </div></div>;
-      return (rowData);
-      })
-    }
-  </div>;
+            return(cellContent);
+        })
+        //End of the emergency map
+        } </div></div>;
+        return (rowData);
+        })
+      }
+    </div>;
 
-  return rowsData;
-}
+    return rowsData;
+  }
 
   /**
   * Extracts the condition number from the criterion header name
@@ -157,15 +157,15 @@ getRecognitionCategoryDataGrid(tableData){
     {
       for(var y = 0; y < emergencyCategories[i].criterions.length; y++)
       {
-        //if(this.checkIfModeApplicable(emergencyCategories[i].criterions[y]))
-        //{
+        if(this.checkIfModeApplicable(emergencyCategories[i].criterions[y]))
+        {
           //Find the first occurence of a number inside a string. The first number is the criterion condition number
           var conditionNumber = this.getCriterionConditionNumber(emergencyCategories[i].criterions[y].name);
           if(conditionNumbers.indexOf(conditionNumber) === -1)
           {
             conditionNumbers.push(conditionNumber);
           }
-        //}
+        }
 
       }
     }
@@ -236,13 +236,11 @@ getRecognitionCategoryDataGrid(tableData){
         }
       }
     }
-
-    console.table(tableData);
-
     return tableData;
   }
 
   render() {
+
     var recognitionCategoryData = this.getTableData();
 
     var table =
@@ -256,7 +254,6 @@ getRecognitionCategoryDataGrid(tableData){
       <div className={s.dataContainer}>
         {this.getRecognitionCategoryDataGrid(recognitionCategoryData)}
       </div>
-
     </div>
     return(table);
   }
