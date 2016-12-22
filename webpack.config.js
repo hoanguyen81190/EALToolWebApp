@@ -9,6 +9,7 @@
  */
 
 /* eslint-disable global-require */
+var OfflinePlugin = require('offline-plugin');
 
 const path = require('path');
 const webpack = require('webpack');
@@ -81,6 +82,10 @@ const config = {
       path: path.resolve(__dirname, './public/dist'),
       filename: 'assets.json',
       prettyPrint: true,
+    }),
+    new OfflinePlugin({
+
+
     }),
   ],
 

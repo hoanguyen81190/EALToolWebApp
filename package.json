@@ -15,6 +15,7 @@
     "history": "^3.0.0",
     "marked": "^0.3.6",
     "material-design-lite": "^1.2.1",
+    "offline-plugin": "^4.5.3",
     "react": "^15.2.1",
     "react-dom": "^15.2.1",
     "react-infinite-grid": "^0.4.0",

@@ -19,10 +19,10 @@
 
 .maincontent {
     margin-left: 20%;
+    background-color: #c8e6c9;
     width: 40%;
     height: 100%;
     position: absolute;
-    background-color: #cc1111;
     padding: 0;
 }
 .leftcontent{
@@ -30,16 +30,24 @@
    overflow-y: auto;
     width: 20%;
     height: 100%;
-    background-color: #ccff99;
+    background-color: #a5d6a7;
     position: absolute;
     padding: 0;
 }
 
 .submit_button {
 
-
 }
 
+.hr {
+    display: block;
+    margin-before: 0.5em;
+    margin-after: 0.5em;
+    margin-start: auto;
+    margin-end: auto;
+    border-style: inset;
+    border-width: 1px;
+}
 
 /* Document side css (Right side) */
 .descriptioncontent {
@@ -56,9 +64,25 @@
 .SimplePDF {
   width: 100%;
   height: 100%;
-  padding: 0;
-  margin: 0;
   position: inherit;
+}
+
+.table{
+  display: table;
+}
+
+.wrapper {
+  display: table-row;
+  float:left;
+ position: relative;
+ vertical-align: middle;
+ margin-bottom: 2%;
+ margin-top: 2%;
+}
+
+.checkbox {
+ float: left;
+
 }
 
 .operator{
@@ -74,9 +98,18 @@
   margin-left: 5%;
 }
 
+.mainTreeIndent{
+  margin-left: 5%;
+  margin-top: 20%;
+}
+
+.criterion:hover {
+  cursor: pointer;
+}
+
 .conditionwrap {
  margin-top: -20px;
- margin-bottom: 50px;
+ margin-bottom: 20px;
 }
 
 .condition {
@@ -85,18 +118,21 @@
 }
 
 .condition:before {
-    content: attr(operator);
+    content: "";
     font-size: 75%;
     align-content: center;
     font-weight: bold;
     display: inline-block;
-    width: 1em;
+    width: 1.5em;
     height: 100%;
     margin-left: 0px;
     margin-top: 20px;
     position: absolute;
     border: 2px solid gray;
     border-width: 2px 0 0 2px;
+}
+.condition:before:before {
+   content: attr(operator);
 }
 .condition:last-child::before {
       border-width: 2px 0 0;
