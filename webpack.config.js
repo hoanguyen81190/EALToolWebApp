@@ -84,7 +84,7 @@ const config = {
       prettyPrint: true,
     }),
     new OfflinePlugin({
-
+      cache: 'all'
 
     }),
   ],

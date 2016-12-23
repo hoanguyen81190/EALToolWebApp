@@ -40,7 +40,7 @@ class HomePage extends React.Component {
   }
 
   handleCategories(_cat){
-    var element = document.getElementById(this.state.category);
+    var element = document.getElementById(this.state.recognitionCategory);
     if (element != null)
       element.style.backgroundColor = 'LightGray';
     document.getElementById(_cat).style.backgroundColor = 'Red';

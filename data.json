@@ -436,6 +436,95 @@
           ]
         }
       ]
+    },
+    {
+      "name": "Natural or destructive phenomena",
+      "emergency_categories": [
+        {
+          "name": "General Emergency",
+          "criterions": []
+        },
+        {
+          "name": "Site Area Emergency",
+          "criterions": []
+        },
+        {
+          "name": "Alert",
+          "criterions": [
+            {
+              "name": "N-1 Seismic",
+              "full_name": "Natural or destructive phenomena inside vital areas.",
+              "mode_applicability": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                "Defueled"
+              ],
+              "description": {
+                "text": "CONFIRMED seismic event as indicated by seismic instrument activation or based on ground motion felt at the nuclear plant and recognized as an earthquake based on consensus of control room operators on duty at the time AND which causes visible major damage to structures, systems, and components in the vital area or causes a plant trip to occur.",
+                "ref": {
+                  "page": 69,
+                  "range": 2
+                }
+              },
+              "look_up": true,
+              "conditions": {
+                "type": "OR",
+                "description": "",
+                "children": [
+                  {
+                    "type": "Leaf",
+                    "description": {
+                      "text": "Seismic instrument activated ",
+                      "ref": ""
+                    }
+                  },
+                  {
+                    "type": "AND",
+                    "description": "",
+                    "children": [
+                      {
+                        "type": "Leaf",
+                        "description": {
+                          "text": "Ground motion detected by Control Room crew ",
+                          "ref": ""
+                        }
+                      },
+                      {
+                        "type": "OR",
+                        "description": "",
+                        "children": [
+                          {
+                            "type": "Leaf",
+                            "description": {
+                              "text": "Visible major damage in vital area",
+                              "ref": ""
+                            }
+                          },
+                          {
+                            "type": "Leaf",
+                            "description": {
+                              "text": "Plant Trip",
+                              "ref": ""
+                            }
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Unusual Event",
+          "criterions": []
+        }
+      ]
     }
   ]
 }
