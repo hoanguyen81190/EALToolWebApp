@@ -119,54 +119,58 @@
   margin-left: 48%;
 }
 
-.indent1{
-  margin-left: 15%;
-}
-
 .treeIndent{
-  margin-left: 5%;
-}
-
-.treeIndent .treeIndent{
-  margin-left: 5%;
+  margin-left: 1vw;
 }
 
 .mainTreeIndent{
-  margin-left: 5%;
-  margin-top: 20%;
+  margin-left: 1vw;
+  margin-top: 2vh;
 }
 
 .criterion:hover {
   cursor: pointer;
 }
 
-.conditionwrap {
-  margin-left: 5%;
- margin-top: -20px;
- margin-bottom: 20px;
+.treeIndent .condition > .conditionoperator {
+  font-weight: bold;
 }
 
 .condition {
     position: relative;
-    bottom: -1.25em;
 }
 
-.condition:before {
-    content: attr(operator);
+.condition > *:before {
+    content: "";
     font-size: 75%;
-    align-content: center;
     font-weight: bold;
     display: inline-block;
-    width: 1.5em;
-    height: 100%;
-    margin-left: 0px;
-    margin-top: 20px;
+    margin-top: auto;
     position: absolute;
-    border: 2px solid gray;
+    border-style: solid;
     border-width: 2px 0 0 2px;
 }
 
-.condition:last-child::before {
-      border-width: 2px 0 0;
+.condition > *:last-child {
+    border-width: 2px 0 0 0;
+    content: "";
+}
+
+.conditionleaf {
+}
+
+.conditionleaf:before {
+  content: "";
+  width: 1.5em;
+  position: absolute;
+  margin-top: 15px;
+  margin-left: -1vw;
+  height: 25%;
+  border-style: solid;
+  border-width: 2px 0 0 2px;
+}
+
+.conditionleaf:last-child::before {
+      border-width: 2px 0 0 0;
       content: "";
       }

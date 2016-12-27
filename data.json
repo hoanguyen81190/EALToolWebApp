@@ -517,12 +517,933 @@
                   }
                 ]
               }
+            },
+            {
+              "name": "N-2 Tornado/wind",
+              "full_name": "Natural or destructive phenomena inside vital areas.",
+              "mode_applicability": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                "Defueled"
+              ],
+              "description": {
+                "text": "Report of a tornado strike in a plant vital area or SUSTAINED high wind (>15 min.) greater than 90 miles per hour. ",
+                "ref": {
+                  "page": 69,
+                  "range": 2
+                }
+              },
+              "look_up": false,
+              "conditions": {
+                "type": "OR",
+                "description": "",
+                "children": [
+                  {
+                    "type": "Leaf",
+                    "description": {
+                      "text": "Tornado strike in Vital Area ",
+                      "ref": ""
+                    }
+                  },
+                  {
+                    "type": "Leaf",
+                    "description": {
+                      "text": "SUSTAINED high wind (>15 min.) greater than 90 miles per hour",
+                      "ref": ""
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "name": "N-3 Structural",
+              "full_name": "Natural or destructive phenomena inside vital areas.",
+              "mode_applicability": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                "Defueled"
+              ],
+              "description": {
+                "text": "Report of visible structural damage to a structure containing systems required to establish and maintain cold shutdown.",
+                "ref": {
+                  "page": 69,
+                  "range": 2
+                }
+              },
+              "look_up": false,
+              "conditions": {
+                "type": "Leaf",
+                "description": {
+                  "text": "Visible damage to a structure containing systems required to achieve and maintain Mode 5",
+                  "ref": ""
+                }
+              }
+            },
+            {
+              "name": "N-4 Vehicle Collision",
+              "full_name": "Natural or destructive phenomena inside vital areas.",
+              "mode_applicability": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                "Defueled"
+              ],
+              "description": {
+                "text": "Vehicle collision affecting a vital area. ",
+                "ref": {
+                  "page": 69,
+                  "range": 2
+                }
+              },
+              "look_up": false,
+              "conditions": {
+                "type": "Leaf",
+                "description": {
+                  "text": "Vehicle collision affecting Vital Area.",
+                  "ref": ""
+                }
+              }
+            },
+            {
+              "name": "N-5 MT Failure",
+              "full_name": "Natural or destructive phenomena inside vital areas.",
+              "mode_applicability": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                "Defueled"
+              ],
+              "description": {
+                "text": "Turbine failure generated missiles penetrating a vital area. ",
+                "ref": {
+                  "page": 69,
+                  "range": 2
+                }
+              },
+              "look_up": false,
+              "conditions": {
+                "type": "Leaf",
+                "description": {
+                  "text": "Main turbine generated missile penetrates Vital Area.",
+                  "ref": ""
+                }
+              }
+            },
+            {
+              "name": "N-6 Flooding",
+              "full_name": "Natural or destructive phenomena inside vital areas.",
+              "mode_applicability": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                "Defueled"
+              ],
+              "description": {
+                "text": "Flooding in a vital area affecting safety related equipment. ",
+                "ref": {
+                  "page": 69,
+                  "range": 2
+                }
+              },
+              "look_up": false,
+              "conditions": {
+                "type": "Leaf",
+                "description": {
+                  "text": "Flooding in Vital Area affects safety related equipment.",
+                  "ref": ""
+                }
+              }
             }
           ]
         },
         {
           "name": "Unusual Event",
-          "criterions": []
+          "criterions": [
+            {
+              "name": "N-1 Seismic",
+              "full_name": "Natural or destructive phenomena inside the protected area.",
+              "mode_applicability": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                "Defueled"
+              ],
+              "description": {
+                "text": "CONFIRMED seismic event as indicated by seismic instrument activation or based on ground motion felt at the nuclear plant and recognized as an earthquake based on consensus of control room operators on duty at the time.",
+                "ref": {
+                  "page": 67,
+                  "range": 2
+                }
+              },
+              "look_up": true,
+              "conditions": {
+                "type": "OR",
+                "description": "",
+                "children": [
+                  {
+                    "type": "Leaf",
+                    "description": {
+                      "text": "Seismic instrument activated",
+                      "ref": ""
+                    }
+                  },
+                  {
+                    "type": "Leaf",
+                    "description": {
+                      "text": "Ground motion detected by Control Room crew.",
+                      "ref": ""
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "name": "N-2 Tornado/wind",
+              "full_name": "Natural or destructive phenomena inside the protected area.",
+              "mode_applicability": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                "Defueled"
+              ],
+              "description": {
+                "text": "Report of a tornado strike within the protected area.",
+                "ref": {
+                  "page": 67,
+                  "range": 2
+                }
+              },
+              "look_up": false,
+              "conditions": {
+                "type": "Leaf",
+                "description": {
+                  "text": "Report of a tornado strike within the protected area. ",
+                  "ref": ""
+                }
+              }
+            },
+            {
+              "name": "N-4 Vehicle Collision",
+              "full_name": "Natural or destructive phenomena inside the protected area.",
+              "mode_applicability": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                "Defueled"
+              ],
+              "description": {
+                "text": "Vehicle collision affecting structures or systems within the protected area.",
+                "ref": {
+                  "page": 67,
+                  "range": 2
+                }
+              },
+              "look_up": false,
+              "conditions": {
+                "type": "Leaf",
+                "description": {
+                  "text": "Vehicle collision affecting structures or systems within the protected area.",
+                  "ref": ""
+                }
+              }
+            },
+            {
+              "name": "N-5 MT Failure",
+              "full_name": "Natural or destructive phenomena inside the protected area.",
+              "mode_applicability": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                "Defueled"
+              ],
+              "description": {
+                "text": "Main turbine rotating component failure causing visible damage or damage to the generator seals.",
+                "ref": {
+                  "page": 67,
+                  "range": 2
+                }
+              },
+              "look_up": false,
+              "conditions": {
+                "type": "Leaf",
+                "description": {
+                  "text": "Main turbine rotating component failure causing visible damage or damage to the generator seals.",
+                  "ref": ""
+                }
+              }
+            },
+            {
+              "name": "N-7 EXPLOSION",
+              "full_name": "Natural or destructive phenomena inside the protected area.",
+              "mode_applicability": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                "Defueled"
+              ],
+              "description": {
+                "text": "Report by plant personnel of an unanticipated EXPLOSION within the protected area boundary resulting in visible damage to permanent structures or equipment.",
+                "ref": {
+                  "page": 67,
+                  "range": 2
+                }
+              },
+              "look_up": false,
+              "conditions": {
+                "type": "Leaf",
+                "description": {
+                  "text": "Unanticipated EXPLOSION within Protected Area causes visible damage to permanent structures or equipment.",
+                  "ref": ""
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "fission_product_barriers": [
+    {
+      "name": "Fuel Clad Barrier",
+      "products": [
+        {
+          "name": "Critical safety function status trees",
+          "mode_applicability": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "look_up": false,
+          "description": {
+            "text": "",
+            "ref": {
+              "page": 27,
+              "range": 1
+            }
+          },
+          "loss": {
+            "type": "Leaf",
+            "description": {
+              "text": "Core Cooling Critical Safety Function Status Tree – RED"
+            }
+          },
+          "potential_loss": {
+            "type": "OR",
+            "children": [
+              {
+                "type": "Leaf",
+                "description": {
+                  "text": "Core Exit Thermocouples > 757<sup>o</sup>"
+                }
+              },
+              {
+                "type": "Leaf",
+                "description": {
+                  "text": "RVLIS level < 46% (Narrow Range) "
+                }
+              },
+              {
+                "type": "Leaf",
+                "description": {
+                  "text": "Heat Sink Critical Safety Function Status Tree – RED"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "name": "Containment radiation",
+          "mode_applicability": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "look_up": false,
+          "description": {
+            "text": "",
+            "ref": {
+              "page": 28,
+              "range": 1
+            }
+          },
+          "loss": {
+            "type": "Leaf",
+            "description": {
+              "text": "Containment area radiation greater than 200 R/hr"
+            }
+          },
+          "potential_loss": {}
+        },
+        {
+          "name": "Primary coolant activity",
+          "mode_applicability": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "look_up": false,
+          "description": {
+            "text": "",
+            "ref": {
+              "page": 29,
+              "range": 1
+            }
+          },
+          "loss": {
+            "type": "OR",
+            "children": [
+              {
+                "type": "Leaf",
+                "description": {
+                  "text": "Reactor Coolant System activity level greater than 300 micro curies per cc I-131 dose equivalent."
+                }
+              },
+              {
+                "type": "Leaf",
+                "description": {
+                  "text": "Assessment of core damage greater than 5% clad failure. <br/>(NRC commitment 7991)"
+                }
+              }
+            ]
+          },
+          "potential_loss": {}
+        },
+        {
+          "name": "SEC judgment",
+          "mode_applicability": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "look_up": true,
+          "description": {
+            "text": "",
+            "ref": {
+              "page": 30,
+              "range": 1
+            }
+          },
+          "loss": {
+            "type": "Leaf",
+            "description": {
+              "text": "Any condition in the opinion of the SEC that Indicates loss of the Fuel Clad barrier."
+            }
+          },
+          "potential_loss": {
+            "type": "Leaf",
+            "description": {
+              "text": "Any condition in the opinion of the SEC that indicates potential loss of the Fuel Clad barrier"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "RCS Barrier",
+      "products": [
+        {
+          "name": "RCS leak rate",
+          "mode_applicability": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "look_up": false,
+          "description": {
+            "text": "",
+            "ref": {
+              "page": 31,
+              "range": 1
+            }
+          },
+          "loss": {
+            "type": "Leaf",
+            "description": {
+              "text": "UNISOLABLE RCS leak rate greater than available makeup capacity as indicated by a complete loss of RCS subcooling."
+            }
+          },
+          "potential_loss": {
+            "type": "Leaf",
+            "description": {
+              "text": "UNISOLABLE RCS leakage greater than capacity of one centrifugal charging pump in normal charging lineup."
+            }
+          }
+        },
+        {
+          "name": "Steam generator leakage",
+          "mode_applicability": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "look_up": false,
+          "description": {
+            "text": "",
+            "ref": {
+              "page": 32,
+              "range": 1
+            }
+          },
+          "loss": {
+            "type": "AND",
+            "children": [
+              {
+                "type": "Leaf",
+                "description": {
+                  "text": "Entry into OHP-4023-E-3, Steam Generator Tube Rupture"
+                }
+              },
+              {
+                "type": "Leaf",
+                "description": {
+                  "text": "A non-isolable secondary line break or a prolonged release (>30 minutes) of contaminated secondary coolant resulting in a radioactive release to the environment from the affected steam generator."
+                }
+              }
+            ]
+          },
+          "potential_loss": {
+            "type": "Leaf",
+            "description": {
+              "text": "Ruptured steam generator with primary to secondary leak rate greater than capacity of one charging pump in normal charging mode."
+            }
+          }
+        },
+        {
+          "name": "Containment Radiation",
+          "mode_applicability": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "look_up": false,
+          "description": {
+            "text": "",
+            "ref": {
+              "page": 33,
+              "range": 1
+            }
+          },
+          "loss": {
+            "type": "Leaf",
+            "description": {
+              "text": "Containment radiation greater than 10 R/hr."
+            }
+          },
+          "potential_loss": {}
+        },
+        {
+          "name": "RCS integrity CSFST",
+          "mode_applicability": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "look_up": false,
+          "description": {
+            "text": "",
+            "ref": {
+              "page": 34,
+              "range": 1
+            }
+          },
+          "loss": {},
+          "potential_loss": {
+            "type": "Leaf",
+            "description": {
+              "text": "RCS Integrity Critical Safety Function Status Tree - RED"
+            }
+          }
+        },
+        {
+          "name": "Heat sink CSFST",
+          "mode_applicability": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "look_up": false,
+          "description": {
+            "text": "",
+            "ref": {
+              "page": 35,
+              "range": 1
+            }
+          },
+          "loss": {},
+          "potential_loss": {
+            "type": "Leaf",
+            "description": {
+              "text": "Heat Sink Critical Safety Function Status Tree - RED"
+            }
+          }
+        },
+        {
+          "name": "SEC judgment",
+          "mode_applicability": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "look_up": true,
+          "description": {
+            "text": "",
+            "ref": {
+              "page": 36,
+              "range": 1
+            }
+          },
+          "loss": {
+            "type": "Leaf",
+            "description": {
+              "text": "Any condition in the opinion of the SEC that Indicates loss of the RCS barrier."
+            }
+          },
+          "potential_loss": {
+            "type": "Leaf",
+            "description": {
+              "text": "Any condition in the opinion of the SEC that indicates potential loss of the RCS barrier."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Containment Barrier",
+      "products": [
+        {
+          "name": "Containment radiation",
+          "mode_applicability": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "look_up": false,
+          "description": {
+            "text": "",
+            "ref": {
+              "page": 37,
+              "range": 1
+            }
+          },
+          "loss": {},
+          "potential_loss": {
+            "type": "OR",
+            "children": [
+              {
+                "type": "Leaf",
+                "description": {
+                  "text": "Containment Radiation greater than 1000 R/hr."
+                }
+              },
+              {
+                "type": "Leaf",
+                "description": {
+                  "text": "Assessment of core damage greater than 20% clad failure"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "name": "Containment integrity",
+          "mode_applicability": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "look_up": false,
+          "description": {
+            "text": "",
+            "ref": {
+              "page": 38,
+              "range": 1
+            }
+          },
+          "loss": {
+            "type": "OR",
+            "children": [
+              {
+                "type": "Leaf",
+                "description": {
+                  "text": "UNISOLABLE breach or bypass of containment"
+                }
+              },
+              {
+                "type": "Leaf",
+                "description": {
+                  "text": "Rapid unexplained containment pressure or sump level drop following pressure rise caused by LOCA"
+                }
+              },
+              {
+                "type": "Leaf",
+                "description": {
+                  "text": "Pressure/Sump level NOT performing consistent with expected conditions "
+                }
+              },
+              {
+                "type": "Leaf",
+                "description": {
+                  "text": "Entry into ECA-1.2, \"LOCA OUTSIDE CONTAINMENT\""
+                }
+              }
+            ]
+          },
+          "potential_loss": {}
+        },
+        {
+          "name": "Steam generator secondary side release",
+          "mode_applicability": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "look_up": false,
+          "description": {
+            "text": "",
+            "ref": {
+              "page": 39,
+              "range": 1
+            }
+          },
+          "loss": {
+            "type": "AND",
+            "children": [
+              {
+                "type": "Leaf",
+                "description": {
+                  "text": "Primary to secondary leakage rate greater than technical specification limit."
+                }
+              },
+              {
+                "type": "Leaf",
+                "description": {
+                  "text": "Release of secondary coolant from the associated steam generator to the environment is occurring.<sup>1</sup>"
+                }
+              }
+            ]
+          },
+          "potential_loss": {}
+        },
+        {
+          "name": "Containment critical safety function status tree",
+          "mode_applicability": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "look_up": false,
+          "description": {
+            "text": "",
+            "ref": {
+              "page": 40,
+              "range": 1
+            }
+          },
+          "loss": {},
+          "potential_loss": {
+            "type": "Leaf",
+            "description": {
+              "text": "Containment critical safety function status tree – RED"
+            }
+          }
+        },
+        {
+          "name": "Containment hydrogen",
+          "mode_applicability": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "look_up": false,
+          "description": {
+            "text": "",
+            "ref": {
+              "page": 41,
+              "range": 1
+            }
+          },
+          "loss": {
+            "type": "Leaf",
+            "description": {
+              "text": "Initiating conditions for LOSS included under initiating conditions for loss of FPB 3.2, CONTAINMENT INTEGRITY.",
+              "ref": 3.2
+            }
+          },
+          "potential_loss": {
+            "type": "OR",
+            "children": [
+              {
+                "type": "Leaf",
+                "description": {
+                  "text": "Hydrogen greater than 4.0%"
+                }
+              },
+              {
+                "type": "Leaf",
+                "description": {
+                  "text": "Containment hydrogen concentration greater than 0.5% AND any hydrogen control equipment (Containment air recirculation/hydrogen skimmer systems, electric hydrogen recombiner OR igniters) inoperable."
+                }
+              }
+            ]
+          }
+        },
+        {
+          "name": "Containment pressure control",
+          "mode_applicability": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "look_up": false,
+          "description": {
+            "text": "",
+            "ref": {
+              "page": 42,
+              "range": 2
+            }
+          },
+          "loss": {
+            "type": "Leaf",
+            "description": {
+              "text": "Initiating conditions for LOSS included under initiating conditions for loss of FPB 3.2, CONTAINMENT INTEGRITY.",
+              "ref": 3.2
+            }
+          },
+          "potential_loss": {
+            "type": "OR",
+            "children": [
+              {
+                "type": "Leaf",
+                "description": {
+                  "text": "Both containment spray systems both inoperable OR fail to automatically actuate on HI-HI containment pressure."
+                }
+              },
+              {
+                "type": "Leaf",
+                "description": {
+                  "text": "Both containment air recirculation fans inoperable OR fail to automatically actuate on HI containment pressure."
+                }
+              },
+              {
+                "type": "Leaf",
+                "description": {
+                  "text": "Containment pressure exceeds 12 psig."
+                }
+              }
+            ]
+          }
+        },
+        {
+          "name": "Core exit thermocouples",
+          "mode_applicability": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "look_up": false,
+          "description": {
+            "text": "",
+            "ref": {
+              "page": 44,
+              "range": 1
+            }
+          },
+          "loss": {},
+          "potential_loss": {
+            "type": "AND",
+            "children": [
+              {
+                "type": "Leaf",
+                "description": {
+                  "text": "Core Cooling Critical Safety Function Status Tree – RED"
+                }
+              },
+              {
+                "type": "Leaf",
+                "description": {
+                  "text": "Restoration procedures not effective within 15 minutes."
+                }
+              }
+            ]
+          }
+        },
+        {
+          "name": "SEC judgment",
+          "mode_applicability": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "look_up": true,
+          "description": {
+            "text": "",
+            "ref": {
+              "page": 45,
+              "range": 1
+            }
+          },
+          "loss": {
+            "type": "Leaf",
+            "description": {
+              "text": "Any condition in the opinion of the SEC that Indicates loss of the Containment barrier."
+            }
+          },
+          "potential_loss": {
+            "type": "Leaf",
+            "description": {
+              "text": "Any condition in the opinion of the SEC that indicates potential loss of the Containment barrier."
+            }
+          }
         }
       ]
     }

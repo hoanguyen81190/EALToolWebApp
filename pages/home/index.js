@@ -54,6 +54,7 @@ class HomePage extends React.Component {
         alert("Please select the mode and the recognition category before pressing submit!");
     }
     else {
+
       var action = {
         type : 'SET_STATE',
         mode : this.state.mode,
@@ -62,7 +63,14 @@ class HomePage extends React.Component {
         criterionObject: null
       }
       store.dispatch(action);
-      history.push("/overview");
+      if(this.state.recognitionCategory === 'barriermatrix')
+      {
+        history.push('/barriermatrix');
+      }
+      else
+      {
+        history.push("/overview");
+      }
     }
   }
 
@@ -75,9 +83,10 @@ class HomePage extends React.Component {
               return <Button className={s.home_button} id={mode} type='raised' key={i} onClick={() => this.handleModes(mode)} >{mode}</Button>}
           )}
         <h4>Choose Categories</h4>
+          <Button className={s.home_button} id='barriermatrix' type='raised' key={0} onClick={() => this.handleCategories('barriermatrix')} >FISSION PRODUCT BARRIER MATRIX</Button>
           {eALDocument.data.recognition_categories.map((cat, i) =>
             {
-              return <Button className={s.home_button} id={cat.name} type='raised' key={i} onClick={() => this.handleCategories(cat.name)} >{cat.name}</Button>}
+              return <Button className={s.home_button} id={cat.name} type='raised' key={i+1} onClick={() => this.handleCategories(cat.name)} >{cat.name}</Button>}
         )}
         <p/>
         <p>

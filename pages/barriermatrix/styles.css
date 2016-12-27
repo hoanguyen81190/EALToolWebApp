@@ -1,0 +1,103 @@
+/**
+ * React Static Boilerplate
+ * https://github.com/koistya/react-static-boilerplate
+ *
+ * Copyright © 2015-2016 Konstantin Tarkus (@koistya)
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE.txt file in the root directory of this source tree.
+ */
+
+@media screen and (max-width: 1024px) {
+
+
+}
+
+body, html{
+  -ms-overflow-style: none;
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+/* main page properties */
+.content {
+  height: 100%;
+  width: 100%;
+}
+
+.recognitionCategoryText{
+  height: 5%;
+  width: 100%;
+  color: black;
+  position:relative;
+  z-index: 2;
+  background-color: white;
+  font-weight: bolder;
+  font-size: xx-large;
+  text-align: left;
+  display:flex;
+  align-items: center;
+  padding-left: 1%;
+  align-content: center;
+}
+
+.tableWrapper {
+  width: 100%;
+  margin-top: 2.5%;
+  position:relative;
+}
+
+.maincontent {
+  background-color: #eee;
+  width: 65%;
+  height: 100%;
+  position: absolute;
+  padding: 0;
+
+
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+
+  border-right: 1px solid #eee;
+  box-shadow:
+    0 0px 0px #fff, /*bottom external highlight*/
+    0 0px 1px #ccc, /*top external shadow*/
+    inset 0px 0px 1px rgba(0,0,0,0.5), /*bottom internal shadow*/
+    inset 0 0px 1px rgba(255,255,255,0.8); /*top internal highlight*/
+}
+
+.descriptioncontent {
+  margin-left: 65%;
+  width: 35%;
+  height: 100%;
+  background-color: #CCCCCC;
+  position: absolute;
+  padding: 0;
+  overflow-y:auto;
+  overflow-x:hidden;
+}
+
+/*Barrier Table*/
+.barrierTable {
+  width: 65%;
+}
+
+.barrierTableHeader > * {
+  text-transform: uppercase;
+}
+
+.barrierTableRow > * {
+  text-overflow: clip;
+  width: 5%;
+}
+
+.checkbox {
+
+}
+
+.conditionLeaf {
+
+}

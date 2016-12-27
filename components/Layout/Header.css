@@ -43,7 +43,7 @@
   margin:0;
   margin-left:0.5%;
   height: 100%;
-  width: 24%;
+  width: 30%;
   position: relative;
   display: inline-block;
   text-align: center;
@@ -77,6 +77,11 @@
   -moz-transform: skew(-45deg);
   transform: skew(-45deg);
 }
+
+.progress:hover {
+    cursor: pointer;
+}
+
 .progress:hover:before,
 .progress:hover:after {
   background: tomato;

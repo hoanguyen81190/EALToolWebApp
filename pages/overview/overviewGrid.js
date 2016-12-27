@@ -54,6 +54,7 @@ class Criterion extends React.Component {
       criterionObject: criterion
     }
     store.dispatch(action);
+    console.log(history);
     history.push("/classifying");
   }
 

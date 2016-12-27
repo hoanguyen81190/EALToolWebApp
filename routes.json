@@ -22,6 +22,10 @@
     "page": "./pages/classifying"
   },
   {
+    "path": "/barriermatrix",
+    "page": "./pages/barriermatrix"
+  },
+  {
     "path": "/tasks/:status(pending|completed)?",
     "page": "./pages/home"
   }

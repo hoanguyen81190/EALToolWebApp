@@ -14,6 +14,68 @@ import Link from '../Link';
 import s from './Header.css';
 
 import store from '../../core/store';
+import history from '../../core/history';
+
+class NavigationBar extends React.Component {
+  constructor() {
+    super();
+  }
+
+  handleClick(page) {
+    history.push(page);
+  }
+
+  render() {
+    var home = (<div className={s.progress} onClick={() => this.handleClick('/')}>
+                  STEP 1
+                  <br/>
+                  Choose Mode & Recognition Category
+                </div>);
+    var overview = <div className={s.progress} onClick={() => this.handleClick('/overview')}>
+                      STEP 2
+                      <br/>
+                      Choose Event
+                    </div>;
+    var classifying = <div className={s.progress} onClick={() => this.handleClick('/classifying')}>
+                        STEP 3
+                        <br/>
+                        Classification
+                      </div>;
+    var barriermatrix = <div className={s.progress} onClick={() => this.handleClick('/barriermatrix')}>
+                        STEP 2
+                        <br/>
+                        Barrier Matrix Classification
+                      </div>;
+    switch (history.getCurrentLocation().pathname) {
+      case '/':
+        return (<div className={s.wrap}>
+                        {home}
+                      </div>);
+        break;
+      case '/overview':
+        return (<div className={s.wrap}>
+                        {home}
+                        {overview}
+                      </div>);
+        break;
+      case '/classifying':
+        return (<div className={s.wrap}>
+                        {home}
+                        {overview}
+                        {classifying}
+                      </div>);
+        break;
+      case '/barriermatrix':
+        return (<div className={s.wrap}>
+                        {home}
+                        {barriermatrix}
+                      </div>);
+        break;
+      default:
+
+    }
+  }
+}
 
 class Header extends React.Component {
 
@@ -29,28 +91,7 @@ class Header extends React.Component {
     return (
       <header className={`mdl-layout__header ${s.header}`} ref={node => (this.root = node)}>
         <div className={`mdl-layout__header-row ${s.row}`}>
-          <div className={s.wrap}>
-            <div className={s.progress}>
-              STEP 1
-              <br/>
-              Choose Mode
-            </div>
-            <div className={s.progress}>
-              STEP 2
-              <br/>
-              Choose Recognition Category
-            </div>
-            <div className={s.progress}>
-              STEP 3
-              <br/>
-              Choose Event
-            </div>
-            <div className={s.progress}>
-              STEP 4
-              <br/>
-              Classification
-            </div>
-          </div>
+          <NavigationBar />
           <div className="mdl-layout-spacer"></div>
           <Navigation />
         </div>

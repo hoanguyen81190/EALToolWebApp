@@ -15,8 +15,6 @@ import Layout from '../../components/Layout';
 import Button from '../../components/Button';
 
 import s from './styles.css';
-import 'react-mdl/extra/material.css';
-import 'react-mdl/extra/material.js';
 
 import { title, html } from './index.md';
 import store from '../../core/store';
@@ -33,6 +31,7 @@ class Condition extends React.Component {
     this.value = false;
     this.children = [];
   }
+
   handleChangeChk(event) {
     this.value = event.target.checked;
   }
@@ -59,17 +58,16 @@ class Condition extends React.Component {
     this.type = this.props.conditionBody.type;
     if(this.props.conditionBody.type === "Leaf") {
       if(this.props.mode === 'classification') {
-        var checkbox = React.createElement('input',{type: 'checkbox', defaultChecked: false});
         var element =
-        <div  className={s.conditionwrap}>
-           <input className={s.checkbox} type="checkbox" defaultChecked={false} onChange={this.handleChangeChk.bind(this)} />
-           <div  dangerouslySetInnerHTML={{__html: this.props.conditionBody.description.text}}/>
+        <div  className={s.treeIndent + ' ' + s.conditionleaf}>
+           <input type="checkbox" defaultChecked={false} onChange={this.handleChangeChk.bind(this)} />
+           <span  dangerouslySetInnerHTML={{__html: this.props.conditionBody.description.text}}/>
          </div>;
         return element;
       }
       var element =
-      <div className={s.treeIndent}>
-        <span className="mdl-chip mdl-chip--contact mdl-color--green-300">
+      <div className={s.treeIndent + ' ' + s.conditionleaf}>
+        <span className="mdl-chip mdl-chip--contact mdl-color--green-300" >
           <span className="mdl-chip__contact mdl-color--teal-200 mdl-color-text--white">C</span>
           <span className="mdl-chip__text">Condition {(this.props.index + 1)}</span>
         </span>
@@ -77,19 +75,21 @@ class Condition extends React.Component {
       return element;
     }
     else {
-
       var element =
-       <div className={s.conditionwrap}>
+       <div className={s.treeIndent + ' ' + s.condition} operator={this.props.conditionBody.type}>
+         <span className={s.conditionoperator}>
+           {this.props.conditionBody.type}
+         </span>
+
          {
            this.props.conditionBody.children.map((ele, index) => {
              var child = "child" + index;
-             this.children.push(child);
-             return <div key={index} className={s.condition} operator={this.props.conditionBody.type}>
-               <Condition
-                 conditionBody = {ele} index = {index} mode = {this.props.mode} ref={child}/>
-             </div>;
+             this.children.push(child)
+             return <Condition
+                 conditionBody = {ele} index = {index} mode = {this.props.mode} ref={child}/>;
            })
          }
+
       </div>;
       return element;
     }
@@ -119,7 +119,7 @@ class Criterion extends React.Component {
   render() {
     if(typeof(this.props.criterion.conditions) == "undefined" ||
         (Object.keys(this.props.criterion.conditions).length === 0 && this.props.criterion.conditions.constructor === Object)) {
-      var condition = <div/>;
+      var condition = <span/>;
     }
     else {
       var condition = <Condition
@@ -128,27 +128,23 @@ class Criterion extends React.Component {
     if (this.props.criterion.description.text === store.getState().criterionObject.description.text)
     {
       var element =
-      <div className={s.treeIndent}>
-        <div className={s.criterion} onClick={() => this.handleClick(this.props.criterion)}>
+        <div className={s.treeIndent + ' ' + s.criterion} onClick={() => this.handleClick(this.props.criterion)}>
           <span className="mdl-chip mdl-chip--contact mdl-color--red-400">
             <span className="mdl-chip__contact mdl-color--teal-300 mdl-color-text--white">E</span>
             <span className="mdl-chip__text">{this.props.criterion.name}</span>
           </span>
-        </div>
-        {condition}
-      </div>;
+          {condition}
+        </div>;
       return element;
     }
     var element =
-    <div className={s.treeIndent}>
-      <div className={s.criterion} onClick={() => this.handleClick(this.props.criterion)}>
+      <div className={s.treeIndent + ' ' + s.criterion} onClick={() => this.handleClick(this.props.criterion)}>
         <span className="mdl-chip mdl-chip--contact mdl-color--green-300">
           <span className="mdl-chip__contact mdl-color--teal-300 mdl-color-text--white">E</span>
           <span className="mdl-chip__text">{this.props.criterion.name}</span>
         </span>
-      </div>
-      {condition}
-    </div>;
+        {condition}
+      </div>;
     return element;
   }
 }
@@ -178,6 +174,7 @@ class TreeNode extends React.Component {
         </div>
 
         <Criterion {...this.props}/>
+
       </div>;
     }
     else {
@@ -252,20 +249,16 @@ class ClassifyingPage extends React.Component {
       buttonText: ""
     });
 
-    console.log("button pressed");
   }
 
   render() {
-    //console.log(this.refs);
-    //var criterionValue = this.refs.classificationCriterion.getValue();
-    console.log(this.refs.classificationCriterion);
+
     return (
       <Layout className={s.content}>
-
             <div className={s.leftcontent} >
               {
                 this.extractLeftPanelTree('overview').map((item, i) => {
-                  return <div key={i}>{item}<hr className={s.hr}/></div>
+                  return <div><div key={i}>{item}</div><hr className={s.hr}/></div>
                 })
               }
             </div>
