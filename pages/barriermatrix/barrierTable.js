@@ -3,6 +3,8 @@ import s from './styles.css';
 
 import history from '../../core/history';
 
+import documentIcon from '../../resources/Document-50.png';
+
 const React = require('react');
 
 class Condition extends React.Component {
@@ -104,7 +106,10 @@ class BarrierTable extends React.Component {
   getRow(product, productIndex) {
     var row =
           <tr className={s.barrierTableRow}>
-            <td className={s.barrierTableCell}>{(productIndex+1) + '. ' + product.name}</td>
+            <td className={s.barrierTableCell} onClick={() => this.props.documentCallback(product.description.ref.page, product.description.ref.range)}>
+              {(productIndex+1) + '. ' + product.name + ' '}
+              <img className={s.documentIcon} src={documentIcon} alt="."/>
+            </td>
             <td className={s.barrierTableCell}>{this.getCondition(product.loss, 'loss', productIndex)}</td>
             <td className={s.barrierTableCell}>{this.getCondition(product.potential_loss, 'potential_loss', productIndex)}</td>
           </tr>;

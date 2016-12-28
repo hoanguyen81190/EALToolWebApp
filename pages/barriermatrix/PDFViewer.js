@@ -9,6 +9,10 @@ export default class SimplePDF extends React.Component {
 
     // bind
     this.loadPDF = this.loadPDF.bind(this);
+    this.state = {
+      startPage: 1,
+      endPage: 1
+    }
   }
 
   loadPDF() {
@@ -28,9 +32,8 @@ export default class SimplePDF extends React.Component {
   //  node.style.overflowX = "hidden";
   //  node.style.overflowY = "scroll";
     node.style.padding = '0px';
-
-    var safeEndPage = this.props.endPage; //> pdf.mumPages ? pdf.numPages : this.state.endPage;
-    var startPage = this.props.startPage;
+    var startPage = this.state.startPage;
+    var endPage = this.state.endPage;
 
     PDF.getDocument(this.props.file).then(function(pdf) {
 
@@ -39,7 +42,8 @@ export default class SimplePDF extends React.Component {
         node.style.overflowY = "hidden";
       }
 
-    for (var id=1,i=startPage; i<=safeEndPage; i++) {
+
+    for (var id=1,i=startPage; i<=endPage; i++) {
         pdf.getPage(i).then(function(page) {
 
           // calculate scale according to the box size
@@ -83,6 +87,13 @@ export default class SimplePDF extends React.Component {
         <div className="S-PDF-ID"></div>
       </div>
     );
+  }
+
+  componentWillMount() {
+    this.setState({
+      startPage: this.props.startPage,
+      endPage: this.props.endPage
+    });
   }
 
   componentDidMount() {

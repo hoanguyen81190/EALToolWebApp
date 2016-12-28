@@ -44,15 +44,24 @@ class BarrierMatrixPage extends React.Component {
 
   }
 
+  openDocument(page, pageRange) {
+    this.refs.pdfDocument.setState({
+      startPage: page,
+      endPage: (page + pageRange - 1)
+    })
+
+    this.refs.pdfDocument.forceUpdate();
+  }
+
   render() {
     return (
       <Layout className={s.content}>
         <div className= {s.recognitionCategoryText}> Fission Product Barrier Matrix - Mode {this.state.mode}</div>
           <div className={s.maincontent}>
             <div className={s.tableWrapper}>
-            <BarrierTable barrier={eALDocument.data.fission_product_barriers[0]} ref="fuel"/>
-            <BarrierTable barrier={eALDocument.data.fission_product_barriers[1]} ref="RCS"/>
-            <BarrierTable barrier={eALDocument.data.fission_product_barriers[2]} ref="containment"/>
+            <BarrierTable barrier={eALDocument.data.fission_product_barriers[0]} ref="fuel" documentCallback={(startPage, pageRange) => this.openDocument(startPage, pageRange)}/>
+            <BarrierTable barrier={eALDocument.data.fission_product_barriers[1]} ref="RCS" documentCallback={(startPage, pageRange) => this.openDocument(startPage, pageRange)}/>
+            <BarrierTable barrier={eALDocument.data.fission_product_barriers[2]} ref="containment" documentCallback={(startPage, pageRange)=> this.openDocument(startPage, pageRange)}/>
             </div>
             <Button className={s.submitButton} type='raised' onClick={()=>{this.handleSubmit()}}>
                 Submit
@@ -68,7 +77,7 @@ class BarrierMatrixPage extends React.Component {
             <spdf.SimplePDF className={s.SimplePDF}
                 file='./classification_procedures.pdf'
                 startPage={27}
-                endPage={28}/>
+                endPage={1} ref="pdfDocument"/>
         </div>
 
 

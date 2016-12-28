@@ -104,6 +104,7 @@ body, html{
 
 .barrierTableCell:first-child:hover{
   background-color: tomato;
+  cursor: pointer;
 }
 
 .checkbox {
@@ -123,4 +124,10 @@ body, html{
 .operator {
   text-align: center;
   font-weight: bold;
+}
+
+.documentIcon {
+  width: 15px;
+  height: 15px;
+  margin-left: 5px;
 }
