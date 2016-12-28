@@ -36,6 +36,11 @@ class BarrierMatrixPage extends React.Component {
   }
 
   handleSubmit() {
+    var fuel = this.refs.fuel.getValue();
+    var RCS = this.refs.RCS.getValue();
+    var containment = this.refs.containment.getValue();
+    //calculate emergencyLevel
+    //General emergency
 
   }
 
@@ -44,17 +49,16 @@ class BarrierMatrixPage extends React.Component {
       <Layout className={s.content}>
         <div className= {s.recognitionCategoryText}> Fission Product Barrier Matrix - Mode {this.state.mode}</div>
           <div className={s.maincontent}>
-            {eALDocument.data.fission_product_barriers.map((barrier, index) => {
-              return <div className={s.tableWrapper}>
-                        <BarrierTable barrier={barrier} key={index}/>
-                     </div>;
-            })}
-
-            <Button className={s.submit_button} type='raised' onClick={()=>{this.handleSubmit()}}>
+            <div className={s.tableWrapper}>
+            <BarrierTable barrier={eALDocument.data.fission_product_barriers[0]} ref="fuel"/>
+            <BarrierTable barrier={eALDocument.data.fission_product_barriers[1]} ref="RCS"/>
+            <BarrierTable barrier={eALDocument.data.fission_product_barriers[2]} ref="containment"/>
+            </div>
+            <Button className={s.submitButton} type='raised' onClick={()=>{this.handleSubmit()}}>
                 Submit
             </Button>
 
-            <div className={s.submitButton}>
+            <div>
               <DialogDemo ref="classificationDialog"/>
             </div>
 

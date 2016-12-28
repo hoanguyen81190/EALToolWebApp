@@ -15,7 +15,28 @@ class Condition extends React.Component {
   handleChangeChk(event) {
     this.value = event.target.checked;
   }
+
+  getValue() {
+    if (this.type === 'Leaf') {
+      return this.value;
+    }
+    var children = [];
+
+    this.children.map((item) => {children.push(this.refs[item].getValue())});
+    switch (this.type) {
+      case 'OR':
+        return children.reduce((a, b) => a || b);
+      case 'AND':
+        return children.reduce((a, b) => a && b);
+      case 'XOR':
+        return children.reduce((a, b) => a ^ b);
+      default:
+        return false;
+    }
+  }
+
   render() {
+    this.type = this.props.object.type;
     if(this.props.object.type === "Leaf") {
       var element =
       <div className={s.conditionLeaf}>
@@ -29,16 +50,15 @@ class Condition extends React.Component {
        <div>
          {
            this.props.object.children.map((ele, index) => {
+             var child = "child" + index;
+             this.children.push(child);
              if(index != this.props.object.children.length - 1) {
-               return
-                      <div className={s.test} key={index}>
-                        <Condition object = {ele} index = {index}/>
+               return <div key={index}>
+                        <Condition object = {ele} index = {index} ref={child}/>
                         <div className={s.operator}>{this.props.object.type}</div>
                       </div>;
              }
-             return <div className={s.test2} key={index}>
-                    <Condition object = {ele} index = {index}/>
-                    </div>;
+             return <Condition object = {ele} index = {index} ref={child}/>;
            })
          }
       </div>;
@@ -50,27 +70,33 @@ class Condition extends React.Component {
 class BarrierTable extends React.Component {
   constructor(props) {
     super(props);
-
-    this.state = {
-      conditionNumbers : []
-    }
+    this.children = [];
   }
 
-  createRowData(categories, content)
-  {
-    return{
-      emergencyLevel : emergencyCat,
-      content: content,
+  getValue() {
+    var numberOfLoss = 0;
+    var numberOfPotentialLoss = 0;
+    this.props.barrier.products.map((p, index) => {
+      var lossRef = 'loss' + index;
+      var potentialLossRef = 'potential_loss' + index;
+      if(this.refs[lossRef] && this.refs[lossRef].getValue()) numberOfLoss++;
+      if(this.refs[potentialLossRef] && this.refs[potentialLossRef].getValue()) numberOfPotentialLoss++;
+    });
+    var result = {
+      loss: numberOfLoss,
+      potential_loss: numberOfPotentialLoss
     }
+    return result;
   }
 
-  getCondition(condition){
+  getCondition(condition, type, index){
     if(Object.keys(condition).length === 0 && condition.constructor === Object)
     {
       var result = <div>None</div>;
     }
     else {
-      var result = <Condition object={condition}/>
+      var ref = type + '' + index;
+      var result = <div><Condition object={condition} ref={ref}/></div>;
     }
     return result;
   }
@@ -78,16 +104,16 @@ class BarrierTable extends React.Component {
   getRow(product, productIndex) {
     var row =
           <tr className={s.barrierTableRow}>
-            <td className="mdl-cell--3-col-tablet">{(productIndex+1) + '. ' + product.name}</td>
-            <td>{this.getCondition(product.loss)}</td>
-            <td>{this.getCondition(product.potential_loss)}</td>
+            <td className={s.barrierTableCell}>{(productIndex+1) + '. ' + product.name}</td>
+            <td className={s.barrierTableCell}>{this.getCondition(product.loss, 'loss', productIndex)}</td>
+            <td className={s.barrierTableCell}>{this.getCondition(product.potential_loss, 'potential_loss', productIndex)}</td>
           </tr>;
     return row;
   }
 
   render() {
     var table =
-      <table className={s.barrierTable + " mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp"}>
+      <table className={s.barrierTable}>
         <thead>
           <tr className={s.barrierTableHeader}>
             <th>{this.props.barrier.name}</th>
