@@ -10,18 +10,21 @@
 
 import React from 'react';
 import Link from '../Link';
+import s from './Footer.css';
 
-function Footer() {
-  return (
-    <footer className="mdl-mini-footer">
-      <div className="mdl-mini-footer__left-section">
-
-      </div>
-      <div className="mdl-mini-footer__right-section">
-        
-      </div>
-    </footer>
-  );
+class Footer extends React.Component {
+  render() {
+    return (
+      <footer className={s.footer + " mdl-mini-footer"}>
+        <div className={s.footer + " mdl-mini-footer__left-section"}>
+          {this.props.leftContent}
+        </div>
+        <div className="mdl-mini-footer__right-section">
+          {this.props.rightContent}
+        </div>
+      </footer>
+    );
+  }
 }
 
 export default Footer;

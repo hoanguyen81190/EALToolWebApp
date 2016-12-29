@@ -36,7 +36,7 @@ class Layout extends React.Component {
           <main className="mdl-layout__content">
             <div {...this.props} className={cx(s.content, this.props.className)} />
           </main>
-          <Footer className={s.footerlayout}/>
+          <Footer className={s.footerlayout} leftContent={this.props.footerLeftContent} rightContent={this.props.footerRightContent}/>
         </div>
       </div>
     );

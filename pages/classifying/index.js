@@ -251,10 +251,18 @@ class ClassifyingPage extends React.Component {
 
   }
 
+  getFooterContent() {
+    return (
+      <Button className={s.submit_button} type='raised' onClick={()=>{this.handleSubmit()}}>
+          Submit
+      </Button>
+    );
+  }
+
   render() {
 
     return (
-      <Layout className={s.content}>
+      <Layout className={s.content} footerLeftContent={this.getFooterContent()}>
             <div className={s.leftcontent} >
               {
                 this.extractLeftPanelTree('overview').map((item, i) => {
@@ -268,10 +276,6 @@ class ClassifyingPage extends React.Component {
                 criterion={store.getState().criterionObject}
 
                 mode='classification' ref="classificationCriterion"/>
-
-              <Button className={s.submit_button} type='raised' onClick={()=>{this.handleSubmit()}}>
-                  Submit
-              </Button>
 
               <div className={s.submitButton}>
                 <DialogDemo ref="classificationDialog"/>
