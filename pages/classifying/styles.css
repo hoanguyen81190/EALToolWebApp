@@ -98,7 +98,7 @@
 }
 
 .treeIndent{
-  margin-left: 1vw;
+  margin-left: 1.5vw;
 }
 
 .mainTreeIndent{
@@ -116,39 +116,120 @@
 
 .condition {
     position: relative;
+    height: 100%;
+    display: inline-block;
+}
+
+.condition:before{
+    content: " ";
+    position: absolute;
+    /*border-left: 2px solid black;*/
+    /*border-top: 2px solid black;*/
+    /*border-bottom: 2px solid black;*/
+
+    -webkit-transform: translateY(12px);
+    -moz-transform: translateY(12px);
+    -ms-transform: translateY(12px);
+    transform: translateY(12px);
+    height: inherit;
+    width: 25px;
+    left:-5px;
 }
 
 .condition > *:before {
-    content: "";
-    font-size: 75%;
-    font-weight: bold;
-    display: inline-block;
-    margin-top: auto;
-    position: absolute;
-    border-style: solid;
-    border-width: 2px 0 0 2px;
-}
-
-.condition > *:last-child {
-    border-width: 2px 0 0 0;
-    content: "";
-}
-
-.conditionleaf {
-}
-
-.conditionleaf:before {
-  content: "";
-  width: 1.5em;
+  content: " ";
   position: absolute;
-  margin-top: 15px;
-  margin-left: -1vw;
-  height: 25%;
-  border-style: solid;
-  border-width: 2px 0 0 2px;
+  border-top: 2px solid black;
+  border-left: 2px solid black;
+  -webkit-transform: translateY(12px);
+  -moz-transform: translateY(12px);
+  -ms-transform: translateY(12px);
+  transform: translateY(12px);
+
+  height: inherit;
+  width: 25px;
+  left:-5px;
 }
 
-.conditionleaf:last-child::before {
-  border-width: 2px 0 0 0;
-  content: "";
+.condition > *:first-child:before {
+
 }
+
+.condition > *:last-child:before {
+  border-left: none;
+}
+
+.condition .condition:after {
+
+  border-left: 2px solid black;
+
+}
+
+.condition:after {
+    position: absolute;
+    display: inline-block;
+    top: 35%;
+    border-bottom: 2px solid black;
+    width: 25px;
+    padding-left: 5px;
+
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+
+    left: -35px;
+    content: attr(operator);
+
+    font-weight: bold;
+    font-size: 11px;
+}
+
+.maincontent .conditionleaf {
+  display: block;
+  height: 150px;
+}
+
+.leftcontent .conditionleaf {
+  display: inline-block;
+  height: 40px;
+}
+
+/*.conditionleaf:before {
+    content: " ";
+    position: absolute;
+    border-top: 2px solid black;
+
+    -webkit-transform: translate(-100%, 10px);
+    -moz-transform: translate(-100%, 10px);
+    -ms-transform: translate(-100%, 10px);
+    transform: translate(-100%, 10px);
+
+    width: 15px;
+}
+
+.condition:before{
+    content: " ";
+    position: absolute;
+    border-left: 2px solid black;
+
+    -webkit-transform: translateY(10px);
+    -moz-transform: translateY(10px);
+    -ms-transform: translateY(10px);
+    transform: translateY(10px);
+    height: 50%;
+    width: 15px;
+}
+
+.condition:after {
+    position: absolute;
+    display: block;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+
+    left: -30px;
+    content: attr(operator);
+}*/

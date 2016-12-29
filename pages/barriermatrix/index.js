@@ -35,12 +35,72 @@ class BarrierMatrixPage extends React.Component {
     document.title = title;
   }
 
-  handleSubmit() {
+  calculateEmergencyLevel() {
     var fuel = this.refs.fuel.getValue();
     var RCS = this.refs.RCS.getValue();
     var containment = this.refs.containment.getValue();
     //calculate emergencyLevel
+
     //General emergency
+    //naive code
+    if((fuel.loss && RCS.loss && containment.potential_loss) ||
+        (fuel.loss && containment.loss && RCS.potential_loss) ||
+          (RCS.loss && containment.loss && fuel.potential_loss)) {
+      return ('General Emergency');
+    }
+
+    //Site area emergency
+    var first = fuel.loss || fuel.potential_loss;
+    var second = RCS.loss || RCS.potential_loss;
+    var third = containment.loss;
+    //naive code
+    if((first && second) ||
+        (first && third) ||
+          (second && third)) {
+      return ('Site Area Emergency');
+    }
+
+    //alert
+    if(fuel.loss || fuel.potential_loss || RCS.loss || RCS.potential_loss) {
+      return ('Alert');
+    }
+
+    //unusual event
+    if(containment.loss || containment.potential_loss) {
+      return ('Unusual Event');
+    }
+    return ('None');
+  }
+
+  handleSubmit() {
+    var emergencyLevel = this.calculateEmergencyLevel();
+    if(emergencyLevel === 'None')
+    {
+      var text = "It is likely that there is no emergency event";
+    }
+    else {
+      var text = "It is likely that an event with "
+       +  emergencyLevel + " level has happened";
+    }
+
+    var isIE = /*@cc_on!@*/false || !!document.documentMode;
+    // Edge 20+
+    var isEdge = !isIE && !!window.StyleMedia;
+
+    if(isIE || isEdge)
+    {
+      alert(text);
+    }
+    else
+    {
+      this.refs.classificationDialog.setState({
+        openDialog: true,
+        content: text,
+        title: "",
+        buttonText: ""
+      });
+    }
+
 
   }
 
@@ -55,7 +115,7 @@ class BarrierMatrixPage extends React.Component {
 
   getFooterContent() {
     return (
-      <Button className={s.submitButton} type='raised' onClick={()=>{this.handleSubmit()}}>
+      <Button className={s.submitButton} type='raised' onClick={()=>this.handleSubmit()}>
           Submit
       </Button>
     );

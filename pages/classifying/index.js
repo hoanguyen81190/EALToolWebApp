@@ -77,10 +77,6 @@ class Condition extends React.Component {
     else {
       var element =
        <div className={s.treeIndent + ' ' + s.condition} operator={this.props.conditionBody.type}>
-         <span className={s.conditionoperator}>
-           {this.props.conditionBody.type}
-         </span>
-
          {
            this.props.conditionBody.children.map((ele, index) => {
              var child = "child" + index;
