@@ -233,6 +233,13 @@ class ClassifyingPage extends React.Component {
 
 
   handleSubmit(){
+
+    // Internet Explorer 6-11
+    var isIE = /*@cc_on!@*/false || !!document.documentMode;
+    // Edge 20+
+    var isEdge = !isIE && !!window.StyleMedia;
+
+
     var text;
     if(this.refs.classificationCriterion.getValue()) {
      text = "It is likely that an " + store.getState().recognitionCategory + " event with "
@@ -242,13 +249,19 @@ class ClassifyingPage extends React.Component {
      text = "It is likely that there is no emergency event";
     }
 
-    this.refs.classificationDialog.setState({
-      openDialog: true,
-      content: text,
-      title: "",
-      buttonText: ""
-    });
-
+    if(isIE || isEdge)
+    {
+      alert(text);
+    }
+    else
+    {
+      this.refs.classificationDialog.setState({
+        openDialog: true,
+        content: text,
+        title: "",
+        buttonText: ""
+      });
+    }
   }
 
   getFooterContent() {
@@ -277,7 +290,7 @@ class ClassifyingPage extends React.Component {
 
                 mode='classification' ref="classificationCriterion"/>
 
-              <div className={s.submitButton}>
+              <div>
                 <DialogDemo ref="classificationDialog"/>
               </div>
 
