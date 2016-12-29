@@ -74,9 +74,18 @@ class HomePage extends React.Component {
     }
   }
 
+  getFooterContent(){
+    return(
+      <Button className={s.home_button} type='raised'
+        onClick={()=>this.handleSubmit()}>
+        Submit
+      </Button>
+    );
+  }
+
   render() {
     return (
-      <Layout className={s.content}>
+      <Layout className={s.content} footerLeftContent={this.getFooterContent()}>
         <h4>Choose Modes</h4>
           {eALDocument.data.modes.map((mode, i) =>
             {
@@ -88,13 +97,6 @@ class HomePage extends React.Component {
             {
               return <Button className={s.home_button} id={cat.name} type='raised' key={i+1} onClick={() => this.handleCategories(cat.name)} >{cat.name}</Button>}
         )}
-        <p/>
-        <p>
-          <Button className={s.home_button} type='raised'
-            onClick={()=>this.handleSubmit()}>
-            Submit
-          </Button>
-        </p>
       </Layout>
     );
   }

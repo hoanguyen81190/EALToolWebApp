@@ -124,3 +124,7 @@ body, html{
   padding-left: 8px;
   padding-top: 4px;
 }
+.gridCell:hover{
+  background-color: tomato;
+  cursor: pointer;
+}

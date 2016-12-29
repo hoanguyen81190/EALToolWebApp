@@ -53,9 +53,17 @@ class BarrierMatrixPage extends React.Component {
     this.refs.pdfDocument.forceUpdate();
   }
 
+  getFooterContent() {
+    return (
+      <Button className={s.submitButton} type='raised' onClick={()=>{this.handleSubmit()}}>
+          Submit
+      </Button>
+    );
+  }
+
   render() {
     return (
-      <Layout className={s.content}>
+      <Layout className={s.content} footerLeftContent={this.getFooterContent()}>
         <div className= {s.recognitionCategoryText}> Fission Product Barrier Matrix - Mode {this.state.mode}</div>
           <div className={s.maincontent}>
             <div className={s.tableWrapper}>
@@ -63,10 +71,6 @@ class BarrierMatrixPage extends React.Component {
             <BarrierTable barrier={eALDocument.data.fission_product_barriers[1]} ref="RCS" documentCallback={(startPage, pageRange) => this.openDocument(startPage, pageRange)}/>
             <BarrierTable barrier={eALDocument.data.fission_product_barriers[2]} ref="containment" documentCallback={(startPage, pageRange)=> this.openDocument(startPage, pageRange)}/>
             </div>
-            <Button className={s.submitButton} type='raised' onClick={()=>{this.handleSubmit()}}>
-                Submit
-            </Button>
-
             <div>
               <DialogDemo ref="classificationDialog"/>
             </div>
