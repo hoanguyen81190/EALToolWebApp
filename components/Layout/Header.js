@@ -1,13 +1,3 @@
-/**
- * React Static Boilerplate
- * https://github.com/kriasoft/react-static-boilerplate
- *
- * Copyright © 2015-present Kriasoft, LLC. All rights reserved.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE.txt file in the root directory of this source tree.
- */
-
 import React from 'react';
 import Navigation from './Navigation';
 import Link from '../Link';
@@ -27,25 +17,22 @@ class NavigationBar extends React.Component {
 
   render() {
     var home = (<div className={s.progress} onClick={() => this.handleClick('/')}>
-                  STEP 1
-                  <br/>
-                  Choose Mode & Recognition Category
+                 <div className={s.navigationText}>STEP 1 <br/>
+                   Choose Mode & Recognition Category</div>
                 </div>);
     var overview = <div className={s.progress} onClick={() => this.handleClick('/overview')}>
-                      STEP 2
-                      <br/>
-                      Choose Event
-                    </div>;
+                <div className={s.navigationText}>STEP 2 <br/>
+                  Choose Event</div>
+               </div>;
     var classifying = <div className={s.progress} onClick={() => this.handleClick('/classifying')}>
-                        STEP 3
-                        <br/>
-                        Classification
-                      </div>;
+                <div className={s.navigationText}>STEP 3 <br/>
+                  Classification</div>
+               </div>;
     var barriermatrix = <div className={s.progress} onClick={() => this.handleClick('/barriermatrix')}>
-                        STEP 2
-                        <br/>
-                        Barrier Matrix Classification
-                      </div>;
+              <div className={s.navigationText}>STEP 2 <br/>
+                Barrier Matrix Classification</div>
+              </div>;
+
     switch (history.getCurrentLocation().pathname) {
       case '/':
         return (<div className={s.wrap}>
@@ -90,7 +77,7 @@ class Header extends React.Component {
   render() {
     return (
       <header className={`mdl-layout__header ${s.header}`} ref={node => (this.root = node)}>
-        <div className={`mdl-layout__header-row ${s.row}`}>
+        <div className={`mdl-layout__header-row ${s.navigatonBarWrapper}`}>
           <NavigationBar />
           <div className="mdl-layout-spacer"></div>
           <Navigation />

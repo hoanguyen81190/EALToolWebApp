@@ -8,15 +8,6 @@
  * LICENSE.txt file in the root directory of this source tree.
  */
 
-/*@media screen and (max-width: 1024px) {
-
-  .content {
-    padding: 0 0px;
-    background-color: inherit;
-  }
-
-}*/
-
 .maincontent {
     margin-left: 15%;
     background-color: #eee;
@@ -37,6 +28,7 @@
       inset 0px 0px 1px rgba(0,0,0,0.5), /*bottom internal shadow*/
       inset 0 0px 1px rgba(255,255,255,0.8); /*top internal highlight*/
 }
+
 .leftcontent{
   overflow-x: hidden;
    overflow-y: auto;
@@ -96,22 +88,9 @@
   position: inherit;
 }
 
-.table{
-  display: table;
-}
-
-.wrapper {
-  display: table-row;
-  float:left;
- position: relative;
- vertical-align: middle;
- margin-bottom: 2%;
- margin-top: 2%;
-}
-
+/* Tree structures */
 .checkbox {
  float: left;
-
 }
 
 .operator{
@@ -171,6 +150,6 @@
 }
 
 .conditionleaf:last-child::before {
-      border-width: 2px 0 0 0;
-      content: "";
-      }
+  border-width: 2px 0 0 0;
+  content: "";
+}
