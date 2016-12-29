@@ -85,8 +85,8 @@ class BarrierTable extends React.Component {
       if(this.refs[potentialLossRef] && this.refs[potentialLossRef].getValue()) numberOfPotentialLoss++;
     });
     var result = {
-      loss: numberOfLoss,
-      potential_loss: numberOfPotentialLoss
+      loss: (numberOfLoss > 0),
+      potential_loss: (numberOfPotentialLoss > 0)
     }
     return result;
   }
