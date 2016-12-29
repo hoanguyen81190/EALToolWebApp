@@ -44,10 +44,10 @@ body, html{
 }
 
 .tableWrapper {
-  width: 100%;
-  margin-top: 2.5%;
-  position:relative;
+  overflow-y: scroll;
+  height: 100%;
 }
+
 
 .maincontent {
   background-color: #eee;
@@ -82,16 +82,29 @@ body, html{
 
 /*Barrier Table*/
 .barrierTable {
-  width: 65%;
+  width: 100%;
+  table-layout: fixed;
+  border: 1px solid gray;
+  margin-bottom: 5px;
+  overflow-y: scroll;
 }
 
 .barrierTableHeader > * {
   text-transform: uppercase;
 }
 
-.barrierTableRow > * {
-  text-overflow: clip;
-  width: 5%;
+.barrierTableRow:nth-child(odd) {
+  background-color: #d9d9d9;
+}
+
+
+.barrierTableCell {
+  text-align: left;
+}
+
+.barrierTableCell:first-child:hover{
+  background-color: tomato;
+  cursor: pointer;
 }
 
 .checkbox {
@@ -100,4 +113,21 @@ body, html{
 
 .conditionLeaf {
 
+}
+
+.submitButton {
+  margin-top: 5px;
+  left: 50%;
+  transform: translate(-50%, 0);
+}
+
+.operator {
+  text-align: center;
+  font-weight: bold;
+}
+
+.documentIcon {
+  width: 15px;
+  height: 15px;
+  margin-left: 5px;
 }
