@@ -85,7 +85,7 @@ class Condition extends React.Component {
            this.props.conditionBody.children.map((ele, index) => {
              var child = "child" + index;
              this.children.push(child)
-             return <Condition className={s.conditionleaf}
+             return <Condition
                  conditionBody = {ele} index = {index} mode = {this.props.mode} ref={child}/>;
            })
          }
