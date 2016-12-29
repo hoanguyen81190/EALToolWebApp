@@ -33,6 +33,7 @@ class OverviewPage extends React.Component {
   }
 
   render() {
+    //<div className= {s.recognitionCategoryText}> {this.state.recognitionCategory} - Mode {this.state.mode}</div>
     return (
       <Layout className={s.content}>
         <div className= {s.recognitionCategoryText}> {this.state.recognitionCategory} - Mode {this.state.mode}</div>
