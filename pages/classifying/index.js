@@ -266,7 +266,7 @@ class ClassifyingPage extends React.Component {
 
   getFooterContent() {
     return (
-      <Button className={s.submit_button} type='raised' onClick={()=>{this.handleSubmit()}}>
+      <Button id='classSubmitButton' className={s.submit_button} type='raised' onClick={()=>{this.handleSubmit()}}>
           Submit
       </Button>
     );
