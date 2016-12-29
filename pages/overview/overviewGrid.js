@@ -247,10 +247,10 @@ class OverviewTable extends React.Component {
     var table =
     <div className={s.overviewGridContainer}>
       <div className={s.headerContainer}><div className="mdl-grid mdl-grid--no-spacing">
-        <div className="mdl-cell mdl-cell--3-col "><div className={s.gridCell}> General Emergency </div> </div>
-        <div className="mdl-cell mdl-cell--3-col "><div className={s.gridCell}> Site Area Emergency </div> </div>
-        <div className="mdl-cell mdl-cell--3-col "><div className={s.gridCell}> Alert </div> </div>
-        <div className="mdl-cell mdl-cell--3-col "><div className={s.gridCell}> Unusual Event </div> </div>
+        <div className="mdl-cell mdl-cell--3-col "><div className={s.headerCell}> General Emergency </div> </div>
+        <div className="mdl-cell mdl-cell--3-col "><div className={s.headerCell}> Site Area Emergency </div> </div>
+        <div className="mdl-cell mdl-cell--3-col "><div className={s.headerCell}> Alert </div> </div>
+        <div className="mdl-cell mdl-cell--3-col "><div className={s.headerCell}> Unusual Event </div> </div>
       </div></div>
       <div className={s.dataContainer}>
         {this.getRecognitionCategoryDataGrid(recognitionCategoryData)}

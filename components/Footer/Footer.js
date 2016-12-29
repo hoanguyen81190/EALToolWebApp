@@ -14,15 +14,25 @@ import s from './Footer.css';
 
 class Footer extends React.Component {
   render() {
-    return (
-      <footer className={s.footer + " mdl-mini-footer"}>
+    var footer;
+    if(this.props.leftContent || this.props.rightContent){
+      footer = <footer className={s.footer + " mdl-mini-footer"}>
         <div className={s.footer + " mdl-mini-footer__left-section"}>
           {this.props.leftContent}
         </div>
         <div className="mdl-mini-footer__right-section">
           {this.props.rightContent}
         </div>
-      </footer>
+      </footer>;
+    }
+    else {
+      footer = <div></div>;
+    }
+
+    return (
+
+
+      footer
     );
   }
 }

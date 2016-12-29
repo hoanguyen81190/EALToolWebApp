@@ -34,7 +34,11 @@ class HomePage extends React.Component {
   handleModes(_mode){
     var element = document.getElementById(this.state.mode);
     if (element != null)
-      element.style.backgroundColor = 'LightGray';
+    {
+      element.style = 'raised';
+    }
+
+
     document.getElementById(_mode).style.backgroundColor = 'Red';
     this.setState({mode: _mode});
   }
@@ -42,7 +46,7 @@ class HomePage extends React.Component {
   handleCategories(_cat){
     var element = document.getElementById(this.state.recognitionCategory);
     if (element != null)
-      element.style.backgroundColor = 'LightGray';
+      element.style = 'raised';
     document.getElementById(_cat).style.backgroundColor = 'Red';
     this.setState({recognitionCategory: _cat});
   }
