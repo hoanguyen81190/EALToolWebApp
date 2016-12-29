@@ -10,6 +10,7 @@ body, html{
    margin:0;
    padding:0;
    position:absolute;
+   z-index: 3;
  }
 
 .content {
@@ -26,4 +27,5 @@ body, html{
   margin:0;
   padding:0;
   position:absolute;
+  z-index: 3;
 }

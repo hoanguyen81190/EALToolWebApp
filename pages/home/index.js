@@ -1,13 +1,3 @@
-/**
- * React Static Boilerplate
- * https://github.com/kriasoft/react-static-boilerplate
- *
- * Copyright © 2015-present Kriasoft, LLC. All rights reserved.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE.txt file in the root directory of this source tree.
- */
-
 import React, { PropTypes } from 'react';
 import Layout from '../../components/Layout';
 import Button from '../../components/Button';
@@ -23,7 +13,9 @@ class HomePage extends React.Component {
     super();
     this.state = {
       mode: null,
-      recognitionCategory: null
+      recognitionCategory: null,
+      disableBarrierButton: false,
+      disableIncompatibleModeButtons: false
     }
   }
 
@@ -33,22 +25,71 @@ class HomePage extends React.Component {
 
   handleModes(_mode){
     var element = document.getElementById(this.state.mode);
-    if (element != null)
-    {
-      element.style = 'raised';
-    }
-
-
+    this.changeButtonOnClick(element);
+    this.handleModeButtonDisabling(_mode);
     document.getElementById(_mode).style.backgroundColor = 'Red';
     this.setState({mode: _mode});
   }
 
   handleCategories(_cat){
     var element = document.getElementById(this.state.recognitionCategory);
-    if (element != null)
-      element.style = 'raised';
+    this.changeButtonOnClick(element);
+    this.handleCategoriesButtonDisabling(_cat);
     document.getElementById(_cat).style.backgroundColor = 'Red';
     this.setState({recognitionCategory: _cat});
+  }
+
+  handleModeButtonDisabling(mode){
+    if(mode === 5 || mode === 6 || mode === 'Defueled')
+    {
+      var barrierButton = document.getElementById('barriermatrix');
+      this.changeButtonOnClick(barrierButton);
+      barrierButton.disabled = true;
+      if(this.state.recognitionCategory === 'barriermatrix')
+      {
+        this.state.recognitionCategory = null;
+      }
+    }
+    else
+    {
+      var barrierButton = document.getElementById('barriermatrix');
+      barrierButton.disabled = false;
+    }
+  }
+
+  handleCategoriesButtonDisabling(category){
+    if(category === 'barriermatrix')
+    {
+      var mode5Button = document.getElementById('5');
+      mode5Button.disabled = true;
+      var mode6Button = document.getElementById('6');
+      mode6Button.disabled = true;
+      var modeDefueledButton = document.getElementById('Defueled');
+      modeDefueledButton.disabled = true;
+
+      if(this.state.mode === 5 || this.state.mode === 6 || this.state.mode === 'Defueled')
+      {
+        this.state.mode = null;
+      }
+    }
+    else {
+      var mode5Button = document.getElementById('5');
+      mode5Button.disabled = false;
+      var mode6Button = document.getElementById('6');
+      mode6Button.disabled = false;
+      var modeDefueledButton = document.getElementById('Defueled');
+      modeDefueledButton.disabled = false;
+    }
+  }
+
+  /**
+  * Updates the look of the previously clicked button
+  * @param button - React button
+  */
+  changeButtonOnClick(button){
+      if (button != null){
+        button.style.backgroundColor = '';
+      }
   }
 
   handleSubmit() {
@@ -96,7 +137,10 @@ class HomePage extends React.Component {
               return <Button className={s.home_button} id={mode} type='raised' key={i} onClick={() => this.handleModes(mode)} >{mode}</Button>}
           )}
         <h4>Choose Categories</h4>
-          <Button className={s.home_button} id='barriermatrix' type='raised' key={0} onClick={() => this.handleCategories('barriermatrix')} >FISSION PRODUCT BARRIER MATRIX</Button>
+
+        <Button className={s.home_button} id='barriermatrix' type='raised' key={0} onClick={() => this.handleCategories('barriermatrix')} >FISSION PRODUCT BARRIER MATRIX</Button>
+
+
           {eALDocument.data.recognition_categories.map((cat, i) =>
             {
               return <Button className={s.home_button} id={cat.name} type='raised' key={i+1} onClick={() => this.handleCategories(cat.name)} >{cat.name}</Button>}
