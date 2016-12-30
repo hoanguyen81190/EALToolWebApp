@@ -2,6 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import PDF from 'pdfjs-dist/build/pdf.combined.js';
 
+import s from './styles.css';
+
 export default class SimplePDF extends React.Component {
 
   constructor(props) {
@@ -27,7 +29,7 @@ export default class SimplePDF extends React.Component {
     node.innerHTML = "";
 
     // set styles
-  //  node.style.width = "100%";
+  //  node.style.width = "200%";
   //  node.style.height = "25%";
   //  node.style.overflowX = "hidden";
   //  node.style.overflowY = "scroll";
@@ -36,12 +38,6 @@ export default class SimplePDF extends React.Component {
     var endPage = this.state.endPage;
 
     PDF.getDocument(this.props.file).then(function(pdf) {
-
-      // no scrollbar if pdf has only one page
-      if (pdf.numPages===1) {
-        node.style.overflowY = "hidden";
-      }
-
 
     for (var id=1,i=startPage; i<=endPage; i++) {
         pdf.getPage(i).then(function(page) {
@@ -79,12 +75,13 @@ export default class SimplePDF extends React.Component {
 
   updateDimensions() {
     this.loadPDF();
+    this.props.resizeCallback();
   }
 
   render() {
     return (
-      <div className="SimplePDF">
-        <div className="S-PDF-ID"></div>
+      <div className="SimplePDF" id="documentDiv">
+        <div className={`S-PDF-ID ${s.pdfViewer}`} id="pdfViewer"></div>
       </div>
     );
   }
@@ -98,11 +95,14 @@ export default class SimplePDF extends React.Component {
 
   componentDidMount() {
     this.loadPDF();
+    this.props.resizeCallback();
+
     window.addEventListener("resize", this.updateDimensions.bind(this));
   }
 
   componentDidUpdate() {
     this.loadPDF();
+    this.props.resizeCallback();
     window.removeEventListener("resize", this.updateDimensions.bind(this));
   }
 }

@@ -1,13 +1,3 @@
-/**
- * React Static Boilerplate
- * https://github.com/kriasoft/react-static-boilerplate
- *
- * Copyright © 2015-present Kriasoft, LLC. All rights reserved.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE.txt file in the root directory of this source tree.
- */
-
 import React, { PropTypes } from 'react';
 import Layout from '../../components/Layout';
 import Button from '../../components/Button';
@@ -121,6 +111,21 @@ class BarrierMatrixPage extends React.Component {
     );
   }
 
+  scrollDocument(){
+    //var documentDiv = document.getElementById("pdfViewer");
+    var documentDiv = document.getElementById("descriptionContentContainer");
+
+    console.log(documentDiv);
+    //var documentDiv = ReactDOM.findDOMNode(this).getElementById("documentDiv");
+    //console.log("scrolling");
+    if(documentDiv)
+    {
+      console.log(documentDiv.scrollHeight - documentDiv.clientHeight);
+      documentDiv.scrollTop = documentDiv.scrollHeight - documentDiv.clientHeight;
+      //this.refs.pdfDocument.forceUpdate();
+    }
+  }
+
   render() {
     return (
       <Layout className={s.content} footerLeftContent={this.getFooterContent()}>
@@ -137,14 +142,14 @@ class BarrierMatrixPage extends React.Component {
 
         </div>
 
-        <div className={s.descriptioncontent}>
+        <div className={`${s.descriptioncontent}`} id="descriptionContentContainer">
             <spdf.SimplePDF className={s.SimplePDF}
                 file='./classification_procedures.pdf'
                 startPage={27}
-                endPage={1} ref="pdfDocument"/>
+                endPage={1}
+                ref="pdfDocument"
+                resizeCallback={()=> this.scrollDocument()}/>
         </div>
-
-
       </Layout>
     );
   }

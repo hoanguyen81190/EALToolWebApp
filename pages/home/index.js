@@ -93,7 +93,7 @@ class HomePage extends React.Component {
   }
 
   handleSubmit() {
-    //TODO: check if the selection is valid
+    //check if the selection is valid
     if(this.state.mode == null || this.state.recognitionCategory == null)
     {
         alert("Please select the mode and the recognition category before pressing submit!");
@@ -121,7 +121,7 @@ class HomePage extends React.Component {
 
   getFooterContent(){
     return(
-      <Button className={s.home_button} type='raised'
+      <Button className={s.submit_button} type='raised'
         onClick={()=>this.handleSubmit()}>
         Submit
       </Button>

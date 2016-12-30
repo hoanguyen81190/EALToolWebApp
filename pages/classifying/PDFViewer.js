@@ -2,6 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import PDF from 'pdfjs-dist/build/pdf.combined.js';
 
+import s from './styles.css';
+
 export default class SimplePDF extends React.Component {
 
   constructor(props) {
@@ -9,6 +11,10 @@ export default class SimplePDF extends React.Component {
 
     // bind
     this.loadPDF = this.loadPDF.bind(this);
+    this.state = {
+      startPage: 1,
+      endPage: 1
+    }
   }
 
   loadPDF() {
@@ -23,23 +29,17 @@ export default class SimplePDF extends React.Component {
     node.innerHTML = "";
 
     // set styles
-  //  node.style.width = "100%";
+  //  node.style.width = "200%";
   //  node.style.height = "25%";
   //  node.style.overflowX = "hidden";
   //  node.style.overflowY = "scroll";
     node.style.padding = '0px';
-
-    var safeEndPage = this.props.endPage; //> pdf.mumPages ? pdf.numPages : this.state.endPage;
-    var startPage = this.props.startPage;
+    var startPage = this.state.startPage;
+    var endPage = this.state.endPage;
 
     PDF.getDocument(this.props.file).then(function(pdf) {
 
-      // no scrollbar if pdf has only one page
-      if (pdf.numPages===1) {
-        node.style.overflowY = "hidden";
-      }
-
-    for (var id=1,i=startPage; i<=safeEndPage; i++) {
+    for (var id=1,i=startPage; i<=endPage; i++) {
         pdf.getPage(i).then(function(page) {
 
           // calculate scale according to the box size
@@ -79,10 +79,17 @@ export default class SimplePDF extends React.Component {
 
   render() {
     return (
-      <div className="SimplePDF">
-        <div className="S-PDF-ID"></div>
+      <div className="SimplePDF" id="documentDiv">
+        <div className={`S-PDF-ID ${s.pdfViewer}`} id="pdfViewer"></div>
       </div>
     );
+  }
+
+  componentWillMount() {
+    this.setState({
+      startPage: this.props.startPage,
+      endPage: this.props.endPage
+    });
   }
 
   componentDidMount() {

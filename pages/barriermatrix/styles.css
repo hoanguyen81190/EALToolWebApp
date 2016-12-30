@@ -1,3 +1,4 @@
+/* Common css properties */
 body, html{
   -ms-overflow-style: none;
   background-color: #eee;
@@ -28,12 +29,10 @@ body, html{
   align-items: center;
   padding-left: 1%;
 
-
   box-sizing: border-box;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
 
-  border-right: 1px solid #eee;
   box-shadow:
     0 0px 0px #ddd, /*bottom external highlight*/
     0 0px 1px #ddd, /*top external shadow*/
@@ -47,10 +46,9 @@ body, html{
   width: 100%;
 }
 
-
 .maincontent {
   background-color: #eee;
-  width: 65%;
+  width: 50%;
   height: 95%;
   position: absolute;
   padding: 0;
@@ -71,14 +69,14 @@ body, html{
 }
 
 .descriptioncontent {
-  margin-left: 65%;
-  width: 35%;
+  margin-left: 50%;
+  width: 50%;
   height: 95%;
   margin-top:50px;
   position: absolute;
   padding: 0;
   overflow-y:auto;
-  overflow-x:hidden;
+  overflow-x:auto;
   z-index: 0;
 }
 
@@ -127,15 +125,13 @@ th, tr{
   margin: 0;
 }
 
-.barrierTableCell:first-child:hover{
-  background-color: #ccc;
-  cursor: pointer;
+.barrierTableHeaderFirstCol {
+  width: 20%;
 }
 
 .submitButton {
   margin-top: 5px;
-  left: 50%;
-  transform: translate(-50%, 0);
+  margin-left: 2%;
   background-color: LightGray;
 }
 
@@ -148,11 +144,31 @@ th, tr{
   width: 24px;
   height: 24px;
   position:absolute;
-  bottom:1px;
+  bottom:3px;
   right: 1px;
+  float:right;
 }
 
-@media screen and (max-width: 1024px) {
+/* Tablet properties */
+@media screen and (max-width: 1400px) {
+  .pdfViewer {
+    width: 125%;
+  }
+}
 
+/* Desktop properties */
+@media screen and (min-width: 1401px) {
+  .barrierTableCell:first-child:hover{
+    box-shadow: inset 2px -2px 2px rgba(0,0,0,0.5), /*bottom internal shadow*/
+    inset -2px 2px 2px rgba(255,255,255,1); /*top internal highlight*/
 
+      /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, rgba(225,225,225,0.5) 0%,rgba(150,150,150,0.5) 100%);
+    /* Opera 11.10+ */
+    background: -ms-linear-gradient(top, rgba(225,225,225,0.5) 0%,rgba(150,150,150,0.5) 100%);
+    /* IE10+ */
+    background: linear-gradient(to bottom, rgba(225,225,225,0.5) 0%,rgba(150,150,150,0.5) 100%);
+
+    cursor: pointer;
+  }
 }

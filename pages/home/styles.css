@@ -1,15 +1,17 @@
 .content {
   padding: 0 16px;
-  background-color: inherit;
 }
 
 .home_button{
   background-color: LightGray;
 }
 
+.submit_button{
+  background-color: LightGray;
+  margin-top: 5px;
+  margin-left: 2%;
+}
 
 @media screen and (max-width: 1024px) {
-
-
 
 }

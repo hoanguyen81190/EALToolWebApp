@@ -121,7 +121,7 @@ class BarrierTable extends React.Component {
       <table className={s.barrierTable}>
         <thead>
           <tr className={s.barrierTableHeader}>
-            <th>{this.props.barrier.name}</th>
+            <th className={s.barrierTableHeaderFirstCol}>{this.props.barrier.name}</th>
             <th>Loss</th>
             <th>Potential Loss</th>
           </tr>
