@@ -113,6 +113,17 @@ body, html{
   height: 100%;
 }
 
+.gridCellEmpty{
+  box-sizing: border-box;
+  border: 1px;
+  border-style: solid;
+  color: black;
+  width: 100%;
+  height: 100%;
+  padding-left: 8px;
+  padding-top: 4px;
+}
+
 .gridCell {
   box-sizing: border-box;
   border: 1px;
@@ -124,7 +135,7 @@ body, html{
   padding-top: 4px;
 }
 .gridCell:hover{
-  background-color: tomato;
+  background: rgba(0,0,255,0.1);
   cursor: pointer;
 }
 

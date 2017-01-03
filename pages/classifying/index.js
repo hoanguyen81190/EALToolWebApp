@@ -24,12 +24,15 @@ import spdf from "./PDFViewer";
 
 import DialogDemo from './dialog';
 
+var checkboxID = -1;
+
 class Condition extends React.Component {
   constructor() {
     super();
     this.type = null;
     this.value = false;
     this.children = [];
+    checkboxID++;
   }
 
   handleChangeChk(event) {
@@ -82,22 +85,30 @@ class Condition extends React.Component {
              var child = "child" + index;
              this.children.push(child)
              return <Condition
-                 conditionBody = {ele} index = {index} mode = {this.props.mode} ref={child}/>;
+                 conditionBody = {ele} index = {index} mode = {this.props.mode} ref={child} key={index}/>;
            })
          }
-
       </div>;
       return element;
     }
-
   }
-
-  // }
 }
 
 class Criterion extends React.Component {
   constructor() {
     super();
+  }
+
+  /**
+  * Unchecks the checkboxes on the current page
+  */
+  uncheckAllCheckboxes(){
+    var w = document.getElementsByTagName('input');
+    for(var i = 0; i < w.length; i++){
+      if(w[i].type==='checkbox'){
+        w[i].checked = false;
+      }
+    }
   }
 
   handleClick(criterion) {
@@ -109,6 +120,8 @@ class Criterion extends React.Component {
       criterionObject: criterion
     }
     store.dispatch(action);
+    //Uncheck the checkboxes when we switch security levels.
+    this.uncheckAllCheckboxes();
     this.props.callback.forceUpdate();
   }
 
@@ -227,7 +240,6 @@ class ClassifyingPage extends React.Component {
     return leftTree;
   }
 
-
   handleSubmit(){
 
     // Internet Explorer 6-11
@@ -235,14 +247,13 @@ class ClassifyingPage extends React.Component {
     // Edge 20+
     var isEdge = !isIE && !!window.StyleMedia;
 
-
     var text;
     if(this.refs.classificationCriterion.getValue()) {
-     text = "It is likely that an " + store.getState().recognitionCategory + " event with "
-      +  store.getState().emergencyLevel + " level has happened";
+      console.log(this.refs.classificationCriterion);
+     text = <p>A <b>{store.getState().recognitionCategory}</b> emergency event with emergency level <b>{store.getState().emergencyLevel}</b> has occured.</p>
     }
     else {
-     text = "It is likely that there is no emergency event";
+     text = "There is no emergency event";
     }
 
     if(isIE || isEdge)
@@ -269,13 +280,12 @@ class ClassifyingPage extends React.Component {
   }
 
   render() {
-
     return (
       <Layout className={s.content} footerLeftContent={this.getFooterContent()}>
             <div className={s.leftcontent} >
               {
                 this.extractLeftPanelTree('overview').map((item, i) => {
-                  return <div><div key={i}>{item}</div><hr className={s.hr}/></div>
+                  return <div className={s.leftTree}><div key={i}>{item}</div><hr className={s.hr}/></div>
                 })
               }
             </div>

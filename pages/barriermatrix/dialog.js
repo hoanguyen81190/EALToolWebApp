@@ -1,4 +1,5 @@
 import {Dialog, DialogTitle, DialogContent, DialogActions, Button} from 'react-mdl';
+import s from './styles.css';
 
 const React = require('react');
 
@@ -24,7 +25,7 @@ class DialogDemo extends React.Component {
 
   render() {
     var dialog = <div>
-      <Dialog open={this.state.openDialog}>
+      <Dialog open={this.state.openDialog} className={s.dialogDiv}>
         <DialogTitle>{this.props.title}</DialogTitle>
         <DialogContent>
           <p>{this.state.content}</p>

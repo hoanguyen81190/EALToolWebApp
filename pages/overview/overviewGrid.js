@@ -54,7 +54,6 @@ class Criterion extends React.Component {
       criterionObject: criterion
     }
     store.dispatch(action);
-    console.log(history);
     history.push("/classifying");
   }
 
@@ -113,13 +112,13 @@ class OverviewTable extends React.Component {
             if(tableDataCell.content === "")
             {
               cellContent =
-              <div key={emergencyCategoryIndex} className="mdl-cell mdl-cell--3-col"><div className={s.gridCell}>
+              <div key={emergencyCategoryIndex} className="mdl-cell mdl-cell--3-col"><div className={s.gridCellEmpty}>
 
               </div> </div>;
             }
             else {
               cellContent = <div key={emergencyCategoryIndex} className="mdl-cell mdl-cell--3-col"><div className={s.gridCell}>
-                <Criterion criterion={tableDataCell.content}  key={emergencyCategoryIndex} level = {tableDataCell.name}/>
+                <Criterion criterion={tableDataCell.content}  key={emergencyCategoryIndex} emergencyLevel = {tableDataCell.emergencyLevel}/>
               </div> </div>;
             }
 

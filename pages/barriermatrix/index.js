@@ -26,51 +26,106 @@ class BarrierMatrixPage extends React.Component {
   }
 
   calculateEmergencyLevel() {
-    var fuel = this.refs.fuel.getValue();
-    var RCS = this.refs.RCS.getValue();
-    var containment = this.refs.containment.getValue();
-    //calculate emergencyLevel
-
-    //General emergency
-    //naive code
-    if((fuel.loss && RCS.loss && containment.potential_loss) ||
-        (fuel.loss && containment.loss && RCS.potential_loss) ||
-          (RCS.loss && containment.loss && fuel.potential_loss)) {
-      return ('General Emergency');
+    var result = {
+      emergencyLevel: null,
+      barrierStatus: null,
+      prefix: null
     }
 
-    //Site area emergency
-    var first = fuel.loss || fuel.potential_loss;
-    var second = RCS.loss || RCS.potential_loss;
-    var third = containment.loss;
-    //naive code
+    var fuelBarrierStatus = this.refs.fuel.getValue();
+    var rcsBarrierStatus = this.refs.RCS.getValue();
+    var containmentBarrierStatus = this.refs.containment.getValue();
+
+    var nmbLoss = 0;
+    var nmbPotLoss = 0;
+
+    var fuelText = "";
+    var rcsText = "";
+    var containmentText = "";
+
+    if(fuelBarrierStatus.loss){
+      fuelText = <li>Fuel Clad Barrier - Lost</li>;
+      nmbLoss++;
+    }
+    else if(fuelBarrierStatus.potential_loss){
+      fuelText = <li>Fuel Clad Barrier - Potential Loss</li>;
+      nmbPotLoss++;
+    }
+
+    if(rcsBarrierStatus.loss)
+    {
+      rcsText = <li>RCS Barrier - Lost</li>;
+      nmbLoss++;
+    }
+    else if(rcsBarrierStatus.potential_loss)
+    {
+      rcsText = <li>RCS Barrier - Potential Loss</li>;
+      nmbPotLoss++;
+    }
+
+    if(containmentBarrierStatus.loss)
+    {
+      containmentText = <li>Containment Barrier - Lost</li>;
+      nmbLoss++;
+    }
+    else if(containmentBarrierStatus.potential_loss)
+    {
+      containmentText = <li>Containment Barrier - Potential Loss</li>;
+      nmbPotLoss++;
+    }
+
+    var barrierStatus = <p><ul>{fuelText}{rcsText}{containmentText}</ul></p>;
+    result.barrierStatus = barrierStatus;
+
+    //calculate emergencyLevel
+    //General emergency - Loss of TWO Fission Product Barriers AND Potential Loss of Third Barrier.
+    if(nmbLoss === 3 || (nmbLoss === 2 && nmbPotLoss === 1)){
+      result.prefix = "A";
+      result.emergencyLevel = "General Emergency";
+      return(result);
+    }
+
+    //Site area emergency - Any TWO of the Following:
+      //1. Loss or Potential Loss of Fuel Clad
+      //2. Loss or Potential Loss of RCS
+      //3. Loss of Containment Barrier
+
+    var first = fuelBarrierStatus.loss || fuelBarrierStatus.potential_loss;
+    var second = rcsBarrierStatus.loss || rcsBarrierStatus.potential_loss;
+    var third = containmentBarrierStatus.loss;
+
     if((first && second) ||
         (first && third) ||
           (second && third)) {
-      return ('Site Area Emergency');
+            result.prefix = "A";
+            result.emergencyLevel = "Site Area Emergency";
+      return (result);
     }
 
-    //alert
-    if(fuel.loss || fuel.potential_loss || RCS.loss || RCS.potential_loss) {
-      return ('Alert');
+    //Alert - Loss or Potential Loss of either Fuel Clad or RCS Barrier
+    if(fuelBarrierStatus.loss || fuelBarrierStatus.potential_loss || rcsBarrierStatus.loss || rcsBarrierStatus.potential_loss) {
+      result.prefix = "An";
+      result.emergencyLevel = "Alert";
+      return (result);
     }
 
-    //unusual event
-    if(containment.loss || containment.potential_loss) {
-      return ('Unusual Event');
+    //Unusual Event - Loss or Potential loss of Containment Barrier
+    if(containmentBarrierStatus.loss || containmentBarrierStatus.potential_loss) {
+      result.prefix = "An";
+      result.emergencyLevel = "Unusual Event";
+      return (result);
     }
     return ('None');
   }
 
   handleSubmit() {
-    var emergencyLevel = this.calculateEmergencyLevel();
-    if(emergencyLevel === 'None')
+    var emergencyResult = this.calculateEmergencyLevel();
+    if(emergencyResult === 'None')
     {
-      var text = "It is likely that there is no emergency event";
+      var text = "There is no emergency";
     }
     else {
-      var text = "It is likely that an event with "
-       +  emergencyLevel + " level has happened";
+      var text = <p>A Fission Product Barrier Matrix emergency with classification <b>{emergencyResult.emergencyLevel}</b> has occured. <br/><br/>Barrier status:<br/> {emergencyResult.barrierStatus}</p>;
     }
 
     var isIE = /*@cc_on!@*/false || !!document.documentMode;
@@ -79,6 +134,7 @@ class BarrierMatrixPage extends React.Component {
 
     if(isIE || isEdge)
     {
+      text = "A Fission Product Barrier Matrix emergency with classification " + emergencyResult.emergencyLevel + " has occured." ;
       alert(text);
     }
     else
@@ -90,8 +146,6 @@ class BarrierMatrixPage extends React.Component {
         buttonText: ""
       });
     }
-
-
   }
 
   openDocument(page, pageRange) {
@@ -111,18 +165,12 @@ class BarrierMatrixPage extends React.Component {
     );
   }
 
+  //TODO see if we can set the horizontal scroll of the document. Prolly need to set scroll after it has been rendered.
   scrollDocument(){
-    //var documentDiv = document.getElementById("pdfViewer");
     var documentDiv = document.getElementById("descriptionContentContainer");
-
-    console.log(documentDiv);
-    //var documentDiv = ReactDOM.findDOMNode(this).getElementById("documentDiv");
-    //console.log("scrolling");
     if(documentDiv)
     {
-      console.log(documentDiv.scrollHeight - documentDiv.clientHeight);
       documentDiv.scrollTop = documentDiv.scrollHeight - documentDiv.clientHeight;
-      //this.refs.pdfDocument.forceUpdate();
     }
   }
 
@@ -139,7 +187,6 @@ class BarrierMatrixPage extends React.Component {
             <div>
               <DialogDemo ref="classificationDialog"/>
             </div>
-
         </div>
 
         <div className={`${s.descriptioncontent}`} id="descriptionContentContainer">

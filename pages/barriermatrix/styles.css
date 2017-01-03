@@ -149,6 +149,10 @@ th, tr{
   float:right;
 }
 
+.dialogDiv{
+  width: 30%;
+}
+
 /* Tablet properties */
 @media screen and (max-width: 1400px) {
   .pdfViewer {
