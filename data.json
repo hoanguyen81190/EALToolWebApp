@@ -37,6 +37,7 @@
               "look_up": true,
               "conditions": {
                 "type": "OR",
+				"indent_level" : 1,
                 "description": {
                   "text": "",
                   "ref": ""
@@ -44,6 +45,7 @@
                 "children": [
                   {
                     "type": "Leaf",
+					"indent_level" : 0,
                     "description": {
                       "text": "A HOSTILE ACTION has occurred such that plant personnel are unable to operate equipment required to maintain safety functions listed below:<ul><li>Reactivity Control (ability to shut down the reactor and keep it shutdown)</li> <li>RCS Inventory (ability to cool the core)</li><li>Secondary Heat Removal (ability to maintain heat sink) .[Ref. 5.2.1i]</li></ul>",
                       "ref": "Ref. 5.2.1i"
@@ -52,6 +54,7 @@
                   },
                   {
                     "type": "Leaf",
+					"indent_level" : 0,
                     "description": {
                       "text": "A HOSTILE ACTION has caused failure of spent fuel cooling systems and IMMINENT fuel damage is likely",
                       "ref": ""
@@ -88,6 +91,7 @@
               "look_up": true,
               "conditions": {
                 "type": "Leaf",
+				"indent_level" : 0,
                 "description": {
                   "text": "A HOSTILE ACTION is occurring or has occurred within the PROTECTED AREA as reported by the Security Shift Supervisor. [Ref. 5.2.1i]",
                   "ref": "Ref. 5.2.1i"
@@ -117,10 +121,12 @@
               "look_up": true,
               "conditions": {
                 "type": "AND",
+				"indent_level" : 1,
                 "description": "",
                 "children": [
                   {
                     "type": "Leaf",
+					"indent_level" : 0,
                     "description": {
                       "text": "Control Room evacuation has been initiated.",
                       "ref": ""
@@ -128,6 +134,7 @@
                   },
                   {
                     "type": "Leaf",
+					"indent_level" : 0,
                     "description": {
                       "text": "CONTROL of any one of the following processes is not established within 15 minutes:<ul><li>Reactivity</li><li>RCS inventory</li><li>RCS temperature</li><li>SG heat sink</li></ul>",
                       "ref": ""
@@ -163,10 +170,12 @@
               "look_up": true,
               "conditions": {
                 "type": "OR",
+				"indent_level" : 1,
                 "description": {},
                 "children": [
                   {
                     "type": "Leaf",
+					"indent_level" : 0,
                     "description": {
                       "text": "A HOSTILE ACTION is occurring or has occurred within the OWNER CONTROLLED AREA as reported by the Security Shift Supervisor",
                       "ref": ""
@@ -174,6 +183,7 @@
                   },
                   {
                     "type": "Leaf",
+					"indent_level" : 0,
                     "description": {
                       "text": "A validated notification from the NRC of a LARGE AIRCRAFT attack threat within <strong>30 minutes</strong> of the site.",
                       "ref": " [Ref. 5.2.1i] "
@@ -204,6 +214,7 @@
               "look_up": false,
               "conditions": {
                 "type": "Leaf",
+				"indent_level" : 0,
                 "description": {
                   "text": "Control room evacuation has been initiated.",
                   "ref": ""
@@ -232,10 +243,12 @@
               "look_up": true,
               "conditions": {
                 "type": "OR",
+				"indent_level" : 1,
                 "descriptions": "",
                 "children": [
                   {
                     "type": "Leaf",
+					"indent_level" : 0,
                     "description": {
                       "text": "FIRE or EXPLOSION that affects the OPERABILITY of systems required for the current operating mode OR for safe shutdown.",
                       "ref": ""
@@ -243,6 +256,7 @@
                   },
                   {
                     "type": "Leaf",
+					"indent_level" : 0,
                     "description": {
                       "text": "FIRE or EXPLOSION that causes visible damage to any of the following structures: containments, auxiliary buildings, essential service water system enclosures, auxiliary feedwater pump rooms, refueling water storage tank, or condensate storage tank.",
                       "ref": ""
@@ -273,10 +287,12 @@
               "look_up": true,
               "conditions": {
                 "type": "OR",
+				"indent_level" : 1,
                 "description": "",
                 "children": [
                   {
                     "type": "Leaf",
+					"indent_level" : 0,
                     "description": {
                       "text": "Report or detection of TOXIC gases within a facility structure in concentrations that will be life threatening to plant personnel. ",
                       "ref": ""
@@ -284,6 +300,7 @@
                   },
                   {
                     "type": "Leaf",
+					"indent_level" : 0,
                     "description": {
                       "text": "Report or detection of flammable gases within a facility structure in concentrations that will affect the safe operation of the plant.",
                       "ref": ""
@@ -319,10 +336,12 @@
               "look_up": true,
               "conditions": {
                 "type": "OR",
+				"indent_level" : 1,
                 "description": "",
                 "children": [
                   {
                     "type": "Leaf",
+					"indent_level" : 0,
                     "description": {
                       "text": "A SECURITY CONDITION that does not involve a HOSTILE ACTION as reported by Security Shift Supervision.",
                       "ref": ""
@@ -330,6 +349,7 @@
                   },
                   {
                     "type": "Leaf",
+					"indent_level" : 0,
                     "description": {
                       "text": "A credible site-specific security threat notification.",
                       "ref": ""
@@ -337,6 +357,7 @@
                   },
                   {
                     "type": "Leaf",
+					"indent_level" : 0,
                     "description": {
                       "text": "A validated notification from NRC providing information of an aircraft threat. [Ref: 5.2.1i]",
                       "ref": ""
@@ -367,6 +388,7 @@
               "look_up": false,
               "conditions": {
                 "type": "Leaf",
+				"indent_level" : 0,
                 "description": {
                   "text": "FIRE within the protected area boundary not extinguished within 15 minutes of detection.",
                   "ref": ""
@@ -395,10 +417,12 @@
               "look_up": true,
               "conditions": {
                 "type": "OR",
+				"indent_level" : 1,
                 "description": "",
                 "children": [
                   {
                     "type": "Leaf",
+					"indent_level" : 0,
                     "description": {
                       "text": "Release of TOXIC or flammable gases within or near site boundary that may affect normal operation of the plant.",
                       "ref": ""
@@ -406,6 +430,7 @@
                   },
                   {
                     "type": "Leaf",
+					"indent_level" : 0,
                     "description": {
                       "text": "Report by local, county, or state officials of potential evacuation of site personnel based on offsite event."
                     }
@@ -427,6 +452,7 @@
               "look_up": false,
               "conditions": {
                 "type": "Leaf",
+				"indent_level" : 0,
                 "description": {
                   "text": "Damage to a loaded cask CONFINEMENT BOUNDARY.",
                   "ref": ""
@@ -472,46 +498,53 @@
               },
               "look_up": true,
               "conditions": {
-                "type": "OR",
+                "type": "AND",
+				"indent_level" : 2,
                 "description": "",
                 "children": [
                   {
-                    "type": "Leaf",
-                    "description": {
-                      "text": "Seismic instrument activated ",
-                      "ref": ""
-                    }
-                  },
-                  {
-                    "type": "AND",
+                    "type": "OR",
+					"indent_level" : 1,
                     "description": "",
                     "children": [
                       {
                         "type": "Leaf",
+						"indent_level" : 0,
                         "description": {
-                          "text": "Ground motion detected by Control Room crew ",
+                          "text": "Seismic instrument activated ",
                           "ref": ""
                         }
                       },
                       {
-                        "type": "OR",
-                        "description": "",
-                        "children": [
-                          {
-                            "type": "Leaf",
-                            "description": {
-                              "text": "Visible major damage in vital area",
-                              "ref": ""
-                            }
-                          },
-                          {
-                            "type": "Leaf",
-                            "description": {
-                              "text": "Plant Trip",
-                              "ref": ""
-                            }
-                          }
-                        ]
+                        "type": "Leaf",
+						"indent_level" : 0,
+                        "description": {
+                          "text": "Ground motion detected by Control Room crew ",
+                          "ref": ""
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "type": "OR",
+					"indent_level" : 1,
+                    "description": "",
+                    "children": [
+                      {
+                        "type": "Leaf",
+						"indent_level" : 0,
+                        "description": {
+                          "text": "Visible major damage in vital area",
+                          "ref": ""
+                        }
+                      },
+                      {
+                        "type": "Leaf",
+						"indent_level" : 0,
+                        "description": {
+                          "text": "Plant Trip",
+                          "ref": ""
+                        }
                       }
                     ]
                   }
@@ -540,10 +573,12 @@
               "look_up": false,
               "conditions": {
                 "type": "OR",
+				"indent_level" : 1,
                 "description": "",
                 "children": [
                   {
                     "type": "Leaf",
+					"indent_level" : 0,
                     "description": {
                       "text": "Tornado strike in Vital Area ",
                       "ref": ""
@@ -551,6 +586,7 @@
                   },
                   {
                     "type": "Leaf",
+					"indent_level" : 0,
                     "description": {
                       "text": "SUSTAINED high wind (>15 min.) greater than 90 miles per hour",
                       "ref": ""
@@ -581,6 +617,7 @@
               "look_up": false,
               "conditions": {
                 "type": "Leaf",
+				"indent_level" : 0,
                 "description": {
                   "text": "Visible damage to a structure containing systems required to achieve and maintain Mode 5",
                   "ref": ""
@@ -609,6 +646,7 @@
               "look_up": false,
               "conditions": {
                 "type": "Leaf",
+				"indent_level" : 0,
                 "description": {
                   "text": "Vehicle collision affecting Vital Area.",
                   "ref": ""
@@ -637,6 +675,7 @@
               "look_up": false,
               "conditions": {
                 "type": "Leaf",
+				"indent_level" : 0,
                 "description": {
                   "text": "Main turbine generated missile penetrates Vital Area.",
                   "ref": ""
@@ -665,6 +704,7 @@
               "look_up": false,
               "conditions": {
                 "type": "Leaf",
+				"indent_level" : 0,
                 "description": {
                   "text": "Flooding in Vital Area affects safety related equipment.",
                   "ref": ""
@@ -698,10 +738,12 @@
               "look_up": true,
               "conditions": {
                 "type": "OR",
+				"indent_level" : 1,
                 "description": "",
                 "children": [
                   {
                     "type": "Leaf",
+					"indent_level" : 0,
                     "description": {
                       "text": "Seismic instrument activated",
                       "ref": ""
@@ -709,6 +751,7 @@
                   },
                   {
                     "type": "Leaf",
+					"indent_level" : 0,
                     "description": {
                       "text": "Ground motion detected by Control Room crew.",
                       "ref": ""
@@ -739,6 +782,7 @@
               "look_up": false,
               "conditions": {
                 "type": "Leaf",
+				"indent_level" : 0,
                 "description": {
                   "text": "Report of a tornado strike within the protected area. ",
                   "ref": ""
@@ -767,6 +811,7 @@
               "look_up": false,
               "conditions": {
                 "type": "Leaf",
+				"indent_level" : 0,
                 "description": {
                   "text": "Vehicle collision affecting structures or systems within the protected area.",
                   "ref": ""
@@ -795,6 +840,7 @@
               "look_up": false,
               "conditions": {
                 "type": "Leaf",
+				"indent_level" : 0,
                 "description": {
                   "text": "Main turbine rotating component failure causing visible damage or damage to the generator seals.",
                   "ref": ""
@@ -823,6 +869,7 @@
               "look_up": false,
               "conditions": {
                 "type": "Leaf",
+				"indent_level" : 0,
                 "description": {
                   "text": "Unanticipated EXPLOSION within Protected Area causes visible damage to permanent structures or equipment.",
                   "ref": ""

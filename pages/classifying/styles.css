@@ -80,18 +80,13 @@
  float: left;
 }
 
-.operator{
-  align-self: center;
-  margin-left: 48%;
-}
-
 .treeIndent{
-  margin-left: 1.5vw;
+  margin-left: 1.0em;
 }
 
 .mainTreeIndent{
-  margin-left: 1vw;
-  margin-top: 2vh;
+  margin-left: 2.5em;
+  margin-top: 0.5em;
 }
 
 .criterion:hover {
@@ -108,12 +103,15 @@
     display: inline-block;
 }
 
-
-
 .leftcontent .conditionleaf {
   display: inline-block;
   height: 40px;
 }
+
+
+/* Left tree structure */
+
+/* Main content tree structure */
 
 /* Tablet properties */
 @media screen and (max-width: 1400px) {
@@ -199,65 +197,24 @@
     margin-right: 5%;
   }
 
-  .condition:before{
-      content: " ";
-      position: absolute;
-
-      -webkit-transform: translateY(12px);
-      -moz-transform: translateY(12px);
-      -ms-transform: translateY(12px);
-      transform: translateY(12px);
-      height: inherit;
-      width: 25px;
-      left:-5px;
+  .tree li::before, .tree li::after{
+  	content: '';
   }
 
-  .condition > *:before {
-    content: " ";
-    position: absolute;
-    border-top: 2px solid black;
-    border-left: 2px solid black;
-    -webkit-transform: translateY(12px);
-    -moz-transform: translateY(12px);
-    -ms-transform: translateY(12px);
-    transform: translateY(12px);
-
-    height: inherit;
-    width: 25px;
-    left:-5px;
+  .tree li {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
   }
 
-  .condition > *:first-child:before {
-
+  .tree ul {
+    margin: 0;
+    margin-left: 5%;
+    padding: 0;
   }
 
-  .condition > *:last-child:before {
-    border-left: none;
-  }
-
-  .condition .condition:after {
-
-    border-left: 2px solid black;
-
-  }
-
-  .condition:after {
-      position: absolute;
-      display: inline-block;
-      top: 35%;
-      border-bottom: 2px solid black;
-      width: 25px;
-      padding-left: 5px;
-
-      -webkit-transform: translateY(-50%);
-      -moz-transform: translateY(-50%);
-      -ms-transform: translateY(-50%);
-      transform: translateY(-50%);
-
-      left: -35px;
-      content: attr(operator);
-
-      font-weight: bold;
-      font-size: 11px;
+  /* Highlight the hovered condition and its children */
+  .leafHover:hover, .leafHover:hover+ul .leafHover{
+    /*background: #c8e4f8; color: #000;*/ border: 2px solid #d00;
   }
 }
