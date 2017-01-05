@@ -11,10 +11,7 @@ export default class SimplePDF extends React.Component {
 
     // bind
     this.loadPDF = this.loadPDF.bind(this);
-    this.state = {
-      startPage: 1,
-      endPage: 1
-    }
+
   }
 
   loadPDF() {
@@ -34,8 +31,8 @@ export default class SimplePDF extends React.Component {
   //  node.style.overflowX = "hidden";
   //  node.style.overflowY = "scroll";
     node.style.padding = '0px';
-    var startPage = this.state.startPage;
-    var endPage = this.state.endPage;
+    var startPage = this.props.startPage;
+    var endPage = this.props.endPage;
 
     PDF.getDocument(this.props.file).then(function(pdf) {
 
@@ -83,13 +80,6 @@ export default class SimplePDF extends React.Component {
         <div className={`S-PDF-ID ${s.pdfViewer}`} id="pdfViewer"></div>
       </div>
     );
-  }
-
-  componentWillMount() {
-    this.setState({
-      startPage: this.props.startPage,
-      endPage: this.props.endPage
-    });
   }
 
   componentDidMount() {

@@ -71,10 +71,12 @@ class Condition extends React.Component {
       var element;
       if(this.props.mode === 'classification') {
         element =
-        <div  className={s.treeIndent + ' ' + s.conditionleaf}>
+        <div  className={s.treeIndent + ' ' + s.conditionleaf} operator={this.props.conditionBody.type}>
         {
           this.props.conditionBody.children.map((ele, index) => {
-            return <Condition conditionBody = {ele} index = {index} mode = {this.props.mode} key={index}/>;
+            var child = "child" + index;
+            this.children.push(child);
+            return <Condition conditionBody = {ele} index = {index} mode = {this.props.mode} key={index} ref={child}/>;
           })
         }</div>;
       }
@@ -82,13 +84,15 @@ class Condition extends React.Component {
         element =
         <ul className={s.firstUL}>
         <li className={s.treeIndent }><span className={`mdl-chip mdl-chip--contact mdl-color--green-300 ${s.leafHover}`} >
-          <span className={`mdl-chip__contact mdl-color--teal-200 mdl-color-text--white `}>C</span>
+          <span className={`mdl-chip__contact mdl-color--teal-200 mdl-color-text--white `}>L</span>
           <span className={`mdl-chip__text`}>{this.props.conditionBody.type}</span>
         </span>
            <ul>
              {
                this.props.conditionBody.children.map((ele, index) => {
-                 return <Condition conditionBody = {ele} index = {index} mode = {this.props.mode} key={index}/>;
+                 var child = "child" + index;
+                 this.children.push(child);
+                 return <Condition conditionBody = {ele} index = {index} mode = {this.props.mode} key={index} ref={child}/>;
                })
              }
            </ul>
@@ -125,6 +129,7 @@ class Criterion extends React.Component {
       emergencyLevel : this.props.emergencyLevel,
       criterionObject: criterion
     }
+
     store.dispatch(action);
     //Uncheck the checkboxes when we switch security levels.
     this.uncheckAllCheckboxes();
@@ -132,12 +137,13 @@ class Criterion extends React.Component {
   }
 
   render() {
+    var condition;
     if(typeof(this.props.criterion.conditions) == "undefined" ||
         (Object.keys(this.props.criterion.conditions).length === 0 && this.props.criterion.conditions.constructor === Object)) {
-      var condition = <span/>;
+      condition = <span/>;
     }
     else {
-      var condition = <Condition
+      condition = <Condition
           conditionBody = {this.props.criterion.conditions} index = {0} mode = {this.props.mode}/>;
     }
 
@@ -160,9 +166,7 @@ class Criterion extends React.Component {
             <span className="mdl-chip__contact mdl-color--teal-300 mdl-color-text--white">E</span>
             <span className="mdl-chip__text">{this.props.criterion.name}</span>
           </span>
-
             {condition}
-
         </div>;
     }
 
@@ -189,16 +193,14 @@ class TreeNode extends React.Component {
       <div className={s.treeIndent}>
         <div>
           <span className="mdl-chip mdl-chip--contact mdl-color--green-300">
-            <span className="mdl-chip__contact mdl-color--teal mdl-color-text--white">L</span>
+            <span className="mdl-chip__contact mdl-color--teal mdl-color-text--white">EL</span>
             <span className="mdl-chip__text">{this.props.emergencyLevel}</span>
           </span>
         </div>
 
-        <Condition className={s.condition}
-          conditionBody = {this.props.criterion.conditions}
-          index = {0}
-          mode = {this.props.mode}
-          ref = "conditionTree"/>
+
+        <Criterion {...this.props}/>
+
       </div>;
     }
     else {
@@ -265,11 +267,10 @@ class ClassifyingPage extends React.Component {
 
     var text;
     if(this.refs.classificationCriterion.getValue()) {
-      console.log(this.refs.classificationCriterion);
-     text = <p>A <b>{store.getState().recognitionCategory}</b> emergency event with emergency level <b>{store.getState().emergencyLevel}</b> has occured.</p>
+      text = <p>A <b>{store.getState().recognitionCategory}</b> emergency event with emergency level <b>{store.getState().emergencyLevel}</b> has occured.</p>;
     }
     else {
-     text = "There is no emergency event";
+      text = "There is no emergency event";
     }
 
     if(isIE || isEdge)
@@ -281,7 +282,7 @@ class ClassifyingPage extends React.Component {
       this.refs.classificationDialog.setState({
         openDialog: true,
         content: text,
-        title: "",
+        title: "Classification Result",
         buttonText: ""
       });
     }
@@ -321,7 +322,8 @@ class ClassifyingPage extends React.Component {
                 <spdf.SimplePDF className={s.SimplePDF}
                   file='./classification_procedures.pdf'
                   startPage={store.getState().criterionObject.description.ref.page}
-                  endPage={store.getState().criterionObject.description.ref.page + store.getState().criterionObject.description.ref.range - 1}/>
+                  endPage={store.getState().criterionObject.description.ref.page + store.getState().criterionObject.description.ref.range - 1}
+                />
               </div>
       </Layout>
     );
