@@ -253,9 +253,7 @@
     /*background: #c8e4f8; color: #000;*/ border: 2px solid #d00;
   }
 
-  .contentTree li::before, .tree li::after{
-    content: '';
-  }
+
 
   .contentTree li {
     list-style-type: none;
@@ -281,5 +279,16 @@
 
   .conditionContent{
     padding-left: 5%;
+  }
+
+  .contentTree >* li::before{
+    content: '';
+    position: absolute;
+    top: 0em;
+    left: 0em;
+    width: 4em;
+    height: .2em;
+    background: dodgerblue;
+    z-index: 3;
   }
 }
