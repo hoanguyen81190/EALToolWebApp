@@ -3,13 +3,18 @@
 }
 
 .home_button{
-  background-color: LightGray;
+  background-color: lightgray;
 }
 
 .submit_button{
-  background-color: LightGray;
+  background-color: lightgray;
   margin-top: 5px;
   margin-left: 2%;
+}
+
+.submit_button:hover{
+  border: 1px solid gray;
+  background-color: lightgrey;
 }
 
 @media screen and (max-width: 1024px) {

@@ -142,8 +142,8 @@ class BarrierMatrixPage extends React.Component {
       this.refs.classificationDialog.setState({
         openDialog: true,
         content: text,
-        title: "",
-        buttonText: ""
+        title: "Classification Result",
+        buttonText: "OK"
       });
     }
   }
