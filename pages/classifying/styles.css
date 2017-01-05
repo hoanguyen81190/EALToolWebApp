@@ -126,6 +126,11 @@
  padding: 0;
 }
 
+.ealText{
+  font-size: 14px;
+  font-weight: 600;
+}
+
 /* Dialog Style - START */
 .dialogDiv{
   width: 25%;

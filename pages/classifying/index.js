@@ -62,7 +62,7 @@ class Condition extends React.Component {
         //<li><a href="#">Condition {(this.props.index + 1)}</a></li>;
         //<div className={s.treeIndent + ' ' + s.conditionleaf}>
           <li className={s.treeIndent }><span className={`mdl-chip mdl-chip--contact mdl-color--green-300 ${s.leafHover}`} >
-            <span className={`mdl-chip__contact mdl-color--cyan-900 mdl-color-text--white `}>C</span>
+            <span className={`mdl-chip__contact mdl-color--cyan-900 mdl-color-text--white ${s.ealText}`}>C</span>
             <span className={`mdl-chip__text `}>Condition {(this.props.index + 1)}</span>
           </span></li>;
         //</li>;
@@ -94,7 +94,7 @@ class Condition extends React.Component {
                                  </ul>
 
                                 <span className={`mdl-chip mdl-chip--contact mdl-color--green-300`} >
-                                 <span className={`mdl-chip__contact mdl-color--deep-purple-500 mdl-color-text--white `}>L</span>
+                                 <span className={`mdl-chip__contact mdl-color--deep-purple-500 mdl-color-text--white ${s.ealText}`}>L</span>
                                  <span className={`mdl-chip__text`}>{this.props.conditionBody.type}</span>
                                </span>
                              </li>;
@@ -117,7 +117,7 @@ class Condition extends React.Component {
         element =
         <ul className={s.firstUL}>
         <li className={s.treeIndent }><span className={`mdl-chip mdl-chip--contact mdl-color--green-300 ${s.leafHover}`} >
-          <span className={`mdl-chip__contact mdl-color--deep-purple-500 mdl-color-text--white `}>L</span>
+          <span className={`mdl-chip__contact mdl-color--deep-purple-500 mdl-color-text--white ${s.ealText}`}>L</span>
           <span className={`mdl-chip__text`}>{this.props.conditionBody.type}</span>
         </span>
            <ul>
@@ -203,7 +203,7 @@ class Criterion extends React.Component {
         element =
           <div className={s.treeIndent + ' ' + s.criterion} onClick={() => this.handleClick(this.props.criterion)}>
             <span className="mdl-chip mdl-chip--contact mdl-color--red-400">
-              <span className="mdl-chip__contact mdl-color--green-900 mdl-color-text--white">E</span>
+              <span className={`mdl-chip__contact mdl-color--green-900 mdl-color-text--white ${s.ealText}`}>E</span>
               <span className="mdl-chip__text">{this.props.criterion.name}</span>
             </span>
             {condition}
@@ -213,7 +213,7 @@ class Criterion extends React.Component {
         element =
           <div className={s.treeIndent} >
             <span className="mdl-chip mdl-chip--contact mdl-color--red-400">
-              <span className="mdl-chip__contact mdl-color--green-900 mdl-color-text--white">E</span>
+              <span className={`mdl-chip__contact mdl-color--green-900 mdl-color-text--white ${s.ealText}`}>E</span>
               <span className="mdl-chip__text">{this.props.criterion.name}</span>
             </span>
             {condition}
@@ -224,7 +224,7 @@ class Criterion extends React.Component {
       element =
         <div className={s.treeIndent + ' ' + s.criterion} onClick={() => this.handleClick(this.props.criterion)}>
           <span className="mdl-chip mdl-chip--contact mdl-color--green-300">
-            <span className="mdl-chip__contact mdl-color--green-900 mdl-color-text--white">E</span>
+            <span className={`mdl-chip__contact mdl-color--green-900 mdl-color-text--white ${s.ealText}`}>E</span>
             <span className="mdl-chip__text">{this.props.criterion.name}</span>
           </span>
             {condition}
@@ -254,7 +254,7 @@ class TreeNode extends React.Component {
       <div className={s.treeIndent}>
         <div>
           <span className="mdl-chip mdl-chip--contact mdl-color--green-300">
-            <span className="mdl-chip__contact mdl-color--orange-900 mdl-color-text--white">EL</span>
+            <span className={`mdl-chip__contact mdl-color--orange-900 mdl-color-text--white ${s.ealText}`}>EAL</span>
             <span className="mdl-chip__text">{this.props.emergencyLevel}</span>
           </span>
         </div>
@@ -265,7 +265,7 @@ class TreeNode extends React.Component {
       element =
       <div className={s.treeIndent}>
           <span className="mdl-chip mdl-chip--contact mdl-color--green-300">
-            <span className="mdl-chip__contact mdl-color--orange-900 mdl-color-text--white">EL</span>
+            <span className={`mdl-chip__contact mdl-color--orange-900 mdl-color-text--white ${s.ealText}`}>EAL</span>
             <span className="mdl-chip__text">{this.props.emergencyLevel}</span>
           </span>
         <Criterion {...this.props} ref="criterionResult"/>
