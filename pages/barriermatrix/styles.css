@@ -49,11 +49,11 @@ body, html{
 .maincontent {
   background-color: #eee;
   width: 50%;
-  height: 95%;
+  height: 100%;
   position: absolute;
   padding: 0;
-  margin-top:50px;
-  padding-left: 2px;
+  padding-top: 0px;
+  padding-left: 0px;
   overflow-y: scroll;
 
   box-sizing: border-box;
@@ -71,8 +71,8 @@ body, html{
 .descriptioncontent {
   margin-left: 50%;
   width: 50%;
-  height: 95%;
-  margin-top:50px;
+  height: 100%;
+
   position: absolute;
   padding: 0;
   overflow-y:auto;
@@ -96,9 +96,14 @@ th, tr{
 
   padding: 0;
   margin: 0;
+  margin-top: 50px;
   margin-bottom: 20px;
 
   background-color: black;
+}
+
+.barrierTable:last-of-type{
+  margin-bottom: 0px;
 }
 
 .barrierTableHeader > * {
