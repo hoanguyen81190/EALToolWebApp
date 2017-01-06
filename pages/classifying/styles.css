@@ -231,10 +231,13 @@
 
 /* Desktop properties */
 @media screen and (min-width: 1401px) {
-  .maincontent .conditionleaf {
-    display: block;
-    height: 150px;
-    margin-right: 5%;
+  .mainContent .treeIndent{
+    margin-left: 0em;
+  }
+
+  .mainContent .mainTreeIndent{
+    margin-left: 0em;
+    margin-top: 0em;
   }
 
   .overviewTree li::before, .tree li::after{
@@ -255,10 +258,13 @@
 
   /* Highlight the hovered condition and its children */
   .leafHover:hover, .leafHover:hover+ul .leafHover{
-    /*background: #c8e4f8; color: #000;*/ border: 2px solid #d00;
+    border: 2px solid #d00;
   }
 
-
+  .contentTree{
+    height: 100%;
+    width: 100%;
+  }
 
   .contentTree li {
     list-style-type: none;
@@ -266,15 +272,22 @@
     padding: 0;
   }
 
-  .contentTree ul {
+  .contentTree ul{
     margin: 0;
     margin-left: 7%;
     padding: 0;
   }
 
+  .mainContentTreeContainer{
+    height: 100%;
+    width: 100%;
+    display: block;
+    overflow-y: auto;
+  }
+
   .contentTree .firstUL {
     margin: 0;
-    margin-left: 2%;
+    left: 0;
     padding: 0;
   }
 
@@ -286,14 +299,15 @@
     padding-left: 5%;
   }
 
-  .contentTree >* li::before{
-    content: '';
-    position: absolute;
-    top: 0em;
-    left: 0em;
-    width: 4em;
-    height: .2em;
-    background: dodgerblue;
-    z-index: 3;
+  .conditionCard{
+    margin-left: 10%;
+    border-radius: 10px;
+    display: inline-block;
+  }
+
+  .conditionCardText li{
+    list-style-type: square;
+    margin: auto;
+    padding: auto;
   }
 }

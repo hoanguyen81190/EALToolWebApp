@@ -12,12 +12,47 @@ import {eALDocument} from '../../database-loader';
 import spdf from "./PDFViewer";
 import DialogDemo from './dialog';
 
+import documentIcon from '../../resources/Document-50.png';
+
+class TreeChip extends React.Component{
+  render(){
+    return <span className={`mdl-chip mdl-chip--contact ${this.props.color}`} >
+      <span className={`mdl-chip__contact mdl-color--cyan-900 mdl-color-text--white ${s.ealText}`}>C</span>
+      <span className={`mdl-chip__text `}>{this.props.content}</span>
+    </span>;
+  }
+}
+
+class TreeCard extends React.Component{
+  render(){
+    var treeCard =
+    <div className={`mdl-card ${s.conditionCard}`} onClick={this.props.callback}>
+      <div className={`mdl-card__title ${this.props.color}`}>
+        <span className={`mdl-chip mdl-chip--contact ${this.props.color} ${s.conditionCardTitle}`} >
+          <span className={`mdl-chip__contact mdl-color--cyan-900 mdl-color-text--white ${s.ealText}`}>C</span>
+          <span className={`mdl-chip__text `}>{this.props.content}</span>
+        </span>
+      </div>
+      <div className={`mdl-card__supporting-text ${s.conditionCardText}`}>
+        {this.props.description}
+      </div>
+   </div>;
+
+    return treeCard;
+  }
+}
+
 class Condition extends React.Component {
   constructor() {
     super();
     this.type = null;
     this.value = false;
     this.children = [];
+  }
+
+  handleConditionClicked(event){
+    this.value = !this.value;
+    this.forceUpdate();
   }
 
   handleChangeChk(event) {
@@ -39,7 +74,6 @@ class Condition extends React.Component {
       case 'XOR':
         return children.reduce((a, b) => a ^ b);
       default:
-        console.log("default");
         return false;
     }
   }
@@ -49,24 +83,34 @@ class Condition extends React.Component {
     if(this.props.conditionBody.type === "Leaf") {
       var element;
       if(this.props.mode === 'classification') { /* Main Content Panel */
+        var conditionColor;
+        if(this.value){ /* If the condition is true it is drawn as green */
+          conditionColor = "mdl-color--green-300";
+        }
+        else{ /* If the condition is false it is drawn as red */
+          conditionColor = "mdl-color--red-400";
+        }
+        var treeCardContent = <span  dangerouslySetInnerHTML={{__html: this.props.conditionBody.description.text}}/>;
+        var conditionAppearance = <TreeCard color={conditionColor} content={`Condition ${(this.props.index + 1)}`} callback={this.handleConditionClicked.bind(this)} description={treeCardContent}/>;
+
         element =
-        //<div  className={s.treeIndent + ' ' + s.conditionleaf}>
         <li className={s.treeIndent}>
-           <input type="checkbox" defaultChecked={false} onChange={this.handleChangeChk.bind(this)} />
-           <span  dangerouslySetInnerHTML={{__html: this.props.conditionBody.description.text}}/>
-         </li>
-         //</div>;
+           {conditionAppearance}
+         </li>;
       }
       else{ /* Overview Panel */
+        var conditionColor;
+        if(this.value){
+          conditionColor = "mdl-color--green-300";
+        }
+        else{
+          conditionColor = "mdl-color--red-400";
+        }
+
+        var conditionAppearance = <TreeChip color={conditionColor} content={`Condition ${(this.props.index + 1)}`} />
+
         element =
-        //<li><a href="#">Condition {(this.props.index + 1)}</a></li>;
-        //<div className={s.treeIndent + ' ' + s.conditionleaf}>
-          <li className={s.treeIndent }><span className={`mdl-chip mdl-chip--contact mdl-color--green-300 ${s.leafHover}`} >
-            <span className={`mdl-chip__contact mdl-color--cyan-900 mdl-color-text--white ${s.ealText}`}>C</span>
-            <span className={`mdl-chip__text `}>Condition {(this.props.index + 1)}</span>
-          </span></li>;
-        //</li>;
-        //</div>
+          <li className={s.treeIndent }>{conditionAppearance}</li>;
       }
 
       return element;
@@ -85,27 +129,27 @@ class Condition extends React.Component {
 
                  var element;
 
-
                  if(index != this.props.conditionBody.children.length-1) /* Condition + Operator */
                  {
-                   element =  <li className={s.test}>
-                                 <ul>
-                                   <Condition conditionBody = {ele} index = {index} mode = {this.props.mode} key={index} ref={child}/>
-                                 </ul>
+                   element =
+                   <li className={s.test}>
+                       <ul>
+                         <Condition conditionBody = {ele} index = {index} mode = {this.props.mode} key={index} ref={child}/>
+                       </ul>
 
-                                <span className={`mdl-chip mdl-chip--contact mdl-color--green-300`} >
-                                 <span className={`mdl-chip__contact mdl-color--deep-purple-500 mdl-color-text--white ${s.ealText}`}>L</span>
-                                 <span className={`mdl-chip__text`}>{this.props.conditionBody.type}</span>
-                               </span>
-                             </li>;
+                      <span className={`mdl-chip mdl-chip--contact mdl-color--green-300`} >
+                       <span className={`mdl-chip__contact mdl-color--deep-purple-500 mdl-color-text--white ${s.ealText}`}>L</span>
+                       <span className={`mdl-chip__text`}>{this.props.conditionBody.type}</span>
+                     </span>
+                   </li>;
                  }
                  else{ /* For the last element we only add the condition */
-                   element = <li className={s.test}>
-                                 <ul><Condition conditionBody = {ele} index = {index} mode = {this.props.mode} key={index} ref={child}/>
-                               </ul>
-                             </li>;
+                   element =
+                   <li className={s.test}>
+                       <ul><Condition conditionBody = {ele} index = {index} mode = {this.props.mode} key={index} ref={child}/>
+                     </ul>
+                   </li>;
                  }
-
                  return element;
                })
              }
@@ -151,15 +195,6 @@ class Criterion extends React.Component {
   /**
   * Unchecks the checkboxes on the current page
   */
-  uncheckAllCheckboxes(){
-    var w = document.getElementsByTagName('input');
-    for(var i = 0; i < w.length; i++){
-      if(w[i].type==='checkbox'){
-        w[i].checked = false;
-      }
-    }
-  }
-
   handleClick(criterion) {
     var action = {
       type : 'SET_STATE',
@@ -171,7 +206,6 @@ class Criterion extends React.Component {
 
     store.dispatch(action);
     //Uncheck the checkboxes when we switch security levels.
-    this.uncheckAllCheckboxes();
     this.props.callback.forceUpdate();
   }
 
@@ -218,6 +252,11 @@ class Criterion extends React.Component {
             </span>
             {condition}
           </div>;
+
+          /*element =
+            <div className={s.treeIndent} >
+              {condition}
+            </div>;*/
       }
     }
     else{ /* Overview Panel - Not selected */
@@ -263,13 +302,18 @@ class TreeNode extends React.Component {
     }
     else {  /* Main Content Panel */
       element =
-      <div className={s.treeIndent}>
+      <div className={s.treeIndent + " " + s.mainContentTreeContainer}>
           <span className="mdl-chip mdl-chip--contact mdl-color--green-300">
             <span className={`mdl-chip__contact mdl-color--orange-900 mdl-color-text--white ${s.ealText}`}>EAL</span>
             <span className="mdl-chip__text">{this.props.emergencyLevel}</span>
           </span>
         <Criterion {...this.props} ref="criterionResult"/>
-    </div>;
+      </div>;
+
+      /*element =
+      <div className={s.treeIndent + " " + s.mainContentTreeContainer}>
+        <Criterion {...this.props} ref="criterionResult"/>
+      </div>;*/
     }
 
     return element;
@@ -368,7 +412,6 @@ class ClassifyingPage extends React.Component {
                 <TreeNode
                   emergencyLevel = {store.getState().emergencyLevel}
                   criterion={store.getState().criterionObject}
-
                   mode='classification' ref="classificationCriterion"/>
               </div>
               <div>
