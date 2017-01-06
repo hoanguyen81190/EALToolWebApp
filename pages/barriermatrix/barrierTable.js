@@ -108,7 +108,7 @@ class BarrierTable extends React.Component {
           <tr className={s.barrierTableRow}>
             <td className={s.barrierTableCell} onClick={() => this.props.documentCallback(product.description.ref.page, product.description.ref.range)}>
               {(productIndex+1) + '. ' + product.name + ' '}
-              <img className={s.documentIcon} src={documentIcon} alt="."/>
+              <img className={s.documentIcon} src={documentIcon} alt="Document icon"/>
             </td>
             <td className={s.barrierTableCell}>{this.getCondition(product.loss, 'loss', productIndex)}</td>
             <td className={s.barrierTableCell}>{this.getCondition(product.potential_loss, 'potential_loss', productIndex)}</td>

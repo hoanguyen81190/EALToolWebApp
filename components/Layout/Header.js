@@ -6,6 +6,8 @@ import s from './Header.css';
 import store from '../../core/store';
 import history from '../../core/history';
 
+import ifeLogo from '../../resources/logo-en.png';
+
 class NavigationBar extends React.Component {
   constructor() {
     super();
@@ -16,10 +18,10 @@ class NavigationBar extends React.Component {
   }
 
   render() {
-    var home = (<div className={s.progress} onClick={() => this.handleClick('/')}>
+    var home = <div className={s.progress} onClick={() => this.handleClick('/')}>
                  <div className={s.navigationText}>STEP 1 <br/>
                    Choose Mode & Recognition Category</div>
-                </div>);
+                </div>;
     var overview = <div className={s.progress} onClick={() => this.handleClick('/overview')}>
                 <div className={s.navigationText}>STEP 2 <br/>
                   Choose Event</div>
@@ -33,34 +35,44 @@ class NavigationBar extends React.Component {
                 Barrier Matrix Classification</div>
               </div>;
 
-    switch (history.getCurrentLocation().pathname) {
-      case '/':
-        return (<div className={s.wrap}>
-                        {home}
-                      </div>);
-        break;
-      case '/overview':
-        return (<div className={s.wrap}>
-                        {home}
-                        {overview}
-                      </div>);
-        break;
-      case '/classifying':
-        return (<div className={s.wrap}>
-                        {home}
-                        {overview}
-                        {classifying}
-                      </div>);
-        break;
-      case '/barriermatrix':
-        return (<div className={s.wrap}>
-                        {home}
-                        {barriermatrix}
-                      </div>);
-        break;
-      default:
 
+
+    var headerContent = null;
+    var ifeLogoRight = <div className={s.ifeLogoContainer}>
+      <img className={s.ifeLogo} src={ifeLogo} alt="IFE logo"/>
+    </div>;
+
+    switch (history.getCurrentLocation().pathname){
+        case '/':
+          headerContent=  <div className={s.wrap}>
+                              {home}
+                              {ifeLogoRight}
+                          </div>
+          break;
+        case '/overview':
+          headerContent= <div className={s.wrap}>
+                           {home}
+                           {overview}
+                           {ifeLogoRight}
+                         </div>;
+          break;
+        case '/classifying':
+          headerContent=<div className={s.wrap}>
+                          {home}
+                          {overview}
+                          {classifying}
+                          {ifeLogoRight}
+                        </div>;
+          break;
+        case '/barriermatrix':
+          headerContent=<div className={s.wrap}>
+                          {home}
+                          {barriermatrix}
+                          {ifeLogoRight}
+                        </div>;
+          break;
     }
+    return headerContent;
   }
 }
 
