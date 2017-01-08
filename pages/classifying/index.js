@@ -17,7 +17,7 @@ import documentIcon from '../../resources/Document-50.png';
 class TreeChip extends React.Component{
   render(){
     return <span className={`mdl-chip mdl-chip--contact ${this.props.color}`} >
-      <span className={`mdl-chip__contact mdl-color--cyan-900 mdl-color-text--white ${s.ealText}`}>C</span>
+      <span className={`mdl-chip__contact mdl-color--cyan-900 mdl-color-text--white ${s.ealText}`}>{this.props.chipText}</span>
       <span className={`mdl-chip__text `}>{this.props.content}</span>
     </span>;
   }
@@ -29,7 +29,7 @@ class TreeCard extends React.Component{
     <div className={`mdl-card ${s.conditionCard}`} onClick={this.props.callback}>
       <div className={`mdl-card__title ${this.props.color}`}>
         <span className={`mdl-chip mdl-chip--contact ${this.props.color} ${s.conditionCardTitle}`} >
-          <span className={`mdl-chip__contact mdl-color--cyan-900 mdl-color-text--white ${s.ealText}`}>C</span>
+          <span className={`mdl-chip__contact mdl-color--cyan-900 mdl-color-text--white ${s.ealText}`}>{this.props.chipText}</span>
           <span className={`mdl-chip__text `}>{this.props.content}</span>
         </span>
       </div>
@@ -59,10 +59,36 @@ class Condition extends React.Component {
     this.value = event.target.checked;
   }
 
-  getValue() {
+  getValueAfterChange(event){
     if (this.type === 'Leaf') {
       return this.value;
     }
+
+    var children = [];
+    event.children.map((item) =>
+    {
+      console.log(item);
+      children.push(getValueAfterChange(item));
+    });
+
+    switch (this.type) {
+      case 'OR':
+        return children.reduce((a, b) => a || b);
+      case 'AND':
+        return children.reduce((a, b) => a && b);
+      case 'XOR':
+        return children.reduce((a, b) => a ^ b);
+      default:
+        return false;
+    }
+  }
+
+  getValue() {
+
+    if (this.type === 'Leaf') {
+      return this.value;
+    }
+
     var children = [];
     this.children.map((item) => {children.push(this.refs[item].getValue())});
 
@@ -91,7 +117,8 @@ class Condition extends React.Component {
           conditionColor = "mdl-color--red-400";
         }
         var treeCardContent = <span  dangerouslySetInnerHTML={{__html: this.props.conditionBody.description.text}}/>;
-        var conditionAppearance = <TreeCard color={conditionColor} content={`Condition ${(this.props.index + 1)}`} callback={this.handleConditionClicked.bind(this)} description={treeCardContent}/>;
+
+        var conditionAppearance = <TreeCard color={conditionColor} content={`Condition ${(this.props.index + 1)}`} callback={this.handleConditionClicked.bind(this)} description={treeCardContent} chipText="C"/>;
 
         element =
         <li className={s.treeIndent}>
@@ -107,7 +134,7 @@ class Condition extends React.Component {
           conditionColor = "mdl-color--red-400";
         }
 
-        var conditionAppearance = <TreeChip color={conditionColor} content={`Condition ${(this.props.index + 1)}`} />
+        var conditionAppearance = <TreeChip color={conditionColor} content={`Condition ${(this.props.index + 1)}`} chipText="C" />
 
         element =
           <li className={s.treeIndent }>{conditionAppearance}</li>;
@@ -123,6 +150,7 @@ class Condition extends React.Component {
         <li className={s.treeIndent }>
            <ul>
              {
+
                this.props.conditionBody.children.map((ele, index) => {
                  var child = "child" + index;
                  this.children.push(child);
@@ -131,6 +159,7 @@ class Condition extends React.Component {
 
                  if(index != this.props.conditionBody.children.length-1) /* Condition + Operator */
                  {
+
                    element =
                    <li className={s.test}>
                        <ul>
@@ -141,6 +170,7 @@ class Condition extends React.Component {
                        <span className={`mdl-chip__contact mdl-color--deep-purple-500 mdl-color-text--white ${s.ealText}`}>L</span>
                        <span className={`mdl-chip__text`}>{this.props.conditionBody.type}</span>
                      </span>
+
                    </li>;
                  }
                  else{ /* For the last element we only add the condition */
@@ -152,6 +182,8 @@ class Condition extends React.Component {
                  }
                  return element;
                })
+
+
              }
            </ul>
          </li>
