@@ -1,24 +1,4 @@
-.maincontent {
-    margin-left: 15%;
-    background-color: #eee;
-    width: 40%;
-    height: 100%;
-    position: absolute;
-    padding: 0;
-    padding-top: 5px;
-
-    box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-
-    border-right: 1px solid #eee;
-    box-shadow:
-      0 0px 0px #fff, /*bottom external highlight*/
-      0 0px 1px #ccc, /*top external shadow*/
-      inset 0px 0px 1px rgba(0,0,0,0.5), /*bottom internal shadow*/
-      inset 0 0px 1px rgba(255,255,255,0.8); /*top internal highlight*/
-}
-
+/* Left Content */
 .leftcontent{
   overflow-x: hidden;
   overflow-y: auto;
@@ -42,6 +22,104 @@
     inset 0 1px 1px rgba(255,255,255,0.8); /*top internal highlight*/
 }
 
+/* Used to create a visual seperation between the TreeNodes in the overview panel */
+.hr {
+    display: block;
+    margin-before: 0.5em;
+    margin-after: 0.5em;
+    margin-start: auto;
+    margin-end: auto;
+    border-style: inset;
+    border-width: 1px;
+}
+
+.leftcontent .treeIndent{
+  margin-left: 2%;
+}
+
+/* Overview tree */
+.leftTree .moveLogicOperator {
+  position: absolute;
+  margin-top: -11.5%;
+  /*margin: -11.5% 0 0 -30%;*/
+  /*left: 40%;*/
+}
+
+.leftTree .mainConditionTree{
+  margin-left: -25%;
+}
+
+.leftTree .leafNode{
+  margin-left: 20%;
+}
+
+.leftTree .singleConditionIndent{
+  margin-left: 0%;
+}
+
+.leftTree .firstUL {
+  margin: 0;
+  margin-left: 8%;
+  padding: 0;
+}
+
+.leftTree .logicNode .logicNode{
+  margin-left: -10%;
+}
+
+.overviewTree li::before, .tree li::after{
+  content: '';
+}
+
+.overviewTree li {
+  list-style-type: none;
+}
+
+/* Overview tree - end */
+
+/* Left Content - End */
+
+/* Main Content*/
+.maincontent {
+    margin-left: 15%;
+    background-color: #eee;
+    width: 40%;
+    height: 100%;
+    position: absolute;
+    padding: 0;
+    padding-top: 5px;
+
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+
+    border-right: 1px solid #eee;
+    box-shadow:
+      0 0px 0px #fff, /*bottom external highlight*/
+      0 0px 1px #ccc, /*top external shadow*/
+      inset 0px 0px 1px rgba(0,0,0,0.5), /*bottom internal shadow*/
+      inset 0 0px 1px rgba(255,255,255,0.8); /*top internal highlight*/
+}
+
+/* Classification tree */
+.contentTree .treeIndent{
+  margin-left: 1%;
+}
+
+.contentTree .moveLogicOperator {
+  position: absolute;
+  margin: -18% 0 0 -40%;
+  left: 50%;
+}
+
+.contentTree .singleConditionIndent{
+  margin-left: 1%;
+}
+
+/* Classification tree - end */
+
+/* Main Content - End */
+
 /* Footer Button Style - START */
 .submit_button {
   background-color: lightgray;
@@ -56,17 +134,9 @@
 /* Footer Button Style - END */
 
 
-.hr {
-    display: block;
-    margin-before: 0.5em;
-    margin-after: 0.5em;
-    margin-start: auto;
-    margin-end: auto;
-    border-style: inset;
-    border-width: 1px;
-}
 
-/* Document side css (Right side) */
+
+/* Document side */
 .descriptioncontent {
     margin-left: 55%;
     width: 45%;
@@ -83,61 +153,32 @@
   height: 100%;
   position: inherit;
 }
+/* Document side - End */
 
 /* Tree structures */
-.treeIndent{
-  margin-left: 1.0em;
-}
 
-.mainTreeIndent{
-  margin-left: 2.5em;
-  margin-top: 0.5em;
-}
-
-.criterion:hover {
-  cursor: pointer;
+.mainConditionTree{
+  margin-top: 2%;
 }
 
 .treeIndent .condition > .conditionoperator {
   font-weight: bold;
 }
 
-
-/* Classification tree */
-.moveLogicOperator {
-  position: absolute;
-  margin: -18% 0 0 -40%;
-  left: 50%;
-}
-
-/* Classification tree - end */
-
-.condition {
-    position: relative;
-    height: 100%;
-    display: inline-block;
-}
-
-.leftcontent .conditionleaf {
-  display: inline-block;
-  height: 40px;
-}
-
-.contentOperator{
-  left: -100px;
-}
-
-.mainConditionTree{
-  margin-top: 2%;
-}
-
-.singleConditionIndent{
-  margin-left: 1.0em;
+.overviewTreeNodeContainer{
+  cursor:pointer;
 }
 
 .ealText{
   font-size: 14px;
   font-weight: 600;
+}
+
+/* Tree structures - End */
+
+/* Used to prevent the cursor from changing to the text hover version */
+.noTextCursorChange{
+  cursor: context-menu;
 }
 
 /* Dialog Style - START */
@@ -162,6 +203,63 @@
 
 
 
+/* Highlight the hovered condition and its children */
+.leafHover:hover, .leafHover:hover+ul .leafHover{
+  border: 2px solid #d00;
+}
+
+.contentTree{
+  position:absolute;
+  height: 100%;
+  width: 100%;
+}
+
+.contentTree li {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.contentTree ul{
+  margin: 0;
+  margin-left: 7%;
+  padding: 0;
+}
+
+.mainContentTreeContainer{
+  height: 100%;
+  width: 100%;
+  display: block;
+  overflow-y: auto;
+}
+
+.contentTree .firstUL {
+  margin: 0;
+  left: 0;
+  padding: 0;
+}
+
+.conditionContent{
+  padding-left: 5%;
+}
+
+.conditionCard{
+  margin-left: 10%;
+  border-radius: 10px;
+  display: inline-block;
+  cursor:pointer;
+}
+
+.conditionCardText{
+  color: black;
+}
+
+.conditionCardText li{
+  list-style-type: square;
+  margin: auto;
+  padding: auto;
+}
+
 /* Tablet properties */
 @media screen and (max-width: 1400px) {
   .pdfViewer {
@@ -176,153 +274,24 @@
     margin-left:7%;
   }
 
-  .condition:before{
-      content: " ";
-      position: absolute;
-
-      -webkit-transform: translateY(12px);
-      -moz-transform: translateY(12px);
-      -ms-transform: translateY(12px);
-      transform: translateY(12px);
-      height: inherit;
-      width: 25px;
-      left:-5px;
+  .leftTree .firstUL {
+    margin: 0;
+    margin-left: 4%;
+    padding: 0;
   }
 
-  .condition > *:before {
-    content: " ";
-    position: absolute;
-    border-top: 2px solid black;
-    border-left: 2px solid black;
-    -webkit-transform: translateY(12px);
-    -moz-transform: translateY(12px);
-    -ms-transform: translateY(12px);
-    transform: translateY(12px);
-
-    height: inherit;
-    width: 25px;
-    left:-5px;
+  .leftTree .logicNode .logicNode{
+    margin-left: -40%;
   }
 
-  .condition > *:first-child:before {
-
-  }
-
-  .condition > *:last-child:before {
-    border-left: none;
-  }
-
-  .condition .condition:after {
-
-    border-left: 2px solid black;
-
-  }
-
-  .condition:after {
-      position: absolute;
-      display: inline-block;
-      top: 35%;
-      border-bottom: 2px solid black;
-      width: 18px;
-
-      -webkit-transform: translateY(-50%);
-      -moz-transform: translateY(-50%);
-      -ms-transform: translateY(-50%);
-      transform: translateY(-50%);
-
-      left: -23px;
-      content: attr(operator);
-
-      font-weight: bold;
-      font-size: 11px;
+  .leftTree .leafNode{
+    margin-left: 5%;
   }
 }
 
 /* Desktop properties */
 @media screen and (min-width: 1401px) {
-  .mainContent .treeIndent{
-    margin-left: 0em;
-  }
-
-  .mainContent .mainTreeIndent{
-    margin-left: 0em;
-    margin-top: 0em;
-  }
-
-  .overviewTree li::before, .tree li::after{
-  	content: '';
-  }
-
-  .overviewTree li {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-  }
-
-  .overviewTree ul {
-    margin: 0;
-    margin-left: 5%;
-    padding: 0;
-  }
-
-  /* Highlight the hovered condition and its children */
-  .leafHover:hover, .leafHover:hover+ul .leafHover{
-    border: 2px solid #d00;
-  }
-
-  .contentTree{
-    position:absolute;
-    height: 100%;
-    width: 100%;
-  }
-
-  .contentTree li {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-  }
-
-  .contentTree ul{
-    margin: 0;
-    margin-left: 7%;
-    padding: 0;
-  }
-
-  .mainContentTreeContainer{
-    height: 100%;
-    width: 100%;
-    display: block;
-    overflow-y: auto;
-  }
-
-  .contentTree .firstUL {
-    margin: 0;
-    left: 0;
-    padding: 0;
-  }
-
-  .contentTree ul:last-child{
-
-  }
-
-  .conditionContent{
-    padding-left: 5%;
-  }
-
-  .conditionCard{
-    margin-left: 10%;
-    border-radius: 10px;
-    display: inline-block;
-    cursor:pointer;
-  }
-
-  .conditionCardText{
-    color: black;
-  }
-
-  .conditionCardText li{
-    list-style-type: square;
-    margin: auto;
-    padding: auto;
+  .leftTree .logicNode .logicNode{
+    margin-left: -20%;
   }
 }
