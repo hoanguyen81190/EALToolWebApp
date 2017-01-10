@@ -112,7 +112,6 @@ class Condition extends React.Component {
           break;
       }
     }
-
     this.forceUpdate();
   }
 
@@ -150,7 +149,8 @@ class Condition extends React.Component {
       }
     }
     else{ /* Otherwise we use a pre-determined color */
-        conditionColor = "mdl-color--green-300";
+        //conditionColor = "mdl-color--green-300";
+        conditionColor = "mdl-color--indigo-100";
     }
 
     var element;
@@ -186,8 +186,9 @@ class Condition extends React.Component {
       }
     }
     else{ /* Otherwise we use a pre-determined color */
-        logicConditionColor = "mdl-color--green-300";
+        //logicConditionColor = "mdl-color--green-300";
         //logicConditionColor = "mdl-color--red-400";
+        logicConditionColor = "mdl-color--indigo-100";
     }
 
     var noTextChange = "";
@@ -299,6 +300,8 @@ class Criterion extends React.Component {
     var condition;
     var mainConditionIndentClass = "";
     var textCursorClass = "";
+    var isCriterionTrue = false;
+
     if(typeof(this.props.criterion.conditions) == "undefined" ||
         (Object.keys(this.props.criterion.conditions).length === 0 && this.props.criterion.conditions.constructor === Object)) {
       condition = <span/>;
@@ -308,6 +311,9 @@ class Criterion extends React.Component {
         if(this.props.criterion === store.getState().selectedCriterionState){
           condition = <Condition
               conditionBody = {store.getState().selectedCriterionState.conditions} index={0} mode={this.props.mode} ref="conditionTree" activeCondition={true}/>;
+          if(this.props.checkCriterionStateCallback(this.props.criterion.conditions)){
+            isCriterionTrue = true;
+          }
         }
         else{
           condition = <Condition
@@ -325,6 +331,10 @@ class Criterion extends React.Component {
                       updateTreeCallback = {this.props.updateTreeCallback}
                       activeCondition={true}
                     />;
+
+        if(this.props.checkCriterionStateCallback(this.props.criterion.conditions)){
+          isCriterionTrue = true;
+        }
       }
     }
 
@@ -335,10 +345,16 @@ class Criterion extends React.Component {
 
     var mdlColor = "";
     if (this.props.criterion.description.text === store.getState().criterionObject.description.text){
-      mdlColor = "mdl-color--red-400";
+      if(isCriterionTrue){
+        mdlColor = "mdl-color--green-300";
+      }
+      else{
+        mdlColor = "mdl-color--red-400";
+      }
     }
     else{
-      mdlColor = "mdl-color--green-300";
+      //mdlColor = "mdl-color--green-300";
+      mdlColor = "mdl-color--indigo-100";
     }
 
     var element =
@@ -394,11 +410,22 @@ class TreeNode extends React.Component {
   render() {
     var element;
 
+    var overviewColor;
+
+    var currentTreeNodeColor = "mdl-color--amber-600";
+
     if(this.props.mode === 'overview') { /* Overview Panel */
+      if(this.props.criterion === store.getState().criterionObject){
+        overviewColor = currentTreeNodeColor;
+      }
+      else{
+        overviewColor = "mdl-color--green-300";
+      }
+
       element =
       <div className={s.treeIndent + " " + s.overviewTreeNodeContainer} onClick={() => this.handleClick(this.props.criterion)}>
         <div>
-          <span className="mdl-chip mdl-chip--contact mdl-color--green-300">
+          <span className={`mdl-chip mdl-chip--contact ${overviewColor}`}>
             <span className={`mdl-chip__contact mdl-color--orange-900 mdl-color-text--white ${s.ealText}`}>EAL</span>
             <span className="mdl-chip__text">{this.props.emergencyLevel}</span>
           </span>
@@ -409,14 +436,13 @@ class TreeNode extends React.Component {
     else {  /* Main Content Panel */
       element =
       <div className={s.treeIndent + " " + s.mainContentTreeContainer}>
-          <span className="mdl-chip mdl-chip--contact mdl-color--green-300">
+          <span className={`mdl-chip mdl-chip--contact ${currentTreeNodeColor}`}>
             <span className={`mdl-chip__contact mdl-color--orange-900 mdl-color-text--white ${s.noTextCursorChange} ${s.ealText}`}>EAL</span>
             <span className={`mdl-chip__text ${s.noTextCursorChange}`}>{this.props.emergencyLevel}</span>
           </span>
           <Criterion {...this.props} criterion={store.getState().selectedCriterionState} ref="criterionResult" updateTreeCallback={this.props.updateTreeCallback}/>
       </div>;
     }
-
     return element;
   }
 }
@@ -494,7 +520,9 @@ class ClassifyingPage extends React.Component {
             criterion={emer_cat.criterions[i]}
             callback={this}
             mode={_mode}
-            ref={"treeNode" + index + "" + i}/>;
+            ref={"treeNode" + index + "" + i}
+            checkCriterionStateCallback={this.updateLogicConditions.bind(this)}
+            />;
           hasCriterion = true;
           leftTree.push(treeNode);
           break;
@@ -633,7 +661,8 @@ class ClassifyingPage extends React.Component {
                 emergencyLevel = {store.getState().emergencyLevel}
                 criterion = {store.getState().criterionObject}
                 mode='classification' ref="classificationCriterion"
-                updateTreeCallback={this.updateTreeState.bind(this)}/>
+                updateTreeCallback={this.updateTreeState.bind(this)}
+                checkCriterionStateCallback={this.updateLogicConditions.bind(this)}/>
             </div>
             <div>
               <DialogDemo ref="classificationDialog"/>
