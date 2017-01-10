@@ -21,25 +21,25 @@
 
 .leftcontent{
   overflow-x: hidden;
-   overflow-y: auto;
-    width: 15%;
-    height: 100%;
-    background-color: #eee;
-    position: absolute;
-    padding:0;
-    margin:0;
-    padding-top: 5px;
+  overflow-y: auto;
+  width: 15%;
+  height: 100%;
+  background-color: #eee;
+  position: absolute;
+  padding:0;
+  margin:0;
+  padding-top: 5px;
 
-    box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
 
-    border-right: 1px solid #fff;
-    box-shadow:
-      0 0px 2px #fff, /*bottom external highlight*/
-      0 0px 1px #666, /*top external shadow*/
-      inset 0 -1px 1px rgba(0,0,0,0.5), /*bottom internal shadow*/
-      inset 0 1px 1px rgba(255,255,255,0.8); /*top internal highlight*/
+  border-right: 1px solid #fff;
+  box-shadow:
+    0 0px 2px #fff, /*bottom external highlight*/
+    0 0px 1px #666, /*top external shadow*/
+    inset 0 -1px 1px rgba(0,0,0,0.5), /*bottom internal shadow*/
+    inset 0 1px 1px rgba(255,255,255,0.8); /*top internal highlight*/
 }
 
 /* Footer Button Style - START */
@@ -85,10 +85,6 @@
 }
 
 /* Tree structures */
-.checkbox {
- float: left;
-}
-
 .treeIndent{
   margin-left: 1.0em;
 }
@@ -106,6 +102,16 @@
   font-weight: bold;
 }
 
+
+/* Classification tree */
+.moveLogicOperator {
+  position: absolute;
+  margin: -18% 0 0 -40%;
+  left: 50%;
+}
+
+/* Classification tree - end */
+
 .condition {
     position: relative;
     height: 100%;
@@ -121,9 +127,12 @@
   left: -100px;
 }
 
-.test{
- margin: 0;
- padding: 0;
+.mainConditionTree{
+  margin-top: 2%;
+}
+
+.singleConditionIndent{
+  margin-left: 1.0em;
 }
 
 .ealText{
@@ -262,6 +271,7 @@
   }
 
   .contentTree{
+    position:absolute;
     height: 100%;
     width: 100%;
   }
@@ -303,6 +313,11 @@
     margin-left: 10%;
     border-radius: 10px;
     display: inline-block;
+    cursor:pointer;
+  }
+
+  .conditionCardText{
+    color: black;
   }
 
   .conditionCardText li{
