@@ -6,10 +6,10 @@
   background-color: lightgray;
 }
 
-.submit_button{
+.submit_button {
   background-color: lightgray;
-  margin-top: 5px;
-  margin-left: 2%;
+  margin-left: 1%;
+  transform: translateY(25%);
 }
 
 .submit_button:hover{

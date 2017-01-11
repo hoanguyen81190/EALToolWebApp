@@ -73,6 +73,19 @@ class BarrierTable extends React.Component {
   constructor(props) {
     super(props);
     this.children = [];
+    this.activeBarrierCellProductIndex = null;
+  }
+
+  clearActiveBarrierCell(){
+    this.activeBarrierCellProductIndex = null;
+    this.forceUpdate();
+  }
+
+  setActiveBarrierCell(productIndex, page, range){
+    this.props.clearBarrierHighights();
+    this.activeBarrierCellProductIndex = productIndex;
+    this.props.documentCallback(page, range);
+    this.forceUpdate();
   }
 
   getValue() {
@@ -104,9 +117,17 @@ class BarrierTable extends React.Component {
   }
 
   getRow(product, productIndex) {
+
+    var activeClassName = "";
+
+    if(productIndex === this.activeBarrierCellProductIndex){
+      activeClassName = s.activeBarrierTableCell;
+    }
+
     var row =
           <tr className={s.barrierTableRow}>
-            <td className={s.barrierTableCell} onClick={() => this.props.documentCallback(product.description.ref.page, product.description.ref.range)}>
+            <td className={s.barrierTableCell + " " + activeClassName} onClick={
+               () => this.setActiveBarrierCell(productIndex, product.description.ref.page, product.description.ref.range)}>
               {(productIndex+1) + '. ' + product.name + ' '}
               <img className={s.documentIcon} src={documentIcon} alt="Document icon"/>
             </td>

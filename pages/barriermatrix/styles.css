@@ -80,6 +80,17 @@ body, html{
   z-index: 0;
 }
 
+.SimplePDF {
+  width: 100%;
+  height: 100%;
+  position: inherit;
+}
+
+.pdfViewer {
+  width: 100%;
+  height: 100%;
+}
+
 /*Barrier Table*/
 th, tr{
   padding: 0;
@@ -130,14 +141,26 @@ th, tr{
   margin: 0;
 }
 
+.activeBarrierTableCell{
+  box-shadow: inset 2px -2px 2px rgba(0,0,0,0.5), /*bottom internal shadow*/
+  inset -2px 2px 2px rgba(255,255,255,1); /*top internal highlight*/
+
+    /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top, rgba(225,225,225,0.5) 0%,rgba(150,150,150,0.5) 100%);
+  /* Opera 11.10+ */
+  background: -ms-linear-gradient(top, rgba(225,225,225,0.5) 0%,rgba(150,150,150,0.5) 100%);
+  /* IE10+ */
+  background: linear-gradient(to bottom, rgba(225,225,225,0.5) 0%,rgba(150,150,150,0.5) 100%);
+}
+
 .barrierTableHeaderFirstCol {
   width: 20%;
 }
 
 .submitButton {
-  margin-top: 5px;
-  margin-left: 2%;
   background-color: lightgray;
+  margin-left: 1%;
+  transform: translateY(25%);
 }
 
 .submitButton:hover {

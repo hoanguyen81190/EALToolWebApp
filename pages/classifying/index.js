@@ -211,19 +211,21 @@ class Condition extends React.Component {
 
              var logicIndex = 0;
              var moveLogicOperator = "";
+             var moveLogicCondition = "";
              if(this.props.conditionBody.children.length % 2 === 0){
                logicIndex = (this.props.conditionBody.children.length / 2) -1;
              }
              else{
                logicIndex = Math.floor(this.props.conditionBody.children.length / 2);
                moveLogicOperator = s.moveLogicOperator;
+               moveLogicCondition = s.moveLogicCondition;
              }
 
              if(index === logicIndex) /* Condition + Operator */
              {
                element =
                <li>
-                   <ul>
+                   <ul className={moveLogicCondition}>
                      <Condition conditionBody = {ele} index = {index} mode = {this.props.mode} key={index} ref={child} updateTreeCallback={updateTreeCallback} activeCondition={this.props.activeCondition}/>
                    </ul>
                    <span className={`mdl-chip mdl-chip--contact ${logicConditionColor} ${moveLogicOperator}`} >

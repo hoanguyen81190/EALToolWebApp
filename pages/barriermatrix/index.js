@@ -174,15 +174,22 @@ class BarrierMatrixPage extends React.Component {
     }
   }
 
+  clearBarrierHighlights(){
+    console.log(this.refs);
+    this.refs.fuel.clearActiveBarrierCell();
+    this.refs.RCS.clearActiveBarrierCell();
+    this.refs.containment.clearActiveBarrierCell();
+  }
+
   render() {
     return (
       <Layout className={s.content} footerLeftContent={this.getFooterContent()}>
         <div className= {s.recognitionCategoryText}> Fission Product Barrier Matrix - Mode {this.state.mode}</div>
           <div className={s.maincontent}>
             <div className={s.tableWrapper}>
-            <BarrierTable barrier={eALDocument.data.fission_product_barriers[0]} ref="fuel" documentCallback={(startPage, pageRange) => this.openDocument(startPage, pageRange)}/>
-            <BarrierTable barrier={eALDocument.data.fission_product_barriers[1]} ref="RCS" documentCallback={(startPage, pageRange) => this.openDocument(startPage, pageRange)}/>
-            <BarrierTable barrier={eALDocument.data.fission_product_barriers[2]} ref="containment" documentCallback={(startPage, pageRange)=> this.openDocument(startPage, pageRange)}/>
+            <BarrierTable barrier={eALDocument.data.fission_product_barriers[0]} ref="fuel"        clearBarrierHighights={this.clearBarrierHighlights.bind(this)} documentCallback={(startPage, pageRange) => this.openDocument(startPage, pageRange)}/>
+            <BarrierTable barrier={eALDocument.data.fission_product_barriers[1]} ref="RCS"         clearBarrierHighights={this.clearBarrierHighlights.bind(this)} documentCallback={(startPage, pageRange) => this.openDocument(startPage, pageRange)}/>
+            <BarrierTable barrier={eALDocument.data.fission_product_barriers[2]} ref="containment" clearBarrierHighights={this.clearBarrierHighlights.bind(this)} documentCallback={(startPage, pageRange) => this.openDocument(startPage, pageRange)}/>
             </div>
             <div>
               <DialogDemo ref="classificationDialog"/>

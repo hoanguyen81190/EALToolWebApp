@@ -43,6 +43,10 @@
   margin-top: -11.5%;
 }
 
+.overviewTreeNodeContainer{
+  cursor:pointer;
+}
+
 .leftTree .mainConditionTree{
   margin-left: -25%;
 }
@@ -59,6 +63,8 @@
   margin: 0;
   margin-left: 8%;
   padding: 0;
+  margin-top: 5%;
+  margin-bottom: 5%;
 }
 
 .leftTree .logicNode .logicNode{
@@ -105,13 +111,52 @@
 }
 
 .contentTree .moveLogicOperator {
-  position: absolute;
-  margin: -18% 0 0 -40%;
-  left: 50%;
+  position: relative;
+  /*margin: -18% 0 0 -40%;*/
+  top: -105px;
+}
+
+.contentTree .moveLogicCondition{
+  position:relative;
+  top: 20px;
 }
 
 .contentTree .singleConditionIndent{
   margin-left: 1%;
+}
+
+.contentTree{
+  position:relative;
+  height: 100%;
+  width: 100%;
+}
+
+.contentTree li {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+
+}
+
+.contentTree ul{
+  margin: 0;
+  margin-left: 7%;
+  padding: 0;
+}
+
+.mainContentTreeContainer{
+  height: 100%;
+  width: 100%;
+  display: block;
+  overflow-y: auto;
+}
+
+.contentTree .firstUL {
+  margin: 0;
+  left: 0;
+  padding: 0;
+  margin-top: 5%;
+  margin-bottom: 5%;
 }
 
 /* Classification tree - end */
@@ -121,8 +166,8 @@
 /* Footer Button Style - START */
 .submit_button {
   background-color: lightgray;
-  margin-top: 5px;
-  margin-left: 2%;
+  margin-left: 1%;
+  transform: translateY(25%);
 }
 
 .submit_button:hover {
@@ -130,9 +175,6 @@
   background-color: lightgrey;
 }
 /* Footer Button Style - END */
-
-
-
 
 /* Document side */
 .descriptioncontent {
@@ -163,9 +205,7 @@
   font-weight: bold;
 }
 
-.overviewTreeNodeContainer{
-  cursor:pointer;
-}
+
 
 .ealText{
   font-size: 14px;
@@ -201,42 +241,6 @@
 
 
 
-/* Highlight the hovered condition and its children */
-.leafHover:hover, .leafHover:hover+ul .leafHover{
-  border: 2px solid #d00;
-}
-
-.contentTree{
-  position:absolute;
-  height: 100%;
-  width: 100%;
-}
-
-.contentTree li {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-}
-
-.contentTree ul{
-  margin: 0;
-  margin-left: 7%;
-  padding: 0;
-}
-
-.mainContentTreeContainer{
-  height: 100%;
-  width: 100%;
-  display: block;
-  overflow-y: auto;
-}
-
-.contentTree .firstUL {
-  margin: 0;
-  left: 0;
-  padding: 0;
-}
-
 .conditionContent{
   padding-left: 5%;
 }
@@ -264,26 +268,42 @@
     width: 125%;
   }
 
-  .maincontent .conditionleaf {
-    display: block;
-    height: 220px;
-    width: 300px;
-    margin-right: 2%;
-    margin-left:7%;
+  .contentTree .moveLogicOperator {
+    left: 0px;
+  }
+
+  .contentTree .firstUL{
+    margin-left: -5%;
+    padding-left: 0;
+  }
+
+  .leftTree{
+    overflow-x: auto;
   }
 
   .leftTree .firstUL {
     margin: 0;
-    margin-left: 4%;
+    margin-left: 0%;
     padding: 0;
   }
 
   .leftTree .logicNode .logicNode{
-    margin-left: -40%;
+    margin-left: -50%;
   }
 
   .leftTree .leafNode{
-    margin-left: 5%;
+    margin-left: 12%;
+  }
+
+  .leftTree .moveLogicOperator {
+    left: 0px;
+    margin-top: -17%;
+  }
+
+  .leftTree .firstUL {
+    margin-top: 10%;
+    margin-bottom: 10%;
+    margin-left: 0;
   }
 }
 
