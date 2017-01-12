@@ -26,6 +26,10 @@ export default class SimplePDF extends React.Component {
     node.innerHTML = "";
 
     // set styles
+  //  node.style.width = "200%";
+  //  node.style.height = "25%";
+  //  node.style.overflowX = "hidden";
+  //  node.style.overflowY = "scroll";
     node.style.padding = '0px';
     var startPage = this.props.startPage;
     var endPage = this.props.endPage;

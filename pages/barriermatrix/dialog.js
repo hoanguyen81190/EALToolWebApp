@@ -28,7 +28,7 @@ class DialogDemo extends React.Component {
       <Dialog open={this.state.openDialog} className={s.dialogDiv}>
         <DialogTitle>{this.state.title}</DialogTitle>
         <DialogContent>
-          <p>{this.state.content}</p>
+          {this.state.content}
         </DialogContent>
         <DialogActions>
           <Button className={s.dialogButton} type='button' onClick={this.handleCloseDialog}>{this.state.buttonText}</Button>

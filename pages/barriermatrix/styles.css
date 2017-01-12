@@ -195,6 +195,63 @@ th, tr{
   background-color: lightgrey;
 }
 
+/* New Barrier Table Properties*/
+.wrapperConditionCard{
+  width: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+.wrapperCardContent{
+  padding: 0;
+  margin: 0;
+  width: 100%;
+}
+
+.firstConditionsCard{
+  width: 100%;
+  border-bottom: 2px solid black;
+}
+
+.conditionCard{
+  width: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+.conditionCardText{
+  color: black;
+}
+
+.conditionsWrapper{
+  width: 100%;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  border: 2px solid black;
+}
+
+.logicConditionWrapper{
+  width: 100%;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  border-top: 2px solid black;
+  border-bottom: 2px solid black;
+}
+
+.logicTreeChip{
+  width: 50%;
+  padding: 0;
+  margin-left: 40%;
+}
+
+.conditionTreeChip{
+
+}
+
+/* New Barrier Table Properties - END */
+
 /* Tablet properties */
 @media screen and (max-width: 1400px) {
   .pdfViewer {

@@ -24,13 +24,8 @@
 
 /* Used to create a visual seperation between the TreeNodes in the overview panel */
 .hr {
-    display: block;
-    margin-before: 0.5em;
-    margin-after: 0.5em;
-    margin-start: auto;
-    margin-end: auto;
     border-style: inset;
-    border-width: 1px;
+    border-width: 2px;
 }
 
 .leftcontent .treeIndent{

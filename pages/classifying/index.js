@@ -14,33 +14,7 @@ import DialogDemo from './dialog';
 
 import documentIcon from '../../resources/Document-50.png';
 
-class TreeChip extends React.Component{
-  render(){
-    return <span className={`mdl-chip mdl-chip--contact ${this.props.color}`} >
-      <span className={`mdl-chip__contact mdl-color--cyan-900 mdl-color-text--white ${s.ealText}`}>{this.props.chipText}</span>
-      <span className={`mdl-chip__text `}>{this.props.content}</span>
-    </span>;
-  }
-}
-
-class TreeCard extends React.Component{
-  render(){
-    var treeCard =
-    <div className={`mdl-card ${s.conditionCard}`} onClick={this.props.callback}>
-      <div className={`mdl-card__title ${this.props.color}`}>
-        <span className={`mdl-chip mdl-chip--contact ${this.props.color} ${s.conditionCardTitle}`} >
-          <span className={`mdl-chip__contact mdl-color--cyan-900 mdl-color-text--white ${s.ealText}`}>{this.props.chipText}</span>
-          <span className={`mdl-chip__text `}>{this.props.content}</span>
-        </span>
-      </div>
-      <div className={`mdl-card__supporting-text ${s.conditionCardText}`}>
-        {this.props.description}
-      </div>
-   </div>;
-
-    return treeCard;
-  }
-}
+import {TreeChip, TreeCard} from '../../components/MDL/CustomMDLComponents';
 
 class Condition extends React.Component {
   constructor() {
@@ -55,11 +29,6 @@ class Condition extends React.Component {
     this.value = !this.value;
     this.props.conditionBody.value = !this.props.conditionBody.value;
     this.props.updateTreeCallback(this.props.conditionBody.conditionID, this.value);
-  }
-
-  handleChangeChk(event) {
-    this.value = event.target.checked;
-
   }
 
   /**
@@ -142,21 +111,24 @@ class Condition extends React.Component {
     /* If this condition is part of the currently selected criterion we use the state of the condition to determine the color */
     if(this.props.activeCondition){
       if(this.props.conditionBody.value){
-        conditionColor = "mdl-color--green-300";
+        conditionColor = "mdl-color--red-400";
       }
       else{
-        conditionColor = "mdl-color--red-400";
+        conditionColor = "mdl-color--green-300";
       }
     }
     else{ /* Otherwise we use a pre-determined color */
-        //conditionColor = "mdl-color--green-300";
         conditionColor = "mdl-color--indigo-100";
     }
 
     var element;
       if(this.props.mode === 'classification') { /* Main Content Panel */
         var treeCardContent = <span  dangerouslySetInnerHTML={{__html: this.props.conditionBody.description.text}}/>;
-        var conditionAppearance = <TreeCard color={conditionColor} content={`Condition ${(this.props.index + 1)}`} callback={this.handleConditionClicked.bind(this)} description={treeCardContent} chipText="C"/>;
+        var conditionAppearance =
+          <TreeCard color={conditionColor} content={`Condition ${(this.props.index + 1)}`}
+            callback={this.handleConditionClicked.bind(this)} cardContent={treeCardContent} chipText="C"
+            chipStyling={s.conditionCardTitle} chipTextStyling={s.ealText} treeCardStyling={s.conditionCard}
+            cardContentStyling={s.conditionCardText} chipColor="mdl-color--cyan-900"/>;
 
         element =
         <li className={s.treeIndent + " " + s.leafNode}>
@@ -164,7 +136,9 @@ class Condition extends React.Component {
         </li>;
       }
       else{ /* Overview Panel */
-        var conditionAppearance = <TreeChip color={conditionColor} content={`Condition ${(this.props.index + 1)}`} chipText="C" />
+        var conditionAppearance = <TreeChip color={conditionColor} chipContent={`Condition ${(this.props.index + 1)}`}
+          chipText="C" chipTextStyling={s.ealText} chipColor="mdl-color--cyan-900"/>
+
         element =
         <li className={s.treeIndent + " " + s.leafNode}>
           {conditionAppearance}
@@ -179,15 +153,13 @@ class Condition extends React.Component {
     /* If this condition is part of the currently selected criterion we use the state of the condition to determine the color */
     if(this.props.activeCondition){
       if(this.props.conditionBody.value){
-        logicConditionColor = "mdl-color--green-300";
+        logicConditionColor = "mdl-color--red-400";
       }
       else{
-        logicConditionColor = "mdl-color--red-400";
+        logicConditionColor = "mdl-color--green-300";
       }
     }
     else{ /* Otherwise we use a pre-determined color */
-        //logicConditionColor = "mdl-color--green-300";
-        //logicConditionColor = "mdl-color--red-400";
         logicConditionColor = "mdl-color--indigo-100";
     }
 
@@ -228,10 +200,9 @@ class Condition extends React.Component {
                    <ul className={moveLogicCondition}>
                      <Condition conditionBody = {ele} index = {index} mode = {this.props.mode} key={index} ref={child} updateTreeCallback={updateTreeCallback} activeCondition={this.props.activeCondition}/>
                    </ul>
-                   <span className={`mdl-chip mdl-chip--contact ${logicConditionColor} ${moveLogicOperator}`} >
-                     <span className={`mdl-chip__contact mdl-color--deep-purple-500 mdl-color-text--white ${noTextChange} ${s.ealText}`}>L</span>
-                     <span className={`mdl-chip__text ${noTextChange}`}>{this.props.conditionBody.type}</span>
-                   </span>
+                   <TreeChip color={logicConditionColor} chipContent={this.props.conditionBody.type}
+                     chipStyling={moveLogicOperator} chipText="L" chipTextStyling={noTextChange + " " + s.ealText}
+                     chipColor="mdl-color--deep-purple-500" chipContentStyling={noTextChange}/>
                </li>;
              }
              else{ /* For the rest of the elements we only add the condition */
@@ -283,21 +254,6 @@ class Criterion extends React.Component {
     }
   }
 
-  //TODO decide if it is enough to click on the EAL or if we want the entire tree to be clickable
-  /*handleClick(criterion) {
-    var action = {
-      type : 'SET_STATE',
-      mode : store.getState().mode,
-      recognitionCategory : store.getState().recognitionCategory,
-      emergencyLevel : this.props.emergencyLevel,
-      criterionObject: criterion
-    }
-
-    store.dispatch(action);
-    this.props.callback.updateCriterionState(criterion);
-    this.props.callback.forceUpdate();
-  }*/
-
   render() {
     var condition;
     var mainConditionIndentClass = "";
@@ -348,23 +304,20 @@ class Criterion extends React.Component {
     var mdlColor = "";
     if (this.props.criterion.description.text === store.getState().criterionObject.description.text){
       if(isCriterionTrue){
-        mdlColor = "mdl-color--green-300";
-      }
-      else{
         mdlColor = "mdl-color--red-400";
       }
+      else{
+        mdlColor = "mdl-color--green-300";
+      }
     }
-    else{
-      //mdlColor = "mdl-color--green-300";
+    else{ //Inactive
       mdlColor = "mdl-color--indigo-100";
     }
 
     var element =
       <div className={s.treeIndent }>
-        <span className={`mdl-chip mdl-chip--contact ${mdlColor}`}>
-          <span className={`mdl-chip__contact mdl-color--green-900 mdl-color-text--white ${textCursorClass} ${s.ealText}`}>E</span>
-          <span className={`mdl-chip__text ${textCursorClass}`}>{this.props.criterion.name}</span>
-        </span>
+        <TreeChip color={mdlColor} chipColor="mdl-color--green-900" chipTextStyling={textCursorClass + " " + s.ealText}
+          chipText="E" chipContentStyling={textCursorClass} chipContent={this.props.criterion.name}/>
         <div className={s.mainConditionTree + " " + mainConditionIndentClass}>
           {condition}
         </div>
@@ -427,10 +380,8 @@ class TreeNode extends React.Component {
       element =
       <div className={s.treeIndent + " " + s.overviewTreeNodeContainer} onClick={() => this.handleClick(this.props.criterion)}>
         <div>
-          <span className={`mdl-chip mdl-chip--contact ${overviewColor}`}>
-            <span className={`mdl-chip__contact mdl-color--orange-900 mdl-color-text--white ${s.ealText}`}>EAL</span>
-            <span className="mdl-chip__text">{this.props.emergencyLevel}</span>
-          </span>
+          <TreeChip color={overviewColor} chipText="EAL" chipColor="mdl-color--orange-900"
+            chipTextStyling={s.ealText} chipContent={this.props.emergencyLevel}/>
         </div>
         <Criterion {...this.props} />
       </div>;
@@ -438,10 +389,9 @@ class TreeNode extends React.Component {
     else {  /* Main Content Panel */
       element =
       <div className={s.treeIndent + " " + s.mainContentTreeContainer}>
-          <span className={`mdl-chip mdl-chip--contact ${currentTreeNodeColor}`}>
-            <span className={`mdl-chip__contact mdl-color--orange-900 mdl-color-text--white ${s.noTextCursorChange} ${s.ealText}`}>EAL</span>
-            <span className={`mdl-chip__text ${s.noTextCursorChange}`}>{this.props.emergencyLevel}</span>
-          </span>
+          <TreeChip color={currentTreeNodeColor} chipText="EAL" chipColor="mdl-color--orange-900"
+            chipTextStyling={s.noTextCursorChange + " " + s.ealText} chipContent={this.props.emergencyLevel}
+            chipContentStyling={s.noTextCursorChange}/>
           <Criterion {...this.props} criterion={store.getState().selectedCriterionState} ref="criterionResult" updateTreeCallback={this.props.updateTreeCallback}/>
       </div>;
     }
