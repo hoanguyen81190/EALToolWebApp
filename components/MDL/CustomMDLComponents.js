@@ -8,6 +8,7 @@ import React, { PropTypes } from 'react';
 *     color: the mdl color to use for the small circle E.G. "mdl-color--green-300"
 *     chipText: the content to display inside the small circle
 *     chipContent: the content to display next to the small circle.
+*     noCircle: if true then no circle will be rendered.
 *   Optional props:
 *     chipStyling: the css classname for the TreeChip container
 *     chipTextStyling: the css classname for the chip text
@@ -22,8 +23,16 @@ export class TreeChip extends React.Component{
     };
 
   render(){
+    var circle;
+    if(this.props.noCircle){
+      circle = "";
+    }
+    else{
+      circle = <span className={`mdl-chip__contact ${this.props.chipColor} mdl-color-text--white ${this.props.chipTextStyling}`}>{this.props.chipText}</span>;
+    }
+
     return <span className={`mdl-chip mdl-chip--contact ${this.props.color} ${this.props.chipStyling}`} >
-      <span className={`mdl-chip__contact ${this.props.chipColor} mdl-color-text--white ${this.props.chipTextStyling}`}>{this.props.chipText}</span>
+      {circle}
       <span className={`mdl-chip__text ${this.props.chipContentStyling}`}>{this.props.chipContent}</span>
     </span>;
   }
@@ -57,7 +66,7 @@ export class TreeCard extends React.Component{
     var chip = "";
     if(!this.props.noChip){
       chip = <div className={`mdl-card__title ${this.props.color}`}><TreeChip color={this.props.color} chipText={this.props.chipText} chipContent={this.props.chipContent}
-        chipStyling={this.props.chipStyling} chipTextStyling={this.props.chipTextStyling} chipContentStyling={this.props.chipContentStyling}
+        chipStyling={this.props.chipStyling} chipTextStyling={this.props.chipTextStyling} chipContentStyling={this.props.chipContentStyling} noCircle={this.props.noCircle}
         chipColor={this.props.chipColor}/></div>;
     }
 

@@ -6,10 +6,23 @@ import history from '../../core/history';
 import {TreeChip, TreeCard} from '../../components/MDL/CustomMDLComponents';
 
 import documentIcon from '../../resources/Document-50.png';
+import greenCheck from '../../resources/green_check.png';
+import redCheck from '../../resources/red_check.png';
 
 const React = require('react');
 
+/* Used to generate unique ids for react elements in lists */
+let uniqueID = 0;
+function generateID(){
+  uniqueID++;
+  return uniqueID;
+}
+
 class ConditionNew extends React.Component {
+  componentWillMount(){
+    this.id = generateID();
+  }
+
   constructor() {
     super();
     this.type = null;
@@ -62,7 +75,6 @@ class ConditionNew extends React.Component {
   }
 
   getValue() {
-
     if (this.type === 'Leaf') {
       return this.value;
     }
@@ -84,21 +96,23 @@ class ConditionNew extends React.Component {
 
   renderLeafNode(){
     var conditionColor;
-
+    var checkImage;
     if(this.value){
       conditionColor = "mdl-color--red-400";
+      checkImage = redCheck;
     }
     else{
       conditionColor = "mdl-color--green-300";
+      checkImage = greenCheck;
     }
 
-    var treeCardContent = <span  dangerouslySetInnerHTML={{__html: this.props.conditionBody.description.text}}/>;
+    var treeCardContent = <div><span  dangerouslySetInnerHTML={{__html: this.props.conditionBody.description.text}}/><img className={s.checkImage} src={checkImage} alt="Check icon"/></div>;
 
     var element =
         <TreeCard color={conditionColor}
           callback={this.handleConditionClicked.bind(this)} cardContent={treeCardContent}
-          treeCardStyling={s.conditionCard} cardContentStyling={s.conditionCardText}
-          noChip={true}
+          treeCardStyling={s.conditionCard + " " + s.clickable} cardContentStyling={s.conditionCardText}
+          noChip={true} key={this.id}
         />;
 
     return element;
@@ -106,19 +120,14 @@ class ConditionNew extends React.Component {
 
   renderLogicNode(){
     var logicConditionColor;
-    if(this.value){
+    /*if(this.value){
      logicConditionColor = "mdl-color--red-400";
     }
     else{
       logicConditionColor = "mdl-color--green-300";
-    }
+    }*/
 
-    var noTextChange = "";
-    var updateTreeCallback = "";
-    if(this.props.mode === 'classification'){
-      updateTreeCallback = this.props.updateTreeCallback;
-      noTextChange = s.noTextCursorChange;
-    }
+    logicConditionColor = "mdl-color--indigo-50";
 
     this.children = [];
     var element =
@@ -136,23 +145,23 @@ class ConditionNew extends React.Component {
                  noChip = true;
                }
                element =
-                  <div>
-                   <ConditionNew conditionBody={ele} index = {index} mode = {this.props.mode} key={index}
-                    ref={child} updateTreeCallback={updateTreeCallback} activeCondition={this.props.activeCondition}
+                  <div key={"node" + this.id + "" + index}>
+                   <ConditionNew conditionBody={ele} index = {index} mode = {this.props.mode}
+                    ref={child} activeCondition={this.props.activeCondition}
                     parent={this} noChip={noChip}/>
                    <div className={s.logicConditionWrapper + " " + logicConditionColor}>
                     <TreeChip color={logicConditionColor} chipContent={this.props.conditionBody.type}
-                     chipStyling={s.logicTreeChip} chipText="L" chipTextStyling={noTextChange + " " + s.ealText}
-                     chipColor="mdl-color--deep-purple-500" chipContentStyling={noTextChange}
+                     chipStyling={s.logicTreeChip} chipText="L" chipTextStyling={s.noTextCursorChange + " " + s.ealText}
+                     chipColor="mdl-color--deep-purple-500" chipContentStyling={s.noTextCursorChange}
                      />
                    </div>
                  </div>;
              }
              else{ /* For the rest of the elements we only add the condition */
                element =
-                   <ConditionNew conditionBody = {ele} index = {index} mode = {this.props.mode} key={index}
-                      ref={child} updateTreeCallback={updateTreeCallback} activeCondition={this.props.activeCondition}
-                      parent={this} noChip={true}
+                   <ConditionNew conditionBody = {ele} index = {index} mode = {this.props.mode}
+                      ref={child} activeCondition={this.props.activeCondition}
+                      parent={this} noChip={true} key={"node" + this.id + "" + index}
                     />;
              }
              return element;
@@ -185,18 +194,20 @@ class ConditionNew extends React.Component {
   render() {
     var condition;
     var firstCondition = "";
+    var firstConditionStyle = "";
     if(this.props.firstCondition){
       firstCondition = this.renderConditionsCard();
+      firstConditionStyle = s.firstConditionStyle;
     }
 
     this.type = this.props.conditionBody.type;
     if(this.type === "Leaf") {
       var leafNode = this.renderLeafNode();
-      condition = <div>{firstCondition}{leafNode}</div>;
+      condition = <div className={firstConditionStyle}>{firstCondition}{leafNode}</div>;
     }
     else {
       var logicNode = this.renderLogicNode();
-      condition = <div>{firstCondition}{logicNode}</div>;
+      condition = <div className={firstConditionStyle}>{firstCondition}{logicNode}</div>;
     }
     return condition;
   }
@@ -207,6 +218,10 @@ class BarrierTableNew extends React.Component {
     super(props);
     this.children = [];
     this.activeBarrierCellProductIndex = null;
+  }
+
+  componentWillMount(){
+    this.id = generateID();
   }
 
   clearActiveBarrierCell(){
@@ -238,7 +253,7 @@ class BarrierTableNew extends React.Component {
   }
 
   getCondition(condition, type, index){
-    var result;
+    var result = "";
     if(Object.keys(condition).length === 0 && condition.constructor === Object)
     {
       result =
@@ -253,7 +268,6 @@ class BarrierTableNew extends React.Component {
             cardContent="None" treeCardStyling={s.conditionCard}
             cardContentStyling={s.conditionCardText} noChip={true}
           />
-
         </div>;
     }
     else {
@@ -261,6 +275,35 @@ class BarrierTableNew extends React.Component {
       result = <ConditionNew conditionBody={condition} ref={ref} firstCondition={true}/>;
     }
     return result;
+  }
+
+  getConditionHeader(product, productIndex){
+    var activeClassName = "";
+
+    if(productIndex === this.activeBarrierCellProductIndex){
+      activeClassName = s.activeBarrierTableCell;
+    }
+
+    var conditionHeader =
+        <div className={"mdl-cell mdl-cell--12-col mdl-color--green-300 " + s.headerCell} onClick={
+           () => this.setActiveBarrierCell(productIndex, product.description.ref.page, product.description.ref.range)}>
+              {(productIndex+1) + '. ' + product.name + ' '}
+              <img className={s.conditionHeaderIcon} src={documentIcon} alt="Document icon"/>
+        </div>;
+    return conditionHeader;
+  }
+
+  getConditionData(product, productIndex){
+    var conditionData = <div>
+    <div className={"mdl-cell mdl-cell--6-col mdl-color--green-300 " + s.headerCell}>
+        {this.getCondition(product.loss, 'loss', productIndex)}
+    </div>
+    <div className={"mdl-cell mdl-cell--6-col mdl-color--green-300 " + s.headerCell}>
+        {this.getCondition(product.potential_loss, 'potential_loss', productIndex)}
+    </div>
+  </div>;
+
+    return conditionData;
   }
 
   getRow(product, productIndex) {
@@ -272,34 +315,40 @@ class BarrierTableNew extends React.Component {
     }
 
     var row =
-          <tr className={s.barrierTableRow}>
+          <tr className={s.barrierTableRow} key={"barrierow" + productIndex + "" + this.id}>
             <td className={s.barrierTableCell + " " + activeClassName} onClick={
                () => this.setActiveBarrierCell(productIndex, product.description.ref.page, product.description.ref.range)}>
                   {(productIndex+1) + '. ' + product.name + ' '}
                   <img className={s.documentIcon} src={documentIcon} alt="Document icon"/>
             </td>
             <td className={s.barrierTableCell}>
-              <div className={s.conditionsWrapper}>
+
                 {this.getCondition(product.loss, 'loss', productIndex)}
-              </div>
+
             </td>
             <td className={s.barrierTableCell}>
-              <div className={s.conditionsWrapper}>
+
                 {this.getCondition(product.potential_loss, 'potential_loss', productIndex)}
-              </div>
+
             </td>
           </tr>;
     return row;
   }
 
-  render() {
+  renderNew(){
+
+    //TODO change color based on values
+    var headerColor;
+
+    console.log(this.getValue());
+
     var table =
       <table className={s.barrierTable}>
         <thead>
           <tr className={s.barrierTableHeader}>
-            <th className={s.barrierTableHeaderFirstCol}>{this.props.barrier.name}</th>
-            <th>Loss</th>
-            <th>Potential Loss</th>
+            <th className={s.barrierTableHeaderFirstCol + " mdl-color--green-300"}>{this.props.barrier.name}</th>
+            <th className="mdl-color--green-300">Loss</th>
+            <th className="mdl-color--green-300">Potential Loss</th>
           </tr>
         </thead>
         <tbody>
@@ -307,9 +356,13 @@ class BarrierTableNew extends React.Component {
             return this.getRow(product, productIndex);
           })}
         </tbody>
-      </table>
+      </table>;
 
-    return(table);
+    return table;
+  }
+
+  render() {
+    return this.renderNew();
   }
 }
 
