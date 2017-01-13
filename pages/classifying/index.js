@@ -125,7 +125,7 @@ class Condition extends React.Component {
       if(this.props.mode === 'classification') { /* Main Content Panel */
         var treeCardContent = <span  dangerouslySetInnerHTML={{__html: this.props.conditionBody.description.text}}/>;
         var conditionAppearance =
-          <TreeCard color={conditionColor} content={`Condition ${(this.props.index + 1)}`}
+          <TreeCard color={conditionColor} chipContent={`Condition ${(this.props.index + 1)}`}
             callback={this.handleConditionClicked.bind(this)} cardContent={treeCardContent} chipText="C"
             chipStyling={s.conditionCardTitle} chipTextStyling={s.ealText} treeCardStyling={s.conditionCard}
             cardContentStyling={s.conditionCardText} chipColor="mdl-color--cyan-900"/>;
