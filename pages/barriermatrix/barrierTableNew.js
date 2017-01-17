@@ -97,6 +97,8 @@ class ConditionNew extends React.Component {
   renderLeafNode(){
     var conditionColor;
     var checkImage;
+    var firstConditionStyle;
+
     if(this.value){
       conditionColor = "mdl-color--red-400";
       checkImage = redCheck;
@@ -183,7 +185,7 @@ class ConditionNew extends React.Component {
 
     var element = <div className={conditionColor + " " + s.firstConditionsCard}>
         <TreeChip color={conditionColor} chipStyling={s.logicTreeChip}
-        chipContent="Conditions" chipText="C" chipColor="mdl-color--cyan-900"
+        chipContent={this.props.conditionType} chipText="C" chipColor="mdl-color--cyan-900"
         chipTextStyling={s.noTextCursorChange + " " + s.ealText} chipContentStyling={s.noTextCursorChange}
         />
       </div>;
@@ -253,6 +255,13 @@ class BarrierTableNew extends React.Component {
   }
 
   getCondition(condition, type, index){
+    var conditionType;
+    if(type === "loss"){
+      conditionType = "Loss"
+    } else{
+      conditionType = "Potential Loss"
+    }
+
     var result = "";
     if(Object.keys(condition).length === 0 && condition.constructor === Object)
     {
@@ -260,7 +269,7 @@ class BarrierTableNew extends React.Component {
         <div>
           <div className={`mdl-color--green-300 ${s.firstConditionsCard}`}>
             <TreeChip color="mdl-color--green-300" chipStyling={s.logicTreeChip}
-            chipContent="Conditions" chipText="C" chipColor="mdl-color--cyan-900"
+            chipContent={type} chipText="C" chipColor="mdl-color--cyan-900"
             chipTextStyling={s.noTextCursorChange + " " + s.ealText} chipContentStyling={s.noTextCursorChange}
             />
           </div>
@@ -272,7 +281,7 @@ class BarrierTableNew extends React.Component {
     }
     else {
       var ref = type + '' + index;
-      result = <ConditionNew conditionBody={condition} ref={ref} firstCondition={true}/>;
+      result = <ConditionNew conditionBody={condition} ref={ref} conditionType={conditionType} firstCondition={true}/>;
     }
     return result;
   }
@@ -296,10 +305,10 @@ class BarrierTableNew extends React.Component {
   getConditionData(product, productIndex){
     var conditionData = <div>
     <div className={"mdl-cell mdl-cell--6-col mdl-color--green-300 " + s.headerCell}>
-        {this.getCondition(product.loss, 'loss', productIndex)}
+        {this.getCondition(product.loss, "Loss", productIndex)}
     </div>
     <div className={"mdl-cell mdl-cell--6-col mdl-color--green-300 " + s.headerCell}>
-        {this.getCondition(product.potential_loss, 'potential_loss', productIndex)}
+        {this.getCondition(product.potential_loss, "Potential Loss", productIndex)}
     </div>
   </div>;
 
@@ -307,40 +316,187 @@ class BarrierTableNew extends React.Component {
   }
 
   getRow(product, productIndex) {
-
     var activeClassName = "";
 
     if(productIndex === this.activeBarrierCellProductIndex){
       activeClassName = s.activeBarrierTableCell;
     }
 
+    var lossClassName = "";
+    var lossFillerDiv = "";
+    var lossWrapperClassName ="";
+    var lossCondition = this.getCondition(product.loss, 'loss', productIndex);
+    if(product.loss.type === "Leaf"){
+      lossClassName = s.tableCellFiller + " mdl-color--indigo-50";
+      lossFillerDiv = <div className={lossClassName}> </div>;
+      lossWrapperClassName = s.tableCellFillerWrapper;
+    } else if(product.loss.type === undefined){
+      lossClassName = s.tableCellNoneFiller + " mdl-color--white";
+      lossFillerDiv = <div className={lossClassName}> </div>;
+      lossWrapperClassName = s.tableCellFillerWrapper;
+    }
+
+    var potLossClassName = "";
+    var potLossFillerDiv = "";
+    var potLossWrapperClassName ="";
+    var potLossCondition = this.getCondition(product.potential_loss, 'potential_loss', productIndex);
+    if(product.potential_loss.type === "Leaf"){
+      potLossClassName = s.tableCellFiller + " mdl-color--indigo-50";
+      potLossFillerDiv = <div className={potLossClassName}> </div>;
+      potLossWrapperClassName = s.tableCellFillerWrapper;
+    } else if(product.potential_loss.type === undefined){
+      potLossClassName = s.tableCellNoneFiller + " mdl-color--white";
+      potLossFillerDiv = <div className ={potLossClassName}> </div>;
+      potLossWrapperClassName = s.tableCellFillerWrapper;
+    }
+
+    var newRow =
+        <tr className={s.barrierTableRow} key={"barrierow" + productIndex + "" + this.id}>
+          <td colspan="3" className={s.barrierTableCell + " " + s.tableCellTest}>
+            <table className={s.innerTable}>
+              <thead>
+                <tr>
+                  <th className={s.innerBarrierTableHeader + " mdl-color--green-300 " + activeClassName} onClick={
+                     () => this.setActiveBarrierCell(productIndex, product.description.ref.page, product.description.ref.range)}
+                     colspan="2">
+                    {(productIndex+1) + '. ' + product.name + ' '}<img className={s.documentIcon} src={documentIcon} alt="Document icon"/>
+                  </th>
+                </tr>
+              </thead>
+                <tbody>
+
+                </tbody>
+              </table>
+          </td>
+        </tr>;
+
     var row =
-          <tr className={s.barrierTableRow} key={"barrierow" + productIndex + "" + this.id}>
+        <tr className={s.barrierTableRow} key={"barrierow" + productIndex + "" + this.id}>
             <td className={s.barrierTableCell + " " + activeClassName} onClick={
                () => this.setActiveBarrierCell(productIndex, product.description.ref.page, product.description.ref.range)}>
                   {(productIndex+1) + '. ' + product.name + ' '}
                   <img className={s.documentIcon} src={documentIcon} alt="Document icon"/>
             </td>
-            <td className={s.barrierTableCell}>
 
-                {this.getCondition(product.loss, 'loss', productIndex)}
-
+            <td className={s.barrierTableCell + " " + lossClassName}>
+                {lossCondition}
+                {lossFillerDiv}
             </td>
-            <td className={s.barrierTableCell}>
+            <td className={s.barrierTableCell + " " + potLossClassName}>
+                {potLossCondition}
+                {potLossFillerDiv}
+            </td>
+        </tr>;
 
-                {this.getCondition(product.potential_loss, 'potential_loss', productIndex)}
-
+        var row2 =
+          <tr>
+            <td colSpan="3" className={s.innerBarrierTableCell + " " + s.tableCellTest}>
             </td>
           </tr>;
-    return row;
+
+    return row2;
+  }
+
+  getDataRow(product, productIndex){
+    var activeClassName = "";
+
+    if(productIndex === this.activeBarrierCellProductIndex){
+      activeClassName = s.activeBarrierTableCell;
+    }
+
+    var lossClassName = "";
+    var lossFillerDiv = "";
+    var lossWrapperClassName ="";
+    var lossCondition = this.getCondition(product.loss, 'loss', productIndex);
+    if(product.loss.type === "Leaf"){
+      lossClassName = s.tableCellFiller + " mdl-color--indigo-50";
+      lossFillerDiv = <div className={lossClassName}> </div>;
+      lossWrapperClassName = s.tableCellFillerWrapper;
+    } else if(product.loss.type === undefined){
+      lossClassName = s.tableCellNoneFiller + " mdl-color--white";
+      lossFillerDiv = <div className={lossClassName}> </div>;
+      lossWrapperClassName = s.tableCellFillerWrapper;
+    }
+
+    var potLossClassName = "";
+    var potLossFillerDiv = "";
+    var potLossWrapperClassName ="";
+    var potLossCondition = this.getCondition(product.potential_loss, 'potential_loss', productIndex);
+    if(product.potential_loss.type === "Leaf"){
+      potLossClassName = s.tableCellFiller + " mdl-color--indigo-50";
+      potLossFillerDiv = <div className={potLossClassName}> </div>;
+      potLossWrapperClassName = s.tableCellFillerWrapper;
+    } else if(product.potential_loss.type === undefined){
+      potLossClassName = s.tableCellNoneFiller + " mdl-color--white";
+      potLossFillerDiv = <div className ={potLossClassName}> </div>;
+      potLossWrapperClassName = s.tableCellFillerWrapper;
+    }
+
+    var element = <tr className={s.barrierTableRow} key={"barrierow" + productIndex + "" + this.id}>
+        <td className={s.barrierTableCell + " " + lossClassName}>
+            {lossCondition}
+            {lossFillerDiv}
+        </td>
+        <td className={s.barrierTableCell + " " + potLossClassName}>
+            {potLossCondition}
+            {potLossFillerDiv}
+        </td>
+    </tr>;
+
+    return element;
+  }
+
+  getHeaderRow(product, productIndex){
+    var activeClassName = "";
+
+    if(productIndex === this.activeBarrierCellProductIndex){
+      activeClassName = s.activeBarrierTableCell;
+    }
+
+    var lossClassName = "";
+    var lossFillerDiv = "";
+    var lossWrapperClassName ="";
+    var lossCondition = this.getCondition(product.loss, 'Loss', productIndex);
+    if(product.loss.type === "Leaf"){
+      lossClassName = s.tableCellFiller + " mdl-color--indigo-50";
+      lossFillerDiv = <div className={lossClassName}> </div>;
+      lossWrapperClassName = s.tableCellFillerWrapper;
+    } else if(product.loss.type === undefined){
+      lossClassName = s.tableCellNoneFiller + " mdl-color--white";
+      lossFillerDiv = <div className={lossClassName}> </div>;
+      lossWrapperClassName = s.tableCellFillerWrapper;
+    }
+
+    var potLossClassName = "";
+    var potLossFillerDiv = "";
+    var potLossWrapperClassName ="";
+    var potLossCondition = this.getCondition(product.potential_loss, 'Potential Loss', productIndex);
+    if(product.potential_loss.type === "Leaf"){
+      potLossClassName = s.tableCellFiller + " mdl-color--indigo-50";
+      potLossFillerDiv = <div className={potLossClassName}> </div>;
+      potLossWrapperClassName = s.tableCellFillerWrapper;
+    } else if(product.potential_loss.type === undefined){
+      potLossClassName = s.tableCellNoneFiller + " mdl-color--white";
+      potLossFillerDiv = <div className ={potLossClassName}> </div>;
+      potLossWrapperClassName = s.tableCellFillerWrapper;
+    }
+
+
+    var headerRow =
+    <tr>
+    <td colSpan="2" className={s.barrierTableCell + " mdl-color--green-300 " + activeClassName + " " + s.criterionHeader} onClick={
+       () => this.setActiveBarrierCell(productIndex, product.description.ref.page, product.description.ref.range)}>
+          {(productIndex+1) + '. ' + product.name + ' '}
+          <img className={s.documentIcon} src={documentIcon} alt="Document icon"/>
+    </td></tr>;
+
+    return headerRow;
   }
 
   renderNew(){
 
     //TODO change color based on values
     var headerColor;
-
-    console.log(this.getValue());
 
     var table =
       <table className={s.barrierTable}>
@@ -361,8 +517,37 @@ class BarrierTableNew extends React.Component {
     return table;
   }
 
+  renderNew2(){
+    //TODO change color based on values
+    var headerColor;
+
+    var table =
+      <table className={s.barrierTable}>
+        <thead>
+          <tr className={s.barrierTableHeader}>
+            <th className={s.barrierTableHeaderFirstCol + " mdl-color--green-300"}>{this.props.barrier.name}</th>
+            <th className="mdl-color--green-300">Status</th>
+          </tr>
+        </thead>
+
+          {this.props.barrier.products.map((product, productIndex) => {
+            var headerRow = this.getHeaderRow(product, productIndex);
+            var dataRow = this.getDataRow(product, productIndex);
+
+            var element = <tbody className={s.barrierCriterion}>
+                {headerRow}
+                {dataRow}
+            </tbody>;
+            return element;
+          })}
+
+      </table>;
+
+    return table;
+  }
+
   render() {
-    return this.renderNew();
+    return this.renderNew2();
   }
 }
 
