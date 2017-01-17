@@ -15,6 +15,14 @@ body, html{
     -ms-user-select: none; /* IE10+ */
 }
 
+.clickable{
+  cursor:pointer;
+}
+
+/* Used to prevent the cursor from changing to the text hover version */
+.noTextCursorChange{
+  cursor: context-menu;
+}
 
 /* Positions the Fission product barrier matrix text and the current mode on the tp of the page, and keeps it there when scrolling */
 .recognitionCategoryText{
@@ -126,10 +134,6 @@ th, tr{
   display:table-row;
 }
 
-.tableCellTest{
-  background-color: red;
-}
-
 .barrierTable {
   width: 100%;
   table-layout: fixed;
@@ -137,7 +141,13 @@ th, tr{
   padding: 0;
   margin: 0;
   margin-bottom: 20px;
-  background-color: black;
+
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+
+  border-spacing: 0 0;
+  border-collapse: collapse;
 }
 
 .barrierTable:last-of-type{
@@ -151,7 +161,7 @@ th, tr{
 
 .headerCell {
   box-sizing: border-box;
-  border: 1px;
+  border: 2px;
   border-style: solid;
   color: black;
   width: 100%;
@@ -169,18 +179,15 @@ th, tr{
 
 .barrierTableHeader > * {
   text-transform: uppercase;
-
   padding: 0;
   margin: 0;
-
-  background-color: #ccc;
 }
 
 .barrierTableRow:nth-child(odd) {
   background-color: #eee;
 }
 
-.barrierTableRow{
+.barrierTableRow {
   background-color: #e3e3e3;
   width: 100%;
 }
@@ -197,6 +204,16 @@ th, tr{
   margin-left:36%;
 }
 
+.barrierTableHeader th{
+  border: 2px solid black;
+  box-shadow: inset 2px -2px 2px rgba(0,0,0,0.5), /*bottom internal shadow*/
+  inset -2px 2px 2px rgba(225,225,225,1); /*top internal highlight*/
+}
+
+.barrierTableHeaderFirstCol {
+  width: 20%;
+}
+
 .barrierTableCell {
   text-align: left;
   position:relative;
@@ -205,6 +222,54 @@ th, tr{
   width: 100%;
   height: 1px; /* A fix to make the child div of the barrier cell actually fill the cell. The TD resizes to fit the content anyway */
   vertical-align: top;
+
+  border: 2px solid black;
+}
+
+.activeBarrierTableCell{
+  box-shadow: inset 2px -2px 2px rgba(0,0,0,0.5), /*bottom internal shadow*/
+  inset -2px 2px 2px rgba(225,225,225,1); /*top internal highlight*/
+
+  /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top, rgba(180,180,180,0.40) 0%,rgba(150,150,150,0.40) 100%);
+  /* Opera 11.10+ */
+  background: -ms-linear-gradient(top, rgba(180,180,180,0.40) 0%,rgba(150,150,150,0.40) 100%);
+  /* IE10+ */
+  background: linear-gradient(to bottom, rgba(180,180,180,0.40) 0%,rgba(150,150,150,0.40) 100%);
+}
+
+.criterionText{
+  margin-bottom: 24px; /* To make sure the text clears the document icon */
+}
+
+.documentIcon {
+  width: 24px;
+  height: 24px;
+  position:absolute;
+  bottom:3px;
+  right: 1px;
+  float:right;
+}
+
+.criterionHeader{
+  text-align: center;
+  vertical-align:middle;
+
+  box-shadow: inset 2px -2px 2px rgba(0,0,0,0.5), /*bottom internal shadow*/
+  inset -2px 2px 2px rgba(225,225,225,1); /*top internal highlight*/
+}
+
+.criterionHeader:hover{
+
+
+  /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top, rgba(180,180,180,0.40) 0%,rgba(150,150,150,0.40) 100%);
+  /* Opera 11.10+ */
+  background: -ms-linear-gradient(top, rgba(180,180,180,0.40) 0%,rgba(150,150,150,0.40) 100%);
+  /* IE10+ */
+  background: linear-gradient(to bottom, rgba(180,180,180,0.40) 0%,rgba(150,150,150,0.40) 100%);
+
+  cursor: pointer;
 }
 
 .tableCellFiller{
@@ -242,41 +307,7 @@ th, tr{
     flex-direction: column;
 }
 
-.activeBarrierTableCell{
-  box-shadow: inset 2px -2px 2px rgba(0,0,0,0.5), /*bottom internal shadow*/
-  inset -2px 2px 2px rgba(255,255,255,1); /*top internal highlight*/
-
-    /* Chrome10+,Safari5.1+ */
-  background: -o-linear-gradient(top, rgba(225,225,225,0.5) 0%,rgba(150,150,150,0.5) 100%);
-  /* Opera 11.10+ */
-  background: -ms-linear-gradient(top, rgba(225,225,225,0.5) 0%,rgba(150,150,150,0.5) 100%);
-  /* IE10+ */
-  background: linear-gradient(to bottom, rgba(225,225,225,0.5) 0%,rgba(150,150,150,0.5) 100%);
-}
-
-.barrierTableHeaderFirstCol {
-  /*width: 20%;*/
-}
-
 .barrierCriterion{
-}
-
-.barrierCriterion::before
-{
-    content: '';
-    display: table-row;
-    height: 10px;
-}
-
-.submitButton {
-  background-color: lightgray;
-  margin-left: 1%;
-  transform: translateY(25%);
-}
-
-.submitButton:hover {
-  border: 1px solid gray;
-  background-color: lightgrey;
 }
 
 .operator {
@@ -284,29 +315,40 @@ th, tr{
   font-weight: bold;
 }
 
-.documentIcon {
-  width: 24px;
-  height: 24px;
-  position:absolute;
-  bottom:3px;
-  right: 1px;
-  float:right;
-}
-
-.dialogDiv{
-  width: 25%;
-  height: 30%;
-}
-
-.dialogDiv .dialogButton{
-  position: absolute;
-  bottom: 1%;
-  right: 1%;
-  border: 1px solid black;
-  background-color: lightgrey;
-}
-
 /* New Barrier Table Properties*/
+.barrierName{
+  display: inline-block;
+  width: 75%;
+  height: 100%;
+}
+
+.barrierNameWrapper{
+  height: 100%;
+  transform: translateY(30%);
+}
+
+.barrierStatus{
+  height: 100%;
+  display: inline-block;
+  width: 25%;
+
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  border-left: 2px solid black;
+}
+
+.barrierStatusWrapper{
+  height: 100%;
+  transform: translateY(30%);
+}
+
+/* Condition Cards Styling */
+.headerLossText{
+  text-align: center;
+  font-weight: bold;
+}
+
 .firstConditionsCard{
   width: 100%;
   border-bottom: 2px solid black;
@@ -319,30 +361,32 @@ th, tr{
   min-height: 0; /* Override the default min height of the mdl card */
 }
 
-.clickable{
-  cursor:pointer;
-}
+.barrierTableRow{
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
 
-/* Used to prevent the cursor from changing to the text hover version */
-.noTextCursorChange{
-  cursor: context-menu;
-}
+  padding: 0;
+  margin: 0;
 
-.ealText{
-  font-size: 14px;
-  font-weight: 600;
+  box-shadow: inset 2px -2px 2px rgba(0,0,0,0.5), /*bottom internal shadow*/
+  inset -2px 2px 2px rgba(225,225,225,1); /*top internal highlight*/
 }
 
 .conditionCardText{
+  min-height: 40px;
+  left: 0;
   color: black;
-  margin-bottom: 32px; /* The size of the check icon. prevents the icon from ever hiding text */
+  width: 85%;
+  margin-right: 32px;
+   /* The size of the check icon. prevents the icon from ever hiding text */
 }
 
 .checkImage{
   position: absolute;
   width: 32px;
   height: 32px;
-  bottom: 1%;
+  bottom: 2%;
   right: 1%;
 }
 
@@ -351,13 +395,25 @@ th, tr{
   height: 100%;
 }
 
+.ealText{
+  font-size: 14px;
+  font-weight: 600;
+}
+
+/* Condition Cards Styling - END */
+
+.chipContentText{
+  text-align:right;
+
+}
+
 .logicConditionWrapper{
   width: 100%;
   box-sizing: border-box;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
-  border-top: 2px solid black;
-  border-bottom: 2px solid black;
+  border-top: 2px solid rgba(55,0,160,1);
+  border-bottom: 2px solid rgba(55,0,160,1);
 }
 
 .logicTreeChip{
@@ -366,21 +422,35 @@ th, tr{
   margin-left: 40%;
 }
 
-.criterionHeader:hover{
-  box-shadow: inset 2px -2px 2px rgba(0,0,0,0.5), /*bottom internal shadow*/
-  inset -2px 2px 2px rgba(255,255,255,1); /*top internal highlight*/
+/* New Barrier Table Properties - END */
 
-    /* Chrome10+,Safari5.1+ */
-  background: -o-linear-gradient(top, rgba(225,225,225,0.5) 0%,rgba(150,150,150,0.5) 100%);
-  /* Opera 11.10+ */
-  background: -ms-linear-gradient(top, rgba(225,225,225,0.5) 0%,rgba(150,150,150,0.5) 100%);
-  /* IE10+ */
-  background: linear-gradient(to bottom, rgba(225,225,225,0.5) 0%,rgba(150,150,150,0.5) 100%);
-
-  cursor: pointer;
+/* Footer Styling */
+.submitButton {
+  background-color: lightgray;
+  margin-left: 1%;
+  transform: translateY(25%);
 }
 
-/* New Barrier Table Properties - END */
+.submitButton:hover {
+  border: 1px solid gray;
+  background-color: lightgrey;
+}
+/* Footer Styling - END */
+
+/* Dialog Styling */
+.dialogDiv{
+  width: 25%;
+  height: 30%;
+}
+
+.dialogDiv .dialogButton{
+  position: absolute;
+  bottom: 1%;
+  right: 1%;
+  border: 1px solid black;
+  background-color: lightgrey;
+}
+/* Dialog Styling - END */
 
 /* Tablet properties */
 @media screen and (max-width: 1400px) {
