@@ -1,3 +1,51 @@
+.content {
+  padding: 0;
+  margin: 0;
+  height: 100%;
+  width: 100%;
+}
+
+/* Positions the Fission product barrier matrix text and the current mode on the tp of the page, and keeps it there when scrolling */
+.recognitionCategoryText{
+  height: 50px;
+  width: 100%;
+  position:fixed;
+  z-index: 2;
+
+  background-color: #eee; /* To hide the content of the cells underneath the category and mode text */
+  color: black;
+
+  font-weight: bolder;
+  font-size: xx-large;
+  text-align: left;
+  display:flex;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  padding-left: 1%;
+
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+
+  box-shadow:
+    0 0px 0px #ddd, /*bottom external highlight*/
+    0 0px 1px #ddd, /*top external shadow*/
+    inset 0px 0px 3px rgba(0,0,0,1), /*bottom internal shadow*/
+    inset 0 0px 1px rgba(255,255,255,0.8); /*top internal highlight*/
+}
+
+.categoryTextWrapper{
+  position: absolute;
+  left: 2%;
+}
+
+.classificationTextWrapper{
+  position: absolute;
+  right: 2%;
+}
+
+
 /* Left Content */
 .leftcontent{
   overflow-x: hidden;
@@ -8,6 +56,7 @@
   position: absolute;
   padding:0;
   margin:0;
+  margin-top: 50px;
   padding-top: 5px;
 
   box-sizing: border-box;
@@ -81,6 +130,7 @@
 /* Main Content*/
 .maincontent {
     margin-left: 15%;
+    margin-top: 50px;
     background-color: #eee;
     width: 40%;
     height: 100%;
@@ -159,13 +209,17 @@
 /* Main Content - End */
 
 /* Footer Button Style - START */
-.submit_button {
+.submitButton {
+  position: absolute;
   background-color: lightgray;
-  margin-left: 1%;
-  transform: translateY(25%);
+  bottom: 1%;
+  left: 2%;
+  width: 10%;
+  height: 5%;
+  text-align: center;
 }
 
-.submit_button:hover {
+.submitButton:hover {
   border: 1px solid gray;
   background-color: lightgrey;
 }
@@ -174,6 +228,7 @@
 /* Document side */
 .descriptioncontent {
     margin-left: 55%;
+    margin-top: 50px;
     width: 45%;
     height: 100%;
     background-color: #CCCCCC;
@@ -220,8 +275,10 @@
 
 .dialogDiv .dialogButton{
   position: absolute;
-  bottom: 1%;
-  right: 1%;
+  width: 100px;
+  height: 55px;
+  bottom: 2%;
+  right: 2%;
   border: 1px solid black;
   background-color: lightgrey;
 }

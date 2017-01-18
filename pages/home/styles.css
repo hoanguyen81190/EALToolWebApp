@@ -1,18 +1,55 @@
-.content {
-  padding: 0 16px;
+.modeContainer{
+  margin-left: 16px;
+}
+
+.categoriesContainer{
+  margin-left: 16px;
 }
 
 .home_button{
   background-color: lightgray;
+  height: 150px;
+  min-width: 150px;
+  margin-left: 50px;
+  font-size: 1.5em;
+  max-width: 300px;
 }
 
-.submit_button {
+.seperatingBorder{
+  margin-top: 4em;
+}
+
+.seperatingBorder {
+    margin-left: 30px;
+    margin-right: 30px;
+    height: 30px;
+    border-style: solid;
+    border-color: grey;
+    border-width: 2px 0 0 0;
+    border-radius: 20px;
+}
+.seperatingBorder:before { /* Not really supposed to work, but does */
+    display: block;
+    content: "";
+    height: 30px;
+    margin-top: -31px;
+    border-style: solid;
+    border-color: grey;
+    border-width: 0 0 2px 0;
+    border-radius: 20px;
+}
+
+.submitButton {
+  position: absolute;
   background-color: lightgray;
-  margin-left: 1%;
-  transform: translateY(25%);
+  bottom: 1%;
+  left: 2%;
+  width: 10%;
+  height: 5%;
+  text-align: center;
 }
 
-.submit_button:hover{
+.submitButton:hover {
   border: 1px solid gray;
   background-color: lightgrey;
 }

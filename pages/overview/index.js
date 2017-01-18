@@ -1,13 +1,3 @@
-/**
- * React Static Boilerplate
- * https://github.com/kriasoft/react-static-boilerplate
- *
- * Copyright © 2015-present Kriasoft, LLC. All rights reserved.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE.txt file in the root directory of this source tree.
- */
-
 import React, { PropTypes } from 'react';
 import Layout from '../../components/Layout';
 import Button from '../../components/Button';
@@ -36,12 +26,12 @@ class OverviewPage extends React.Component {
     //<div className= {s.recognitionCategoryText}> {this.state.recognitionCategory} - Mode {this.state.mode}</div>
     return (
       <Layout className={s.content}>
-        <div className= {s.recognitionCategoryText}> {this.state.recognitionCategory} - Mode {this.state.mode}</div>
+        <div className= {s.recognitionCategoryText}>
+          <div className={s.categoryTextWrapper}>Mode {this.state.mode} - {this.state.recognitionCategory}</div>
+        </div>
         <div className={s.tableWrapper}>
           <OverviewTable />
         </div>
-        {
-      }
       </Layout>
     );
   }
