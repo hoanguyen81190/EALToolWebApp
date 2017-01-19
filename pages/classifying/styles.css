@@ -115,6 +115,14 @@
   margin-left: -10%;
 }
 
+.leftTree .logicNode .logicNode .logicNode{
+  margin-left: -30%;
+}
+
+.leftTree .logicNode .logicNode .logicNode .leafNode{
+  margin-left: 3%;
+}
+
 .overviewTree li::before, .tree li::after{
   content: '';
 }
