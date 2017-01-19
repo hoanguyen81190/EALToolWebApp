@@ -239,6 +239,8 @@ class Criterion extends React.Component {
   }
 
   getValue() {
+    console.log(this.refs.conditionTree);
+    console.log(this.refs.conditionTree.getValue());
     if(this.refs.conditionTree != null)
     {
       return this.refs.conditionTree.getValue();
@@ -268,14 +270,14 @@ class Criterion extends React.Component {
       if(this.props.mode === "overview"){
         if(this.props.criterion === store.getState().selectedCriterionState){
           condition = <Condition
-              conditionBody = {store.getState().selectedCriterionState.conditions} index={0} mode={this.props.mode} ref="conditionTree" activeCondition={true}/>;
+              conditionBody = {store.getState().selectedCriterionState.conditions} index={0} mode={this.props.mode} ref="conditionTreeOverview" activeCondition={true}/>;
           if(this.props.checkCriterionStateCallback(this.props.criterion.conditions)){
             isCriterionTrue = true;
           }
         }
         else{
           condition = <Condition
-              conditionBody = {this.props.criterion.conditions} index = {0} mode = {this.props.mode} ref = "conditionTree" activeCondition={false}/>;
+              conditionBody = {this.props.criterion.conditions} index = {0} mode = {this.props.mode} ref = "conditionTreeOverview" activeCondition={false}/>;
         }
       }
       else{
@@ -505,7 +507,6 @@ class ClassifyingPage extends React.Component {
     var leftTree = [];
 
     var selectedCriterionNumber = this.getCriterionConditionNumber(store.getState().criterionObject.name);
-    console.log(selectedCriterionNumber);
 
     for(var index = 0; index < regCat.emergency_categories.length; index++) {
       var emer_cat = regCat.emergency_categories[index];
