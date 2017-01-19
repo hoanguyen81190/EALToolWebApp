@@ -13,6 +13,8 @@ import BarrierTable from './barrierTable';
 import BarrierTableNew from './barrierTableNew';
 import {eALDocument} from '../../database-loader';
 
+import {TextComponent} from '../../components/MDL/TextComponent';
+
 class BarrierMatrixPage extends React.Component {
   constructor(){
     super();
@@ -148,13 +150,16 @@ class BarrierMatrixPage extends React.Component {
         openDialog: true,
         content: text,
         title: "Classification Result",
-        buttonText: "OK"
+        buttonText: "OK",
+        callback: this
       });
     }
 
-    this.setState({
-      currentClassification: currentClassificationText
-    })
+    currentClassificationText = "Current Classification - " + currentClassificationText;
+    this.refs.classificationTextWrapperRef.setState({text : currentClassificationText});
+    // this.setState({
+    //   currentClassification: currentClassificationText
+    // })
   }
 
   openDocument(page, pageRange) {
@@ -206,7 +211,7 @@ class BarrierMatrixPage extends React.Component {
       <Layout className={s.content} footerLeftContent={this.getFooterContent()}>
         <div className= {s.recognitionCategoryText}>
           <div className={s.categoryTextWrapper}>Mode {this.state.mode} - Fission Product Barrier Matrix</div>
-          <div className={s.classificationTextWrapper}> {currentClassification} </div>
+          <TextComponent style={s.classificationTextWrapper} text={currentClassification} ref="classificationTextWrapperRef"/>
         </div>
         <div className={s.maincontent}>
               {newBarriers}

@@ -15,6 +15,7 @@ import DialogDemo from './dialog';
 import documentIcon from '../../resources/Document-50.png';
 
 import {TreeChip, TreeCard} from '../../components/MDL/CustomMDLComponents';
+import {TextComponent} from '../../components/MDL/TextComponent';
 
 class Condition extends React.Component {
   constructor() {
@@ -87,7 +88,7 @@ class Condition extends React.Component {
   getValue() {
 
     if (this.type === 'Leaf') {
-      return this.value;
+      return this.props.conditionBody.value;
     }
 
     var children = [];
@@ -593,7 +594,7 @@ class ClassifyingPage extends React.Component {
       store.dispatch(action);
 
       for (var ref in this.refs) {
-        if(this.refs[ref].props.emergencyLevel != null){
+        if((this.refs[ref] instanceof TreeNode) && (this.refs[ref].props.emergencyLevel !== null)){
           this.refs[ref].forceUpdate();
         }
       }
@@ -629,13 +630,15 @@ class ClassifyingPage extends React.Component {
         openDialog: true,
         content: text,
         title: "Classification Result",
-        buttonText: "OK"
+        buttonText: "OK",
+        callback: this.refs.mainPanelRef
       });
     }
-
-    this.setState({
-      currentClassification: currentClassificationText
-    })
+    currentClassificationText = "Current Classification - " + currentClassificationText;
+    this.refs.classificationTextWrapperRef.setState({text : currentClassificationText});
+    // this.setState({
+    //   currentClassification: currentClassificationText
+    // })
   }
 
   getFooterContent() {
@@ -657,17 +660,16 @@ class ClassifyingPage extends React.Component {
       }});
 
       var currentClassification = "Current classification - " + this.state.currentClassification;
-
     return (
       <Layout className={s.content} footerLeftContent={this.getFooterContent()}>
           <div className= {s.recognitionCategoryText}>
             <div className={s.categoryTextWrapper}>Mode {this.state.mode} - {this.state.recognitionCategory}: {store.getState().criterionObject.name}</div>
-            <div className={s.classificationTextWrapper}>{currentClassification}</div>
+            <TextComponent style={s.classificationTextWrapper} text={currentClassification} ref="classificationTextWrapperRef"/>
           </div>
           <div className={s.leftcontent}>
               {overviewTree}
           </div>
-          <div className={s.maincontent} id="mainPanel">
+          <div className={s.maincontent} id="mainPanel" ref="mainPanelRef">
             <div className = {s.contentTree}>
               <TreeNode
                 emergencyLevel = {store.getState().emergencyLevel}
