@@ -387,6 +387,10 @@
     .leftTree .logicNode .logicNode .logicNode .leafNode{
       margin-left: -2%;
     }
+
+    .pdfViewer {
+      width: 125%;
+    }
   }
 
   /* 1.25 dpr */
@@ -403,6 +407,10 @@
 
   .leftTree .logicNode .logicNode .logicNode .leafNode{
     margin-left: -2%;
+  }
+
+  .pdfViewer {
+    width: 125%;
   }
 }
 
@@ -421,6 +429,10 @@
   .leftTree .logicNode .logicNode .logicNode .leafNode{
     margin-left: -2%;
   }
+
+  .pdfViewer {
+    width: 125%;
+  }
 }
 
 /* 1.5 dpr */
@@ -437,6 +449,10 @@
 
   .leftTree .logicNode .logicNode .logicNode .leafNode{
     margin-left: -2%;
+  }
+
+  .pdfViewer {
+    width: 125%;
   }
 }
 
