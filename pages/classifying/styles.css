@@ -371,16 +371,16 @@
     margin-left: -20%;
   }
 
-
+/* Retina properties */
   @media
   (-webkit-min-device-pixel-ratio: 2),
   (min-resolution: 192dpi) {
     .leftTree .logicNode .logicNode .logicNode{
-      margin-left: -35%;
+      margin-left: -37%;
     }
 
     .leftTree .logicNode .logicNode .logicNode .leafNode{
-      margin-left: -1%;
+      margin-left: -2%;
     }
   }
 
@@ -389,11 +389,11 @@
 (-webkit-min-device-pixel-ratio: 1.25),
 (min-resolution: 120dpi){
   .leftTree .logicNode .logicNode .logicNode{
-    margin-left: -35%;
+    margin-left: -37%;
   }
 
   .leftTree .logicNode .logicNode .logicNode .leafNode{
-    margin-left: -1%;
+    margin-left: -2%;
   }
 }
 
@@ -402,11 +402,11 @@
 (-webkit-min-device-pixel-ratio: 1.3),
 (min-resolution: 124.8dpi){
   .leftTree .logicNode .logicNode .logicNode{
-    margin-left: -35%;
+    margin-left: -37%;
   }
 
   .leftTree .logicNode .logicNode .logicNode .leafNode{
-    margin-left: -1%;
+    margin-left: -2%;
   }
 }
 
@@ -415,11 +415,11 @@
 (-webkit-min-device-pixel-ratio: 1.5),
 (min-resolution: 144dpi){
   .leftTree .logicNode .logicNode .logicNode{
-    margin-left: -35%;
+    margin-left: -37%;
   }
 
   .leftTree .logicNode .logicNode .logicNode .leafNode{
-    margin-left: -1%;
+    margin-left: -2%;
   }
 }
 
