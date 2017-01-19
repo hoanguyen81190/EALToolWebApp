@@ -50,6 +50,16 @@ body, html{
     inset 0 0px 1px rgba(255,255,255,0.8); /*top internal highlight*/
 }
 
+.categoryTextWrapper{
+  position: absolute;
+  left: 2%;
+}
+
+.classificationTextWrapper{
+  position: absolute;
+  right: 2%;
+}
+
 /* main page properties */
 .content {
   height: 100%;
@@ -140,14 +150,24 @@ th, tr{
   overflow-y: scroll;
   padding: 0;
   margin: 0;
-  margin-bottom: 20px;
+  margin-bottom: 50px;
 
   box-sizing: border-box;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
 
-  border-spacing: 0 0;
+  /*border-spacing: 0 10px;
+  border-collapse: separate;*/
+
   border-collapse: collapse;
+}
+
+.barrierTable:first-child{
+    /*border-spacing: 0 0;*/
+}
+
+.barrierTable{
+  /*border-spacing: 0 10px;*/
 }
 
 .barrierTable:last-of-type{
@@ -307,9 +327,6 @@ th, tr{
     flex-direction: column;
 }
 
-.barrierCriterion{
-}
-
 .operator {
   text-align: center;
   font-weight: bold;
@@ -426,9 +443,13 @@ th, tr{
 
 /* Footer Styling */
 .submitButton {
+  position: absolute;
   background-color: lightgray;
-  margin-left: 1%;
-  transform: translateY(25%);
+  bottom: 1%;
+  left: 2%;
+  width: 10%;
+  height: 5%;
+  text-align: center;
 }
 
 .submitButton:hover {
@@ -445,12 +466,24 @@ th, tr{
 
 .dialogDiv .dialogButton{
   position: absolute;
-  bottom: 1%;
-  right: 1%;
+  width: 100px;
+  height: 55px;
+  bottom: 2%;
+  right: 2%;
   border: 1px solid black;
   background-color: lightgrey;
 }
+
 /* Dialog Styling - END */
+
+/* NewRender 4 */
+
+.barrierCard{
+  width: 100%;
+  margin-bottom: 100px;
+}
+
+/* NewRender 4 - END */
 
 /* Tablet properties */
 @media screen and (max-width: 1400px) {

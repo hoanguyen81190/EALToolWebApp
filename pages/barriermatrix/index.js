@@ -18,7 +18,8 @@ class BarrierMatrixPage extends React.Component {
     super();
     this.state = {
       mode: store.getState().mode,
-      recognitionCategory: store.getState().recognitionCategory
+      recognitionCategory: store.getState().recognitionCategory,
+      currentClassification: "No Emergency"
     }
   }
 
@@ -121,11 +122,14 @@ class BarrierMatrixPage extends React.Component {
 
   handleSubmit() {
     var emergencyResult = this.calculateEmergencyLevel();
+    var currentClassificationText;
     if(emergencyResult === 'None')
     {
+      currentClassificationText = "No Emergency";
       var text = "There is no emergency";
     }
     else {
+      currentClassificationText = emergencyResult.emergencyLevel;
       var text = <p>A Fission Product Barrier Matrix emergency with classification <b>{emergencyResult.emergencyLevel}</b> has occured. <br/><br/>Barrier status:<br/> {emergencyResult.barrierStatus}</p>;
     }
 
@@ -147,6 +151,10 @@ class BarrierMatrixPage extends React.Component {
         buttonText: "OK"
       });
     }
+
+    this.setState({
+      currentClassification: currentClassificationText
+    })
   }
 
   openDocument(page, pageRange) {
@@ -182,24 +190,26 @@ class BarrierMatrixPage extends React.Component {
   }
 
   render() {
-
     var oldBarriers = <div className={s.tableWrapper}><BarrierTable barrier={eALDocument.data.fission_product_barriers[0]} ref="fuel"        clearBarrierHighights={this.clearBarrierHighlights.bind(this)} documentCallback={(startPage, pageRange) => this.openDocument(startPage, pageRange)}/>
-    <BarrierTable barrier={eALDocument.data.fission_product_barriers[1]} ref="RCS"         clearBarrierHighights={this.clearBarrierHighlights.bind(this)} documentCallback={(startPage, pageRange) => this.openDocument(startPage, pageRange)}/>
-    <BarrierTable barrier={eALDocument.data.fission_product_barriers[2]} ref="containment" clearBarrierHighights={this.clearBarrierHighlights.bind(this)} documentCallback={(startPage, pageRange) => this.openDocument(startPage, pageRange)}/>
-  </div>;
+      <BarrierTable barrier={eALDocument.data.fission_product_barriers[1]} ref="RCS"         clearBarrierHighights={this.clearBarrierHighlights.bind(this)} documentCallback={(startPage, pageRange) => this.openDocument(startPage, pageRange)}/>
+      <BarrierTable barrier={eALDocument.data.fission_product_barriers[2]} ref="containment" clearBarrierHighights={this.clearBarrierHighlights.bind(this)} documentCallback={(startPage, pageRange) => this.openDocument(startPage, pageRange)}/>
+    </div>;
 
     var newBarriers = <div className={s.tableWrapper}><BarrierTableNew barrier={eALDocument.data.fission_product_barriers[0]} ref="fuel"        clearBarrierHighights={this.clearBarrierHighlights.bind(this)} documentCallback={(startPage, pageRange) => this.openDocument(startPage, pageRange)}/>
-    <BarrierTableNew barrier={eALDocument.data.fission_product_barriers[1]} ref="RCS"        clearBarrierHighights={this.clearBarrierHighlights.bind(this)} documentCallback={(startPage, pageRange) => this.openDocument(startPage, pageRange)}/>
-    <BarrierTableNew barrier={eALDocument.data.fission_product_barriers[2]} ref="containment"        clearBarrierHighights={this.clearBarrierHighlights.bind(this)} documentCallback={(startPage, pageRange) => this.openDocument(startPage, pageRange)}/>
-  </div>;
+      <BarrierTableNew barrier={eALDocument.data.fission_product_barriers[1]} ref="RCS"        clearBarrierHighights={this.clearBarrierHighlights.bind(this)} documentCallback={(startPage, pageRange) => this.openDocument(startPage, pageRange)}/>
+      <BarrierTableNew barrier={eALDocument.data.fission_product_barriers[2]} ref="containment"        clearBarrierHighights={this.clearBarrierHighlights.bind(this)} documentCallback={(startPage, pageRange) => this.openDocument(startPage, pageRange)}/>
+    </div>;
+
+    var currentClassification = "Current classification - " + this.state.currentClassification;
 
     return (
       <Layout className={s.content} footerLeftContent={this.getFooterContent()}>
-        <div className= {s.recognitionCategoryText}> Fission Product Barrier Matrix - Mode {this.state.mode}</div>
+        <div className= {s.recognitionCategoryText}>
+          <div className={s.categoryTextWrapper}>Mode {this.state.mode} - Fission Product Barrier Matrix</div>
+          <div className={s.classificationTextWrapper}> {currentClassification} </div>
+        </div>
           <div className={s.maincontent}>
-
               {newBarriers}
-
             <div>
               <DialogDemo ref="classificationDialog"/>
             </div>

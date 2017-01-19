@@ -416,7 +416,8 @@ class ClassifyingPage extends React.Component {
       recognitionCategory: store.getState().recognitionCategory,
       emergencyLevel: store.getState().emergencyLevel,
       classificationResult: "",
-      conditionID: 0
+      conditionID: 0,
+      currentClassification: "No Emergency"
     };
   }
 
@@ -562,11 +563,15 @@ class ClassifyingPage extends React.Component {
 
     var text;
 
+    var currentClassificationText;
+
     if(this.refs.classificationCriterion.getValue()) {
+      currentClassificationText = store.getState().emergencyLevel;
       text = <p>A <b>{store.getState().recognitionCategory}</b> emergency event with emergency level <b>{store.getState().emergencyLevel}</b> has occured.</p>;
     }
     else {
       text = "There is no emergency event";
+      currentClassificationText = "No Emergency";
     }
 
     if(isIE || isEdge)
@@ -582,11 +587,15 @@ class ClassifyingPage extends React.Component {
         buttonText: "OK"
       });
     }
+
+    this.setState({
+      currentClassification: currentClassificationText
+    })
   }
 
   getFooterContent() {
     return (
-      <Button id='classSubmitButton' className={s.submit_button} type='raised' onClick={()=>{this.handleSubmit()}}>
+      <Button id='classSubmitButton' className={s.submitButton} type='raised' onClick={()=>{this.handleSubmit()}}>
           Submit
       </Button>
     );
@@ -602,8 +611,14 @@ class ClassifyingPage extends React.Component {
         return <div className={s.leftTree}><div className={s.overviewTree}>{item}</div><hr className={s.hr}/></div>;
       }});
 
+      var currentClassification = "Current classification - " + this.state.currentClassification;
+
     return (
       <Layout className={s.content} footerLeftContent={this.getFooterContent()}>
+          <div className= {s.recognitionCategoryText}>
+            <div className={s.categoryTextWrapper}>Mode {this.state.mode} - {this.state.recognitionCategory}: {store.getState().criterionObject.name}</div>
+            <div className={s.classificationTextWrapper}>{currentClassification}</div>
+          </div>
           <div className={s.leftcontent}>
               {overviewTree}
           </div>

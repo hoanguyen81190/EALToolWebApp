@@ -32,6 +32,26 @@ body, html{
   margin: 0;
   padding: 0;
   padding-left: 1%;
+
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+
+  box-shadow:
+    0 0px 0px #ddd, /*bottom external highlight*/
+    0 0px 1px #ddd, /*top external shadow*/
+    inset 0px 0px 3px rgba(0,0,0,1), /*bottom internal shadow*/
+    inset 0 0px 1px rgba(255,255,255,0.8); /*top internal highlight*/
+}
+
+.categoryTextWrapper{
+  position: absolute;
+  left: 2%;
+}
+
+.classificationTextWrapper{
+  position: absolute;
+  right: 2%;
 }
 
 .tableWrapper{
@@ -111,6 +131,11 @@ body, html{
 .gridDataRow{
   width: 100%;
   height: 100%;
+}
+
+.box{
+  height: 100%;
+  width: 100%;
 }
 
 .gridCellEmpty{
