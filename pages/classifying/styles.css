@@ -370,4 +370,19 @@
   .leftTree .logicNode .logicNode{
     margin-left: -20%;
   }
+
+
+  @media
+  (-webkit-min-device-pixel-ratio: 2),
+  (min-resolution: 192dpi) {
+    .leftTree .logicNode .logicNode .logicNode{
+      margin-left: -35%;
+    }
+
+    .leftTree .logicNode .logicNode .logicNode .leafNode{
+      margin-left: 5%;
+    }
+  }
+
+
 }
