@@ -166,7 +166,6 @@ class OverviewTable extends React.Component {
             conditionNumbers.push(conditionNumber);
           }
         }
-
       }
     }
 
@@ -203,6 +202,7 @@ class OverviewTable extends React.Component {
   {
     //Get the emergency criterion data of the selected emergency category
     var emergencyCategories = eALDocument.getRecognitionCategoryData(store.getState().recognitionCategory).emergency_categories;
+
     //Get the condition numbers of the emergency categories
     var conditionNumbers = this.getConditionNumbers(emergencyCategories);
     //Store the found condition numbers for use with the table

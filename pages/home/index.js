@@ -40,6 +40,12 @@ class HomePage extends React.Component {
   }
 
   handleModeButtonDisabling(mode){
+
+    console.log(eALDocument.data);
+
+    
+
+
     if(mode === 5 || mode === 6 || mode === 'Defueled')
     {
       var barrierButton = document.getElementById('barriermatrix');
@@ -150,8 +156,6 @@ class HomePage extends React.Component {
   }
 
   renderNoFooter(){
-    console.log(eALDocument.data);
-
     return (
       <Layout className={s.content}>
         <div className={s.modeContainer}>
@@ -189,7 +193,6 @@ class HomePage extends React.Component {
       this.handleSubmit();
     }
   }
-
 }
 
 export default HomePage;
