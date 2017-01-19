@@ -208,7 +208,7 @@ class BarrierMatrixPage extends React.Component {
           <div className={s.categoryTextWrapper}>Mode {this.state.mode} - Fission Product Barrier Matrix</div>
           <div className={s.classificationTextWrapper}> {currentClassification} </div>
         </div>
-          <div className={s.maincontent}>
+        <div className={s.maincontent}>
               {newBarriers}
             <div>
               <DialogDemo ref="classificationDialog"/>

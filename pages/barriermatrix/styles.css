@@ -76,7 +76,7 @@ body, html{
 .maincontent {
   background-color: #eee;
   width: 50%;
-  height: 100%;
+  height: calc(100% - 50px); /* 100% of the height minus the height of the recognition text */
   position: absolute;
   padding: 0;
   margin-top:50px; /* To clear the header text */
@@ -99,7 +99,7 @@ body, html{
   margin-left: 50%;
   margin-top: 50px; /* To clear the header text */
   width: 50%;
-  height: 100%;
+  height: calc(100% - 50px); /* 100% of the height minus the height of the recognition text */
 
   position: absolute;
   padding: 0;

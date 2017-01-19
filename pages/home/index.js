@@ -150,11 +150,12 @@ class HomePage extends React.Component {
   }
 
   renderNoFooter(){
+    console.log(eALDocument.data);
+
     return (
       <Layout className={s.content}>
         <div className={s.modeContainer}>
           <h4>Select Mode</h4>
-
             {eALDocument.data.modes.map((mode, i) =>
               {
                 return <Button className={s.home_button} id={mode} type='raised' key={i} onClick={() => this.handleModes(mode)} >{mode}</Button>}

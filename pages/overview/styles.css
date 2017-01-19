@@ -55,11 +55,10 @@ body, html{
 }
 
 .tableWrapper{
-  height: 100%;
+  height: calc(100% - 50px);  /* 100% of the height minus the height of the recognition text */
   width: 100%;
   margin-top:50px;
   position:absolute;
-
 }
 
 /* cell text properties */
@@ -125,7 +124,6 @@ body, html{
   margin: 0;
   position:relative;
   transform: translate(0,40px);
-
 }
 
 .gridDataRow{
@@ -159,6 +157,7 @@ body, html{
   padding-left: 8px;
   padding-top: 4px;
 }
+
 .gridCell:hover{
   background: rgba(0,0,255,0.1);
   cursor: pointer;

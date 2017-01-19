@@ -38,10 +38,15 @@ class NavigationBar extends React.Component {
 
 
     var headerContent = null;
-    var ifeLogoRight = <div className={s.ifeLogoContainer}>
+    /*var ifeLogoRight = <div className={s.ifeLogoContainer}>
       <a href="https://www.ife.no/en" target="_blank">
         <img className={s.ifeLogo} src={ifeLogo} alt="IFE logo"/>
       </a>
+    </div>;*/
+
+    //Without IFE link
+    var ifeLogoRight = <div className={s.ifeLogoContainer}>
+        <img className={s.ifeLogo} src={ifeLogo} alt="IFE logo"/>
     </div>;
 
     switch (history.getCurrentLocation().pathname){
