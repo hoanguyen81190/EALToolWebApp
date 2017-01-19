@@ -421,6 +421,46 @@ class ClassifyingPage extends React.Component {
     };
   }
 
+
+  /**
+  * Extracts the condition number from the criterion header name
+  * @param {String} criterionName
+  * @return {Number} conditionNumber
+  */
+  getCriterionConditionNumber(criterionName)
+  {
+    var conditionNumber = parseInt(criterionName.replace( /(^.+\D)(\d+)(\D.+$)/i,'$2'));
+    return conditionNumber;
+  }
+
+  /**
+  * Extracts the condition numbers of the emergency categories
+  * @param {Object Array} emergencyCategories
+  * @return {Integer Array} conditionNumbers
+  */
+  getConditionNumbers(emergencyCategories)
+  {
+    var conditionNumbers = [];
+    for(var i = 0; i < emergencyCategories.length; i++)
+    {
+      for(var y = 0; y < emergencyCategories[i].criterions.length; y++)
+      {
+        if(this.checkIfModeApplicable(emergencyCategories[i].criterions[y]))
+        {
+          //Find the first occurence of a number inside a string. The first number is the criterion condition number
+          var conditionNumber = this.getCriterionConditionNumber(emergencyCategories[i].criterions[y].name);
+          if(conditionNumbers.indexOf(conditionNumber) === -1)
+          {
+            conditionNumbers.push(conditionNumber);
+          }
+        }
+      }
+    }
+
+    return conditionNumbers;
+  }
+
+
   updateCriterionState(criterion){
     var action = {
       type : 'SET_CRITERION_STATE',
@@ -461,13 +501,17 @@ class ClassifyingPage extends React.Component {
 
   extractLeftPanelTree(_mode) {
     var regCat = eALDocument.getRecognitionCategoryData(store.getState().recognitionCategory);
+
     var leftTree = [];
+
+    var selectedCriterionNumber = this.getCriterionConditionNumber(store.getState().criterionObject.name);
+    console.log(selectedCriterionNumber);
 
     for(var index = 0; index < regCat.emergency_categories.length; index++) {
       var emer_cat = regCat.emergency_categories[index];
       var hasCriterion = false;
       for (var i = 0; i < emer_cat.criterions.length; i++) {
-        if(emer_cat.criterions[i].name === store.getState().criterionObject.name) {
+        if(this.getCriterionConditionNumber(emer_cat.criterions[i].name) === selectedCriterionNumber) {
           var treeNode = <TreeNode key={leftTree.length}
             emergencyLevel={emer_cat.name}
             criterion={emer_cat.criterions[i]}
