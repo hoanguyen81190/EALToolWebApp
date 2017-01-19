@@ -2395,7 +2395,7 @@
                 "type": "Leaf",
                 "indent_level": 0,
                 "description": {
-                  "text": "UNPLANNED loss of 250 volt DC buses AB <b><u>AND</u></b> CD as indicated by bus voltage < 220 volts DC for greater than 15 minutes.",
+                  "text": "UNPLANNED loss of 250 volt DC buses AB <b><u>AND</u></b> CD as indicated by bus voltage &le; 220 volts DC for greater than 15 minutes.",
                   "ref": ""
                 }
               }
