@@ -505,7 +505,6 @@ class ClassifyingPage extends React.Component {
     var leftTree = [];
 
     var selectedCriterionNumber = this.getCriterionConditionNumber(store.getState().criterionObject.name);
-    console.log(selectedCriterionNumber);
 
     for(var index = 0; index < regCat.emergency_categories.length; index++) {
       var emer_cat = regCat.emergency_categories[index];

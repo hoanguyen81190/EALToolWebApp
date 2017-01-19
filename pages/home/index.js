@@ -35,26 +35,22 @@ class HomePage extends React.Component {
     var element = document.getElementById(this.state.recognitionCategory);
     this.changeButtonOnClick(element);
     this.handleCategoriesButtonDisabling(_cat);
-    document.getElementById(_cat).style.backgroundColor = 'Red';
-    this.setState({recognitionCategory: _cat});
+    document.getElementById(_cat.name).style.backgroundColor = 'Red';
+    this.setState({recognitionCategory: _cat.name});
   }
 
   handleModeButtonDisabling(mode){
+    var recognitionCategories = eALDocument.data.recognition_categories;
 
-    console.log(eALDocument.data);
-
-    
-
+    for(var i = 0; i < recognitionCategories.length; i++){
+        document.getElementById(recognitionCategories[i].name).disabled = (recognitionCategories[i].mode_applicability.indexOf(mode) === -1);
+    }
 
     if(mode === 5 || mode === 6 || mode === 'Defueled')
     {
       var barrierButton = document.getElementById('barriermatrix');
       this.changeButtonOnClick(barrierButton);
       barrierButton.disabled = true;
-      if(this.state.recognitionCategory === 'barriermatrix')
-      {
-        this.state.recognitionCategory = null;
-      }
     }
     else
     {
@@ -64,7 +60,13 @@ class HomePage extends React.Component {
   }
 
   handleCategoriesButtonDisabling(category){
-    if(category === 'barriermatrix')
+    if(category.mode_applicability !== undefined){
+      for(var i = 0; i < eALDocument.data.modes.length; i++){
+        document.getElementById(eALDocument.data.modes[i]).disabled = (category.mode_applicability.indexOf(eALDocument.data.modes[i]) === -1);
+      }
+    }
+
+    if(category.name === 'barriermatrix')
     {
       var mode5Button = document.getElementById('5');
       mode5Button.disabled = true;
@@ -72,20 +74,8 @@ class HomePage extends React.Component {
       mode6Button.disabled = true;
       var modeDefueledButton = document.getElementById('Defueled');
       modeDefueledButton.disabled = true;
+    }
 
-      if(this.state.mode === 5 || this.state.mode === 6 || this.state.mode === 'Defueled')
-      {
-        this.state.mode = null;
-      }
-    }
-    else {
-      var mode5Button = document.getElementById('5');
-      mode5Button.disabled = false;
-      var mode6Button = document.getElementById('6');
-      mode6Button.disabled = false;
-      var modeDefueledButton = document.getElementById('Defueled');
-      modeDefueledButton.disabled = false;
-    }
   }
 
   /**
@@ -156,6 +146,10 @@ class HomePage extends React.Component {
   }
 
   renderNoFooter(){
+    var barrierMatrix = {
+      name: "barriermatrix"
+    };
+
     return (
       <Layout className={s.content}>
         <div className={s.modeContainer}>
@@ -171,12 +165,12 @@ class HomePage extends React.Component {
         <div className={s.categoriesContainer}>
           <h4>Select Category</h4>
 
-          <Button className={s.home_button} id='barriermatrix' type='raised' key={0} onClick={() => this.handleCategories('barriermatrix')} >FISSION PRODUCT BARRIER MATRIX</Button>
+          <Button className={s.home_button} id='barriermatrix' type='raised' key={0} onClick={() => this.handleCategories(barrierMatrix)} >FISSION PRODUCT BARRIER MATRIX</Button>
 
 
             {eALDocument.data.recognition_categories.map((cat, i) =>
               {
-                return <Button className={s.home_button} id={cat.name} type='raised' key={i+1} onClick={() => this.handleCategories(cat.name)} >{cat.name}</Button>}
+                return <Button className={s.home_button} id={cat.name} type='raised' key={i+1} onClick={() => this.handleCategories(cat)} >{cat.name}</Button>}
             )}
         </div>
       </Layout>
