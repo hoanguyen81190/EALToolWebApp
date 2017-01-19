@@ -51,7 +51,7 @@
   overflow-x: hidden;
   overflow-y: auto;
   width: 15%;
-  height: 100%;
+  height: calc(100% - 50px); /* 100% of the height minus the height of the recognition text */
   background-color: #eee;
   position: absolute;
   padding:0;
@@ -133,7 +133,7 @@
     margin-top: 50px;
     background-color: #eee;
     width: 40%;
-    height: 100%;
+    height: calc(100% - 50px); /* 100% of the height minus the height of the recognition text */
     position: absolute;
     padding: 0;
     padding-top: 5px;
@@ -230,7 +230,7 @@
     margin-left: 55%;
     margin-top: 50px;
     width: 45%;
-    height: 100%;
+    height: calc(100% - 50px);
     background-color: #CCCCCC;
     position: absolute;
     padding: 0;
