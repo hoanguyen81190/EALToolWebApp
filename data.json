@@ -905,7 +905,7 @@
           "name": "General Emergency",
           "criterions": [
             {
-              "name": "R-1  Effluent release",
+              "name": "R-1 Effluent release",
               "full_name": "Radioactive effluent release",
               "mode_applicability": [
                 1,
@@ -2408,6 +2408,186 @@
         6,
         "Defueled"
       ]
+    },
+    {
+      "name": "SEC judgment",
+      "emergency_categories": [
+        {
+          "name": "General Emergency",
+          "criterions": [
+            {
+              "name": "H-1 SEC Judgment",
+              "full_name": "SEC judgment",
+              "mode_applicability": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                "Defueled"
+              ],
+              "description": {
+                "text": "Other conditions existing which in the judgment of the Site Emergency Coordinator (SEC) warrant declaration of a General Emergency.",
+                "ref": {
+                  "page": 50,
+                  "range": 1
+                }
+              },
+              "look_up": false,
+              "conditions": {
+                "type": "OR",
+                "indent_level": 1,
+                "description": "",
+                "children": [
+                  {
+                    "type": "Leaf",
+                    "indent_level": 0,
+                    "description": {
+                      "text": "Conditions indicate an <u>actual</u> or <u>imminent</u> substantial core degradation with potential loss of affected unit’s containment.",
+                      "ref": ""
+                    }
+                  },
+                  {
+                    "type": "Leaf",
+                    "indent_level": 0,
+                    "description": {
+                      "text": "Potential exists for an uncontrolled radioactive release that may exceed EPA limits at the site boundary",
+                      "ref": ""
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Site Area Emergency",
+          "criterions": [
+            {
+              "name": "H-1 SEC Judgment",
+              "full_name": "SEC judgment",
+              "mode_applicability": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                "Defueled"
+              ],
+              "description": {
+                "text": "Other conditions existing which in the judgment of the Site Emergency Coordinator (SEC) warrant declaration of a Site Area Emergency.",
+                "ref": {
+                  "page": 49,
+                  "range": 1
+                }
+              },
+              "look_up": false,
+              "conditions": {
+                "type": "Leaf",
+                "indent_level": 0,
+                "description": {
+                  "text": "Conditions indicate <u>likely</u> or <u>actual</u> major failures of plant functions needed for the protection of the public. ",
+                  "ref": ""
+                }
+              }
+            }
+          ]
+        },
+        {
+          "name": "Alert",
+          "criterions": [
+            {
+              "name": "H-1 SEC Judgment",
+              "full_name": "SEC judgment",
+              "mode_applicability": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                "Defueled"
+              ],
+              "description": {
+                "text": "Other conditions existing which in the judgment of the Site Emergency Coordinator (SEC) warrant declaration of an Alert.",
+                "ref": {
+                  "page": 48,
+                  "range": 1
+                }
+              },
+              "look_up": false,
+              "conditions": {
+                "type": "AND",
+                "indent_level": 1,
+                "description": "",
+                "children": [
+                  {
+                    "type": "Leaf",
+                    "indent_level": 0,
+                    "description": {
+                      "text": "Conditions indicate that plant safety systems may be degraded",
+                      "ref": ""
+                    }
+                  },
+                  {
+                    "type": "Leaf",
+                    "indent_level": 0,
+                    "description": {
+                      "text": "Increased monitoring of plant functions is needed.",
+                      "ref": ""
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Unusual Event",
+          "criterions": [
+            {
+              "name": "H-1 SEC Judgment",
+              "full_name": "SEC judgment",
+              "mode_applicability": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                "Defueled"
+              ],
+              "description": {
+                "text": "Other conditions existing which in the judgment of the Site Emergency Coordinator (SEC) warrant declaration of an Unusual Event.",
+                "ref": {
+                  "page": 46,
+                  "range": 2
+                }
+              },
+              "look_up": false,
+              "conditions": {
+                "type": "Leaf",
+                "indent_level": 0,
+                "description": {
+                  "text": "In the judgment of the SEC, conditions indicate a <u>potential</u> degradation of the level of safety of the plant.",
+                  "ref": ""
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "mode_applicability": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        "Defueled"
+      ]
     }
   ],
   "fission_product_barriers": [
@@ -3023,175 +3203,5 @@
         }
       ]
     }
-  ],
-  "SEC_judgment": {
-    "emergency_categories": [
-      {
-        "name": "General Emergency",
-        "criterions": [
-          {
-            "name": "H-1 SEC Judgment",
-            "full_name": "SEC judgment",
-            "mode_applicability": [
-              1,
-              2,
-              3,
-              4,
-              5,
-              6,
-              "Defueled"
-            ],
-            "description": {
-              "text": "Other conditions existing which in the judgment of the Site Emergency Coordinator (SEC) warrant declaration of a General Emergency.",
-              "ref": {
-                "page": 50,
-                "range": 1
-              }
-            },
-            "look_up": false,
-            "conditions": {
-              "type": "OR",
-              "indent_level": 1,
-              "description": "",
-              "children": [
-                {
-                  "type": "Leaf",
-                  "indent_level": 0,
-                  "description": {
-                    "text": "Conditions indicate an <u>actual</u> or <u>imminent</u> substantial core degradation with potential loss of affected unit’s containment.",
-                    "ref": ""
-                  }
-                },
-                {
-                  "type": "Leaf",
-                  "indent_level": 0,
-                  "description": {
-                    "text": "Potential exists for an uncontrolled radioactive release that may exceed EPA limits at the site boundary",
-                    "ref": ""
-                  }
-                }
-              ]
-            }
-          }
-        ]
-      },
-      {
-        "name": "Site Area Emergency",
-        "criterions": [
-          {
-            "name": "H-1 SEC Judgment",
-            "full_name": "SEC judgment",
-            "mode_applicability": [
-              1,
-              2,
-              3,
-              4,
-              5,
-              6,
-              "Defueled"
-            ],
-            "description": {
-              "text": "Other conditions existing which in the judgment of the Site Emergency Coordinator (SEC) warrant declaration of a Site Area Emergency.",
-              "ref": {
-                "page": 49,
-                "range": 1
-              }
-            },
-            "look_up": false,
-            "conditions": {
-              "type": "Leaf",
-              "indent_level": 0,
-              "description": {
-                "text": "Conditions indicate <u>likely</u> or <u>actual</u> major failures of plant functions needed for the protection of the public. ",
-                "ref": ""
-              }
-            }
-          }
-        ]
-      },
-      {
-        "name": "Alert",
-        "criterions": [
-          {
-            "name": "H-1 SEC Judgment",
-            "full_name": "SEC judgment",
-            "mode_applicability": [
-              1,
-              2,
-              3,
-              4,
-              5,
-              6,
-              "Defueled"
-            ],
-            "description": {
-              "text": "Other conditions existing which in the judgment of the Site Emergency Coordinator (SEC) warrant declaration of an Alert.",
-              "ref": {
-                "page": 48,
-                "range": 1
-              }
-            },
-            "look_up": false,
-            "conditions": {
-              "type": "AND",
-              "indent_level": 1,
-              "description": "",
-              "children": [
-                {
-                  "type": "Leaf",
-                  "indent_level": 0,
-                  "description": {
-                    "text": "Conditions indicate that plant safety systems may be degraded",
-                    "ref": ""
-                  }
-                },
-                {
-                  "type": "Leaf",
-                  "indent_level": 0,
-                  "description": {
-                    "text": "Increased monitoring of plant functions is needed.",
-                    "ref": ""
-                  }
-                }
-              ]
-            }
-          }
-        ]
-      },
-      {
-        "name": "Unusual Event",
-        "criterions": [
-          {
-            "name": "H-1 SEC Judgment",
-            "full_name": "SEC judgment",
-            "mode_applicability": [
-              1,
-              2,
-              3,
-              4,
-              5,
-              6,
-              "Defueled"
-            ],
-            "description": {
-              "text": "Other conditions existing which in the judgment of the Site Emergency Coordinator (SEC) warrant declaration of an Unusual Event.",
-              "ref": {
-                "page": 46,
-                "range": 2
-              }
-            },
-            "look_up": false,
-            "conditions": {
-              "type": "Leaf",
-              "indent_level": 0,
-              "description": {
-                "text": "In the judgment of the SEC, conditions indicate a <u>potential</u> degradation of the level of safety of the plant.",
-                "ref": ""
-              }
-            }
-          }
-        ]
-      }
-    ]
-  }
+  ]
 }
