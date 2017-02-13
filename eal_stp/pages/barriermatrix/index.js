@@ -2,6 +2,8 @@ import React, { PropTypes } from 'react';
 import Layout from '../../components/Layout';
 import Button from '../../components/Button';
 
+
+
 import s from './styles.css';
 import spdf from "./PDFViewer";
 import DialogDemo from './dialog';
@@ -11,6 +13,8 @@ import store from '../../core/store';
 
 import BarrierTable from './barrierTable';
 import BarrierTableNew from './barrierTableNew';
+import BarrierCard from './barrierTableSTP';
+
 import {eALDocument} from '../../database-loader';
 
 import {TextComponent} from '../../components/MDL/TextComponent';
@@ -205,6 +209,11 @@ class BarrierMatrixPage extends React.Component {
       <BarrierTableNew barrier={eALDocument.data.fission_product_barriers[2]} ref="containment"        clearBarrierHighights={this.clearBarrierHighlights.bind(this)} documentCallback={(startPage, pageRange) => this.openDocument(startPage, pageRange)}/>
     </div>;
 
+    var stpBarriers = <div className={s.tableWrapper}><BarrierCard barrier={eALDocument.data.fission_product_barriers[0]} ref="fuel" clearBarrierHighights={this.clearBarrierHighlights.bind(this)} documentCallback={(startPage, pageRange) => this.openDocument(startPage, pageRange)}/>
+      <BarrierCard barrier={eALDocument.data.fission_product_barriers[1]} ref="RCS" clearBarrierHighights={this.clearBarrierHighlights.bind(this)}  documentCallback={(startPage, pageRange) => this.openDocument(startPage, pageRange)}/>
+      <BarrierCard barrier={eALDocument.data.fission_product_barriers[2]} ref="containment" clearBarrierHighights={this.clearBarrierHighlights.bind(this)}  documentCallback={(startPage, pageRange) => this.openDocument(startPage, pageRange)}/>
+    </div>;
+
     var currentClassification = "Current classification - " + this.state.currentClassification;
 
     return (
@@ -214,7 +223,7 @@ class BarrierMatrixPage extends React.Component {
           <TextComponent style={s.classificationTextWrapper} text={currentClassification} ref="classificationTextWrapperRef"/>
         </div>
         <div className={s.maincontent}>
-              {newBarriers}
+              {stpBarriers}
             <div>
               <DialogDemo ref="classificationDialog"/>
             </div>
