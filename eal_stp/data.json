@@ -1,0 +1,3207 @@
+{
+  "modes": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    "Defueled"
+  ],
+  "recognition_categories": [
+    {
+      "name": "Hazard and other conditions",
+      "emergency_categories": [
+        {
+          "name": "General Emergency",
+          "criterions": [
+            {
+              "name": "H-2 Security",
+              "full_name": "Security Events",
+              "mode_applicability": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                "Defueled"
+              ],
+              "description": {
+                "text": "HOSTILE ACTION resulting in Loss of Physical Control of the Facility",
+                "ref": {
+                  "page": 57,
+                  "range": 2
+                }
+              },
+              "look_up": true,
+              "conditions": {
+                "type": "OR",
+                "indent_level": 1,
+                "description": {
+                  "text": "",
+                  "ref": ""
+                },
+                "children": [
+                  {
+                    "type": "Leaf",
+                    "indent_level": 0,
+                    "description": {
+                      "text": "A HOSTILE ACTION has occurred such that plant personnel are unable to operate equipment required to maintain safety functions listed below:<ul><li>Reactivity Control (ability to shut down the reactor and keep it shutdown)</li> <li>RCS Inventory (ability to cool the core)</li><li>Secondary Heat Removal (ability to maintain heat sink) .[Ref. 5.2.1i]</li></ul>",
+                      "ref": "Ref. 5.2.1i"
+                    },
+                    "children": ""
+                  },
+                  {
+                    "type": "Leaf",
+                    "indent_level": 0,
+                    "description": {
+                      "text": "A HOSTILE ACTION has caused failure of spent fuel cooling systems and IMMINENT fuel damage is likely",
+                      "ref": ""
+                    },
+                    "children": ""
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Site Area Emergency",
+          "criterions": [
+            {
+              "name": "H-2 Security",
+              "full_name": "Security Events",
+              "mode_applicability": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                "Defueled"
+              ],
+              "description": {
+                "text": "HOSTILE ACTION within the PROTECTED AREA ",
+                "ref": {
+                  "page": 55,
+                  "range": 2
+                }
+              },
+              "look_up": true,
+              "conditions": {
+                "type": "Leaf",
+                "indent_level": 0,
+                "description": {
+                  "text": "A HOSTILE ACTION is occurring or has occurred within the PROTECTED AREA as reported by the Security Shift Supervisor. [Ref. 5.2.1i]",
+                  "ref": "Ref. 5.2.1i"
+                },
+                "children": ""
+              }
+            },
+            {
+              "name": "H-3 CR Evacuation",
+              "full_name": "Control Room Evacuation",
+              "mode_applicability": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                "Defueled"
+              ],
+              "description": {
+                "text": "Control Room evacuated AND control not established in 15 minutes.",
+                "ref": {
+                  "page": 60,
+                  "range": 1
+                }
+              },
+              "look_up": true,
+              "conditions": {
+                "type": "AND",
+                "indent_level": 1,
+                "description": "",
+                "children": [
+                  {
+                    "type": "Leaf",
+                    "indent_level": 0,
+                    "description": {
+                      "text": "Control Room evacuation has been initiated.",
+                      "ref": ""
+                    }
+                  },
+                  {
+                    "type": "Leaf",
+                    "indent_level": 0,
+                    "description": {
+                      "text": "CONTROL of any one of the following processes is not established within 15 minutes:<ul><li>Reactivity</li><li>RCS inventory</li><li>RCS temperature</li><li>SG heat sink</li></ul>",
+                      "ref": ""
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Alert",
+          "criterions": [
+            {
+              "name": "H-2 Security",
+              "full_name": "Security Events",
+              "mode_applicability": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                "Defueled"
+              ],
+              "description": {
+                "text": "HOSTILE ACTION within the OWNER CONTROLLED AREA or airborne attack threat.",
+                "ref": {
+                  "page": 53,
+                  "range": 2
+                }
+              },
+              "look_up": true,
+              "conditions": {
+                "type": "OR",
+                "indent_level": 1,
+                "description": {},
+                "children": [
+                  {
+                    "type": "Leaf",
+                    "indent_level": 0,
+                    "description": {
+                      "text": "A HOSTILE ACTION is occurring or has occurred within the OWNER CONTROLLED AREA as reported by the Security Shift Supervisor",
+                      "ref": ""
+                    }
+                  },
+                  {
+                    "type": "Leaf",
+                    "indent_level": 0,
+                    "description": {
+                      "text": "A validated notification from the NRC of a LARGE AIRCRAFT attack threat within <strong>30 minutes</strong> of the site.",
+                      "ref": " [Ref. 5.2.1i] "
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "name": "H-3 CR Evacuation",
+              "full_name": "Control Room Evacuation",
+              "mode_applicability": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                "Defueled"
+              ],
+              "description": {
+                "text": "Control Room evacuation initiated.",
+                "ref": {
+                  "page": 59,
+                  "range": 1
+                }
+              },
+              "look_up": false,
+              "conditions": {
+                "type": "Leaf",
+                "indent_level": 0,
+                "description": {
+                  "text": "Control room evacuation has been initiated.",
+                  "ref": ""
+                }
+              }
+            },
+            {
+              "name": "H-4 FIRE",
+              "full_name": "FIRE or EXPLOSION affecting OPERABILITY Of safety equipment",
+              "mode_applicability": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                "Defueled"
+              ],
+              "description": {
+                "text": "FIRE or EXPLOSION affecting OPERABILITY of plant safety systems required to establish or maintain safe shutdown.",
+                "ref": {
+                  "page": 62,
+                  "range": 1
+                }
+              },
+              "look_up": true,
+              "conditions": {
+                "type": "OR",
+                "indent_level": 1,
+                "descriptions": "",
+                "children": [
+                  {
+                    "type": "Leaf",
+                    "indent_level": 0,
+                    "description": {
+                      "text": "FIRE or EXPLOSION that affects the OPERABILITY of systems required for the current operating mode OR for safe shutdown.",
+                      "ref": ""
+                    }
+                  },
+                  {
+                    "type": "Leaf",
+                    "indent_level": 0,
+                    "description": {
+                      "text": "FIRE or EXPLOSION that causes visible damage to any of the following structures: containments, auxiliary buildings, essential service water system enclosures, auxiliary feedwater pump rooms, refueling water storage tank, or condensate storage tank.",
+                      "ref": ""
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "name": "H-5 TOXIC Gas",
+              "full_name": "TOXIC or flammable gases",
+              "mode_applicability": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                "Defueled"
+              ],
+              "description": {
+                "text": "Release of TOXIC of flammable gases within a facility structure which jeopardizes operation of systems required to maintain safe operations or to establish or maintain cold shutdown. ",
+                "ref": {
+                  "page": 64,
+                  "range": 2
+                }
+              },
+              "look_up": true,
+              "conditions": {
+                "type": "OR",
+                "indent_level": 1,
+                "description": "",
+                "children": [
+                  {
+                    "type": "Leaf",
+                    "indent_level": 0,
+                    "description": {
+                      "text": "Report or detection of TOXIC gases within a facility structure in concentrations that will be life threatening to plant personnel. ",
+                      "ref": ""
+                    }
+                  },
+                  {
+                    "type": "Leaf",
+                    "indent_level": 0,
+                    "description": {
+                      "text": "Report or detection of flammable gases within a facility structure in concentrations that will affect the safe operation of the plant.",
+                      "ref": ""
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Unusual Event",
+          "criterions": [
+            {
+              "name": "H-2 Security",
+              "full_name": "Security Events",
+              "mode_applicability": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                "Defueled"
+              ],
+              "description": {
+                "text": "Confirmed SECURITY CONDITION or threat which indicates a potential degradation in the level of safety of the plant.",
+                "ref": {
+                  "page": 51,
+                  "range": 2
+                }
+              },
+              "look_up": true,
+              "conditions": {
+                "type": "OR",
+                "indent_level": 1,
+                "description": "",
+                "children": [
+                  {
+                    "type": "Leaf",
+                    "indent_level": 0,
+                    "description": {
+                      "text": "A SECURITY CONDITION that does not involve a HOSTILE ACTION as reported by Security Shift Supervision.",
+                      "ref": ""
+                    }
+                  },
+                  {
+                    "type": "Leaf",
+                    "indent_level": 0,
+                    "description": {
+                      "text": "A credible site-specific security threat notification.",
+                      "ref": ""
+                    }
+                  },
+                  {
+                    "type": "Leaf",
+                    "indent_level": 0,
+                    "description": {
+                      "text": "A validated notification from NRC providing information of an aircraft threat. [Ref: 5.2.1i]",
+                      "ref": ""
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "name": "H-4 FIRE",
+              "full_name": "Fire",
+              "mode_applicability": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                "Defueled"
+              ],
+              "description": {
+                "text": "FIRE in protected area boundary NOT extinguished within 15 minutes of detection.",
+                "ref": {
+                  "page": 61,
+                  "range": 1
+                }
+              },
+              "look_up": false,
+              "conditions": {
+                "type": "Leaf",
+                "indent_level": 0,
+                "description": {
+                  "text": "FIRE within the protected area boundary not extinguished within 15 minutes of detection.",
+                  "ref": ""
+                }
+              }
+            },
+            {
+              "name": "H-5 TOXIC Gas",
+              "full_name": "TOXIC or flammable gases",
+              "mode_applicability": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                "Defueled"
+              ],
+              "description": {
+                "text": "Release of TOXIC or flammable gases deemed detrimental to safe operation of the plant.",
+                "ref": {
+                  "page": 63,
+                  "range": 1
+                }
+              },
+              "look_up": true,
+              "conditions": {
+                "type": "OR",
+                "indent_level": 1,
+                "description": "",
+                "children": [
+                  {
+                    "type": "Leaf",
+                    "indent_level": 0,
+                    "description": {
+                      "text": "Release of TOXIC or flammable gases within or near site boundary that may affect normal operation of the plant.",
+                      "ref": ""
+                    }
+                  },
+                  {
+                    "type": "Leaf",
+                    "indent_level": 0,
+                    "description": {
+                      "text": "Report by local, county, or state officials of potential evacuation of site personnel based on offsite event."
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "name": "H-8 ISFSI",
+              "full_name": "ISFSI",
+              "mode_applicability": [],
+              "description": {
+                "text": "Damage to a loaded cask CONFINEMENT BOUNDARY.",
+                "ref": {
+                  "page": 66,
+                  "range": 1
+                }
+              },
+              "look_up": false,
+              "conditions": {
+                "type": "Leaf",
+                "indent_level": 0,
+                "description": {
+                  "text": "Damage to a loaded cask CONFINEMENT BOUNDARY.",
+                  "ref": ""
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "mode_applicability": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        "Defueled"
+      ]
+    },
+    {
+      "name": "Natural or destructive phenomena",
+      "emergency_categories": [
+        {
+          "name": "General Emergency",
+          "criterions": []
+        },
+        {
+          "name": "Site Area Emergency",
+          "criterions": []
+        },
+        {
+          "name": "Alert",
+          "criterions": [
+            {
+              "name": "N-1 Seismic",
+              "full_name": "Natural or destructive phenomena inside vital areas.",
+              "mode_applicability": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                "Defueled"
+              ],
+              "description": {
+                "text": "CONFIRMED seismic event as indicated by seismic instrument activation or based on ground motion felt at the nuclear plant and recognized as an earthquake based on consensus of control room operators on duty at the time AND which causes visible major damage to structures, systems, and components in the vital area or causes a plant trip to occur.",
+                "ref": {
+                  "page": 69,
+                  "range": 2
+                }
+              },
+              "look_up": true,
+              "conditions": {
+                "type": "AND",
+                "indent_level": 2,
+                "description": "",
+                "children": [
+                  {
+                    "type": "OR",
+                    "indent_level": 1,
+                    "description": "",
+                    "children": [
+                      {
+                        "type": "Leaf",
+                        "indent_level": 0,
+                        "description": {
+                          "text": "Seismic instrument activated ",
+                          "ref": ""
+                        }
+                      },
+                      {
+                        "type": "Leaf",
+                        "indent_level": 0,
+                        "description": {
+                          "text": "Ground motion detected by Control Room crew ",
+                          "ref": ""
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "type": "OR",
+                    "indent_level": 1,
+                    "description": "",
+                    "children": [
+                      {
+                        "type": "Leaf",
+                        "indent_level": 0,
+                        "description": {
+                          "text": "Visible major damage in vital area",
+                          "ref": ""
+                        }
+                      },
+                      {
+                        "type": "Leaf",
+                        "indent_level": 0,
+                        "description": {
+                          "text": "Plant Trip",
+                          "ref": ""
+                        }
+                      }
+                    ]
+                  }
+                ]
+              }
+            },
+            {
+              "name": "N-2 Tornado/wind",
+              "full_name": "Natural or destructive phenomena inside vital areas.",
+              "mode_applicability": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                "Defueled"
+              ],
+              "description": {
+                "text": "Report of a tornado strike in a plant vital area or SUSTAINED high wind (>15 min.) greater than 90 miles per hour. ",
+                "ref": {
+                  "page": 69,
+                  "range": 2
+                }
+              },
+              "look_up": false,
+              "conditions": {
+                "type": "OR",
+                "indent_level": 1,
+                "description": "",
+                "children": [
+                  {
+                    "type": "Leaf",
+                    "indent_level": 0,
+                    "description": {
+                      "text": "Tornado strike in Vital Area ",
+                      "ref": ""
+                    }
+                  },
+                  {
+                    "type": "Leaf",
+                    "indent_level": 0,
+                    "description": {
+                      "text": "SUSTAINED high wind (>15 min.) greater than 90 miles per hour",
+                      "ref": ""
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "name": "N-3 Structural",
+              "full_name": "Natural or destructive phenomena inside vital areas.",
+              "mode_applicability": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                "Defueled"
+              ],
+              "description": {
+                "text": "Report of visible structural damage to a structure containing systems required to establish and maintain cold shutdown.",
+                "ref": {
+                  "page": 69,
+                  "range": 2
+                }
+              },
+              "look_up": false,
+              "conditions": {
+                "type": "Leaf",
+                "indent_level": 0,
+                "description": {
+                  "text": "Visible damage to a structure containing systems required to achieve and maintain Mode 5",
+                  "ref": ""
+                }
+              }
+            },
+            {
+              "name": "N-4 Vehicle Collision",
+              "full_name": "Natural or destructive phenomena inside vital areas.",
+              "mode_applicability": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                "Defueled"
+              ],
+              "description": {
+                "text": "Vehicle collision affecting a vital area. ",
+                "ref": {
+                  "page": 69,
+                  "range": 2
+                }
+              },
+              "look_up": false,
+              "conditions": {
+                "type": "Leaf",
+                "indent_level": 0,
+                "description": {
+                  "text": "Vehicle collision affecting Vital Area.",
+                  "ref": ""
+                }
+              }
+            },
+            {
+              "name": "N-5 MT Failure",
+              "full_name": "Natural or destructive phenomena inside vital areas.",
+              "mode_applicability": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                "Defueled"
+              ],
+              "description": {
+                "text": "Turbine failure generated missiles penetrating a vital area. ",
+                "ref": {
+                  "page": 69,
+                  "range": 2
+                }
+              },
+              "look_up": false,
+              "conditions": {
+                "type": "Leaf",
+                "indent_level": 0,
+                "description": {
+                  "text": "Main turbine generated missile penetrates Vital Area.",
+                  "ref": ""
+                }
+              }
+            },
+            {
+              "name": "N-6 Flooding",
+              "full_name": "Natural or destructive phenomena inside vital areas.",
+              "mode_applicability": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                "Defueled"
+              ],
+              "description": {
+                "text": "Flooding in a vital area affecting safety related equipment. ",
+                "ref": {
+                  "page": 69,
+                  "range": 2
+                }
+              },
+              "look_up": false,
+              "conditions": {
+                "type": "Leaf",
+                "indent_level": 0,
+                "description": {
+                  "text": "Flooding in Vital Area affects safety related equipment.",
+                  "ref": ""
+                }
+              }
+            }
+          ]
+        },
+        {
+          "name": "Unusual Event",
+          "criterions": [
+            {
+              "name": "N-1 Seismic",
+              "full_name": "Natural or destructive phenomena inside the protected area.",
+              "mode_applicability": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                "Defueled"
+              ],
+              "description": {
+                "text": "CONFIRMED seismic event as indicated by seismic instrument activation or based on ground motion felt at the nuclear plant and recognized as an earthquake based on consensus of control room operators on duty at the time.",
+                "ref": {
+                  "page": 67,
+                  "range": 2
+                }
+              },
+              "look_up": true,
+              "conditions": {
+                "type": "OR",
+                "indent_level": 1,
+                "description": "",
+                "children": [
+                  {
+                    "type": "Leaf",
+                    "indent_level": 0,
+                    "description": {
+                      "text": "Seismic instrument activated",
+                      "ref": ""
+                    }
+                  },
+                  {
+                    "type": "Leaf",
+                    "indent_level": 0,
+                    "description": {
+                      "text": "Ground motion detected by Control Room crew.",
+                      "ref": ""
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "name": "N-2 Tornado/wind",
+              "full_name": "Natural or destructive phenomena inside the protected area.",
+              "mode_applicability": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                "Defueled"
+              ],
+              "description": {
+                "text": "Report of a tornado strike within the protected area.",
+                "ref": {
+                  "page": 67,
+                  "range": 2
+                }
+              },
+              "look_up": false,
+              "conditions": {
+                "type": "Leaf",
+                "indent_level": 0,
+                "description": {
+                  "text": "Report of a tornado strike within the protected area. ",
+                  "ref": ""
+                }
+              }
+            },
+            {
+              "name": "N-4 Vehicle Collision",
+              "full_name": "Natural or destructive phenomena inside the protected area.",
+              "mode_applicability": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                "Defueled"
+              ],
+              "description": {
+                "text": "Vehicle collision affecting structures or systems within the protected area.",
+                "ref": {
+                  "page": 67,
+                  "range": 2
+                }
+              },
+              "look_up": false,
+              "conditions": {
+                "type": "Leaf",
+                "indent_level": 0,
+                "description": {
+                  "text": "Vehicle collision affecting structures or systems within the protected area.",
+                  "ref": ""
+                }
+              }
+            },
+            {
+              "name": "N-5 MT Failure",
+              "full_name": "Natural or destructive phenomena inside the protected area.",
+              "mode_applicability": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                "Defueled"
+              ],
+              "description": {
+                "text": "Main turbine rotating component failure causing visible damage or damage to the generator seals.",
+                "ref": {
+                  "page": 67,
+                  "range": 2
+                }
+              },
+              "look_up": false,
+              "conditions": {
+                "type": "Leaf",
+                "indent_level": 0,
+                "description": {
+                  "text": "Main turbine rotating component failure causing visible damage or damage to the generator seals.",
+                  "ref": ""
+                }
+              }
+            },
+            {
+              "name": "N-7 EXPLOSION",
+              "full_name": "Natural or destructive phenomena inside the protected area.",
+              "mode_applicability": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                "Defueled"
+              ],
+              "description": {
+                "text": "Report by plant personnel of an unanticipated EXPLOSION within the protected area boundary resulting in visible damage to permanent structures or equipment.",
+                "ref": {
+                  "page": 67,
+                  "range": 2
+                }
+              },
+              "look_up": false,
+              "conditions": {
+                "type": "Leaf",
+                "indent_level": 0,
+                "description": {
+                  "text": "Unanticipated EXPLOSION within Protected Area causes visible damage to permanent structures or equipment.",
+                  "ref": ""
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "mode_applicability": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        "Defueled"
+      ]
+    },
+    {
+      "name": "Abnormal radiation levels/effluents",
+      "emergency_categories": [
+        {
+          "name": "General Emergency",
+          "criterions": [
+            {
+              "name": "R-1 Effluent release",
+              "full_name": "Radioactive effluent release",
+              "mode_applicability": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                "Defueled"
+              ],
+              "description": {
+                "text": "Site boundary dose resulting from an actual or imminent release of gaseous radioactivity exceeds 1000 mrem TEDE or 5000 mrem CDE thyroid for the actual or projected duration of the release.",
+                "ref": {
+                  "page": 77,
+                  "range": 2
+                }
+              },
+              "look_up": true,
+              "conditions": {
+                "type": "OR",
+                "indent_level": 1,
+                "description": {
+                  "text": "",
+                  "ref": ""
+                },
+                "children": [
+                  {
+                    "type": "Leaf",
+                    "indent_level": 0,
+                    "description": {
+                      "text": "Field survey results indicate site boundary dose rates exceeding 1000 mR/hr β - γ or a CDE thyroid exceeding 5000 mrem for 1 hour of inhalation at the site boundary.",
+                      "ref": ""
+                    },
+                    "children": ""
+                  },
+                  {
+                    "type": "Leaf",
+                    "indent_level": 0,
+                    "description": {
+                      "text": "A valid dose assessment indicates greater than 1000 mrem TEDE or 5000 mrem CDE thyroid at the site boundary.",
+                      "ref": ""
+                    },
+                    "children": ""
+                  },
+                  {
+                    "type": "Leaf",
+                    "indent_level": 0,
+                    "description": {
+                      "text": "A valid reading on one or more of the following monitors (noble gas channels) that exceeds or is expected to exceed the value shown indicates that the release may have exceeded the above criterion and indicates the need to assess the release in accordance with the appropriate plant procedures.<ul><li> VRS-1500/2500 > 1.07 E+0 μci/cc  (Unit Vent) <li>SRA-1800/2800 > 1.57 E+2 μci/cc  (Steam Packing Exhauster) <li> SRA-1900/2900 > 5.78 E+3 μci/cc  (Air Ejector)</ul>",
+                      "ref": ""
+                    },
+                    "children": ""
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Site Area Emergency",
+          "criterions": [
+            {
+              "name": "R-1 Effluent release",
+              "full_name": "Radioactive effluent release",
+              "mode_applicability": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                "Defueled"
+              ],
+              "description": {
+                "text": "Site boundary dose resulting from an actual or imminent release of gaseous radioactivity exceeds 100 mrem TEDE or 500 mrem thyroid CDE for the actual or projected duration of the release.",
+                "ref": {
+                  "page": 75,
+                  "range": 2
+                }
+              },
+              "look_up": true,
+              "conditions": {
+                "type": "OR",
+                "indent_level": 1,
+                "description": {
+                  "text": "",
+                  "ref": ""
+                },
+                "children": [
+                  {
+                    "type": "Leaf",
+                    "indent_level": 0,
+                    "description": {
+                      "text": "Field survey results indicate site boundary dose rates exceeding 100 mR/hr ß-γ or a CDE thyroid exceeding 500 mrem for 1 hour of inhalation at the site boundary.",
+                      "ref": ""
+                    }
+                  },
+                  {
+                    "type": "Leaf",
+                    "indent_level": 0,
+                    "description": {
+                      "text": "A valid dose assessment indicates greater than 100 mrem TEDE or 500 mrem CDE thyroid at the site boundary.",
+                      "ref": ""
+                    }
+                  },
+                  {
+                    "type": "Leaf",
+                    "indent_level": 0,
+                    "description": {
+                      "text": "A valid reading on one or more of the following monitors (noble gas channels) that exceeds or is expected to exceed the value shown indicates that the release may have exceeded the above criterion and indicates the need to assess the release in accordance with appropriate plant procedures. <ul><li>VRS-1500/2500 > 1.07 E-1 μci/cc  (Unit Vent)<li>SRA-1800/2800 > 7.90 E0 μci/cc  (Steam Packing Exhauster)<li>SRA-1900/2900 > 1.95 E+3 μci/cc  (Air Ejector)<li>MRA-1600/2600 > 1.00 E+2 μci/cc  (SG PORV)<li>MRA-1700/2700 > 1.00 E+2 μci/cc  (SG PORV)</ul> ",
+                      "ref": ""
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Alert",
+          "criterions": [
+            {
+              "name": "R-1 Effluent release",
+              "full_name": "Radioactive effluent release",
+              "mode_applicability": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                "Defueled"
+              ],
+              "description": {
+                "text": "Any unplanned release of gaseous or liquid radioactivity to the environment, greater than 200 times ODCM release limits, which lasts for 15 minutes or longer.",
+                "ref": {
+                  "page": 73,
+                  "range": 2
+                }
+              },
+              "look_up": true,
+              "conditions": {
+                "type": "OR",
+                "indent_level": 1,
+                "description": "",
+                "children": [
+                  {
+                    "type": "Leaf",
+                    "indent_level": 0,
+                    "description": {
+                      "text": "A valid reading on one or more of the following monitors which is greater than 200 times high alarm setpoint for &ge; 15 minutes. <ul><li>VRS-1500/2500 (Noble Gas)<li>SRA-1800/2800 (Noble Gas)<li>SRA-1900/2900 (Noble Gas)<li>R-20<li>R-28</ul>",
+                      "ref": ""
+                    }
+                  },
+                  {
+                    "type": "Leaf",
+                    "indent_level": 0,
+                    "description": {
+                      "text": "A valid radiation monitor reading indicating 200 times the high alarm setpoint for any monitored release pathway for &ge; 15 minutes.",
+                      "ref": ""
+                    }
+                  },
+                  {
+                    "type": "Leaf",
+                    "indent_level": 0,
+                    "description": {
+                      "text": "Confirmed sample analyses for gaseous or liquid releases indicates concentrations or release rates exceeding 200 times the ODCM maximum instantaneous release limit for &ge; 15 minutes.",
+                      "ref": ""
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "name": "R-2 Plant Rad level",
+              "full_name": "Rising in-plant radiation levels",
+              "mode_applicability": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                "Defueled"
+              ],
+              "description": {
+                "text": "Release of radioactive material or higher in-plant radiation levels within the facility that impede operation of systems required to maintain safe operation or to establish or maintain cold shutdown.",
+                "ref": {
+                  "page": 80,
+                  "range": 2
+                }
+              },
+              "look_up": true,
+              "conditions": {
+                "type": "OR",
+                "indent_level": 1,
+                "description": "",
+                "children": [
+                  {
+                    "type": "Leaf",
+                    "indent_level": 0,
+                    "description": {
+                      "text": "Unexpected radiation levels > 15 mR/hr in any of the following areas. <ul><li>U1 Control Room <li>U2 Control Room <li>Central Alarm Station </ul>",
+                      "ref": ""
+                    }
+                  },
+                  {
+                    "type": "Leaf",
+                    "indent_level": 0,
+                    "description": {
+                      "text": "Radiation level of > 100 mR/hr at any station required by plant procedure OHP-4025-001001, Emergency Remote Shutdown, and associated subtier procedures.",
+                      "ref": ""
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "name": "R-3 Loss of level",
+              "full_name": "Loss of water level in any area holding irradiated fuel ",
+              "mode_applicability": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                "Defueled"
+              ],
+              "description": {
+                "text": "Major damage to irradiated fuel or loss of water level that has or will uncover irradiated fuel outside of the Reactor Vessel.",
+                "ref": {
+                  "page": 83,
+                  "range": 2
+                }
+              },
+              "look_up": true,
+              "conditions": {
+                "type": "OR",
+                "indent_level": 1,
+                "description": "",
+                "children": [
+                  {
+                    "type": "Leaf",
+                    "indent_level": 0,
+                    "description": {
+                      "text": "Report of visual observation of irradiated fuel uncovered in the spent fuel pit, transfer canal, or refueling cavity.",
+                      "ref": ""
+                    }
+                  },
+                  {
+                    "type": "Leaf",
+                    "indent_level": 0,
+                    "description": {
+                      "text": "An UNPLANNED VALID alarm on one of the following radiation monitors.<ul><li>VRS – 1101/1201 (Unit 1)  (Upper Containment) <li>VRS – 2101/2201 (Unit 2)  (Upper Containment) <li>R-5 and VRS-5006 (SFP) <li>Portable radiation monitors</ul>",
+                      "ref": ""
+                    }
+                  },
+                  {
+                    "type": "Leaf",
+                    "indent_level": 0,
+                    "description": {
+                      "text": "Water level <632'4\" in the spent fuel pit, transfer canal or reactor cavity that will result in fuel uncovery. ",
+                      "ref": ""
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Unusual Event",
+          "criterions": [
+            {
+              "name": "R-1 Effluent release",
+              "full_name": "Radioactive effluent release",
+              "mode_applicability": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                "Defueled"
+              ],
+              "description": {
+                "text": "Unplanned release of gaseous or liquid radioactivity to the environment that exceeds two times the ODCM release limits for 60 minutes or longer.",
+                "ref": {
+                  "page": 71,
+                  "range": 2
+                }
+              },
+              "look_up": true,
+              "conditions": {
+                "type": "OR",
+                "indent_level": 1,
+                "description": "",
+                "children": [
+                  {
+                    "type": "Leaf",
+                    "indent_level": 0,
+                    "description": {
+                      "text": "A valid reading on one or more of the following monitors that exceeds 2 times the high alarm setpoint for 60 minutes or longer. <ul><li>VRS-1500/2500 (Noble Gas) <li>SRA-1800/2800 (Noble Gas) <li>SRA-1900/2900 (Noble Gas) <li>R-20 <li>R-28 </ul>",
+                      "ref": ""
+                    }
+                  },
+                  {
+                    "type": "Leaf",
+                    "indent_level": 0,
+                    "description": {
+                      "text": "A VALID radiation monitor reading 2 times the high alarm setpoint for any monitored release pathway for &ge; 60 minutes.",
+                      "ref": ""
+                    }
+                  },
+                  {
+                    "type": "Leaf",
+                    "indent_level": 0,
+                    "description": {
+                      "text": "Confirmed sample analyses for gaseous or liquid releases indicates concentrations or release rates exceeding 2 times the ODCM maximum instantaneous release limit for &ge; 60 minutes. ",
+                      "ref": ""
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "name": "R-2 Plant Rad level",
+              "full_name": "Rising in-plant radiation levels",
+              "mode_applicability": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                "Defueled"
+              ],
+              "description": {
+                "text": "Unexpected higher in plant radiation levels.",
+                "ref": {
+                  "page": 79,
+                  "range": 1
+                }
+              },
+              "look_up": false,
+              "conditions": {
+                "type": "Leaf",
+                "indent_level": 0,
+                "description": {
+                  "text": "A valid unexpected reading on an area monitor 1000 times higher than the 24-hour average. ",
+                  "ref": ""
+                }
+              }
+            },
+            {
+              "name": "R-3 Loss of level",
+              "full_name": "Loss of water level in any area holding irradiated fuel",
+              "mode_applicability": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                "Defueled"
+              ],
+              "description": {
+                "text": "An UNCONTROLLED water level drop in the reactor refueling cavity, the spent fuel pit, and/or the fuel transfer canal with all irradiated fuel assemblies covered by water.",
+                "ref": {
+                  "page": 82,
+                  "range": 1
+                }
+              },
+              "look_up": false,
+              "conditions": {
+                "type": "OR",
+                "indent_level": 1,
+                "description": "",
+                "children": [
+                  {
+                    "type": "Leaf",
+                    "indent_level": 0,
+                    "description": {
+                      "text": "Inability to maintain water level in the spent fuel pit and/or transfer canal at > 643' 4\" with irradiated fuel present. ",
+                      "ref": ""
+                    }
+                  },
+                  {
+                    "type": "Leaf",
+                    "indent_level": 0,
+                    "description": {
+                      "text": "Inability to maintain refueling cavity level > 643' 4\" with irradiated fuel in containment.",
+                      "ref": ""
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "mode_applicability": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        "Defueled"
+      ]
+    },
+    {
+      "name": "System malfunctions",
+      "emergency_categories": [
+        {
+          "name": "General Emergency",
+          "criterions": [
+            {
+              "name": "S-1 RPS failure",
+              "full_name": "Failure of reactor protection system",
+              "mode_applicability": [
+                1,
+                2
+              ],
+              "description": {
+                "text": "Failure of Reactor Protection System (RPS) to complete an automatic trip and manual trip was NOT successful and there is indication of an extreme challenge to the ability to cool the core.",
+                "ref": {
+                  "page": 87,
+                  "range": 2
+                }
+              },
+              "look_up": false,
+              "conditions": {
+                "type": "OR",
+                "indent_level": 2,
+                "description": "",
+                "children": [
+                  {
+                    "type": "AND",
+                    "indent_level": 1,
+                    "description": "",
+                    "children": [
+                      {
+                        "type": "Leaf",
+                        "indent_level": 0,
+                        "description": {
+                          "text": "ATWS was NOT terminated by manual reactor trip from the control room.",
+                          "ref": ""
+                        }
+                      },
+                      {
+                        "type": "Leaf",
+                        "indent_level": 0,
+                        "description": {
+                          "text": "Subcriticality AND Core Cooling CSFSTs are RED.",
+                          "ref": ""
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "type": "Leaf",
+                    "indent_level": 1,
+                    "description": {
+                      "text": "Subcriticality AND Heat Sink CSFSTs are RED.",
+                      "ref": ""
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "name": "S-2 Loss of AC",
+              "full_name": "Loss of AC power",
+              "mode_applicability": [
+                1,
+                2,
+                3,
+                4
+              ],
+              "description": {
+                "text": "Prolonged loss of ALL offsite power and ALL onsite AC power to essential buses.",
+                "ref": {
+                  "page": 92,
+                  "range": 2
+                }
+              },
+              "look_up": false,
+              "conditions": {
+                "type": "OR",
+                "indent_level": 3,
+                "description": "",
+                "children": [
+                  {
+                    "type": "AND",
+                    "indent_level": 2,
+                    "description": "",
+                    "children": [
+                      {
+                        "type": "OR",
+                        "indent_level": 1,
+                        "description": "",
+                        "children": [
+                          {
+                            "type": "Leaf",
+                            "indent_level": 0,
+                            "description": {
+                              "text": "Loss of both of the following T-buses: T11A, T11D on the Unit 1.",
+                              "ref": ""
+                            }
+                          },
+                          {
+                            "type": "Leaf",
+                            "indent_level": 0,
+                            "description": {
+                              "text": "Loss of both of the following T-buses: T21A, T21D on the Unit 2",
+                              "ref": ""
+                            }
+                          }
+                        ]
+                      },
+                      {
+                        "type": "Leaf",
+                        "indent_level": 1,
+                        "description": {
+                          "text": "Core Cooling CSFST is ORANGE",
+                          "ref": ""
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "type": "OR",
+                    "indent_level": 2,
+                    "description": "",
+                    "children": [
+                      {
+                        "type": "Leaf",
+                        "indent_level": 1,
+                        "description": {
+                          "text": "Loss of both of the following T-buses: T11A, T11D (Unit 1), that is expected to last for > 4 hours "
+                        }
+                      },
+                      {
+                        "type": "Leaf",
+                        "indent_level": 1,
+                        "description": {
+                          "text": "Loss of both of the following T-buses: T21A, T21D (Unit 2), that is expected to last for > 4 hours"
+                        }
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Site Area Emergency",
+          "criterions": [
+            {
+              "name": "S-1 RPS failure",
+              "full_name": "Failure of reactor protection system",
+              "mode_applicability": [
+                1,
+                2
+              ],
+              "description": {
+                "text": "Failure of Reactor Protection System (RPS) instrumentation to complete or initiate an automatic reactor trip once an RPS setpoint has been exceeded.  A manual reactor trip was NOT successful.",
+                "ref": {
+                  "page": 86,
+                  "range": 1
+                }
+              },
+              "look_up": false,
+              "conditions": {
+                "type": "Leaf",
+                "indent_level": 0,
+                "description": {
+                  "text": "An anticipated transient without scram (ATWS) was NOT terminated by a manual reactor trip from the control room.",
+                  "ref": ""
+                }
+              }
+            },
+            {
+              "name": "S-2 Loss of AC",
+              "full_name": "Loss of AC power",
+              "mode_applicability": [
+                1,
+                2,
+                3,
+                4
+              ],
+              "description": {
+                "text": "Loss of ALL offsite power and loss of ALL onsite AC power to essential buses.",
+                "ref": {
+                  "page": 91,
+                  "range": 1
+                }
+              },
+              "look_up": false,
+              "conditions": {
+                "type": "OR",
+                "indent_level": 1,
+                "description": "",
+                "children": [
+                  {
+                    "type": "Leaf",
+                    "indent_level": 0,
+                    "description": {
+                      "text": "Loss of both of the following T-buses: T11A, T11D (Unit 1) for >15 minutes",
+                      "ref": ""
+                    }
+                  },
+                  {
+                    "type": "Leaf",
+                    "indent_level": 0,
+                    "description": {
+                      "text": "Loss of both of the following T-buses: T21A, T21D (Unit 2) for >15 minutes",
+                      "ref": ""
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "name": "S-3 Loss of DC power",
+              "full_name": "Loss of DC power",
+              "mode_applicability": [
+                1,
+                2,
+                3,
+                4
+              ],
+              "description": {
+                "text": "Loss of all vital DC power for greater than 15 minutes.",
+                "ref": {
+                  "page": 94,
+                  "range": 1
+                }
+              },
+              "look_up": false,
+              "conditions": {
+                "type": "Leaf",
+                "indent_level": 0,
+                "description": {
+                  "text": "Loss of DC buses AB <u>AND</u> CD as indicated by bus voltage &le; 220 volts DC for greater than 15 minutes.",
+                  "ref": ""
+                }
+              }
+            },
+            {
+              "name": "S-5 Loss of Hot SD sys.",
+              "full_name": "Loss of systems needed to achieve or maintain hot shutdown",
+              "mode_applicability": [
+                1,
+                2,
+                3,
+                4
+              ],
+              "description": {
+                "text": "Complete loss of function needed to achieve or maintain Hot Shutdown.",
+                "ref": {
+                  "page": 97,
+                  "range": 1
+                }
+              },
+              "look_up": false,
+              "conditions": {
+                "type": "OR",
+                "indent_level": 1,
+                "description": "",
+                "children": [
+                  {
+                    "type": "Leaf",
+                    "indent_level": 0,
+                    "description": {
+                      "text": "OHP 4023.FR-H1, \"Response to Loss of Secondary Heat Sink\"",
+                      "ref": ""
+                    }
+                  },
+                  {
+                    "type": "Leaf",
+                    "indent_level": 0,
+                    "description": {
+                      "text": "OHP 4023.FR-C1, \"Response to Inadequate Core Cooling\"",
+                      "ref": ""
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "name": "S-6 Loss of Alarms",
+              "full_name": "Loss of alarms or indication",
+              "mode_applicability": [
+                1,
+                2,
+                3,
+                4
+              ],
+              "description": {
+                "text": "Inability to monitor a significant transient in progress.",
+                "ref": {
+                  "page": 100,
+                  "range": 2
+                }
+              },
+              "look_up": true,
+              "conditions": {
+                "type": "AND",
+                "indent_level": 1,
+                "description": "",
+                "children": [
+                  {
+                    "type": "Leaf",
+                    "indent_level": 0,
+                    "description": {
+                      "text": "A Loss of Safety system annunciator panel(s) for >15 minutes.",
+                      "ref": ""
+                    }
+                  },
+                  {
+                    "type": "Leaf",
+                    "indent_level": 0,
+                    "description": {
+                      "text": "A known loss of Attachment 2 Critical Parameters indication for > 15 minutes",
+                      "ref": ""
+                    }
+                  },
+                  {
+                    "type": "Leaf",
+                    "indent_level": 0,
+                    "description": {
+                      "text": "Compensatory indications are <u>not</u> available (PPC,SPDS)",
+                      "ref": ""
+                    }
+                  },
+                  {
+                    "type": "Leaf",
+                    "indent_level": 0,
+                    "description": {
+                      "text": "A significant transient is in progress",
+                      "ref": ""
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Alert",
+          "criterions": [
+            {
+              "name": "S-1 RPS failure",
+              "full_name": "Failure of reactor protection system",
+              "mode_applicability": [
+                1,
+                2,
+                3
+              ],
+              "description": {
+                "text": "Failure of Reactor Protection System (RPS) instrumentation to complete or initiate an automatic reactor trip once an RPS setpoint has been exceeded.  A manual reactor trip was successful.",
+                "ref": {
+                  "page": 85,
+                  "range": 1
+                }
+              },
+              "look_up": false,
+              "conditions": {
+                "type": "Leaf",
+                "indent_level": 0,
+                "description": {
+                  "text": "An anticipated transient without scram (ATWS) was terminated by a manual reactor trip from the control room.",
+                  "ref": ""
+                }
+              }
+            },
+            {
+              "name": "S-2 Loss of AC",
+              "full_name": "Loss of AC power",
+              "mode_applicability": [
+                1,
+                2,
+                3,
+                4
+              ],
+              "description": {
+                "text": "AC Power capability to essential buses reduced to a single power source for greater than 15 minutes such that any additional single failure would result in a station blackout.",
+                "ref": {
+                  "page": 90,
+                  "range": 1
+                }
+              },
+              "look_up": true,
+              "conditions": {
+                "type": "Leaf",
+                "indent_level": 0,
+                "description": {
+                  "text": "Power to the T-buses has been degraded to a single source of AC power consisting of only one of the following transformers or diesel generators for greater than 15 minutes.<ul><li>TR-101AB/TR-201AB <li>TR-101CD/TR-201CD <li>TR-1AB/TR-2AB <li>TR-1CD/TR-2CD <li>EDG 1AB/EDG 2AB <li>EDG 1CD/EDG 2CD <li>TR-12-EP-1</ul>",
+                  "ref": ""
+                }
+              }
+            },
+            {
+              "name": "S-6 Loss of Alarms",
+              "full_name": "Loss of Alarms or indication",
+              "mode_applicability": [
+                1,
+                2,
+                3,
+                4
+              ],
+              "description": {
+                "text": "Unplanned loss of most or all safety system annunciators or indications in the Control Room with either (1) a significant transient in progress, or (2) compensatory non-alarming indicators are unavailable.",
+                "ref": {
+                  "page": 98,
+                  "range": 2
+                }
+              },
+              "look_up": true,
+              "conditions": {
+                "type": "AND",
+                "indent_level": 2,
+                "description": "",
+                "children": [
+                  {
+                    "type": "OR",
+                    "indent_level": 1,
+                    "description": "",
+                    "children": [
+                      {
+                        "type": "Leaf",
+                        "indent_level": 0,
+                        "description": {
+                          "text": "A safety system annunciator panel in a unit for > 15 minutes",
+                          "ref": ""
+                        }
+                      },
+                      {
+                        "type": "Leaf",
+                        "indent_level": 0,
+                        "description": {
+                          "text": "A known loss of Attachment 2 Critical Parameters indication for > 15 minutes",
+                          "ref": ""
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "type": "Leaf",
+                    "indent_level": 1,
+                    "description": {
+                      "text": "Additional surveillance is required to safely operate the unit",
+                      "ref": ""
+                    }
+                  },
+                  {
+                    "type": "Leaf",
+                    "indent_level": 1,
+                    "description": {
+                      "text": "Annunciator/Indicator loss does not result from PLANNED action",
+                      "ref": ""
+                    }
+                  },
+                  {
+                    "type": "OR",
+                    "indent_level": 1,
+                    "description": "",
+                    "children": [
+                      {
+                        "type": "Leaf",
+                        "indent_level": 0,
+                        "description": {
+                          "text": "A significant transient is in progress ",
+                          "ref": ""
+                        }
+                      },
+                      {
+                        "type": "Leaf",
+                        "indent_level": 0,
+                        "description": {
+                          "text": "Compensatory Indications are <u>not</u> available",
+                          "ref": ""
+                        }
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Unusual Event",
+          "criterions": [
+            {
+              "name": "S-2 Loss of AC",
+              "full_name": "Loss of AC power",
+              "mode_applicability": [
+                1,
+                2,
+                3,
+                4
+              ],
+              "description": {
+                "text": "Loss of all offsite power to essential buses for greater than 15 minutes.",
+                "ref": {
+                  "page": 89,
+                  "range": 1
+                }
+              },
+              "look_up": true,
+              "conditions": {
+                "type": "Leaf",
+                "indent_level": 0,
+                "description": {
+                  "text": "ALL of the OFFSITE power sources indicated by the following list of transformers are LOST to the T-buses for > 15 minutes.  NOTE:  Evaluate each unit’s power supply separately. <ol type='a'><li>Normal Auxiliary Power Source (Auxiliary Transformer)<ul><li>TR 1AB / TR 2AB <li>TR 1CD / TR 2CD </ul> <li>Preferred Offsite Power Sources (Reserve Transformer)<ul><li>TR 101AB / TR 201AB <li>TR 101CD / TR 201CD<li></ul><li>Emergency Offsite Power Source (69Kv Transformer)<ul><li>T-12-EP-1</ul></ol>",
+                  "ref": ""
+                }
+              }
+            },
+            {
+              "name": "S-6 Loss of Alarms",
+              "full_name": "Loss of Alarms or indication",
+              "mode_applicability": [
+                1,
+                2,
+                3,
+                4
+              ],
+              "description": {
+                "text": "Unplanned loss of safety system annunciators and/or indications in the Control Room for greater than 15 minutes.",
+                "ref": {
+                  "page": 96,
+                  "range": 2
+                }
+              },
+              "look_up": true,
+              "conditions": {
+                "type": "AND",
+                "indent_level": 2,
+                "description": "",
+                "children": [
+                  {
+                    "type": "OR",
+                    "indent_level": 1,
+                    "description": "",
+                    "children": [
+                      {
+                        "type": "Leaf",
+                        "indent_level": 0,
+                        "description": {
+                          "text": "A safety system annunciator panel in a unit for > 15 minutes",
+                          "ref": ""
+                        }
+                      },
+                      {
+                        "type": "Leaf",
+                        "indent_level": 0,
+                        "description": {
+                          "text": "A known loss of Attachment 2 Critical Parameters indication for > 15 minutes",
+                          "ref": ""
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "type": "Leaf",
+                    "indent_level": 1,
+                    "description": {
+                      "text": "Additional surveillance is required to safely operate the unit",
+                      "ref": ""
+                    }
+                  },
+                  {
+                    "type": "Leaf",
+                    "indent_level": 1,
+                    "description": {
+                      "text": "Annunciator/Indicator loss does not result from PLANNED action",
+                      "ref": ""
+                    }
+                  },
+                  {
+                    "type": "Leaf",
+                    "indent_level": 1,
+                    "description": {
+                      "text": "Compensatory Indications are available",
+                      "ref": ""
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "name": "S-7 Degraded Clad",
+              "full_name": "Fuel clad degradation",
+              "mode_applicability": [
+                1,
+                2,
+                3,
+                4
+              ],
+              "description": {
+                "text": "Indication of Fuel Clad Degradation in Active Fuel ",
+                "ref": {
+                  "page": 102,
+                  "range": 1
+                }
+              },
+              "look_up": false,
+              "conditions": {
+                "type": "OR",
+                "indent_level": 1,
+                "description": "",
+                "children": [
+                  {
+                    "type": "Leaf",
+                    "indent_level": 0,
+                    "description": {
+                      "text": "Activity > 1.0 μCi/gram 1-131 dose equivalent for >48 hours in the RCS",
+                      "ref": ""
+                    }
+                  },
+                  {
+                    "type": "Leaf",
+                    "indent_level": 0,
+                    "description": {
+                      "text": "RCS activity > 100/E-bar μCi/gram ",
+                      "ref": ""
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "name": "S-8 RCS Leakage",
+              "full_name": "Excessive RCS leakage",
+              "mode_applicability": [
+                1,
+                2,
+                3,
+                4
+              ],
+              "description": {
+                "text": "Reactor Coolant System Leakage ",
+                "ref": {
+                  "page": 103,
+                  "range": 1
+                }
+              },
+              "look_up": false,
+              "conditions": {
+                "type": "OR",
+                "indent_level": 1,
+                "description": "",
+                "children": [
+                  {
+                    "type": "Leaf",
+                    "indent_level": 0,
+                    "description": {
+                      "text": "Pressure boundary leakage > 10 gpm ",
+                      "ref": ""
+                    }
+                  },
+                  {
+                    "type": "Leaf",
+                    "indent_level": 0,
+                    "description": {
+                      "text": "SG tube leakage > 10 gpm",
+                      "ref": ""
+                    }
+                  },
+                  {
+                    "type": "Leaf",
+                    "indent_level": 0,
+                    "description": {
+                      "text": "Identified leakage >25 gpm",
+                      "ref": ""
+                    }
+                  },
+                  {
+                    "type": "Leaf",
+                    "indent_level": 0,
+                    "description": {
+                      "text": "Unidentified leakage >10 gpm",
+                      "ref": ""
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "name": "S-9 Tech Spec",
+              "full_name": "Technical specification time limit expired",
+              "mode_applicability": [
+                1,
+                2,
+                3,
+                4
+              ],
+              "description": {
+                "text": "Inability to reach required shutdown within Technical Specification time limits.",
+                "ref": {
+                  "page": 104,
+                  "range": 1
+                }
+              },
+              "look_up": false,
+              "conditions": {
+                "type": "Leaf",
+                "indent_level": 0,
+                "description": {
+                  "text": "Unit is NOT placed in required MODE within Technical Specification LCO action time limit",
+                  "ref": ""
+                }
+              }
+            },
+            {
+              "name": "S-10 Loss of Comm.",
+              "full_name": "Loss of communication systems",
+              "mode_applicability": [
+                1,
+                2,
+                3,
+                4
+              ],
+              "description": {
+                "text": "Unplanned loss of all onsite or offsite communications.",
+                "ref": {
+                  "page": 105,
+                  "range": 1
+                }
+              },
+              "look_up": true,
+              "conditions": {
+                "type": "OR",
+                "indent_level": 1,
+                "description": "",
+                "children": [
+                  {
+                    "type": "Leaf",
+                    "indent_level": 0,
+                    "description": {
+                      "text": "UNPLANNED loss of ALL onsite electronic communication capabilities: <ul><li>Telephone <li>Page <li>System <li>Radios </ul>",
+                      "ref": ""
+                    }
+                  },
+                  {
+                    "type": "Leaf",
+                    "indent_level": 0,
+                    "description": {
+                      "text": "UNPLANNED loss of ALL offsite electronic communication capabilities: <ul><li>Telephone (offsite) <li>Microwave transmission <li>NRC phone <li>State Police/Sheriff Department Emergency Radios </ul>"
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "mode_applicability": [
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    {
+      "name": "Cold shutdown/refueling system malfunctions",
+      "emergency_categories": [
+        {
+          "name": "General Emergency",
+          "criterions": []
+        },
+        {
+          "name": "Site Area Emergency",
+          "criterions": [
+            {
+              "name": "C-4 Loss of Water Level in the Reactor Vessel that has or will Uncover Fuel in the Reactor Vessel",
+              "full_name": "Inability to maintain a unit in cold shutdown",
+              "mode_applicability": [
+                5,
+                6
+              ],
+              "description": {
+                "text": "LOSS of water level in the reactor vessel that has or will uncover fuel in the reactor vessel. ",
+                "ref": {
+                  "page": 111,
+                  "range": 1
+                }
+              },
+              "look_up": false,
+              "conditions": {
+                "type": "AND",
+                "indent_level": 2,
+                "description": "",
+                "children": [
+                  {
+                    "type": "Leaf",
+                    "indent_level": 1,
+                    "description": {
+                      "text": "LOSS of shutdown cooling as evidenced by entry into OHP 4022.017.001, \"Loss of RHR Cooling.\"",
+                      "ref": ""
+                    }
+                  },
+                  {
+                    "type": "OR",
+                    "indent_level": 1,
+                    "description": "",
+                    "children": [
+                      {
+                        "type": "Leaf",
+                        "indent_level": 0,
+                        "description": {
+                          "text": "RVLIS NR < 46% - 0 RCPs",
+                          "ref": ""
+                        }
+                      },
+                      {
+                        "type": "Leaf",
+                        "indent_level": "",
+                        "description": {
+                          "text": "Reactor Vessel Water Level < 614'",
+                          "ref": ""
+                        }
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Alert",
+          "criterions": [
+            {
+              "name": "C-3 Loss of AC",
+              "full_name": "Loss of AC power all offsite power and loss of all onsite AC power to essential buses",
+              "mode_applicability": [
+                5,
+                6,
+                "Defueled"
+              ],
+              "description": {
+                "text": "Loss of ALL offsite power and loss of ALL onsite AC power to essential buses.",
+                "ref": {
+                  "page": 108,
+                  "range": 1
+                }
+              },
+              "look_up": false,
+              "conditions": {
+                "type": "AND",
+                "indent_level": 2,
+                "description": "",
+                "children": [
+                  {
+                    "type": "OR",
+                    "indent_level": 1,
+                    "description": "",
+                    "children": [
+                      {
+                        "type": "Leaf",
+                        "indent_level": 0,
+                        "description": {
+                          "text": "Loss of both of the following T-buses: T11A, T11D (Unit 1) for > 15 minutes when fuel is in the reactor. ",
+                          "ref": ""
+                        }
+                      },
+                      {
+                        "type": "Leaf",
+                        "indent_level": 0,
+                        "description": {
+                          "text": "Loss of both of the following T-buses: T21A, T21D (Unit 2) for > 15 minutes when fuel is in the reactor. ",
+                          "ref": ""
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "type": "Leaf",
+                    "indent_level": 1,
+                    "description": {
+                      "text": "Loss of power to all the following buses when defueled T11A, T11D, T21A, T21D ",
+                      "ref": ""
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "name": "C-4 Inability to Maintain a Unit in Cold Shutdown",
+              "full_name": "Inability to maintain a unit in cold shutdown",
+              "mode_applicability": [
+                5,
+                6
+              ],
+              "description": {
+                "text": "Inability to maintain plant in Cold Shutdown.",
+                "ref": {
+                  "page": 109,
+                  "range": 2
+                }
+              },
+              "look_up": false,
+              "conditions": {
+                "type": "AND",
+                "indent_level": 2,
+                "description": "",
+                "children": [
+                  {
+                    "type": "Leaf",
+                    "indent_level": 1,
+                    "description": {
+                      "text": "Loss of shutdown cooling as evidenced by entry into OHP 4022.017.001, \"Loss of RHR Cooling.\"",
+                      "ref": ""
+                    }
+                  },
+                  {
+                    "type": "OR",
+                    "indent_level": 1,
+                    "description": "",
+                    "children": [
+                      {
+                        "type": "Leaf",
+                        "indent_level": 0,
+                        "description": {
+                          "text": "Temperature increase that exceeds Technical Specification cold shutdown limit of 200°F ",
+                          "ref": ""
+                        }
+                      },
+                      {
+                        "type": "Leaf",
+                        "indent_level": 0,
+                        "description": {
+                          "text": "Temperature increase that results in an UNCONTROLLED increase in RCS temperature approaching the cold shutdown technical Specification limit of 200°F",
+                          "ref": ""
+                        }
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Unusual Event",
+          "criterions": [
+            {
+              "name": "C-3 Loss of AC",
+              "full_name": "Loss of AC power all offsite power to essential buses for greater than 15 minutes",
+              "mode_applicability": [
+                5,
+                6
+              ],
+              "description": {
+                "text": "Loss of all offsite power to essential buses for greater than 15 minutes.",
+                "ref": {
+                  "page": 106,
+                  "range": 2
+                }
+              },
+              "look_up": false,
+              "conditions": {
+                "type": "AND",
+                "indent_level": 1,
+                "description": "",
+                "children": [
+                  {
+                    "type": "Leaf",
+                    "indent_level": 0,
+                    "description": {
+                      "text": "ALL of the following OFFSITE power sources indicated by the following list of transformer are LOST to the T-buses for > 15 minutes. <ol type=\"a\"><li>Normal Auxiliary Power Source (Auxiliary Transformer) <ul><li>TR 1AB / TR 2AB <li>TR 1CD / TR 2CD</ul> <li>Preferred Offsite Power Sources (Reserve Transformer)<ul><li>TR 101AB / TR 201AB <li>TR 101CD / TR 201CD</ul> <li>Emergency Offsite Power Source (69Kv Transformer) <ul><li>T-12-EP-1</ul></ol>",
+                      "": ""
+                    }
+                  },
+                  {
+                    "type": "Leaf",
+                    "indent_level": 0,
+                    "description": {
+                      "text": "At least one emergency diesel generator per unit is supplying power to the emergency buses",
+                      "ref": ""
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "name": "C-5 Degraded Clad",
+              "full_name": "Fuel clad degradation",
+              "mode_applicability": [
+                5,
+                6
+              ],
+              "description": {
+                "text": "Fuel clad degradation.",
+                "ref": {
+                  "page": 112,
+                  "range": 1
+                }
+              },
+              "look_up": false,
+              "conditions": {
+                "type": "OR",
+                "indent_level": 1,
+                "description": "",
+                "children": [
+                  {
+                    "type": "Leaf",
+                    "indent_level": 0,
+                    "description": {
+                      "text": "Activity > 1.0 μCi/gram 1-131 dose equivalent for >48 hours in the RCS",
+                      "ref": ""
+                    }
+                  },
+                  {
+                    "type": "Leaf",
+                    "indent_level": 0,
+                    "description": {
+                      "text": "RCS activity > 100/E-bar μCi/gram",
+                      "ref": ""
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "name": "C-6 Loss of Comm.",
+              "full_name": "Unplanned loss of all onsite or offsite communication capabilities",
+              "mode_applicability": [
+                5,
+                6
+              ],
+              "description": {
+                "text": "Unplanned loss of all onsite or offsite communications.",
+                "ref": {
+                  "page": 113,
+                  "range": 2
+                }
+              },
+              "look_up": false,
+              "conditions": {
+                "type": "OR",
+                "indent_level": 1,
+                "description": "",
+                "children": [
+                  {
+                    "type": "Leaf",
+                    "indent_level": 0,
+                    "description": {
+                      "text": "UNPLANNED loss of ALL onsite electronic communication capabilities:<ul> <li>Telephone <li>Page System <li>Radios</ul>",
+                      "ref": ""
+                    }
+                  },
+                  {
+                    "type": "Leaf",
+                    "indent_level": 0,
+                    "description": {
+                      "text": "UNPLANNED loss of ALL offsite electronic communication capabilities: <ul><li>Telephone (offsite) <li>Microwave transmission <li>NRC phone <li>State Police/Sheriff Department Emergency Radios</ul>",
+                      "ref": ""
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "name": "C-7 Loss of DC power",
+              "full_name": "Unplanned loss of DC power for greater than 15 minutes",
+              "mode_applicability": [
+                5,
+                6
+              ],
+              "description": {
+                "text": "Unplanned loss of required DC power during cold shutdown or refueling mode for greater than 15 minutes.",
+                "ref": {
+                  "page": 115,
+                  "range": 2
+                }
+              },
+              "look_up": false,
+              "conditions": {
+                "type": "Leaf",
+                "indent_level": 0,
+                "description": {
+                  "text": "UNPLANNED loss of 250 volt DC buses AB <b><u>AND</u></b> CD as indicated by bus voltage &le; 220 volts DC for greater than 15 minutes.",
+                  "ref": ""
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "mode_applicability": [
+        5,
+        6,
+        "Defueled"
+      ]
+    },
+    {
+      "name": "SEC judgment",
+      "emergency_categories": [
+        {
+          "name": "General Emergency",
+          "criterions": [
+            {
+              "name": "H-1 SEC Judgment",
+              "full_name": "SEC judgment",
+              "mode_applicability": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                "Defueled"
+              ],
+              "description": {
+                "text": "Other conditions existing which in the judgment of the Site Emergency Coordinator (SEC) warrant declaration of a General Emergency.",
+                "ref": {
+                  "page": 50,
+                  "range": 1
+                }
+              },
+              "look_up": false,
+              "conditions": {
+                "type": "OR",
+                "indent_level": 1,
+                "description": "",
+                "children": [
+                  {
+                    "type": "Leaf",
+                    "indent_level": 0,
+                    "description": {
+                      "text": "Conditions indicate an <u>actual</u> or <u>imminent</u> substantial core degradation with potential loss of affected unit’s containment.",
+                      "ref": ""
+                    }
+                  },
+                  {
+                    "type": "Leaf",
+                    "indent_level": 0,
+                    "description": {
+                      "text": "Potential exists for an uncontrolled radioactive release that may exceed EPA limits at the site boundary",
+                      "ref": ""
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Site Area Emergency",
+          "criterions": [
+            {
+              "name": "H-1 SEC Judgment",
+              "full_name": "SEC judgment",
+              "mode_applicability": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                "Defueled"
+              ],
+              "description": {
+                "text": "Other conditions existing which in the judgment of the Site Emergency Coordinator (SEC) warrant declaration of a Site Area Emergency.",
+                "ref": {
+                  "page": 49,
+                  "range": 1
+                }
+              },
+              "look_up": false,
+              "conditions": {
+                "type": "Leaf",
+                "indent_level": 0,
+                "description": {
+                  "text": "Conditions indicate <u>likely</u> or <u>actual</u> major failures of plant functions needed for the protection of the public. ",
+                  "ref": ""
+                }
+              }
+            }
+          ]
+        },
+        {
+          "name": "Alert",
+          "criterions": [
+            {
+              "name": "H-1 SEC Judgment",
+              "full_name": "SEC judgment",
+              "mode_applicability": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                "Defueled"
+              ],
+              "description": {
+                "text": "Other conditions existing which in the judgment of the Site Emergency Coordinator (SEC) warrant declaration of an Alert.",
+                "ref": {
+                  "page": 48,
+                  "range": 1
+                }
+              },
+              "look_up": false,
+              "conditions": {
+                "type": "AND",
+                "indent_level": 1,
+                "description": "",
+                "children": [
+                  {
+                    "type": "Leaf",
+                    "indent_level": 0,
+                    "description": {
+                      "text": "Conditions indicate that plant safety systems may be degraded",
+                      "ref": ""
+                    }
+                  },
+                  {
+                    "type": "Leaf",
+                    "indent_level": 0,
+                    "description": {
+                      "text": "Increased monitoring of plant functions is needed.",
+                      "ref": ""
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Unusual Event",
+          "criterions": [
+            {
+              "name": "H-1 SEC Judgment",
+              "full_name": "SEC judgment",
+              "mode_applicability": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                "Defueled"
+              ],
+              "description": {
+                "text": "Other conditions existing which in the judgment of the Site Emergency Coordinator (SEC) warrant declaration of an Unusual Event.",
+                "ref": {
+                  "page": 46,
+                  "range": 2
+                }
+              },
+              "look_up": false,
+              "conditions": {
+                "type": "Leaf",
+                "indent_level": 0,
+                "description": {
+                  "text": "In the judgment of the SEC, conditions indicate a <u>potential</u> degradation of the level of safety of the plant.",
+                  "ref": ""
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "mode_applicability": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        "Defueled"
+      ]
+    }
+  ],
+  "fission_product_barriers": [
+    {
+      "name": "Fuel Clad Barrier",
+      "products": [
+        {
+          "name": "Critical safety function status trees",
+          "mode_applicability": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "look_up": false,
+          "description": {
+            "text": "",
+            "ref": {
+              "page": 27,
+              "range": 1
+            }
+          },
+          "loss": {
+            "type": "Leaf",
+            "description": {
+              "text": "Core Cooling Critical Safety Function Status Tree – RED"
+            }
+          },
+          "potential_loss": {
+            "type": "OR",
+            "children": [
+              {
+                "type": "Leaf",
+                "description": {
+                  "text": "Core Exit Thermocouples > 757<sup>o</sup>"
+                }
+              },
+              {
+                "type": "Leaf",
+                "description": {
+                  "text": "RVLIS level < 46% (Narrow Range) "
+                }
+              },
+              {
+                "type": "Leaf",
+                "description": {
+                  "text": "Heat Sink Critical Safety Function Status Tree – RED"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "name": "Containment radiation",
+          "mode_applicability": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "look_up": false,
+          "description": {
+            "text": "",
+            "ref": {
+              "page": 28,
+              "range": 1
+            }
+          },
+          "loss": {
+            "type": "Leaf",
+            "description": {
+              "text": "Containment area radiation greater than 200 R/hr"
+            }
+          },
+          "potential_loss": {}
+        },
+        {
+          "name": "Primary coolant activity",
+          "mode_applicability": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "look_up": false,
+          "description": {
+            "text": "",
+            "ref": {
+              "page": 29,
+              "range": 1
+            }
+          },
+          "loss": {
+            "type": "OR",
+            "children": [
+              {
+                "type": "Leaf",
+                "description": {
+                  "text": "Reactor Coolant System activity level greater than 300 micro curies per cc I-131 dose equivalent."
+                }
+              },
+              {
+                "type": "Leaf",
+                "description": {
+                  "text": "Assessment of core damage greater than 5% clad failure. <br/>(NRC commitment 7991)"
+                }
+              }
+            ]
+          },
+          "potential_loss": {}
+        },
+        {
+          "name": "SEC judgment",
+          "mode_applicability": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "look_up": true,
+          "description": {
+            "text": "",
+            "ref": {
+              "page": 30,
+              "range": 1
+            }
+          },
+          "loss": {
+            "type": "Leaf",
+            "description": {
+              "text": "Any condition in the opinion of the SEC that Indicates loss of the Fuel Clad barrier."
+            }
+          },
+          "potential_loss": {
+            "type": "Leaf",
+            "description": {
+              "text": "Any condition in the opinion of the SEC that indicates potential loss of the Fuel Clad barrier"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "RCS Barrier",
+      "products": [
+        {
+          "name": "RCS leak rate",
+          "mode_applicability": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "look_up": false,
+          "description": {
+            "text": "",
+            "ref": {
+              "page": 31,
+              "range": 1
+            }
+          },
+          "loss": {
+            "type": "Leaf",
+            "description": {
+              "text": "UNISOLABLE RCS leak rate greater than available makeup capacity as indicated by a complete loss of RCS subcooling."
+            }
+          },
+          "potential_loss": {
+            "type": "Leaf",
+            "description": {
+              "text": "UNISOLABLE RCS leakage greater than capacity of one centrifugal charging pump in normal charging lineup."
+            }
+          }
+        },
+        {
+          "name": "Steam generator leakage",
+          "mode_applicability": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "look_up": false,
+          "description": {
+            "text": "",
+            "ref": {
+              "page": 32,
+              "range": 1
+            }
+          },
+          "loss": {
+            "type": "AND",
+            "children": [
+              {
+                "type": "Leaf",
+                "description": {
+                  "text": "Entry into OHP-4023-E-3, Steam Generator Tube Rupture"
+                }
+              },
+              {
+                "type": "Leaf",
+                "description": {
+                  "text": "A non-isolable secondary line break or a prolonged release (>30 minutes) of contaminated secondary coolant resulting in a radioactive release to the environment from the affected steam generator."
+                }
+              }
+            ]
+          },
+          "potential_loss": {
+            "type": "Leaf",
+            "description": {
+              "text": "Ruptured steam generator with primary to secondary leak rate greater than capacity of one charging pump in normal charging mode."
+            }
+          }
+        },
+        {
+          "name": "Containment Radiation",
+          "mode_applicability": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "look_up": false,
+          "description": {
+            "text": "",
+            "ref": {
+              "page": 33,
+              "range": 1
+            }
+          },
+          "loss": {
+            "type": "Leaf",
+            "description": {
+              "text": "Containment radiation greater than 10 R/hr."
+            }
+          },
+          "potential_loss": {}
+        },
+        {
+          "name": "RCS integrity CSFST",
+          "mode_applicability": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "look_up": false,
+          "description": {
+            "text": "",
+            "ref": {
+              "page": 34,
+              "range": 1
+            }
+          },
+          "loss": {},
+          "potential_loss": {
+            "type": "Leaf",
+            "description": {
+              "text": "RCS Integrity Critical Safety Function Status Tree - RED"
+            }
+          }
+        },
+        {
+          "name": "Heat sink CSFST",
+          "mode_applicability": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "look_up": false,
+          "description": {
+            "text": "",
+            "ref": {
+              "page": 35,
+              "range": 1
+            }
+          },
+          "loss": {},
+          "potential_loss": {
+            "type": "Leaf",
+            "description": {
+              "text": "Heat Sink Critical Safety Function Status Tree - RED"
+            }
+          }
+        },
+        {
+          "name": "SEC judgment",
+          "mode_applicability": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "look_up": true,
+          "description": {
+            "text": "",
+            "ref": {
+              "page": 36,
+              "range": 1
+            }
+          },
+          "loss": {
+            "type": "Leaf",
+            "description": {
+              "text": "Any condition in the opinion of the SEC that Indicates loss of the RCS barrier."
+            }
+          },
+          "potential_loss": {
+            "type": "Leaf",
+            "description": {
+              "text": "Any condition in the opinion of the SEC that indicates potential loss of the RCS barrier."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Containment Barrier",
+      "products": [
+        {
+          "name": "Containment radiation",
+          "mode_applicability": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "look_up": false,
+          "description": {
+            "text": "",
+            "ref": {
+              "page": 37,
+              "range": 1
+            }
+          },
+          "loss": {},
+          "potential_loss": {
+            "type": "OR",
+            "children": [
+              {
+                "type": "Leaf",
+                "description": {
+                  "text": "Containment Radiation greater than 1000 R/hr."
+                }
+              },
+              {
+                "type": "Leaf",
+                "description": {
+                  "text": "Assessment of core damage greater than 20% clad failure"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "name": "Containment integrity",
+          "mode_applicability": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "look_up": false,
+          "description": {
+            "text": "",
+            "ref": {
+              "page": 38,
+              "range": 1
+            }
+          },
+          "loss": {
+            "type": "OR",
+            "children": [
+              {
+                "type": "Leaf",
+                "description": {
+                  "text": "UNISOLABLE breach or bypass of containment"
+                }
+              },
+              {
+                "type": "Leaf",
+                "description": {
+                  "text": "Rapid unexplained containment pressure or sump level drop following pressure rise caused by LOCA"
+                }
+              },
+              {
+                "type": "Leaf",
+                "description": {
+                  "text": "Pressure/Sump level NOT performing consistent with expected conditions "
+                }
+              },
+              {
+                "type": "Leaf",
+                "description": {
+                  "text": "Entry into ECA-1.2, \"LOCA OUTSIDE CONTAINMENT\""
+                }
+              }
+            ]
+          },
+          "potential_loss": {}
+        },
+        {
+          "name": "Steam generator secondary side release",
+          "mode_applicability": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "look_up": false,
+          "description": {
+            "text": "",
+            "ref": {
+              "page": 39,
+              "range": 1
+            }
+          },
+          "loss": {
+            "type": "AND",
+            "children": [
+              {
+                "type": "Leaf",
+                "description": {
+                  "text": "Primary to secondary leakage rate greater than technical specification limit."
+                }
+              },
+              {
+                "type": "Leaf",
+                "description": {
+                  "text": "Release of secondary coolant from the associated steam generator to the environment is occurring.<sup>1</sup>"
+                }
+              }
+            ]
+          },
+          "potential_loss": {}
+        },
+        {
+          "name": "Containment critical safety function status tree",
+          "mode_applicability": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "look_up": false,
+          "description": {
+            "text": "",
+            "ref": {
+              "page": 40,
+              "range": 1
+            }
+          },
+          "loss": {},
+          "potential_loss": {
+            "type": "Leaf",
+            "description": {
+              "text": "Containment critical safety function status tree – RED"
+            }
+          }
+        },
+        {
+          "name": "Containment hydrogen",
+          "mode_applicability": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "look_up": false,
+          "description": {
+            "text": "",
+            "ref": {
+              "page": 41,
+              "range": 1
+            }
+          },
+          "loss": {
+            "type": "Leaf",
+            "description": {
+              "text": "Initiating conditions for LOSS included under initiating conditions for loss of FPB 3.2, CONTAINMENT INTEGRITY.",
+              "ref": 3.2
+            }
+          },
+          "potential_loss": {
+            "type": "OR",
+            "children": [
+              {
+                "type": "Leaf",
+                "description": {
+                  "text": "Hydrogen greater than 4.0%"
+                }
+              },
+              {
+                "type": "Leaf",
+                "description": {
+                  "text": "Containment hydrogen concentration greater than 0.5% AND any hydrogen control equipment (Containment air recirculation/hydrogen skimmer systems, electric hydrogen recombiner OR igniters) inoperable."
+                }
+              }
+            ]
+          }
+        },
+        {
+          "name": "Containment pressure control",
+          "mode_applicability": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "look_up": false,
+          "description": {
+            "text": "",
+            "ref": {
+              "page": 42,
+              "range": 2
+            }
+          },
+          "loss": {
+            "type": "Leaf",
+            "description": {
+              "text": "Initiating conditions for LOSS included under initiating conditions for loss of FPB 3.2, CONTAINMENT INTEGRITY.",
+              "ref": 3.2
+            }
+          },
+          "potential_loss": {
+            "type": "OR",
+            "children": [
+              {
+                "type": "Leaf",
+                "description": {
+                  "text": "Both containment spray systems both inoperable OR fail to automatically actuate on HI-HI containment pressure."
+                }
+              },
+              {
+                "type": "Leaf",
+                "description": {
+                  "text": "Both containment air recirculation fans inoperable OR fail to automatically actuate on HI containment pressure."
+                }
+              },
+              {
+                "type": "Leaf",
+                "description": {
+                  "text": "Containment pressure exceeds 12 psig."
+                }
+              }
+            ]
+          }
+        },
+        {
+          "name": "Core exit thermocouples",
+          "mode_applicability": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "look_up": false,
+          "description": {
+            "text": "",
+            "ref": {
+              "page": 44,
+              "range": 1
+            }
+          },
+          "loss": {},
+          "potential_loss": {
+            "type": "AND",
+            "children": [
+              {
+                "type": "Leaf",
+                "description": {
+                  "text": "Core Cooling Critical Safety Function Status Tree – RED"
+                }
+              },
+              {
+                "type": "Leaf",
+                "description": {
+                  "text": "Restoration procedures not effective within 15 minutes."
+                }
+              }
+            ]
+          }
+        },
+        {
+          "name": "SEC judgment",
+          "mode_applicability": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "look_up": true,
+          "description": {
+            "text": "",
+            "ref": {
+              "page": 45,
+              "range": 1
+            }
+          },
+          "loss": {
+            "type": "Leaf",
+            "description": {
+              "text": "Any condition in the opinion of the SEC that Indicates loss of the Containment barrier."
+            }
+          },
+          "potential_loss": {
+            "type": "Leaf",
+            "description": {
+              "text": "Any condition in the opinion of the SEC that indicates potential loss of the Containment barrier."
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,169 @@
+body, html{
+  -ms-overflow-style: none;
+  background-color: #eee;
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+/* main page properties */
+.content {
+  padding: 0;
+  margin: 0;
+  height: 100%;
+  width: 100%;
+}
+
+.recognitionCategoryText{
+  height: 50px;
+  width: 100%;
+  position:fixed;
+  z-index: 2;
+
+  background-color: #eee; /* To hide the content of the cells underneath the category and mode text */
+  color: black;
+
+  font-weight: bolder;
+  font-size: xx-large;
+  text-align: left;
+  display:flex;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  padding-left: 1%;
+
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+
+  box-shadow:
+    0 0px 0px #ddd, /*bottom external highlight*/
+    0 0px 1px #ddd, /*top external shadow*/
+    inset 0px 0px 3px rgba(0,0,0,1), /*bottom internal shadow*/
+    inset 0 0px 1px rgba(255,255,255,0.8); /*top internal highlight*/
+}
+
+.categoryTextWrapper{
+  position: absolute;
+  left: 2%;
+}
+
+.classificationTextWrapper{
+  position: absolute;
+  right: 2%;
+}
+
+.tableWrapper{
+  height: calc(100% - 50px);  /* 100% of the height minus the height of the recognition text */
+  width: 100%;
+  margin-top:50px;
+  position:absolute;
+}
+
+/* cell text properties */
+.criterionName{
+  font-weight:bold;
+}
+
+.criterionDescription{
+  font-weight: normal;
+}
+
+.conditionText{
+  margin-top: 5%;
+}
+
+/* Condition text properties */
+.operator{
+  font-weight: bold;
+  text-align:center;
+}
+
+.leafText{
+
+}
+
+.leafText p{
+
+}
+
+/* overview grid properties */
+.overviewGridContainer{
+  height: 100%;
+  width: 100%;
+}
+
+.headerContainer{
+  text-align:center;
+  font-weight: bold;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  z-index: 2;
+  position:fixed;
+
+  background-color: #ddd; /* To hide the content of the cells underneath the headers */
+}
+
+.headerCell {
+  box-sizing: border-box;
+  border: 1px;
+  border-style: solid;
+  color: black;
+  width: 100%;
+  height: 40px;
+  padding-left: 8px;
+  padding-top: 4px;
+}
+
+.dataContainer{
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  position:relative;
+  transform: translate(0,40px);
+}
+
+.gridDataRow{
+  width: 100%;
+  height: 100%;
+}
+
+.box{
+  height: 100%;
+  width: 100%;
+}
+
+.gridCellEmpty{
+  box-sizing: border-box;
+  border: 1px;
+  border-style: solid;
+  color: black;
+  width: 100%;
+  height: 100%;
+  padding-left: 8px;
+  padding-top: 4px;
+}
+
+.gridCell {
+  box-sizing: border-box;
+  border: 1px;
+  border-style: solid;
+  color: black;
+  width: 100%;
+  height: 100%;
+  padding-left: 8px;
+  padding-top: 4px;
+}
+
+.gridCell:hover{
+  background: rgba(0,0,255,0.1);
+  cursor: pointer;
+}
+
+@media screen and (max-width: 1024px) {
+
+
+}

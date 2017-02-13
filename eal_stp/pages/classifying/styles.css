@@ -1,0 +1,460 @@
+.content {
+  padding: 0;
+  margin: 0;
+  height: 100%;
+  width: 100%;
+}
+
+/* Positions the Fission product barrier matrix text and the current mode on the tp of the page, and keeps it there when scrolling */
+.recognitionCategoryText{
+  height: 50px;
+  width: 100%;
+  position:fixed;
+  z-index: 2;
+
+  background-color: #eee; /* To hide the content of the cells underneath the category and mode text */
+  color: black;
+
+  font-weight: bolder;
+  font-size: xx-large;
+  text-align: left;
+  display:flex;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  padding-left: 1%;
+
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+
+  box-shadow:
+    0 0px 0px #ddd, /*bottom external highlight*/
+    0 0px 1px #ddd, /*top external shadow*/
+    inset 0px 0px 3px rgba(0,0,0,1), /*bottom internal shadow*/
+    inset 0 0px 1px rgba(255,255,255,0.8); /*top internal highlight*/
+}
+
+.categoryTextWrapper{
+  position: absolute;
+  left: 2%;
+}
+
+.classificationTextWrapper{
+  position: absolute;
+  right: 2%;
+}
+
+
+/* Left Content */
+.leftcontent{
+  overflow-x: hidden;
+  overflow-y: auto;
+  width: 15%;
+  height: calc(100% - 50px); /* 100% of the height minus the height of the recognition text */
+  background-color: #eee;
+  position: absolute;
+  padding:0;
+  margin:0;
+  margin-top: 50px;
+  padding-top: 5px;
+
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+
+  border-right: 1px solid #fff;
+  box-shadow:
+    0 0px 2px #fff, /*bottom external highlight*/
+    0 0px 1px #666, /*top external shadow*/
+    inset 0 -1px 1px rgba(0,0,0,0.5), /*bottom internal shadow*/
+    inset 0 1px 1px rgba(255,255,255,0.8); /*top internal highlight*/
+}
+
+/* Used to create a visual seperation between the TreeNodes in the overview panel */
+.hr {
+    border-style: inset;
+    border-width: 2px;
+}
+
+.leftcontent .treeIndent{
+  margin-left: 2%;
+}
+
+/* Overview tree */
+.leftTree .moveLogicOperator {
+  position: absolute;
+  margin-top: -11.5%;
+}
+
+.overviewTreeNodeContainer{
+  cursor:pointer;
+}
+
+.leftTree .mainConditionTree{
+  margin-left: -25%;
+}
+
+.leftTree .leafNode{
+  margin-left: 20%;
+}
+
+.leftTree .singleConditionIndent{
+  margin-left: 0%;
+}
+
+.leftTree .firstUL {
+  margin: 0;
+  margin-left: 8%;
+  padding: 0;
+  margin-top: 5%;
+  margin-bottom: 5%;
+}
+
+.leftTree .logicNode .logicNode{
+  margin-left: -10%;
+}
+
+.leftTree .logicNode .logicNode .logicNode{
+  margin-left: -30%;
+}
+
+.leftTree .logicNode .logicNode .logicNode .leafNode{
+  margin-left: 3%;
+}
+
+.overviewTree li::before, .tree li::after{
+  content: '';
+}
+
+.overviewTree li {
+  list-style-type: none;
+}
+
+/* Overview tree - end */
+
+/* Left Content - End */
+
+/* Main Content*/
+.maincontent {
+    margin-left: 15%;
+    margin-top: 50px;
+    background-color: #eee;
+    width: 40%;
+    height: calc(100% - 50px); /* 100% of the height minus the height of the recognition text */
+    position: absolute;
+    padding: 0;
+    padding-top: 5px;
+
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+
+    border-right: 1px solid #eee;
+    box-shadow:
+      0 0px 0px #fff, /*bottom external highlight*/
+      0 0px 1px #ccc, /*top external shadow*/
+      inset 0px 0px 1px rgba(0,0,0,0.5), /*bottom internal shadow*/
+      inset 0 0px 1px rgba(255,255,255,0.8); /*top internal highlight*/
+}
+
+/* Classification tree */
+.contentTree .treeIndent{
+  margin-left: 1%;
+}
+
+.contentTree .moveLogicOperator {
+  position: relative;
+  /*margin: -18% 0 0 -40%;*/
+  top: -105px;
+}
+
+.contentTree .moveLogicCondition{
+  position:relative;
+  top: 20px;
+}
+
+.contentTree .singleConditionIndent{
+  margin-left: 1%;
+}
+
+.contentTree{
+  position:relative;
+  height: 100%;
+  width: 100%;
+}
+
+.contentTree li {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+
+}
+
+.contentTree ul{
+  margin: 0;
+  margin-left: 7%;
+  padding: 0;
+}
+
+.mainContentTreeContainer{
+  height: 100%;
+  width: 100%;
+  display: block;
+  overflow-y: auto;
+}
+
+.contentTree .firstUL {
+  margin: 0;
+  left: 0;
+  padding: 0;
+  margin-top: 5%;
+  margin-bottom: 5%;
+}
+
+/* Classification tree - end */
+
+/* Main Content - End */
+
+/* Footer Button Style - START */
+.submitButton {
+  position: absolute;
+  background-color: lightgray;
+  bottom: 1%;
+  left: 2%;
+  width: 10%;
+  height: 5%;
+  text-align: center;
+}
+
+.submitButton:hover {
+  border: 1px solid gray;
+  background-color: lightgrey;
+}
+/* Footer Button Style - END */
+
+/* Document side */
+.descriptioncontent {
+    margin-left: 55%;
+    margin-top: 50px;
+    width: 45%;
+    height: calc(100% - 50px);
+    background-color: #CCCCCC;
+    position: absolute;
+    padding: 0;
+    overflow-y:auto;
+    overflow-x:auto;
+}
+
+.SimplePDF {
+  width: 100%;
+  height: 100%;
+  position: inherit;
+}
+/* Document side - End */
+
+/* Tree structures */
+
+.mainConditionTree{
+  margin-top: 2%;
+}
+
+.treeIndent .condition > .conditionoperator {
+  font-weight: bold;
+}
+
+.ealText{
+  font-size: 14px;
+  font-weight: 600;
+}
+
+/* Tree structures - End */
+
+/* Used to prevent the cursor from changing to the text hover version */
+.noTextCursorChange{
+  cursor: context-menu;
+}
+
+/* Dialog Style - START */
+.dialogDiv{
+  width: 25%;
+  height: 25%;
+}
+
+.dialogDiv .dialogButton{
+  position: absolute;
+  width: 100px;
+  height: 55px;
+  bottom: 2%;
+  right: 2%;
+  border: 1px solid black;
+  background-color: lightgrey;
+}
+
+.dialogDiv .dialogButton:hover{
+  border: 1px solid gray;
+  background-color: lightgrey;
+}
+/* Dialog Style - END */
+
+
+
+.conditionContent{
+  padding-left: 5%;
+}
+
+.conditionCard{
+  margin-left: 10%;
+  border-radius: 10px;
+  display: inline-block;
+  cursor:pointer;
+}
+
+.conditionCardText{
+  color: black;
+}
+
+.conditionCardText li{
+  list-style-type: square;
+  margin: auto;
+  padding: auto;
+}
+
+/* Tablet properties */
+@media screen and (max-width: 1400px) {
+  .pdfViewer {
+    width: 125%;
+  }
+
+  .contentTree .moveLogicOperator {
+    left: 0px;
+  }
+
+  .contentTree .firstUL{
+    margin-left: -5%;
+    padding-left: 0;
+  }
+
+  .leftTree{
+    overflow-x: auto;
+  }
+
+  .leftTree .firstUL {
+    margin: 0;
+    margin-left: 0%;
+    padding: 0;
+  }
+
+  .leftTree .logicNode .logicNode{
+    margin-left: -50%;
+  }
+
+  .leftTree .leafNode{
+    margin-left: 12%;
+  }
+
+  .leftTree .moveLogicOperator {
+    left: 0px;
+    margin-top: -17%;
+  }
+
+  .leftTree .firstUL {
+    margin-top: 10%;
+    margin-bottom: 10%;
+    margin-left: 0;
+  }
+}
+
+/* Desktop properties */
+@media screen and (min-width: 1401px) {
+  .leftTree .logicNode .logicNode{
+    margin-left: -20%;
+  }
+
+/* Retina properties */
+  @media
+  (-webkit-min-device-pixel-ratio: 2),
+  (min-resolution: 192dpi) {
+
+    .leftTree .logicNode .logicNode{
+      margin-left: -20%;
+    }
+
+    .leftTree .logicNode .logicNode .logicNode{
+      margin-left: -37%;
+    }
+
+    .leftTree .logicNode .logicNode .logicNode .leafNode{
+      margin-left: -2%;
+    }
+
+    .pdfViewer {
+      width: 125%;
+    }
+  }
+
+  /* 1.25 dpr */
+@media
+(-webkit-min-device-pixel-ratio: 1.25),
+(min-resolution: 120dpi){
+  .leftTree .logicNode .logicNode{
+    margin-left: -20%;
+  }
+
+  .leftTree .logicNode .logicNode .logicNode{
+    margin-left: -37%;
+  }
+
+  .leftTree .logicNode .logicNode .logicNode .leafNode{
+    margin-left: -2%;
+  }
+
+  .pdfViewer {
+    width: 125%;
+  }
+}
+
+/* 1.3 dpr */
+@media
+(-webkit-min-device-pixel-ratio: 1.3),
+(min-resolution: 124.8dpi){
+  .leftTree .logicNode .logicNode{
+    margin-left: -20%;
+  }
+
+  .leftTree .logicNode .logicNode .logicNode{
+    margin-left: -37%;
+  }
+
+  .leftTree .logicNode .logicNode .logicNode .leafNode{
+    margin-left: -2%;
+  }
+
+  .pdfViewer {
+    width: 125%;
+  }
+}
+
+/* 1.5 dpr */
+@media
+(-webkit-min-device-pixel-ratio: 1.5),
+(min-resolution: 144dpi){
+  .leftTree .logicNode .logicNode{
+    margin-left: -20%;
+  }
+
+  .leftTree .logicNode .logicNode .logicNode{
+    margin-left: -37%;
+  }
+
+  .leftTree .logicNode .logicNode .logicNode .leafNode{
+    margin-left: -2%;
+  }
+
+  .pdfViewer {
+    width: 125%;
+  }
+}
+
+
+}

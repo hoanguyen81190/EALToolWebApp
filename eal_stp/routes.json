@@ -1,0 +1,32 @@
+[
+  {
+    "path": "/",
+    "page": "./pages/home",
+    "chunk": "main"
+  },
+  {
+    "path": "/error",
+    "page": "./pages/error",
+    "chunk": "main"
+  },
+  {
+    "path": "/about",
+    "page": "./pages/about"
+  },
+  {
+    "path": "/overview",
+    "page": "./pages/overview"
+  },
+  {
+    "path": "/classifying",
+    "page": "./pages/classifying"
+  },
+  {
+    "path": "/barriermatrix",
+    "page": "./pages/barriermatrix"
+  },
+  {
+    "path": "/tasks/:status(pending|completed)?",
+    "page": "./pages/home"
+  }
+]
