@@ -15,14 +15,6 @@ body, html{
     -ms-user-select: none; /* IE10+ */
 }
 
-.clickable{
-  cursor:pointer;
-}
-
-/* Used to prevent the cursor from changing to the text hover version */
-.noTextCursorChange{
-  cursor: context-menu;
-}
 
 /* Positions the Fission product barrier matrix text and the current mode on the tp of the page, and keeps it there when scrolling */
 .recognitionCategoryText{
@@ -50,11 +42,13 @@ body, html{
     inset 0 0px 1px rgba(255,255,255,0.8); /*top internal highlight*/
 }
 
+/* Wrapper element for the recognition category header text */
 .categoryTextWrapper{
   position: absolute;
   left: 2%;
 }
 
+/* Wrapper element for the classificationheader text */
 .classificationTextWrapper{
   position: absolute;
   right: 2%;
@@ -65,12 +59,6 @@ body, html{
   height: 100%;
   width: 100%;
   position: absolute;
-}
-
-.tableWrapper {
-  overflow-y: scroll;
-  height: 100%;
-  width: 100%;
 }
 
 .maincontent {
@@ -94,6 +82,7 @@ body, html{
     inset 0 0px 1px rgba(255,255,255,0.8); /*top internal highlight*/
 }
 
+/* Right side content - PDF */
 .descriptioncontent {
   margin: 0;
   margin-left: 50%;
@@ -118,328 +107,6 @@ body, html{
   width: 100%;
   height: 100%;
 }
-
-/*Barrier Table*/
-th, tr{
-  padding: 0;
-  margin: 0;
-  min-height: 50px;
-  height: 50px;
-}
-
-.innerTable{
-  width: 100%;
-  -webkit-box-flex: 1; /* OLD - iOS 6-, Safari 3.1-6 */
-  -moz-box-flex: 1; /* OLD - Firefox 19- */
-  -webkit-flex: 1; /* Chrome */
-  -ms-flex: 1; /* IE 10 */
-  flex: 1; /* NEW, */
-}
-
-.innerTableCellFill{
-  width: 100%;
-}
-
-.innerTableRowWrapper{
-  display:table-row;
-}
-
-.barrierTable {
-  width: 100%;
-  table-layout: fixed;
-  overflow-y: scroll;
-  padding: 0;
-  margin: 0;
-  margin-bottom: 50px;
-
-  box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-
-  /*border-spacing: 0 10px;
-  border-collapse: separate;*/
-
-  border-collapse: collapse;
-}
-
-.barrierTable:first-child{
-    /*border-spacing: 0 0;*/
-}
-
-.barrierTable{
-  /*border-spacing: 0 10px;*/
-}
-
-.barrierTable:last-of-type{
-  margin-bottom: 0px;
-}
-
-.barrierTitleHeader{
-  text-transform: uppercase;
-  width: 100%;
-}
-
-.headerCell {
-  box-sizing: border-box;
-  border: 2px;
-  border-style: solid;
-  color: black;
-  width: 100%;
-  height: 40px;
-  padding-left: 8px;
-  padding-top: 4px;
-}
-
-.conditionHeaderIcon{
-  width: 24px;
-  height: 24px;
-  position:relative;
-  bottom:3px;
-}
-
-.barrierTableHeader > * {
-  text-transform: uppercase;
-  padding: 0;
-  margin: 0;
-}
-
-.barrierTableRow:nth-child(odd) {
-  background-color: #eee;
-}
-
-.barrierTableRow {
-  background-color: #e3e3e3;
-  width: 100%;
-}
-
-.logicNodeWrapper{
-  width: 100%;
-  margin: 0;
-  padding: 0;
-  left: 0;
-}
-
-.logicNode{
-  width: 100%;
-  margin-left:36%;
-}
-
-.barrierTableHeader th{
-  border: 2px solid black;
-  box-shadow: inset 2px -2px 2px rgba(0,0,0,0.5), /*bottom internal shadow*/
-  inset -2px 2px 2px rgba(225,225,225,1); /*top internal highlight*/
-}
-
-.barrierTableHeaderFirstCol {
-  width: 20%;
-}
-
-.barrierTableCell {
-  text-align: left;
-  position:relative;
-  padding: 0;
-  margin: 0;
-  width: 100%;
-  height: 1px; /* A fix to make the child div of the barrier cell actually fill the cell. The TD resizes to fit the content anyway */
-  vertical-align: top;
-
-  border: 2px solid black;
-}
-
-.activeBarrierTableCell{
-  box-shadow: inset 2px -2px 2px rgba(0,0,0,0.5), /*bottom internal shadow*/
-  inset -2px 2px 2px rgba(225,225,225,1); /*top internal highlight*/
-
-  /* Chrome10+,Safari5.1+ */
-  background: -o-linear-gradient(top, rgba(180,180,180,0.40) 0%,rgba(150,150,150,0.40) 100%);
-  /* Opera 11.10+ */
-  background: -ms-linear-gradient(top, rgba(180,180,180,0.40) 0%,rgba(150,150,150,0.40) 100%);
-  /* IE10+ */
-  background: linear-gradient(to bottom, rgba(180,180,180,0.40) 0%,rgba(150,150,150,0.40) 100%);
-}
-
-.criterionText{
-  margin-bottom: 24px; /* To make sure the text clears the document icon */
-}
-
-.documentIcon {
-  width: 24px;
-  height: 24px;
-  position:absolute;
-  bottom:3px;
-  right: 1px;
-  float:right;
-}
-
-.criterionHeader{
-  text-align: center;
-  vertical-align:middle;
-
-  box-shadow: inset 2px -2px 2px rgba(0,0,0,0.5), /*bottom internal shadow*/
-  inset -2px 2px 2px rgba(225,225,225,1); /*top internal highlight*/
-}
-
-.criterionHeader:hover{
-
-
-  /* Chrome10+,Safari5.1+ */
-  background: -o-linear-gradient(top, rgba(180,180,180,0.40) 0%,rgba(150,150,150,0.40) 100%);
-  /* Opera 11.10+ */
-  background: -ms-linear-gradient(top, rgba(180,180,180,0.40) 0%,rgba(150,150,150,0.40) 100%);
-  /* IE10+ */
-  background: linear-gradient(to bottom, rgba(180,180,180,0.40) 0%,rgba(150,150,150,0.40) 100%);
-
-  cursor: pointer;
-}
-
-.tableCellFiller{
-  width:100%;
-  background-color: #eee;
-  -webkit-box-flex: 1; /* OLD - iOS 6-, Safari 3.1-6 */
-  -moz-box-flex: 1; /* OLD - Firefox 19- */
-  -webkit-flex: 1; /* Chrome */
-  -ms-flex: 1; /* IE 10 */
-  flex: 1; /* NEW, */
-}
-
-.tableCellNoneFiller{
-  width:100%;
-
-  background-color: #eee;
-
-  -webkit-box-flex: 1; /* OLD - iOS 6-, Safari 3.1-6 */
-  -moz-box-flex: 1; /* OLD - Firefox 19- */
-  -webkit-flex: 1; /* Chrome */
-  -ms-flex: 1; /* IE 10 */
-  flex: 1; /* NEW, */
-}
-
-.tableCellFillerWrapper{
-  width:100%;
-    display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */
-    display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */
-    display: -ms-flexbox; /* TWEENER - IE 10 */
-    display: -webkit-flex; /* NEW - Chrome */
-    display: flex; /* NEW, Spec - Opera 12.1, Firefox 20+ */
-    -ms-flex-direction: column;
-    -moz-flex-direction: column;
-    -webkit-flex-direction: column;
-    flex-direction: column;
-}
-
-.operator {
-  text-align: center;
-  font-weight: bold;
-}
-
-/* New Barrier Table Properties*/
-.barrierName{
-  display: inline-block;
-  width: 75%;
-  height: 100%;
-}
-
-.barrierNameWrapper{
-  height: 100%;
-  transform: translateY(30%);
-}
-
-.barrierStatus{
-  height: 100%;
-  display: inline-block;
-  width: 25%;
-
-  box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  border-left: 2px solid black;
-}
-
-.barrierStatusWrapper{
-  height: 100%;
-  transform: translateY(30%);
-}
-
-/* Condition Cards Styling */
-.headerLossText{
-  text-align: center;
-  font-weight: bold;
-}
-
-.firstConditionsCard{
-  width: 100%;
-  border-bottom: 2px solid black;
-}
-
-.conditionCard{
-  width: 100%;
-  padding: 0;
-  margin: 0;
-  min-height: 0; /* Override the default min height of the mdl card */
-}
-
-.barrierTableRow{
-  box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-
-  padding: 0;
-  margin: 0;
-
-  box-shadow: inset 2px -2px 2px rgba(0,0,0,0.5), /*bottom internal shadow*/
-  inset -2px 2px 2px rgba(225,225,225,1); /*top internal highlight*/
-}
-
-.conditionCardText{
-  min-height: 40px;
-  left: 0;
-  color: black;
-  width: 85%;
-  margin-right: 32px;
-   /* The size of the check icon. prevents the icon from ever hiding text */
-}
-
-.checkImage{
-  position: absolute;
-  width: 32px;
-  height: 32px;
-  bottom: 2%;
-  right: 1%;
-}
-
-.conditionsWrapper{
-  width: 100%;
-  height: 100%;
-}
-
-.ealText{
-  font-size: 14px;
-  font-weight: 600;
-}
-
-/* Condition Cards Styling - END */
-
-.chipContentText{
-  text-align:right;
-
-}
-
-.logicConditionWrapper{
-  width: 100%;
-  box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  border-top: 2px solid rgba(55,0,160,1);
-  border-bottom: 2px solid rgba(55,0,160,1);
-}
-
-.logicTreeChip{
-  width: 50%;
-  padding: 0;
-  margin-left: 40%;
-}
-
-/* New Barrier Table Properties - END */
 
 /* Footer Styling */
 .submitButton {
@@ -473,17 +140,7 @@ th, tr{
   border: 1px solid black;
   background-color: lightgrey;
 }
-
 /* Dialog Styling - END */
-
-/* NewRender 4 */
-
-.barrierCard{
-  width: 100%;
-  margin-bottom: 100px;
-}
-
-/* NewRender 4 - END */
 
 /* Tablet properties */
 @media screen and (max-width: 1400px) {

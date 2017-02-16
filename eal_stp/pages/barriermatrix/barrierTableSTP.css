@@ -79,46 +79,55 @@
 }
 
 /* Make the outer borders the same thickness as the combined inner borders */
-.barrierPropertyTable>thead>tr:last-child>th {
+.roundedOutline>thead>tr:last-child>th {
     border-top: 2px solid black;
 }
-.barrierPropertyTable>thead>tr:last-child>th:first-child {
+.roundedOutline>thead>tr:last-child>th:first-child {
     border-left: 2px solid black;
 }
-.barrierPropertyTable>thead>tr:last-child>th:last-child {
+.roundedOutline>thead>tr:last-child>th:last-child {
     border-right: 2px solid black;
 }
 
-.barrierPropertyTable>tbody>tr:last-child>td {
+.roundedOutline>tbody>tr:last-child>td {
     border-bottom: 2px solid black;
 }
-.barrierPropertyTable>tbody>tr:last-child>td:first-child {
+.roundedOutline>tbody>tr:last-child>td:first-child {
     border-left: 2px solid black;
 }
-.barrierPropertyTable>tbody>tr:last-child>td:last-child {
+.roundedOutline>tbody>tr:last-child>td:last-child {
     border-right: 2px solid black;
 }
 
 /* Round the corners of the outer table */
-.barrierPropertyTable>tbody>tr:last-child>td:first-child {
+.roundedOutline>tbody>tr:last-child>td:first-child {
     border-bottom-left-radius: 10px;
 }
-.barrierPropertyTable>tbody>tr:last-child>td:last-child {
+.roundedOutline>tbody>tr:last-child>td:last-child {
     border-bottom-right-radius: 10px;
 }
-.barrierPropertyTable>thead>tr:last-child>th:first-child {
+.roundedOutline>thead>tr:last-child>th:first-child {
     border-top-left-radius: 10px;
 }
-.barrierPropertyTable>thead>tr:last-child>th:last-child {
+.roundedOutline>thead>tr:last-child>th:last-child {
     border-top-right-radius: 10px;
 }
 
 /* Remove the border between the first header cell and the table data cell below. Give the appearance of a merged cell */
-.barrierPropertyTable>thead>tr:first-child>th:first-child{
+.roundedOutline>thead>tr:first-child>th:first-child{
   border-bottom: none;
 }
-.barrierPropertyTable>tbody>tr:first-child>td:first-child{
+.roundedOutline>tbody>tr:first-child>td:first-child{
   border-top: none;
+}
+
+.sideShadows{
+  border-radius: 10px;
+  background-color: #eed;
+  box-shadow: 8px 0 15px -4px rgba(31, 73, 125, 0.8), -8px 0 8px -4px rgba(31, 73, 125, 0.8);
+  -moz-box-shadow: 8px 0 15px -4px rgba(31, 73, 125, 0.8), -8px 0 8px -4px rgba(31, 73, 125, 0.8);
+  -webkit-box-shadow: 8px 0 15px -4px rgba(31, 73, 125, 0.8), -8px 0 8px -4px rgba(31, 73, 125, 0.8);
+  -o-box-shadow: 8px 0 15px -4px rgba(31, 73, 125, 0.8), -8px 0 8px -4px rgba(31, 73, 125, 0.8);
 }
 
 .barrierProperty {
@@ -166,4 +175,13 @@
   margin: 0;
   min-height: 50px;
   height: 50px;
+}
+
+/* Indicate that an element is clickable by changing the cursor */
+.clickable{
+  cursor:pointer;
+}
+/* Used to prevent the cursor from changing to the text hover version */
+.noTextCursorChange{
+  cursor: context-menu;
 }

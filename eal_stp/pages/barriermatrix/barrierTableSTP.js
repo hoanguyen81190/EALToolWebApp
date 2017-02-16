@@ -17,6 +17,7 @@ class BarrierConditionCard extends React.Component {
     super();
     this.loss = false;
     this.potential_loss = false;
+    this.activeBarrierCellProductIndex = null;
   }
   conditionCallbackFunc() {
     //update barrier when condition is triggered
@@ -26,17 +27,19 @@ class BarrierConditionCard extends React.Component {
   }
 
   clearActiveBarrierCell(){
-    this.activeBarrierCellProductIndex = null;
-    this.forceUpdate();
+    if(this.activeBarrierCellProductIndex !== null){
+      this.activeBarrierCellProductIndex = null;
+      this.forceUpdate();
+    }
   }
 
   setActiveBarrierCell(productIndex, page, range){
-    console.log(page);
-    console.log(range);
-    // this.props.clearBarrierHighights();
-    // this.activeBarrierCellProductIndex = productIndex;
-    this.props.documentCallback(page, range);
-    this.forceUpdate();
+    if(this.activeBarrierCellProductIndex !== productIndex){
+      this.props.clearBarrierHighights();
+      this.activeBarrierCellProductIndex = productIndex;
+      this.props.documentCallback(page, range);
+      this.forceUpdate();
+    }
   }
 
   getValue() {
@@ -81,7 +84,15 @@ class BarrierConditionCard extends React.Component {
       barrierPropertyColor = potentiallossConditionColor;
     }
 
-    var ele = <table className={bs.barrierPropertyTable}>
+    var outlineClass = "";
+    if(this.activeBarrierCellProductIndex !== null){
+      outlineClass = bs.sideShadows + " " + bs.roundedOutline;
+    }
+    else{
+      outlineClass = bs.roundedOutline;
+    }
+
+    var ele = <table className={bs.barrierPropertyTable + " " + outlineClass}>
       <thead >
         <tr >
           <th className={bs.barrierProperty + " " + bs.barrierCell + " " + bs.barrierPropertyCell + " " + barrierPropertyColor}></th>
@@ -90,9 +101,9 @@ class BarrierConditionCard extends React.Component {
         </tr>
       </thead>
       <tbody >
-        <tr >
+        <tr onClick={ () => this.setActiveBarrierCell(this.props.productIndex, this.props.content.description.ref.page, this.props.content.description.ref.range)}>
           <td className={bs.barrierCell + " " + bs.barrierPropertyCell + " " + barrierPropertyColor}
-            onClick={ () => this.setActiveBarrierCell(this.props.productIndex, this.props.content.description.ref.page, this.props.content.description.ref.range)}>
+            >
                <div className={bs.barrierPropertyWrapper}>
                  <div className={bs.barrierPropertyTextWrapper}>{this.props.productIndex + 1 + ". " + this.props.content.name}</div>
                  <img className={bs.documentIcon} src={documentIcon} alt="Document icon"/>
@@ -125,6 +136,12 @@ class BarrierCard extends React.Component {
   barrierCardCallBack() {
     this.getValue();
     this.forceUpdate();
+  }
+
+  clearActiveBarrierCell(){
+    this.props.barrier.products.map((card, index)=>{
+      this.refs['barrierCondition'+index].clearActiveBarrierCell();
+    });
   }
 
   getValue() {
