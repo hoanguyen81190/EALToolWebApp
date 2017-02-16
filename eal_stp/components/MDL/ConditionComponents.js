@@ -46,6 +46,7 @@ export class Condition extends React.Component {
   }
 
   handleConditionClicked(){
+    console.log("clicked");
     this.value = !this.value;
     if(this.props.callback !== undefined) {
       this.props.callback();
@@ -63,22 +64,17 @@ export class Condition extends React.Component {
     }
 
     var treeCardContent =
-    <div className={cs.leafContainer} onClick={this.handleConditionClicked.bind(this)}>
-      <div className={cs.conditionTextWrapper}>
-        <span dangerouslySetInnerHTML={{__html: this.props.content.description.text}}/>
-      </div>
-      <div className={cs.imageWrapper}>
-        <img className={cs.checkImage} src={checkImage} alt="Check icon"/>
-      </div>
-    </div>;
 
-    // var element =
-    //     <div>
-    //       {this.props.content.description.text}
-    //     </div>;
+      <div className={cs.leafContainer} onClick={this.handleConditionClicked.bind(this)}>
+        <div className={cs.conditionTextWrapper}>
+          <span dangerouslySetInnerHTML={{__html: this.props.content.description.text}}/>
+        </div>
+        <img className={cs.checkImage} src={checkImage} alt="Check icon"/>
+      </div>;
 
     return treeCardContent;
   }
+
   renderLogicNode(){
     var logicConditionColor;
     if(this.value){
@@ -102,24 +98,31 @@ export class Condition extends React.Component {
             borderBottomStyle = cs.cellBorderBottom;
           }
 
+          var conditionContent;
+          if(child.type === "Leaf"){
+            conditionContent =
+              <td className={cs.conditionCell + " " + borderBottomStyle} >
+                <Condition ref={childRef} content={child} callback={this.props.callback} conditionColor={this.props.conditionColor}/>
+              </td>;
+          }
+          else{
+            conditionContent = <td className={cs.conditionCell + " " + borderBottomStyle}>
+                                <Condition ref={childRef} content={child} callback={this.props.callback} conditionColor={this.props.conditionColor}/>
+                              </td>
+          }
+
           if(index === 0){
             var row = <tr>
               <td rowSpan={this.props.content.children.length}
-                className={cs.logicConditionText + " " + cs.conditionCell + " " + logicConditionColor}>
+                className={cs.logicConditionText + " " + cs.conditionCell + " " + logicConditionColor + " " + cs.logicCell}>
                 {this.props.content.type}
               </td>
 
-              <td className={cs.conditionCell + " " + borderBottomStyle}>
-                <Condition ref={childRef} content={child} callback={this.props.callback} conditionColor={this.props.conditionColor}/>
-              </td>
+              {conditionContent}
             </tr>
           }
           else {
-            var row = <tr>
-              <td className={cs.conditionCell + " " + borderBottomStyle}>
-                <Condition ref={childRef} content={child} callback={this.props.callback} conditionColor={this.props.conditionColor}/>
-              </td>
-            </tr>
+            var row = <tr>{conditionContent}</tr>;
           }
           return row;
         })}
@@ -133,7 +136,7 @@ export class Condition extends React.Component {
     var ele;
     this.type = this.props.content.type;
     if(this.type === undefined) {
-      ele = <div>Not Applicable</div>;
+      ele = <td className={cs.conditionCell}><div className={cs.notApplicableCell}>Not Applicable</div></td>;
     }
     else if(this.type === "Leaf") {
       ele = this.renderLeafNode();

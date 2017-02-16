@@ -56,12 +56,17 @@ class BarrierConditionCard extends React.Component {
       'trueColor': "mdl-color--amber-600",
       'falseColor': "mdl-color--green-300"
     };
+
+    var barrierPropertyColor;
+
     var lossConditionColor;
     if(this.loss){
      lossConditionColor = "mdl-color--red-400";
+     barrierPropertyColor = "mdl-color--red-400";
     }
     else{
       lossConditionColor = "mdl-color--green-300";
+      barrierPropertyColor = lossConditionColor;
     }
 
     var potentiallossConditionColor;
@@ -72,34 +77,41 @@ class BarrierConditionCard extends React.Component {
       potentiallossConditionColor = "mdl-color--green-300";
     }
 
+    if(!this.loss){
+      barrierPropertyColor = potentiallossConditionColor;
+    }
+
     var ele = <table className={bs.barrierPropertyTable}>
-      <thead>
-        <tr>
-          <th className={bs.barrierProperty + " " + bs.barrierCell + " " + bs.barrierPropertyCell}>{this.props.productIndex + 1}</th>
+      <thead >
+        <tr >
+          <th className={bs.barrierProperty + " " + bs.barrierCell + " " + bs.barrierPropertyCell + " " + barrierPropertyColor}></th>
           <th className={bs.barrierLoss + " " + bs.barrierCell + " " + lossConditionColor}>Loss</th>
           <th className={bs.barrierPotentialLoss + " " + bs.barrierCell  + " " + potentiallossConditionColor}>Potential Loss</th>
         </tr>
       </thead>
-      <tbody>
-        <tr>
-          <td className={bs.barrierCell + " " + bs.barrierCellPadding + " " + bs.barrierPropertyCell}
-            onClick={
-               () => this.setActiveBarrierCell(this.props.productIndex, this.props.content.description.ref.page, this.props.content.description.ref.range)}>
-               {this.props.content.name}
-             </td>
+      <tbody >
+        <tr >
+          <td className={bs.barrierCell + " " + bs.barrierPropertyCell + " " + barrierPropertyColor}
+            onClick={ () => this.setActiveBarrierCell(this.props.productIndex, this.props.content.description.ref.page, this.props.content.description.ref.range)}>
+               <div className={bs.barrierPropertyWrapper}>
+                 <div className={bs.barrierPropertyTextWrapper}>{this.props.productIndex + 1 + ". " + this.props.content.name}</div>
+                 <img className={bs.documentIcon} src={documentIcon} alt="Document icon"/>
+               </div>
+           </td>
           <td className={bs.barrierCell}>
-            <Condition ref="loss" content={this.props.content.loss}
+            <Condition firstCondition={true} ref="loss" content={this.props.content.loss}
               callback={()=>this.conditionCallbackFunc()}
               conditionColor={lossColor}/>
           </td>
           <td className={bs.barrierCell}>
-            <Condition ref="potential_loss" content={this.props.content.potential_loss}
+            <Condition firstCondition={true} ref="potential_loss" content={this.props.content.potential_loss}
               callback={()=>this.conditionCallbackFunc()}
               conditionColor={potential_lossColor}/>
           </td>
         </tr>
       </tbody>
     </table>;
+
     return ele;
   }
 }
@@ -157,13 +169,13 @@ class BarrierCard extends React.Component {
       color={stateColor}
       chipStyling={bs.barrierNameChip}
       chipContent={this.props.barrier.name} noCircle={true} treeCardStyling={bs.barrierCard}
+      cardContentStyling={bs.barrierCardContent}
       cardContent={this.props.barrier.products.map((card, index)=>{
         return <BarrierConditionCard ref={'barrierCondition'+index} content={card}
           productIndex={index}
           clearBarrierHighights={this.props.clearBarrierHighights}
           documentCallback={this.props.documentCallback}
           barrierCallBack={() => {this.barrierCardCallBack()}}
-
           />
       })}
       />;
