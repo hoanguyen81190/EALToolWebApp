@@ -212,7 +212,7 @@ class BarrierMatrixPage extends React.Component {
 
         <div className={`${s.descriptioncontent}`} id="descriptionContentContainer">
             <spdf.SimplePDF className={s.SimplePDF}
-                file='./classification_procedures.pdf'
+                file='./STP_EAL_classification_procedure.pdf'
                 startPage={27}
                 endPage={1}
                 ref="pdfDocument"

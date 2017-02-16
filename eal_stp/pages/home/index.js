@@ -193,7 +193,6 @@ class HomePage extends React.Component {
   }
 
   toggleFullscreen() {
-    console.log("here");
     if ((document.fullScreenElement && document.fullScreenElement !== null) ||
      (!document.mozFullScreen && !document.webkitIsFullScreen)) {
       if (document.documentElement.requestFullScreen) {
@@ -213,7 +212,6 @@ class HomePage extends React.Component {
       }
     }
   }
-
 }
 
 export default HomePage;

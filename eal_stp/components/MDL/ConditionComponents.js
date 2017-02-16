@@ -98,17 +98,12 @@ export class Condition extends React.Component {
             borderBottomStyle = cs.cellBorderBottom;
           }
 
-          var conditionContent;
-          if(child.type === "Leaf"){
-            conditionContent =
-              <td className={cs.conditionCell + " " + borderBottomStyle} >
-                <Condition ref={childRef} content={child} callback={this.props.callback} conditionColor={this.props.conditionColor}/>
-              </td>;
-          }
-          else{
-            conditionContent = <td className={cs.conditionCell + " " + borderBottomStyle}>
-                                <Condition ref={childRef} content={child} callback={this.props.callback} conditionColor={this.props.conditionColor}/>
-                              </td>
+
+
+          var conditionContent = <Condition ref={childRef} content={child} callback={this.props.callback} conditionColor={this.props.conditionColor}/>;
+
+          if(!this.props.firstChild){
+            conditionContent = <td className={cs.conditionCell + " " + borderBottomStyle}>{conditionContent}</td>
           }
 
           if(index === 0){

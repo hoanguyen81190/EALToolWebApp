@@ -102,8 +102,7 @@ class BarrierConditionCard extends React.Component {
       </thead>
       <tbody >
         <tr onClick={ () => this.setActiveBarrierCell(this.props.productIndex, this.props.content.description.ref.page, this.props.content.description.ref.range)}>
-          <td className={bs.barrierCell + " " + bs.barrierPropertyCell + " " + barrierPropertyColor}
-            >
+          <td className={bs.barrierCell + " " + bs.barrierPropertyCell + " " + barrierPropertyColor}>
                <div className={bs.barrierPropertyWrapper}>
                  <div className={bs.barrierPropertyTextWrapper}>{this.props.productIndex + 1 + ". " + this.props.content.name}</div>
                  <img className={bs.documentIcon} src={documentIcon} alt="Document icon"/>

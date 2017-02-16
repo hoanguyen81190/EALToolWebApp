@@ -1,5 +1,5 @@
 
-import jsonData from './data.json';
+import jsonData from './sap_data.json';
 export class EALDocument {
   constructor() {
     // this.data = require('json!./data.json');
