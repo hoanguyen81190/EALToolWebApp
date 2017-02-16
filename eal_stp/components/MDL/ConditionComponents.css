@@ -1,0 +1,56 @@
+.conditionTable {
+  border-collapse: collapse;
+  margin: 0;
+  padding: 0;
+}
+
+.conditionCell {
+  padding: 0;
+  margin: 0;
+}
+
+.cellBorderBottom{
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  border-bottom: 2px solid black;
+}
+
+.logicConditionText{
+  height: 100%;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  font-weight: bold;
+  border-right: 2px solid black;
+
+  padding: 0 5px 0 5px;
+}
+
+.leafContainer {
+  position: relative;
+  padding: 0 5px 0 5px;
+  width: 100%;
+  height: 100%;
+  align-content: center;
+}
+
+.conditionTextWrapper {
+  position: relative;
+  left: 0;
+
+  margin-right: 24px;
+}
+
+.imageWrapper {
+  position: relative;
+  right: 4px;
+}
+
+.checkImage{
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  bottom: 0px;
+  right: 4px;
+}
