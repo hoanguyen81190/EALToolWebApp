@@ -1,0 +1,182 @@
+.barrierCard {
+  width: 98%;
+
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+
+  border: 2px solid #000;
+  border-radius: 28px;
+
+  margin: 0;
+  padding: 0;
+  margin-left: 1%;
+  margin-top: 25px;
+  margin-bottom: 25px;
+
+  background-color: #fff;
+}
+
+.barrierCardContent{
+  width: calc(100% - 20px);
+  padding-left: 10px;
+  padding-right: 10px;
+
+  border-top: 2px solid black;
+}
+
+.barrierNameChip{
+  width: 50%;
+  padding: 0;
+  margin-left: 40%;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.barrierPropertyWrapper{
+  position: relative;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  min-height: 50px;
+}
+
+.barrierPropertyTextWrapper{
+  position: relative;
+  margin-bottom: 24px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+.documentIcon {
+  width: 24px;
+  height: 24px;
+  position:absolute;
+  bottom:3px;
+  right: 0px;
+}
+
+.barrierCardName {
+
+}
+
+.barrierPropertyTable {
+  width: 100%;
+  border-spacing: 0;
+  overflow-y: scroll;
+  padding: 0;
+  margin: 0;
+  margin-bottom: 10px;
+  table-layout: fixed;
+}
+
+.barrierPropertyTable:last-of-type {
+  margin: 0;
+}
+
+/* Make the outer borders the same thickness as the combined inner borders */
+.roundedOutline>thead>tr:last-child>th {
+    border-top: 2px solid black;
+}
+.roundedOutline>thead>tr:last-child>th:first-child {
+    border-left: 2px solid black;
+}
+.roundedOutline>thead>tr:last-child>th:last-child {
+    border-right: 2px solid black;
+}
+
+.roundedOutline>tbody>tr:last-child>td {
+    border-bottom: 2px solid black;
+}
+.roundedOutline>tbody>tr:last-child>td:first-child {
+    border-left: 2px solid black;
+}
+.roundedOutline>tbody>tr:last-child>td:last-child {
+    border-right: 2px solid black;
+}
+
+/* Round the corners of the outer table */
+.roundedOutline>tbody>tr:last-child>td:first-child {
+    border-bottom-left-radius: 10px;
+}
+.roundedOutline>tbody>tr:last-child>td:last-child {
+    border-bottom-right-radius: 10px;
+}
+.roundedOutline>thead>tr:last-child>th:first-child {
+    border-top-left-radius: 10px;
+}
+.roundedOutline>thead>tr:last-child>th:last-child {
+    border-top-right-radius: 10px;
+}
+
+/* Remove the border between the first header cell and the table data cell below. Give the appearance of a merged cell */
+.roundedOutline>thead>tr:first-child>th:first-child{
+  border-bottom: none;
+}
+.roundedOutline>tbody>tr:first-child>td:first-child{
+  border-top: none;
+}
+
+.sideShadows{
+  border-radius: 10px;
+  background-color: #eed;
+  box-shadow: 8px 0 15px -4px rgba(31, 73, 125, 0.8), -8px 0 8px -4px rgba(31, 73, 125, 0.8);
+  -moz-box-shadow: 8px 0 15px -4px rgba(31, 73, 125, 0.8), -8px 0 8px -4px rgba(31, 73, 125, 0.8);
+  -webkit-box-shadow: 8px 0 15px -4px rgba(31, 73, 125, 0.8), -8px 0 8px -4px rgba(31, 73, 125, 0.8);
+  -o-box-shadow: 8px 0 15px -4px rgba(31, 73, 125, 0.8), -8px 0 8px -4px rgba(31, 73, 125, 0.8);
+}
+
+.barrierProperty {
+  width: 20%;
+}
+
+.barrierPropertyCell {
+  font-weight: bold;
+  font-size: 1.20em;
+  color: black;
+}
+
+.barrierLoss {
+  width: 40%;
+}
+
+.barrierPotentialLoss {
+  width: 40%;
+}
+
+.barrierCell {
+  position: relative;
+  padding: 0;
+  margin: 0;
+
+  background-color: #fff;
+  color: black;
+  height: 1px; /* A fix to make the child div of the barrier cell actually fill the cell. The TD resizes to fit the content anyway */
+
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  border: 1px solid black;
+}
+
+.barrierCellPadding {
+  padding-left: 5px;
+  padding-right: 5px;
+  text-align: center;
+}
+
+.barrierPropertyTable th, .barrierPropertyTable tr{
+  padding: 0;
+  margin: 0;
+  min-height: 50px;
+  height: 50px;
+}
+
+/* Indicate that an element is clickable by changing the cursor */
+.clickable{
+  cursor:pointer;
+}
+/* Used to prevent the cursor from changing to the text hover version */
+.noTextCursorChange{
+  cursor: context-menu;
+}

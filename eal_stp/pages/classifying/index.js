@@ -55,13 +55,15 @@ class ClassifyingPage extends React.Component {
   }
 
   extractSelectedCriterion() {
+
+
     var regCat = eALDocument.getRecognitionCategoryData(store.getState().recognitionCategory);
     var selectedCriterionNumber = this.getCriterionConditionNumber(store.getState().criterionObject.name);
     var categoryList = [];
 
 
     for(var index = 0; index < regCat.emergency_categories.length; index++) {
-
+      console.log(selectedCriterionNumber);
       var emer_cat = regCat.emergency_categories[index];
       var hasCriterion = false;
       for (var i = 0; i < emer_cat.criterions.length; i++) {
