@@ -684,7 +684,7 @@ class ClassifyingPage extends React.Component {
             </div>
               <div className={s.descriptioncontent}>
                 <spdf.SimplePDF className={s.SimplePDF}
-                  file='./classification_procedures.pdf'
+                  file='./STP_EAL_classification_procedure.pdf'
                   startPage={store.getState().criterionObject.description.ref.page}
                   endPage={store.getState().criterionObject.description.ref.page + store.getState().criterionObject.description.ref.range - 1}
                 />
