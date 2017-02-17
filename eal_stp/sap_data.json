@@ -33,7 +33,7 @@
 								4
 							],
 							"description": {
-								"text": "Prolonged loss of <b>ALL</b> offsite and <b>ALL</b> onsite AC power to emergency SG1 buses",
+								"text": "Prolonged loss of <b>ALL</b> offsite and <b>ALL</b> onsite AC power to emergency buses",
 								"ref": {
 									"page": 37,
 									"range": 2
@@ -133,7 +133,7 @@
 								4
 							],
 							"description": {
-								"text": "Loss of <b>ALL</b> offsite and <b>ALL</b> onsite AC power to emergency buses for SS1 15 minutes or longer",
+								"text": "Loss of <b>ALL</b> offsite and <b>ALL</b> onsite AC power to emergency buses for 15 minutes or longer",
 								"ref": {
 									"page": 39,
 									"range": 2
@@ -160,7 +160,7 @@
 								2
 							],
 							"description": {
-								"text": "Inability to shutdown the reactor causing a challenge to core cooling or SS5 RCS heat removal",
+								"text": "Inability to shutdown the reactor causing a challenge to core cooling or RCS heat removal",
 								"ref": {
 									"page": 53,
 									"range": 2
@@ -254,7 +254,7 @@
 								4
 							],
 							"description": {
-								"text": "Loss of <b>ALL</b> but one AC power source to emergency buses for 15 SA1 minutes or longer",
+								"text": "Loss of <b>ALL</b> but one AC power source to emergency buses for 15 minutes or longer",
 								"ref": {
 									"page": 41,
 									"range": 2
@@ -363,7 +363,7 @@
 								4
 							],
 							"description": {
-								"text": "Hazardous event affecting a SAFETY SYSTEM needed for the current SA9 operating mode",
+								"text": "Hazardous event affecting a SAFETY SYSTEM needed for the current operating mode",
 								"ref": {
 									"page": 67,
 									"range": 2
@@ -422,7 +422,7 @@
 								4
 							],
 							"description": {
-								"text": "Loss of <b>ALL</b> offsite AC power capability to emergency buses for 15 SU1 minutes or longer",
+								"text": "Loss of <b>ALL</b> offsite AC power capability to emergency buses for 15 minutes or longer",
 								"ref": {
 									"page": 43,
 									"range": 2
@@ -451,7 +451,7 @@
 								4
 							],
 							"description": {
-								"text": "UNPLANNED loss of Control Room indications for 15 minutes or SU2 longer",
+								"text": "UNPLANNED loss of Control Room indications for 15 minutes or longer",
 								"ref": {
 									"page": 47,
 									"range": 2
@@ -480,7 +480,7 @@
 								4
 							],
 							"description": {
-								"text": "Reactor coolant activity greater than Technical Specification allowable SU3 limits",
+								"text": "Reactor coolant activity greater than Technical Specification allowable limits",
 								"ref": {
 									"page": 49,
 									"range": 2
@@ -756,6 +756,723 @@
 									}
 								}
 							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Hazards and other Conditions",
+			"mode_applicability": [
+				1,
+				2,
+				3,
+				4,
+				5,
+				6,
+				"Defueled"
+			],
+			"emergency_categories": 
+			[
+				{
+					"name": "General Emergency",
+					"criterions": 
+					[
+						{
+							"name": "HG1",
+							"mode_applicability": [
+								1,
+								2,
+								3,
+								4,
+								5,
+								6,
+								"Defueled"
+							],
+							"description": {
+								"text": "HOSTILE ACTION resulting in loss of physical control of the HG1 FACILITY",
+								"ref": {
+									"page": 73,
+									"range": 2
+								}
+							},
+							"alert_level":
+							[						
+								{ 
+									"level" : "EAL-1",
+									"conditions": 
+									{
+										"type": "AND",					
+										"children": 
+										[
+											{
+												"type": "Leaf",
+												"description": {
+													"text": "A HOSTILE ACTION is occurring or has occurred within the PROTECTED AREA as reported by <b>ANY</b> of the following in Table H1"
+												}
+											}, 
+											{
+												"type": "OR",
+												"children":
+												[
+													{
+														"mode_applicability":[
+															1,
+															2,
+															3
+														],
+														"type": "Leaf",
+														"description": {
+															"text": "<b>ANY</b> of the following safety functions in Table H2 cannot be controlled or maintained in MODES 1, 2 or 3 ONLY"
+														}
+													},
+													{
+														"type": "Leaf",
+														"description": {
+															"text": "Damage to spent fuel has occurred or is IMMINENT"
+														}
+													}
+												]
+											}					
+										]
+									}
+								}
+							]							
+						},
+						{
+							"name": "HG7",
+							"mode_applicability": [
+								1,
+								2,
+								3,
+								4,
+								5,
+								6,
+								"Defueled"
+							],
+							"description": {
+								"text": "Other conditions exist which in the judgment of the Emergency Director warrant declaration of a GENERAL EMERGENCY",
+								"ref": {
+									"page": 99,
+									"range": 2
+								}
+							},
+							"alert_level":
+							[						
+								{ 
+									"level" : "EAL-1",
+									"conditions": 
+									{							
+										"type": "Leaf",
+										"description": {
+											"text": "Other conditions exist which in the judgment of the Emergency Director indicate that events are in progress or have occurred which involve actual or IMMINENT substantial core degradation or melting with potential for loss of containment integrity or HOSTILE ACTION that results in an actual loss of physical control of the FACILITY. Releases can be reasonably expected to exceed EPA PROTECTIVE ACTION GUIDELINE exposure levels offsite for more than the immediate site area"
+										}											
+									}
+								}
+							]							
+						}
+					]
+				},
+				{
+					"name": "Site Area Emergency",
+					"criterions": 
+					[
+						{
+							"name": "HS1",
+							"mode_applicability": [
+								1,
+								2,
+								3,
+								4,
+								5,
+								6,
+								"Defueled"
+							],
+							"description": {
+								"text": "HOSTILE ACTION within the PROTECTED AREA",
+								"ref": {
+									"page": 75,
+									"range": 2
+								}
+							},
+							"alert_level":
+							[						
+								{ 
+									"level" : "EAL-1",
+									"conditions": 
+									{
+										"type": "Leaf",
+										"description": {
+											"text": "A HOSTILE ACTION is occurring or has occurred within the PROTECTED AREA as reported by ANY of the following personnel in Table H1"
+										}								
+									}
+								}
+							]						
+						},
+						{
+							"name": "HS6",
+							"mode_applicability": [
+								1,
+								2,
+								3,
+								4,
+								5,
+								6,
+								"Defueled"
+							],
+							"description": {
+								"text": "Inability to control a key safety function from outside the Control Room",
+								"ref": {
+									"page": 95,
+									"range": 2
+								}
+							},
+							"alert_level":
+							[						
+								{ 
+									"level" : "EAL-1",
+									"conditions": 
+									{
+										"type": "AND",
+										"children": 
+										[
+											{
+												"type": "Leaf",
+												"description": {
+													"text": "An event has resulted in plant control being transferred from the Control Room to the Auxiliary Shutdown Panel (ASP)"
+												}	
+											},
+											{									
+												"type": "Leaf",
+												"mode_applicability": [
+													1,
+													2,
+													3
+												],	
+												"description": {
+													"text": "Control of <b>ANY</b> of the following key safety functions in Table H2 is not reestablished within 15 minutes in Modes 1, 2 or 3 ONLY"
+												}	
+											}
+										]													
+									}
+								}
+							]						
+						},
+						{
+							"name": "HS7",
+							"mode_applicability": [
+								1,
+								2,
+								3,
+								4,
+								5,
+								6,
+								"Defueled"
+							],
+							"description": {
+								"text": "Other conditions exist which in the judgment of the Emergency Director warrant declaration of a SITE AREA EMERGENCY",
+								"ref": {
+									"page": 101,
+									"range": 2
+								}
+							},
+							"alert_level":
+							[						
+								{ 
+									"level" : "EAL-1",
+									"conditions": 
+									{							
+										"type": "Leaf",
+										"description": {
+											"text": "Other conditions exist which in the judgment of the Emergency Director indicate that events are in progress or have occurred which involve actual or likely major failures of plant functions needed for protection of the public or HOSTILE ACTION that results in intentional damage or malicious acts, (1) toward site personnel or equipment that could lead to the likely failure of or, (2) that prevent effective access to equipment needed for the protection of the public. ANY releases are not expected to result in exposure levels which exceed EPA PROTECTIVE ACTION GUIDELINE exposure levels beyond the SITE BOUNDARY"
+										}											
+									}
+								}
+							]							
+						}
+					]
+				},
+				{
+					"name": "Alert",
+					"criterions": 
+					[
+						{							
+							"name": "HA1",
+							"mode_applicability": [
+								1,
+								2,
+								3,
+								4,
+								5,
+								6,
+								"Defueled"
+							],
+							"description": {
+								"text": "HOSTILE ACTION within the OWNER CONTROLLED AREA or airborne attack threat within 30 minutes",
+								"ref": {
+									"page": 77,
+									"range": 3
+								}
+							},							
+							"alert_level":
+							[						
+								{ 
+									"level" : "EAL-1",
+									"conditions": 
+									{					
+										"type": "Leaf",
+										"description": {
+											"text": "A HOSTILE ACTION is occurring or has occurred within the OWNER CONTROLLED AREA as reported by <b>ANY</b> of the following personnel in Table H1"
+										}
+									}
+								},
+								{ 
+									"level" : "EAL-2",
+									"conditions": 
+									{					
+										"type": "Leaf",
+										"description": {
+											"text": "A validated notification from NRC of an aircraft attack threat within 30 minutes of the site"
+										}
+									}
+								}
+							]
+						},
+						{							
+							"name": "HA5",
+							"mode_applicability": [
+								1,
+								2,
+								3,
+								4,
+								5,
+								6,
+								"Defueled"
+							],
+							"description": {
+								"text": "Gaseous release impeding access to equipment necessary for normal plant operations, cooldown or shutdown",
+								"ref": {
+									"page": 91,
+									"range": 3
+								}
+							},							
+							"alert_level":
+							[						
+								{ 
+									"level" : "EAL-1",
+									"conditions": 
+									{		
+										"type": "AND",
+										"children":
+										[
+											{
+												"type": "Leaf",
+												"description": {
+													"text": "Release of a toxic, corrosive, asphyxiant or flammable gas into the Control Room or <b>ANY</b> of the plant rooms or areas listed in Table H3/R2"
+												}
+											},
+											{
+												"type": "Leaf",
+												"description": {
+													"text": "Entry into the room or area is prohibited or impeded"
+												}
+											}
+										]					
+									}
+								}
+							]
+						},
+						{
+							"name": "HA6",
+							"mode_applicability": [
+								1,
+								2,
+								3,
+								4,
+								5,
+								6,
+								"Defueled"
+							],
+							"description": {
+								"text": "Control Room evacuation resulting in transfer of plant control to alternate locations",
+								"ref": {
+									"page": 97,
+									"range": 2
+								}
+							},
+							"alert_level":
+							[						
+								{ 
+									"level" : "EAL-1",
+									"conditions": 
+									{
+										"type": "Leaf",
+										"description": {
+											"text": "An event has resulted in plant control being transferred from the Control Room to the Auxiliary Shutdown Panel (ASP)"
+										}														
+									}
+								}
+							]						
+						},
+						{
+							"name": "HA7",
+							"mode_applicability": [
+								1,
+								2,
+								3,
+								4,
+								5,
+								6,
+								"Defueled"
+							],
+							"description": {
+								"text": "Other conditions exist which in the judgment of the Emergency Director warrant declaration of an ALERT",
+								"ref": {
+									"page": 103,
+									"range": 2
+								}
+							},
+							"alert_level":
+							[						
+								{ 
+									"level" : "EAL-1",
+									"conditions": 
+									{							
+										"type": "Leaf",
+										"description": {
+											"text": "Other conditions exist which, in the judgment of the Emergency Director, indicate that events are in progress or have occurred which involve an actual or potential substantial degradation of the level of safety of the plant or a SECURITY EVENT that involves probable life threatening risk to site personnel or damage to site equipment because of HOSTILE ACTION. ANY releases are expected to be limited to small fractions of the EPA PROTECTIVE ACTION GUIDELINE exposure levels"
+										}											
+									}
+								}
+							]							
+						}
+					]
+				},
+				{
+					"name": "Unusual Event",
+					"criterions": 
+					[
+						{
+							"name": "HU1",
+							"mode_applicability": [
+								1,
+								2,
+								3,
+								4,
+								5,
+								6,
+								"Defueled"
+							],
+							"description": {
+								"text": "Confirmed SECURITY CONDITION or threat",
+								"ref": {
+									"page": 81,
+									"range": 2
+								}
+							},
+							"alert_level":
+							[						
+								{ 
+									"level" : "EAL-1",
+									"conditions": 
+									{
+										"type": "Leaf",
+										"description": {
+											"text": "A SECURITY CONDITION that does not involve a HOSTILE ACTION as reported by <b>ANY</b> of the following personnel in Table H1"
+										}
+									}
+								},
+								{ 
+									"level" : "EAL-2",
+									"conditions": 
+									{
+										"type": "Leaf",
+										"description": {
+											"text": "Notification of a CREDIBLE SECURITY THREAT directed at the site"
+										}
+									}
+								},
+								{ 
+									"level" : "EAL-3",
+									"conditions": 
+									{
+										"type": "Leaf",
+										"description": {
+											"text": "A validated notification from the NRC providing information of an aircraft threat"
+										}
+									}
+								}
+							]
+						},
+						{
+							"name": "HU2",
+							"mode_applicability": [
+								1,
+								2,
+								3,
+								4,
+								5,
+								6,
+								"Defueled"
+							],
+							"description": {
+								"text": "Seismic event greater than OBE levels",
+								"ref": {
+									"page": 69,
+									"range": 2
+								}
+							},
+							"alert_level":
+							[						
+								{ 
+									"level" : "EAL-1",
+									"conditions": 
+									{
+										"type": "AND",
+										"children":
+										[
+											{
+												"type": "OR",
+												"children": 
+												[
+													{
+														"type": "Leaf",
+														"description": {
+															"text": "“SEISMIC EVENT” alarm in Unit 1 Control Room (Lampbox 9M01, Window E-8)"
+														}
+													},
+													{
+														"type": "Leaf",
+														"description": {
+															"text": "Control Room personnel feel an actual or potential seismic event"
+														}
+													}
+												]
+											},
+											{
+												"type": "Leaf",
+												"description": {
+													"text": "The occurrence of a seismic event is confirmed in manner deemed appropriate by the Shift Manager or Emergency Director"
+												}
+											}
+										]										
+									}
+								}
+							]
+						},
+						{
+							"name": "HU3",
+							"mode_applicability": [
+								1,
+								2,
+								3,
+								4,
+								5,
+								6,
+								"Defueled"
+							],
+							"description": {
+								"text": "Hazardous event",
+								"ref": {
+									"page": 85,
+									"range": 2
+								}
+							},
+							"alert_level":
+							[						
+								{ 
+									"level" : "EAL-1",
+									"conditions": 
+									{
+										"type": "Leaf",
+										"description": {
+											"text": "A tornado strike within the PROTECTED AREA"
+										}
+									}
+								},
+								{ 
+									"level" : "EAL-2",
+									"conditions": 
+									{
+										"type": "Leaf",
+										"description": {
+											"text": "Internal room or area flooding of a magnitude sufficient to require manual or automatic electrical isolation of a SAFETY SYSTEM component needed for the current operating mode"
+										}
+									}
+								},
+								{ 
+									"level" : "EAL-3",
+									"conditions": 
+									{
+										"type": "Leaf",
+										"description": {
+											"text": "Movement of personnel within the PROTECTED AREA is impeded due to an offsite event involving hazardous materials (e.g., an offsite chemical spill or toxic gas release)"
+										}
+									}
+								},
+								{ 
+									"level" : "EAL-4",
+									"conditions": 
+									{
+										"type": "Leaf",
+										"description": {
+											"text": "A hazardous event that results in on-site conditions sufficient to prohibit the plant staff from accessing the site via personal vehicles"
+										}
+									}
+								},
+								{ 
+									"level" : "EAL-5",
+									"conditions": 
+									{
+										"type": "Leaf",
+										"description": {
+											"text": "Predicted or actual breach of Main Cooling Reservoir retaining dike along North Wall"
+										}
+									}
+								}
+							]
+						},
+						{
+							"name": "HU4",
+							"mode_applicability": [
+								1,
+								2,
+								3,
+								4,
+								5,
+								6,
+								"Defueled"
+							],
+							"description": {
+								"text": "FIRE potentially degrading the level of safety of the plant",
+								"ref": {
+									"page": 87,
+									"range": 3
+								}
+							},
+							"alert_level":
+							[						
+								{ 
+									"level" : "EAL-1",
+									"conditions": 
+									{
+										"type": "AND",
+										"children":
+										[
+											{
+												"type": "OR",
+												"children": 
+												[
+													{
+														"type": "Leaf",
+														"description": {
+															"text": "Report from the field (i.e., visual observation)"
+														}
+													},
+													{
+														"type": "Leaf",
+														"description": {
+															"text": "Receipt of multiple (more than 1) fire alarms or indications"
+														}
+													},
+													{
+														"type": "Leaf",
+														"description": {
+															"text": "Field verification of a single fire alarm"
+														}
+													}													
+												]
+											},
+											{
+												"type": "Leaf",
+												"description": {
+													"text": "The FIRE is located within <b>ANY</b> of the plant rooms or areas in Table H4"
+												}
+											}
+										]
+									}
+								},
+								{ 
+									"level" : "EAL-2",
+									"conditions": 
+									{
+										"type": "AND",
+										"children":
+										[
+											{
+												"type": "Leaf",
+												"description": {
+													"text": "Receipt of a single fire alarm (i.e., no other indications of a FIRE)"
+												}
+											},
+											{
+												"type": "Leaf",
+												"description": {
+													"text": "The FIRE is located within ANY of the plant rooms or areas in Table H4"
+												}
+											},
+											{
+												"type": "Leaf",
+												"description": {
+													"text": "The existence of a FIRE is not verified within 30-minutes of alarm receipt"
+												}
+											}
+										]					
+									}
+								},
+								{ 
+									"level" : "EAL-3",
+									"conditions": 
+									{
+										"type": "Leaf",
+										"description": {
+											"text": "A FIRE within the ISFSI <b>OR</b> plant PROTECTED AREA not extinguished within 60-minutes of the initial report, alarm or indication"
+										}
+									}
+								},
+								{ 
+									"level" : "EAL-4",
+									"conditions": 
+									{
+										"type": "Leaf",
+										"description": {
+											"text": "A FIRE within the ISFSI <b>OR</b> plant PROTECTED AREA that requires firefighting support by an offsite fire response agency to extinguish"
+										}
+									}
+								}
+							]
+						},
+						{
+							"name": "HU7",
+							"mode_applicability": [
+								1,
+								2,
+								3,
+								4,
+								5,
+								6,
+								"Defueled"
+							],
+							"description": {
+								"text": "Other conditions exist which in the judgment of the Emergency Director warrant declaration of a UE",
+								"ref": {
+									"page": 105,
+									"range": 2
+								}
+							},
+							"alert_level":
+							[						
+								{ 
+									"level" : "EAL-1",
+									"conditions": 
+									{							
+										"type": "Leaf",
+										"description": {
+											"text": "Other conditions exist which in the judgment of the Emergency Director indicate that events are in progress or have occurred which indicate a potential degradation of the level of safety of the plant or indicate a security threat to FACILITY protection has been initiated. No releases of radioactive material requiring offsite response or monitoring are expected unless further degradation of safety systems occurs"
+										}											
+									}
+								}
+							]							
 						}
 					]
 				}
