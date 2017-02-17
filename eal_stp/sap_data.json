@@ -2057,6 +2057,682 @@
 					]
 				}
 			]
+		},
+		{
+			"name": "Independent Spent Fuel Storage Installation",
+			"mode_applicability": [
+				1,
+				2,
+				3,
+				4,
+				5,
+				6,
+				"Defueled"
+			],
+			"emergency_categories": 
+			[
+				{
+					"name": "General Emergency",
+					"criterions": 
+					[					
+					]
+				},
+				{
+					"name": "Site Area Emergency",
+					"criterions": 
+					[					
+					]
+				},
+				{
+					"name": "Alert",
+					"criterions": 
+					[					
+					]
+				},
+				{
+					"name": "Unusual Event",
+					"criterions": 
+					[
+						{
+							"name": "E-HU1",
+							"mode_applicability": [
+								1,
+								2,
+								3,
+								4,
+								5,
+								6,
+								"Defueled"
+							],
+							"description": {
+								"text": "Damage to a loaded cask CONFINEMENT BOUNDARY",
+								"ref": {
+									"page": 139,
+									"range": 2
+								}
+							},
+							"alert_level":
+							[						
+								{ 
+									"level" : "EAL-1",
+									"conditions": 
+									{
+										"type": "OR",
+										"children":
+										[
+											{
+												"type": "Leaf",
+												"description": {
+													"text": "Damage to a loaded cask CONFINEMENT BOUNDARY as indicated by an on-contact radiation reading greater than: 60 mrem/hr (gamma + neutron) on the top surface of the spent fuel cask"
+												}
+											},
+											{
+												"type": "Leaf",
+												"description": {
+													"text": "Damage to a loaded cask CONFINEMENT BOUNDARY as indicated by an on-contact radiation reading greater than: 600 mrem/hr (gamma + neutron) on the side surface of the spent fuel cask"
+												}
+											},
+											{
+												"type": "Leaf",
+												"description": {
+													"text": "Damage to a loaded cask CONFINEMENT BOUNDARY as indicated by an on-contact radiation reading greater than: 7000 mrem/hr (gamma + neutron) on the side surface of the transfer cask"
+												}
+											}
+										]																		
+									}
+								}
+							]						
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Cold Shutdown/Refueling System Malfunctions",
+			"mode_applicability": [
+				5,
+				6,
+				"Defueled"
+			],
+			"emergency_categories": 
+			[
+				{
+					"name": "General Emergency",
+					"criterions": 
+					[		
+						{
+							"name": "CG1",
+							"mode_applicability": [
+								5,
+								6
+							],
+							"description": {
+								"text": "Loss of RCS inventory affecting fuel clad integrity with containment challenged",
+								"ref": {
+									"page": 145,
+									"range": 3
+								}
+							},
+							"alert_level":
+							[						
+								{ 
+									"level" : "EAL-1",
+									"conditions": 
+									{
+										"type": "AND",
+										"children":
+										[
+											{
+												"type": "Leaf",
+												"description": {
+													"text": "RCS level less than 0% of plenum for 30 minutes or longer"
+												}
+											},
+											{
+												"type": "Leaf",
+												"description": {
+													"text": "<b>ANY</b> indication from Table C1"
+												}
+											}
+										]																		
+									}
+								},
+								{ 
+									"level" : "EAL-2",
+									"conditions": 
+									{
+										"type": "AND",
+										"children":
+										[
+											{
+												"type": "Leaf",
+												"description": {
+													"text": "RCS level cannot be monitored for 30 minutes or longer"
+												}
+											},
+											{
+												"type": "OR",
+												"children":
+												[
+													{
+														"type": "Leaf",
+														"description": {
+															"text": "Core uncovery is indicated by the Reactor Containment Building, 68’-0” Area Radiation Monitors RE-8055 or RE-8099 reading greater than 9,000 mR/hr"
+														}
+													},
+													{
+														"type": "Leaf",
+														"description": {
+															"text": "Core uncovery is indicated by the Erratic source range monitor indication"
+														}
+													},
+													{
+														"type": "Leaf",
+														"description": {
+															"text": "Core uncovery is indicated by the UNPLANNED rise in <b>ANY</b> of the following sump or tank levels in Table C2 of sufficient magnitude to indicate core uncovery"
+														}
+													}
+												]
+											},
+											{
+												"type": "Leaf",
+												"description": {
+													"text": "<b>ANY</b> indication from Table C1"
+												}
+											}
+										]																		
+									}
+								}
+							]						
+						}
+					]
+				},
+				{
+					"name": "Site Area Emergency",
+					"criterions": 
+					[		
+						{
+							"name": "CS1",
+							"mode_applicability": [
+								5,
+								6
+							],
+							"description": {
+								"text": "Loss of RCS inventory affecting core decay heat removal capability",
+								"ref": {
+									"page": 149,
+									"range": 3
+								}
+							},
+							"alert_level":
+							[						
+								{ 
+									"level" : "EAL-1",
+									"conditions": 
+									{
+										"type": "AND",
+										"children":
+										[
+											{
+												"type": "Leaf",
+												"description": {
+													"text": "CONTAINMENT CLOSURE not established"
+												}
+											},
+											{
+												"type": "Leaf",
+												"description": {
+													"text": "RCS level less than 33% of plenum"
+												}
+											}
+										]																		
+									}
+								},
+								{ 
+									"level" : "EAL-2",
+									"conditions": 
+									{
+										"type": "AND",
+										"children":
+										[
+											{
+												"type": "Leaf",
+												"description": {
+													"text": "CONTAINMENT CLOSURE established"
+												}
+											},
+											{
+												"type": "Leaf",
+												"description": {
+													"text": "RCS level less than 0% of plenum"
+												}
+											}
+										]																		
+									}
+								},
+								{ 
+									"level" : "EAL-3",
+									"conditions": 
+									{
+										"type": "AND",
+										"children":
+										[
+											{
+												"type": "Leaf",
+												"description": {
+													"text": "RCS level cannot be monitored for 30 minutes or longer"
+												}
+											},
+											{
+												"type": "OR",
+												"children":
+												[
+													{
+														"type": "Leaf",
+														"description": {
+															"text": "Core uncovery is indicated by the Reactor Containment Building, 68’-0” Area Radiation Monitors RE-8055 or RE-8099 reading greater than 9,000 mR/hr"
+														}
+													},
+													{
+														"type": "Leaf",
+														"description": {
+															"text": "Core uncovery is indicated by the Erratic source range monitor indication"
+														}
+													},
+													{
+														"type": "Leaf",
+														"description": {
+															"text": "Core uncovery is indicated by the UNPLANNED rise in <b>ANY</b> of the following sump or tank levels in Table C2 of sufficient magnitude to indicate core uncovery"
+														}
+													}
+												]
+											}
+										]																		
+									}
+								}
+							]						
+						}
+					]
+				},
+				{
+					"name": "Alert",
+					"criterions": 
+					[	
+						{
+							"name": "CA1",
+							"mode_applicability": [
+								5,
+								6
+							],
+							"description": {
+								"text": "Loss of RCS inventory",
+								"ref": {
+									"page": 153,
+									"range": 2
+								}
+							},
+							"alert_level":
+							[						
+								{ 
+									"level" : "EAL-1",
+									"conditions": 
+									{
+										"type": "Leaf",
+										"description": {
+											"text": "Loss of RCS inventory as indicated by level less than 32 ft. 9 inch (+ 6 inches above hot leg centerline)"
+										}																	
+									}
+								},
+								{ 
+									"level" : "EAL-2",
+									"conditions": 
+									{
+										"type": "AND",
+										"children":
+										[
+											{
+												"type": "Leaf",
+												"description": {
+													"text": "RCS level cannot be monitored for 15 minutes or longer"
+												}
+											},
+											{
+												"type": "Leaf",
+												"description": {
+													"text": "UNPLANNED rise in <b>ANY</b> of the following sump or tank levels in Table C2 due to a loss of reactor vessel/RCS inventory"
+												}
+											}
+										]																		
+									}
+								}
+							]						
+						},
+						{
+							"name": "CA2",
+							"mode_applicability": [
+								5,
+								6,
+								"Defueled"
+							],
+							"description": {
+								"text": "Loss of <b>ALL</b> offsite and ALL onsite AC power to emergency buses for 15 minutes or longer",
+								"ref": {
+									"page": 157,
+									"range": 2
+								}
+							},
+							"alert_level":
+							[						
+								{ 
+									"level" : "EAL-1",
+									"conditions": 
+									{
+										"type": "Leaf",
+										"description": {
+											"text": "Loss of <b>ALL</b> offsite <b>AND ALL</b> onsite AC Power to <b>ALL</b> three 4160V AC ESF Busses for 15 minutes or longer"
+										}																	
+									}
+								}
+							]						
+						},
+						{
+							"name": "CA3",
+							"mode_applicability": [
+								5,
+								6
+							],
+							"description": {
+								"text": "Inability to maintain the plant in cold shutdown",
+								"ref": {
+									"page": 161,
+									"range": 3
+								}
+							},
+							"alert_level":
+							[						
+								{ 
+									"level" : "EAL-1",
+									"conditions": 
+									{
+										"type": "Leaf",
+										"description": {
+											"text": "UNPLANNED rise in RCS temperature to greater than 200 <sup>○</sup>F (Tavg) for greater than the duration specified in Table C3"
+										}																							
+									}
+								},
+								{ 
+									"level" : "EAL-2",
+									"conditions": 
+									{
+										"type": "Leaf",
+										"description": {
+											"text": "UNPLANNED RCS pressure rise greater than 10 psig. (This EAL does not apply during water-solid plant conditions.)"
+										}																							
+									}
+								}
+							]						
+						},
+						{
+							"name": "CA6",
+							"mode_applicability": [
+								5,
+								6
+							],
+							"description": {
+								"text": "Hazardous event affecting a SAFETY SYSTEM needed for the current operating mode",
+								"ref": {
+									"page": 171,
+									"range": 2
+								}
+							},
+							"alert_level":
+							[						
+								{ 
+									"level" : "EAL-1",
+									"conditions": 
+									{
+										"type": "AND",
+										"children": 
+										[
+											{
+												"type": "Leaf",
+												"description": {
+													"text": "The occurrence of <b>ANY</b> of the following hazardous events in Table C5"
+												}	
+											},
+											{
+												"type": "OR",
+												"children": 
+												[
+													{
+														"type": "Leaf",
+														"description": {
+															"text": "Event damage has caused indications of degraded performance in at least one train of a SAFETY SYSTEM needed for the current operating mode"
+														}
+													},
+													{
+														"type": "Leaf",
+														"description": {
+															"text": "The event has caused VISIBLE DAMAGE to a SAFETY SYSTEM component or structure needed for the current operating mode"
+														}
+													}
+												]
+											}											
+										]																															
+									}
+								}
+							]						
+						}
+					]
+				},
+				{
+					"name": "Unusual Event",
+					"criterions": 
+					[
+						{
+							"name": "CU1",
+							"mode_applicability": [
+								5,
+								6
+							],
+							"description": {
+								"text": "UNPLANNED loss of RCS inventory for 15 minutes or longer",
+								"ref": {
+									"page": 155,
+									"range": 2
+								}
+							},
+							"alert_level":
+							[						
+								{ 
+									"level" : "EAL-1",
+									"conditions": 
+									{
+										"type": "Leaf",
+										"description": {
+											"text": "UNPLANNED loss of reactor coolant results in RCS level below the procedurally required limit for 15 minutes or longer"
+										}																	
+									}
+								},
+								{ 
+									"level" : "EAL-2",
+									"conditions": 
+									{
+										"type": "AND",
+										"children":
+										[
+											{
+												"type": "Leaf",
+												"description": {
+													"text": "RCS level cannot be monitored"
+												}
+											},
+											{
+												"type": "Leaf",
+												"description": {
+													"text": "UNPLANNED rise in <b>ANY</b> of the following sump or tank levels in Table C2"
+												}
+											}
+										]																		
+									}
+								}
+							]						
+						},
+						{
+							"name": "CU2",
+							"mode_applicability": [
+								5,
+								6,
+								"Defueled"
+							],
+							"description": {
+								"text": "Loss of ALL but one AC power source to emergency buses for 15 minutes or longer",
+								"ref": {
+									"page": 159,
+									"range": 2
+								}
+							},
+							"alert_level":
+							[						
+								{ 
+									"level" : "EAL-1",
+									"conditions": 
+									{
+										"type": "AND",
+										"children":
+										[
+											{
+												"type": "Leaf",
+												"description": {
+													"text": "AC power capability to <b>ALL</b> three 4160V AC ESF Buses is reduced to a single power source for 15 minutes or longer"
+												}
+											},
+											{
+												"type": "Leaf",
+												"description": {
+													"text": "<b>ANY</b> additional single power source failure will result in loss of <b>ALL</b> AC power to SAFETY SYSTEMS"
+												}
+											}
+										]																											
+									}
+								}
+							]						
+						},
+						{
+							"name": "CU3",
+							"mode_applicability": [
+								5,
+								6
+							],
+							"description": {
+								"text": "UNPLANNED rise in RCS temperature",
+								"ref": {
+									"page": 165,
+									"range": 2
+								}
+							},
+							"alert_level":
+							[						
+								{ 
+									"level" : "EAL-1",
+									"conditions": 
+									{
+										"type": "Leaf",
+										"description": {
+											"text": "UNPLANNED rise in RCS temperature to greater than 200 <sup>○</sup>F (Tavg)"
+										}																							
+									}
+								},
+								{ 
+									"level" : "EAL-2",
+									"conditions": 
+									{
+										"type": "Leaf",
+										"description": {
+											"text": "Loss of <b>ALL</b> RCS temperature and RCS level indication for 15 minutes or longer"
+										}																							
+									}
+								}
+							]						
+						},
+						{
+							"name": "CU4",
+							"mode_applicability": [
+								5,
+								6
+							],
+							"description": {
+								"text": "Loss of Vital DC power for 15 minutes or longer",
+								"ref": {
+									"page": 167,
+									"range": 2
+								}
+							},
+							"alert_level":
+							[						
+								{ 
+									"level" : "EAL-1",
+									"conditions": 
+									{
+										"type": "Leaf",
+										"description": {
+											"text": "Indicated voltage is less than 105.5 VDC on required Vital DC buses for 15 minutes or longer"
+										}																							
+									}
+								}
+							]						
+						},
+						{
+							"name": "CU5",
+							"mode_applicability": [
+								5,
+								6,
+								"Defueled"
+							],
+							"description": {
+								"text": "Loss of <b>ALL</b> onsite or offsite communications capabilities",
+								"ref": {
+									"page": 169,
+									"range": 2
+								}
+							},
+							"alert_level":
+							[						
+								{ 
+									"level" : "EAL-1",
+									"conditions": 
+									{
+										"type": "Leaf",
+										"description": {
+											"text": "Loss of <b>ALL</b> of the following Onsite communication methods in Table C4"
+										}																							
+									}
+								},
+								{ 
+									"level" : "EAL-2",
+									"conditions": 
+									{
+										"type": "Leaf",
+										"description": {
+											"text": "Loss of <b>ALL</b> of the following Offsite Response Organization (ORO) communication methods in Table C4"
+										}																							
+									}
+								},
+								{ 
+									"level" : "EAL-3",
+									"conditions": 
+									{
+										"type": "Leaf",
+										"description": {
+											"text": "Loss of <b>ALL</b> of the following NRC communication methods in Table C4"
+										}																							
+									}
+								}
+							]						
+						}
+					]
+				}
+			]
 		}
 	],
 	"fission_product_barriers":
