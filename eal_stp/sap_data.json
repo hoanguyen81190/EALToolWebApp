@@ -1,860 +1,1407 @@
 {
-  "modes": [
-    1,
-    2,
-    3,
-    4,
-    5,
-    6,
-    "Defueled"
-  ],
-  "recognition_categories": [
-    {
-      "name": "Hazard and other conditions",
-      "emergency_categories": [
-        {
-          "name": "General Emergency",
-          "criterions": [
-            {
-              "name": "H-2 Security",
-              "full_name": "Security Events",
-              "mode_applicability": [
-                1,
-                2,
-                3,
-                4,
-                5,
-                6,
-                "Defueled"
-              ],
-              "description": {
-                "text": "HOSTILE ACTION resulting in Loss of Physical Control of the Facility",
-                "ref": {
-                  "page": 57,
-                  "range": 2
-                }
-              },
-              "look_up": true,
-              "alert_level": [
-                {
-                  "level": "1",
-                  "conditions": {
-                    "type": "OR",
-                    "indent_level": 1,
-                    "description": {
-                      "text": "",
-                      "ref": ""
-                    },
-                    "children": [
-                      {
-                        "type": "Leaf",
-                        "indent_level": 0,
-                        "description": {
-                          "text": "A HOSTILE ACTION has occurred such that plant personnel are unable to operate equipment required to maintain safety functions listed below:<ul><li>Reactivity Control (ability to shut down the reactor and keep it shutdown)</li> <li>RCS Inventory (ability to cool the core)</li><li>Secondary Heat Removal (ability to maintain heat sink) .[Ref. 5.2.1i]</li></ul>",
-                          "ref": "Ref. 5.2.1i"
-                        },
-                        "children": ""
-                      },
-                      {
-                        "type": "Leaf",
-                        "indent_level": 0,
-                        "description": {
-                          "text": "A HOSTILE ACTION has caused failure of spent fuel cooling systems and IMMINENT fuel damage is likely",
-                          "ref": ""
-                        },
-                        "children": ""
-                      }
-                    ]
-                  }
-                }
-              ]
+	"modes": [
+		1,
+		2,
+		3,
+		4,
+		5,
+		6,
+		"Defueled"
+	],
+	"recognition_categories": 
+	[
+		{
+			"name": "System Malfunctions",
+			"mode_applicability": [
+				1,
+				2,
+				3,
+				4
+			],
+			"emergency_categories": 
+			[
+				{
+					"name": "General Emergency",
+					"criterions": 
+					[
+						{
+							"name": "SG1",
+							"mode_applicability": [
+								1,
+								2,
+								3,
+								4
+							],
+							"description": {
+								"text": "Prolonged loss of <b>ALL</b> offsite and <b>ALL</b> onsite AC power to emergency SG1 buses",
+								"ref": {
+									"page": 37,
+									"range": 2
+								}
+							},
+							"alert_level":
+							[						
+								{ 
+									"level" : "EAL-1",
+									"conditions": 
+									{
+										"type": "AND",					
+										"children": 
+										[
+											{
+												"type": "Leaf",
+												"description": {
+													"text": "Loss of <b>ALL</b> offsite and <b>ALL</b> onsite AC power to 4160V AC ESF Buses"
+												}
+											}, 
+											{
+												"type": "OR",
+												"children": 
+												[
+													{
+														"type": "Leaf",
+														"description": {
+															"text": "Restoration of at least one 4160AC ESF bus in less than 4 hours is not likely"
+														}
+													},
+													{
+														"type": "Leaf",
+														"description": {
+															"text": "Core Cooling – Red entry condition met"
+														}
+													}
+												]
+											}
+										]
+									}
+								}
+							]							
+						},
+						{
+							"name": "SG8",
+							"mode_applicability": [
+								1,
+								2,
+								3,
+								4
+							],
+							"description": {
+								"text": "Loss of <b>ALL</b> AC and Vital DC power sources for 15 minutes or longer",
+								"ref": {
+									"page": 63,
+									"range": 2
+								}
+							},
+							"alert_level":
+							[						
+								{ 
+									"level" : "EAL-1",
+									"conditions": 
+									{
+										"type": "AND",					
+										"children": 
+										[
+											{
+												"type": "Leaf",
+												"description": {
+													"text": "Loss of <b>ALL</b> offsite and <b>ALL</b> onsite AC power to <b>ALL</b> three 4160V AC ESF buses for 15 minutes or longer"
+												}
+											}, 
+											{											
+												"type": "Leaf",
+												"description": {
+													"text": "Indicated voltage is less than 105.5 VDC on <b>ALL</b> Class 1E 125 VDC battery buses for 15 minutes or longer"
+												}												
+											}
+										]
+									}
+								}
+							]							
+						}
+					]
+				},
+				{
+					"name": "Site Area Emergency",
+					"criterions": 
+					[
+						{
+							"name": "SS1",
+							"mode_applicability": [
+								1,
+								2,
+								3,
+								4
+							],
+							"description": {
+								"text": "Loss of <b>ALL</b> offsite and <b>ALL</b> onsite AC power to emergency buses for SS1 15 minutes or longer",
+								"ref": {
+									"page": 39,
+									"range": 2
+								}
+							},
+							"alert_level":
+							[						
+								{ 
+									"level" : "EAL-1",
+									"conditions": 
+									{
+										"type": "Leaf",
+										"description": {
+											"text": "Loss of <b>ALL</b> offsite and <b>ALL</b> onsite AC power to <b>ALL</b> three 4160V AC ESF Buses for 15 minutes or longer"
+										}								
+									}
+								}
+							]						
+						},
+						{
+							"name": "SS5",
+							"mode_applicability": [
+								1,
+								2
+							],
+							"description": {
+								"text": "Inability to shutdown the reactor causing a challenge to core cooling or SS5 RCS heat removal",
+								"ref": {
+									"page": 53,
+									"range": 2
+								}
+							},
+							"alert_level":
+							[						
+								{ 
+									"level" : "EAL-1",
+									"conditions": 
+									{
+										"type": "AND",
+										"children": 
+										[
+											{
+												"type": "Leaf",
+												"description": {
+													"text": "Entry into 0POP05-EO-FRS1, Response to Nuclear Power Generation – ATWS"
+												}
+											},
+											{
+												"type": "Leaf",
+												"description": {
+													"text": "<b>ALL</b> manual actions to shutdown the reactor have been unsuccessful"
+												}
+											},
+											{
+												"type": "AND",
+												"children": 
+												[
+													{
+														"type": "Leaf",
+														"description": {
+															"text": "Core Cooling – Red entry conditions met"
+														}
+													},
+													{
+														"type": "Leaf",
+														"description": {
+															"text": "Heat Sink- Red entry conditions met"
+														}
+													}
+												]
+											}										
+										]								
+									}
+								}
+							]						
+						},
+						{
+							"name": "SS8",
+							"mode_applicability": [
+								1,
+								2,
+								3,
+								4
+							],
+							"description": {
+								"text": "Loss of <b>ALL</b> Vital DC power sources for 15 minutes or longer",
+								"ref": {
+									"page": 65,
+									"range": 2
+								}
+							},
+							"alert_level":
+							[						
+								{ 
+									"level" : "EAL-1",
+									"conditions": 
+									{
+										"type": "Leaf",
+										"description": {
+											"text": "Indicated voltage is less than 105.5 VDC on <b>ALL</b> Class 1E 125 VDC battery buses for 15 minutes or longer"
+										}
+									}
+								}
+							]							
+						}
+					]
+				},
+				{
+					"name": "Alert",
+					"criterions": 
+					[
+						{							
+							"name": "SA1",
+							"mode_applicability": [
+								1,
+								2,
+								3,
+								4
+							],
+							"description": {
+								"text": "Loss of <b>ALL</b> but one AC power source to emergency buses for 15 SA1 minutes or longer",
+								"ref": {
+									"page": 41,
+									"range": 2
+								}
+							},							
+							"alert_level":
+							[						
+								{ 
+									"level" : "EAL-1",
+									"conditions": 
+									{					
+										"type": "AND",
+										"children": 
+										[
+											{
+												"type": "Leaf",
+												"description": {
+													"text": "AC power capability to <b>ALL</b> three 4160V AC ESF Buses is reduced to a single power source for 15 minutes or longer"
+												}
+											},
+											{
+												"type": "Leaf",
+												"description": {
+													"text": "<b>ANY</b> additional single power source failure will result in a loss of <b>ALL</b> AC power to SAFETY SYSTEMS"
+												}
+											}
+										]
+									}
+								}
+							]
+						},
+						{
+							"name": "SA2",
+							"mode_applicability": [
+								1,
+								2,
+								3,
+								4
+							],
+							"description": {
+								"text": "UNPLANNED loss of Control Room indications for 15 minutes or longer with a significant transient in progress",
+								"ref": {
+									"page": 45,
+									"range": 2
+								}
+							},
+							"alert_level":
+							[						
+								{ 
+									"level" : "EAL-1",
+									"conditions": 
+									{
+										"type": "AND",
+										"children": 
+										[
+											{
+												"type": "Leaf",
+												"description": {
+													"text": "An UNPLANNED event results in the inability to monitor one or more of the following parameters in Table S1 from within the Control Room for 15 minutes or longer. <table border=1><thead><tr><th>Table S1: Plant Parameters</th></tr></thead><tbody><tr><td><ul><li>Reactor Power</li><li>RCS Level</li><li>RCS Pressure</li><li>Core Exit Temperature</li><li>Levels in at least two steam generators</li><li>Steam Generator Auxiliary Feed Water Flow</li></ul></td></tr></tbody></table>"
+												}
+											},
+											{
+												"type": "Leaf",
+												"description": {
+													"text": "<b>ANY</b> of the following transient events in progress: <ul><li>Automatic or manual runback greater than 25% thermal reactor power</li><li>Electrical load rejection greater than 25% full electrical load</li><li>Reactor trip</li><li>ECCS (SI) actuation</li></ul>"
+												}
+											}
+										]
+									}
+								}
+							]							
+						},
+						{
+							"name": "SA5",
+							"mode_applicability": [
+								1,
+								2
+							],
+							"description": {
+								"text": "Automatic or manual trip fails to shutdown the reactor, and subsequent manual actions taken at the reactor control panels are not successful in shutting down the reactor",
+								"ref": {
+									"page": 55,
+									"range": 2
+								}
+							},
+							"alert_level":
+							[						
+								{ 
+									"level" : "EAL-1",
+									"conditions": 
+									{
+										"type": "Leaf",
+										"description": {
+											"text": "Entry into 0POP05-EO-FRS1, Response to Nuclear Power Generation – ATWS"
+										}
+									}
+								}
+							]							
+						},
+						{
+							"name": "SA9",
+							"mode_applicability": [
+								1,
+								2,
+								3,
+								4
+							],
+							"description": {
+								"text": "Hazardous event affecting a SAFETY SYSTEM needed for the current SA9 operating mode",
+								"ref": {
+									"page": 67,
+									"range": 2
+								}
+							},
+							"alert_level":
+							[						
+								{ 
+									"level" : "EAL-1",
+									"conditions": 
+									{
+										"type": "AND",
+										"children": 
+										[
+											{
+												"type": "Leaf",
+												"description": {
+													"text": "The occurrence of ANY of the following hazardous events listed in Table S3"
+												}
+											},
+											{
+												"type": "OR",
+												"children": 
+												[
+													{
+														"type": "Leaf",
+														"description": {
+															"text": "Event damage has caused indications of degraded performance in at least one train of a SAFETY SYSTEM needed for the current operating mode"
+														}
+													},
+													{
+														"type": "Leaf",
+														"description": {
+															"text": "The event has caused VISIBLE DAMAGE to a SAFETY SYSTEM component or structure needed for the current operating mode"
+														}
+													}
+												]
+											}
+										]										
+									}
+								}
+							]							
+						}
+					]
+				},
+				{
+					"name": "Unusual Event",
+					"criterions": 
+					[
+						{
+							"name": "SU1",
+							"mode_applicability": [
+								1,
+								2,
+								3,
+								4
+							],
+							"description": {
+								"text": "Loss of <b>ALL</b> offsite AC power capability to emergency buses for 15 SU1 minutes or longer",
+								"ref": {
+									"page": 43,
+									"range": 2
+								}
+							},
+							"alert_level":
+							[						
+								{ 
+									"level" : "EAL-1",
+									"conditions": 
+									{
+										"type": "Leaf",
+										"description": {
+											"text": "Loss of <b>ALL</b> offsite AC power capability to <b>ALL</b> three 4160V AC ESF Buses for 15 minutes or longer"
+										}
+									}
+								}
+							]
+						},
+						{
+							"name": "SU2",
+							"mode_applicability": [
+								1,
+								2,
+								3,
+								4
+							],
+							"description": {
+								"text": "UNPLANNED loss of Control Room indications for 15 minutes or SU2 longer",
+								"ref": {
+									"page": 47,
+									"range": 2
+								}
+							},
+							"alert_level":
+							[						
+								{ 
+									"level" : "EAL-1",
+									"conditions": 
+									{
+										"type": "Leaf",
+										"description": {
+											"text": "An UNPLANNED event results in the inability to monitor one or more of the following parameters in Table S1 from within the Control Room for 15 minutes or longer. <table border=1><thead><tr><th>Table S1: Plant Parameters</th></tr></thead><tbody><tr><td><ul><li>Reactor Power</li><li>RCS Level</li><li>RCS Pressure</li><li>Core Exit Temperature</li><li>Levels in at least two steam generators</li><li>Steam Generator Auxiliary Feed Water Flow</li></ul></td></tr></tbody></table>"
+										}
+									}
+								}
+							]
+						},
+						{
+							"name": "SU3",
+							"mode_applicability": [
+								1,
+								2,
+								3,
+								4
+							],
+							"description": {
+								"text": "Reactor coolant activity greater than Technical Specification allowable SU3 limits",
+								"ref": {
+									"page": 49,
+									"range": 2
+								}
+							},
+							"alert_level":
+							[						
+								{ 
+									"level" : "EAL-1",
+									"conditions": 
+									{
+										"type": "Leaf",
+										"description": {
+											"text": "RT-8039 reading greater than 30 µCi/ml"
+										}
+									}
+								},
+								{ 
+									"level" : "EAL-2",
+									"conditions": 
+									{
+										"type": "OR",
+										"children": 
+										[
+											{
+												"type": "Leaf",
+												"description": {
+													"text": "Greater than 1µCi/gm Dose Equivalent I-131"
+												}
+											},
+											{
+												"type": "Leaf",
+												"description": {
+													"text": "Greater than 100/ Ē bar Ci /gm gross activity"
+												}
+											}
+										]
+									}
+								}
+							]
+						},
+						{
+							"name": "SU4",
+							"mode_applicability": [
+								1,
+								2,
+								3,
+								4
+							],
+							"description": {
+								"text": "RCS leakage for 15 minutes or longer",
+								"ref": {
+									"page": 51,
+									"range": 2
+								}
+							},
+							"alert_level":
+							[						
+								{ 
+									"level" : "EAL-1",
+									"conditions": 
+									{
+										"type": "Leaf",
+										"description": {
+											"text": "RCS unidentified or pressure boundary leakage greater than 10 gpm for 15 minutes or longer"
+										}
+									}
+								},
+								{ 
+									"level" : "EAL-2",
+									"conditions": 
+									{
+										"type": "Leaf",
+										"description": {
+											"text": "RCS identified leakage greater than 25 gpm for 15 minutes or longer"
+										}
+									}
+								},
+								{ 
+									"level" : "EAL-3",
+									"conditions": 
+									{
+										"type": "Leaf",
+										"description": {
+											"text": "Leakage from the RCS to a location outside containment greater than 25 gpm for 15 minutes or longer"
+										}
+									}
+								}
+							]
+						},
+						{
+							"name": "SU5",
+							"mode_applicability": [
+								1,
+								2
+							],
+							"description": {
+								"text": "Automatic or manual trip fails to shutdown the reactor",
+								"ref": {
+									"page": 57,
+									"range": 2
+								}
+							},
+							"alert_level":
+							[						
+								{ 
+									"level" : "EAL-1",
+									"conditions": 
+									{
+										"type": "AND",
+										"children": 
+										[
+											{
+												"type": "Leaf",
+												"description": {
+													"text": "An automatic trip did not shutdown the reactor"
+												}
+											},
+											{
+												"type": "Leaf",
+												"description": {
+													"text": "A subsequent manual action taken at the reactor control panels is successful in shutting down the reactor"
+												}
+											}
+										]
+										
+									}
+								},
+								{ 
+									"level" : "EAL-2",
+									"conditions": 
+									{
+										"type": "AND",
+										"children": 
+										[
+											{
+												"type": "Leaf",
+												"description": {
+													"text": "A manual trip did not shutdown the reactor"
+												}
+											},
+											{
+												"type": "OR",
+												"children": 
+												[
+													{
+														"type": "Leaf",
+														"description": {
+															"text": "A subsequent manual action taken at the reactor control panels is successful in shutting down the reactor"
+														}
+													},
+													{
+														"type": "Leaf",
+														"description": {
+															"text": "A subsequent automatic trip is successful in shutting down the reactor"
+														}
+													}
+												]											
+											}
+										]								
+									}
+								}
+							]
+						},
+						{
+							"name": "SU6",
+							"mode_applicability": [
+								1,
+								2,
+								3,
+								4
+							],
+							"description": {
+								"text": "Loss of <b>ALL</b> onsite or offsite communications capabilities",
+								"ref": {
+									"page": 59,
+									"range": 2
+								}
+							},
+							"alert_level":
+							[						
+								{ 
+									"level" : "EAL-1",
+									"conditions": 
+									{
+										"type": "Leaf",
+										"description": {
+											"text": "Loss of <b>ALL</b> of the following onsite communication methods listed in Table S2"
+										}									
+									}
+								},
+								{ 
+									"level" : "EAL-2",
+									"conditions": 
+									{
+										"type": "Leaf",
+										"description": {
+											"text": "Loss of <b>ALL</b> of the following Offsite Response Organization (ORO) communications methods listed in Table S2"
+										}					
+									}
+								},
+								{ 
+									"level" : "EAL-3",
+									"conditions": 
+									{
+										"type": "Leaf",
+										"description": {
+											"text": "Loss of <b>ALL</b> of the following NRC communications methods listed in Table S2"
+										}					
+									}
+								}
+							]
+						},
+						{
+							"name": "SU7",
+							"mode_applicability": [
+								1,
+								2,
+								3,
+								4
+							],
+							"description": {
+								"text": "Failure to isolate containment or loss of containment pressure control",
+								"ref": {
+									"page": 61,
+									"range": 2
+								}
+							},
+							"alert_level":
+							[						
+								{ 
+									"level" : "EAL-1",
+									"conditions": 
+									{
+										"type": "AND",
+										"children": 
+										[
+											{
+												"type": "Leaf",
+												"description": {
+													"text": "Failure of containment to isolate when required by an actuation signal"
+												}
+											},
+											{
+												"type": "Leaf",
+												"description": {
+													"text": "required penetrations are not isolated within 15 minutes of the actuation signal"
+												}
+											}
+										]																	
+									}
+								},
+								{ 
+									"level" : "EAL-2",
+									"conditions": 
+									{
+										"type": "AND",
+										"children": 
+										[
+											{
+												"type": "Leaf",
+												"description": {
+													"text": "Containment pressure greater than 9.5 psig"
+												}
+											},
+											{
+												"type": "Leaf",
+												"description": {
+													"text": "No Containment Spray train is operating per design for 15 minutes or longer"
+												}
+											}
+										]																	
+									}
+								}
+							]
+						}
+					]
+				}
+			]
+		}
+	],
+	"fission_product_barriers":
+	[
+		{
+			"name": "Fuel Clad Barrier",
+			"products": 
+			[
+				{
+					"name": "RCS or SG Tube Leakage",
+					"mode_applicability": [
+						1,
+						2,
+						3,
+						4
+					],
+					"look_up": false,
+					"description": {
+						"text": "",
+						"ref": {
+							"page": 21,
+							"range": 1
+						}
+					},
+					"loss": {},
+					"potential_loss": {
+						"type": "Leaf",
+						"description": {
+							"text": "Core Cooling - Orange entry conditions met"
+						}
+					}
+				},			
+				{
+					"name": "Inadequate Heat Removal",
+					"mode_applicability": [
+						1,
+						2,
+						3,
+						4
+					],
+					"look_up": false,
+					"description": {
+						"text": "",
+						"ref": {
+							"page": 21,
+							"range": 1
+						}
+					},
+					"loss": {
+						"type": "Leaf",
+						"description": {
+							"text": "Core Cooling - Red entry conditions met"
+						}
+					},
+					"potential_loss": {
+						"type": "OR",
+						"children": [{
+								"type": "Leaf",
+								"description": {
+									"text": "Core Cooling - Orange entry conditions met"
+								}
+							}, {
+								"type": "Leaf",
+								"description": {
+									"text": "Heat Sink - Red entry conditions met"
+								}
+							}
+						]
+					}
+				},
+				{
+					"name": "RCS Activity/Containment Radiation",
+					"mode_applicability": [
+						1,
+						2,
+						3,
+						4
+					],
+					"description": {
+						"text": "",
+						"ref": {
+							"page": 22,
+							"range": 1
+						}
+					},
+					"loss": {
+						"type": "OR",
+						"children": 
+						[
+							{
+								"type": "OR",
+								"children": 
+								[
+									{
+										"type": "Leaf",
+										"description": {
+											"text": "RCB Rad Monitor RT-8050 or RT-8051 greater than 2100 R/hr"
+										}
+									}, 
+									{
+										"type": "Leaf",
+										"description": {
+											"text": "HATCH MONITOR greater than 4200 mR/hr"
+										}
+									}
+								]
+							},
+							{
+								"type": "Leaf",
+								"description": {
+									"text": "Sample analysis indicates that reactor coolant activity is greater than 300 µCi/gm dose equivalent I-131"
+								}
+							}
+						]
+					}, 
+					"potential_loss": {
+					}
+				},
+				{
+					"name": "Containment Integrity or Bypass",
+					"mode_applicability": [
+						1,
+						2,
+						3,
+						4
+					],
+					"look_up": false,
+					"description": {
+						"text": "",
+						"ref": {
+							"page": 23,
+							"range": 1
+						}
+					},
+					"loss": {},
+					"potential_loss": {}
+				},
+				{
+					"name": "Other Indications",
+					"mode_applicability": [
+						1,
+						2,
+						3,
+						4
+					],
+					"look_up": false,
+					"description": {
+						"text": "",
+						"ref": {
+							"page": 23,
+							"range": 1
+						}
+					},
+					"loss": {},
+					"potential_loss": {}
+				},
+				{
+					"name": "Emergency Director Judgement",
+					"mode_applicability": [
+						1,
+						2,
+						3,
+						4
+					],
+					"look_up": false,
+					"description": {
+						"text": "",
+						"ref": {
+							"page": 23,
+							"range": 1
+						}
+					},
+					"loss": {
+						
+						"type": "Leaf",
+						"description": {
+							"text": "ANY condition in the opinion of the Emergency Director that indicates Loss of the Fuel Clad Barrier"
+						}
+						
+					},
+					"potential_loss": {
+						
+						"type": "Leaf",
+						"description": {
+							"text": "ANY condition in the opinion of the Emergency Director that indicates Potential Loss of the Fuel Clad Barrier"
+						}
+						
+					}
+				}				
+			]
+		},
+		{
+		"name": "RCS Barrier",
+		"products": 
+		[
+			{
+				"name": "RCS or SG Tube Leakage",
+				"mode_applicability": [
+					1,
+					2,
+					3,
+					4
+				],
+				"look_up": false,
+				"description": {
+					"text": "",
+					"ref": {
+						"page": 24,
+						"range": 1
+					}
+				},
+				"loss": 
+				{
+					"type": "OR",
+					"children": 
+					[
+						{
+							"type": "Leaf",
+							"description": {
+								"text": "An automatic or manual ECCS (SI) actuation is required by the UNISOLABLE RCS leakage"
+							}
+						},
+						{
+							"type": "Leaf",
+							"description": {
+								"text": "An automatic or manual ECCS (SI) actuation is required by the SG tube RUPTURE"
+							}
+						}
+					]
+				},
+				"potential_loss": 
+				{
+					"type": "OR",
+					"children": 
+					[
+						{
+							"type": "OR",
+							"children": 
+							[
+								{
+									"type": "Leaf",
+									"description": {
+										"text": "Operation of a standby charging pump is required by the UNISOLABLE RCS leakage"
+									}
+								},
+								{
+									"type": "Leaf",
+									"description": {
+										"text": "Operation of a standby charging pump is required by the SG tube leakage"
+									}
+								}
+							]
+						},
+						{
+							"type": "Leaf",
+							"description": {
+								"text": "Integrity – Red entry conditions met"
+							}
+						}
+					]
+				}
+			},			
+			{
+				"name": "Inadequate Heat Removal",
+				"mode_applicability": [
+					1,
+					2,
+					3,
+					4
+				],
+				"look_up": false,
+				"description": {
+					"text": "",
+					"ref": {
+						"page": 25,
+						"range": 1
+					}
+				},
+				"loss": {
 
-            }
-          ]
-        },
-        {
-          "name": "Site Area Emergency",
-          "criterions": [
-            {
-              "name": "H-2 Security",
-              "full_name": "Security Events",
-              "mode_applicability": [
-                1,
-                2,
-                3,
-                4,
-                5,
-                6,
-                "Defueled"
-              ],
-              "description": {
-                "text": "HOSTILE ACTION within the PROTECTED AREA ",
-                "ref": {
-                  "page": 55,
-                  "range": 2
-                }
-              },
-              "look_up": true,
-              "alert_level": [
-                {
-                  "level": "1",
-                  "conditions": {
-                    "type": "Leaf",
-                    "indent_level": 0,
-                    "description": {
-                      "text": "A HOSTILE ACTION is occurring or has occurred within the PROTECTED AREA as reported by the Security Shift Supervisor. [Ref. 5.2.1i]",
-                      "ref": "Ref. 5.2.1i"
-                    },
-                    "children": ""
-                  }
-                }
-              ]
+				},
+				"potential_loss": {				
+					"type": "Leaf",
+					"description": {
+						"text": "Heat Sink - Red entry conditions met"
+					}		
+				}
+			},
+			{
+				"name": "RCS Activity/Containment Radiation",
+				"mode_applicability": [
+					1,
+					2,
+					3,
+					4
+				],
+				"description": {
+					"text": "",
+					"ref": {
+						"page": 25,
+						"range": 1
+					}
+				},
+				"loss": {
+					"type": "OR",
+					"children": 
+					[
+						{
+							"type": "Leaf",
+							"description": {
+								"text": "RCB Rad Monitor RT-8050 or RT-8051 greater than 10 R/hr"
+							}
+						}, 
+						{
+							"type": "Leaf",
+							"description": {
+								"text": "HATCH MONITOR greater than 20 mR/hr"
+							}
+						}
+					]
+				}, 
+				"potential_loss": {
+				}
+			},
+			{
+				"name": "Containment Integrity or Bypass",
+				"mode_applicability": [
+					1,
+					2,
+					3,
+					4
+				],
+				"look_up": false,
+				"description": {
+					"text": "",
+					"ref": {
+						"page": 26,
+						"range": 1
+					}
+				},
+				"loss": {},
+				"potential_loss": {}
+			},
+			{
+				"name": "Other Indications",
+				"mode_applicability": [
+					1,
+					2,
+					3,
+					4
+				],
+				"look_up": false,
+				"description": {
+					"text": "",
+					"ref": {
+						"page": 26,
+						"range": 1
+					}
+				},
+				"loss": {},
+				"potential_loss": {}
+			},
+			{
+				"name": "Emergency Director Judgement",
+				"mode_applicability": [
+					1,
+					2,
+					3,
+					4
+				],
+				"look_up": false,
+				"description": {
+					"text": "",
+					"ref": {
+						"page": 26,
+						"range": 1
+					}
+				},
+				"loss": {
+					
+					"type": "Leaf",
+					"description": {
+						"text": "ANY condition in the opinion of the Emergency Director that indicates Loss of the RCS Barrier"
+					}
+					
+				},
+				"potential_loss": {
+					
+					"type": "Leaf",
+					"description": {
+						"text": "ANY condition in the opinion of the Emergency Director that indicates Potential Loss of the RCS Barrier"
+					}
+					
+				}
+			}				
+		]
+		},
+		{
+		"name": "Containment Barrier",
+		"products": 
+		[
+			{
+				"name": "RCS or SG Tube Leakage",
+				"mode_applicability": [
+					1,
+					2,
+					3,
+					4
+				],
+				"look_up": false,
+				"description": {
+					"text": "",
+					"ref": {
+						"page": 27,
+						"range": 2
+					}
+				},
+				"loss": 
+				{
+					
+					"type": "Leaf",
+					"description": {
+						"text": "A Leaking or RUPTURED SG is FAULTED outside of containment"
+					}
+					
+				},
+				"potential_loss": 
+				{				
+				}
+			},			
+			{
+				"name": "Inadequate Heat Removal",
+				"mode_applicability": [
+					1,
+					2,
+					3,
+					4
+				],
+				"look_up": false,
+				"description": {
+					"text": "",
+					"ref": {
+						"page": 28,
+						"range": 2
+					}
+				},
+				"loss": {
 
-            }
-          ]
-        },
-        {
-          "name": "Alert",
-          "criterions": [
-            {
-              "name": "H-2 Security",
-              "full_name": "Security Events",
-              "mode_applicability": [
-                1,
-                2,
-                3,
-                4,
-                5,
-                6,
-                "Defueled"
-              ],
-              "description": {
-                "text": "HOSTILE ACTION within the OWNER CONTROLLED AREA or airborne attack threat.",
-                "ref": {
-                  "page": 53,
-                  "range": 2
-                }
-              },
-              "look_up": true,
-              "alert_level": [
-                {
-                  "level" : "1",
-                  "conditions": {
-                    "type": "OR",
-                    "indent_level": 1,
-                    "description": {},
-                    "children": [
-                      {
-                        "type": "Leaf",
-                        "indent_level": 0,
-                        "description": {
-                          "text": "A HOSTILE ACTION is occurring or has occurred within the OWNER CONTROLLED AREA as reported by the Security Shift Supervisor",
-                          "ref": ""
-                        }
-                      },
-                      {
-                        "type": "Leaf",
-                        "indent_level": 0,
-                        "description": {
-                          "text": "A validated notification from the NRC of a LARGE AIRCRAFT attack threat within <strong>30 minutes</strong> of the site.",
-                          "ref": " [Ref. 5.2.1i] "
-                        }
-                      }
-                    ]
-                  }
-                }
-              ]
-
-            }
-          ]
-        },
-        {
-          "name": "Unusual Event",
-          "criterions": [
-            {
-              "name": "H-2 Security",
-              "full_name": "Security Events",
-              "mode_applicability": [
-                1,
-                2,
-                3,
-                4,
-                5,
-                6,
-                "Defueled"
-              ],
-              "description": {
-                "text": "Confirmed SECURITY CONDITION or threat which indicates a potential degradation in the level of safety of the plant.",
-                "ref": {
-                  "page": 51,
-                  "range": 2
-                }
-              },
-              "look_up": true,
-              "alert_level": [
-                {
-                  "level" : "1",
-                  "conditions": {
-                    "type": "OR",
-                    "indent_level": 1,
-                    "description": "",
-                    "children": [
-                      {
-                        "type": "Leaf",
-                        "indent_level": 0,
-                        "description": {
-                          "text": "A SECURITY CONDITION that does not involve a HOSTILE ACTION as reported by Security Shift Supervision.",
-                          "ref": ""
-                        }
-                      },
-                      {
-                        "type": "Leaf",
-                        "indent_level": 0,
-                        "description": {
-                          "text": "A credible site-specific security threat notification.",
-                          "ref": ""
-                        }
-                      },
-                      {
-                        "type": "Leaf",
-                        "indent_level": 0,
-                        "description": {
-                          "text": "A validated notification from NRC providing information of an aircraft threat. [Ref: 5.2.1i]",
-                          "ref": ""
-                        }
-                      }
-                    ]
-                  }
-                }
-              ]
-
-            }
-          ]
-        }
-      ],
-      "mode_applicability": [
-        1,
-        2,
-        3,
-        4,
-        5,
-        6,
-        "Defueled"
-      ]
-    }
-  ],
-  "fission_product_barriers": [
-    {
-      "name": "Fuel Clad Barrier",
-      "products": [
-        {
-          "name": "Critical safety function status trees",
-          "mode_applicability": [
-            1,
-            2,
-            3,
-            4
-          ],
-          "look_up": false,
-          "description": {
-            "text": "",
-            "ref": {
-              "page": 27,
-              "range": 1
-            }
-          },
-          "loss": {
-            "type": "Leaf",
-            "description": {
-              "text": "Core Cooling Critical Safety Function Status Tree – RED"
-            }
-          },
-          "potential_loss": {
-            "type": "OR",
-            "children": [
-              {
-                "type": "Leaf",
-                "description": {
-                  "text": "Core Exit Thermocouples > 757<sup>o</sup>"
-                }
-              },
-              {
-                "type": "Leaf",
-                "description": {
-                  "text": "RVLIS level < 46% (Narrow Range) "
-                }
-              },
-              {
-                "type": "Leaf",
-                "description": {
-                  "text": "Heat Sink Critical Safety Function Status Tree – RED"
-                }
-              }
-            ]
-          }
-        },
-        {
-          "name": "Containment radiation",
-          "mode_applicability": [
-            1,
-            2,
-            3,
-            4
-          ],
-          "look_up": false,
-          "description": {
-            "text": "",
-            "ref": {
-              "page": 28,
-              "range": 1
-            }
-          },
-          "loss": {
-            "type": "Leaf",
-            "description": {
-              "text": "Containment area radiation greater than 200 R/hr"
-            }
-          },
-          "potential_loss": {}
-        },
-        {
-          "name": "Primary coolant activity",
-          "mode_applicability": [
-            1,
-            2,
-            3,
-            4
-          ],
-          "look_up": false,
-          "description": {
-            "text": "",
-            "ref": {
-              "page": 29,
-              "range": 1
-            }
-          },
-          "loss": {
-            "type": "OR",
-            "children": [
-              {
-                "type": "Leaf",
-                "description": {
-                  "text": "Reactor Coolant System activity level greater than 300 micro curies per cc I-131 dose equivalent."
-                }
-              },
-              {
-                "type": "Leaf",
-                "description": {
-                  "text": "Assessment of core damage greater than 5% clad failure. <br/>(NRC commitment 7991)"
-                }
-              }
-            ]
-          },
-          "potential_loss": {}
-        },
-        {
-          "name": "SEC judgment",
-          "mode_applicability": [
-            1,
-            2,
-            3,
-            4
-          ],
-          "look_up": true,
-          "description": {
-            "text": "",
-            "ref": {
-              "page": 30,
-              "range": 1
-            }
-          },
-          "loss": {
-            "type": "Leaf",
-            "description": {
-              "text": "Any condition in the opinion of the SEC that Indicates loss of the Fuel Clad barrier."
-            }
-          },
-          "potential_loss": {
-            "type": "Leaf",
-            "description": {
-              "text": "Any condition in the opinion of the SEC that indicates potential loss of the Fuel Clad barrier"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "name": "RCS Barrier",
-      "products": [
-        {
-          "name": "RCS leak rate",
-          "mode_applicability": [
-            1,
-            2,
-            3,
-            4
-          ],
-          "look_up": false,
-          "description": {
-            "text": "",
-            "ref": {
-              "page": 31,
-              "range": 1
-            }
-          },
-          "loss": {
-            "type": "Leaf",
-            "description": {
-              "text": "UNISOLABLE RCS leak rate greater than available makeup capacity as indicated by a complete loss of RCS subcooling."
-            }
-          },
-          "potential_loss": {
-            "type": "Leaf",
-            "description": {
-              "text": "UNISOLABLE RCS leakage greater than capacity of one centrifugal charging pump in normal charging lineup."
-            }
-          }
-        },
-        {
-          "name": "Steam generator leakage",
-          "mode_applicability": [
-            1,
-            2,
-            3,
-            4
-          ],
-          "look_up": false,
-          "description": {
-            "text": "",
-            "ref": {
-              "page": 32,
-              "range": 1
-            }
-          },
-          "loss": {
-            "type": "AND",
-            "children": [
-              {
-                "type": "Leaf",
-                "description": {
-                  "text": "Entry into OHP-4023-E-3, Steam Generator Tube Rupture"
-                }
-              },
-              {
-                "type": "Leaf",
-                "description": {
-                  "text": "A non-isolable secondary line break or a prolonged release (>30 minutes) of contaminated secondary coolant resulting in a radioactive release to the environment from the affected steam generator."
-                }
-              }
-            ]
-          },
-          "potential_loss": {
-            "type": "Leaf",
-            "description": {
-              "text": "Ruptured steam generator with primary to secondary leak rate greater than capacity of one charging pump in normal charging mode."
-            }
-          }
-        },
-        {
-          "name": "Containment Radiation",
-          "mode_applicability": [
-            1,
-            2,
-            3,
-            4
-          ],
-          "look_up": false,
-          "description": {
-            "text": "",
-            "ref": {
-              "page": 33,
-              "range": 1
-            }
-          },
-          "loss": {
-            "type": "Leaf",
-            "description": {
-              "text": "Containment radiation greater than 10 R/hr."
-            }
-          },
-          "potential_loss": {}
-        },
-        {
-          "name": "RCS integrity CSFST",
-          "mode_applicability": [
-            1,
-            2,
-            3,
-            4
-          ],
-          "look_up": false,
-          "description": {
-            "text": "",
-            "ref": {
-              "page": 34,
-              "range": 1
-            }
-          },
-          "loss": {},
-          "potential_loss": {
-            "type": "Leaf",
-            "description": {
-              "text": "RCS Integrity Critical Safety Function Status Tree - RED"
-            }
-          }
-        },
-        {
-          "name": "Heat sink CSFST",
-          "mode_applicability": [
-            1,
-            2,
-            3,
-            4
-          ],
-          "look_up": false,
-          "description": {
-            "text": "",
-            "ref": {
-              "page": 35,
-              "range": 1
-            }
-          },
-          "loss": {},
-          "potential_loss": {
-            "type": "Leaf",
-            "description": {
-              "text": "Heat Sink Critical Safety Function Status Tree - RED"
-            }
-          }
-        },
-        {
-          "name": "SEC judgment",
-          "mode_applicability": [
-            1,
-            2,
-            3,
-            4
-          ],
-          "look_up": true,
-          "description": {
-            "text": "",
-            "ref": {
-              "page": 36,
-              "range": 1
-            }
-          },
-          "loss": {
-            "type": "Leaf",
-            "description": {
-              "text": "Any condition in the opinion of the SEC that Indicates loss of the RCS barrier."
-            }
-          },
-          "potential_loss": {
-            "type": "Leaf",
-            "description": {
-              "text": "Any condition in the opinion of the SEC that indicates potential loss of the RCS barrier."
-            }
-          }
-        }
-      ]
-    },
-    {
-      "name": "Containment Barrier",
-      "products": [
-        {
-          "name": "Containment radiation",
-          "mode_applicability": [
-            1,
-            2,
-            3,
-            4
-          ],
-          "look_up": false,
-          "description": {
-            "text": "",
-            "ref": {
-              "page": 37,
-              "range": 1
-            }
-          },
-          "loss": {},
-          "potential_loss": {
-            "type": "OR",
-            "children": [
-              {
-                "type": "Leaf",
-                "description": {
-                  "text": "Containment Radiation greater than 1000 R/hr."
-                }
-              },
-              {
-                "type": "Leaf",
-                "description": {
-                  "text": "Assessment of core damage greater than 20% clad failure"
-                }
-              }
-            ]
-          }
-        },
-        {
-          "name": "Containment integrity",
-          "mode_applicability": [
-            1,
-            2,
-            3,
-            4
-          ],
-          "look_up": false,
-          "description": {
-            "text": "",
-            "ref": {
-              "page": 38,
-              "range": 1
-            }
-          },
-          "loss": {
-            "type": "OR",
-            "children": [
-              {
-                "type": "Leaf",
-                "description": {
-                  "text": "UNISOLABLE breach or bypass of containment"
-                }
-              },
-              {
-                "type": "Leaf",
-                "description": {
-                  "text": "Rapid unexplained containment pressure or sump level drop following pressure rise caused by LOCA"
-                }
-              },
-              {
-                "type": "Leaf",
-                "description": {
-                  "text": "Pressure/Sump level NOT performing consistent with expected conditions "
-                }
-              },
-              {
-                "type": "Leaf",
-                "description": {
-                  "text": "Entry into ECA-1.2, \"LOCA OUTSIDE CONTAINMENT\""
-                }
-              }
-            ]
-          },
-          "potential_loss": {}
-        },
-        {
-          "name": "Steam generator secondary side release",
-          "mode_applicability": [
-            1,
-            2,
-            3,
-            4
-          ],
-          "look_up": false,
-          "description": {
-            "text": "",
-            "ref": {
-              "page": 39,
-              "range": 1
-            }
-          },
-          "loss": {
-            "type": "AND",
-            "children": [
-              {
-                "type": "Leaf",
-                "description": {
-                  "text": "Primary to secondary leakage rate greater than technical specification limit."
-                }
-              },
-              {
-                "type": "Leaf",
-                "description": {
-                  "text": "Release of secondary coolant from the associated steam generator to the environment is occurring.<sup>1</sup>"
-                }
-              }
-            ]
-          },
-          "potential_loss": {}
-        },
-        {
-          "name": "Containment critical safety function status tree",
-          "mode_applicability": [
-            1,
-            2,
-            3,
-            4
-          ],
-          "look_up": false,
-          "description": {
-            "text": "",
-            "ref": {
-              "page": 40,
-              "range": 1
-            }
-          },
-          "loss": {},
-          "potential_loss": {
-            "type": "Leaf",
-            "description": {
-              "text": "Containment critical safety function status tree – RED"
-            }
-          }
-        },
-        {
-          "name": "Containment hydrogen",
-          "mode_applicability": [
-            1,
-            2,
-            3,
-            4
-          ],
-          "look_up": false,
-          "description": {
-            "text": "",
-            "ref": {
-              "page": 41,
-              "range": 1
-            }
-          },
-          "loss": {
-            "type": "Leaf",
-            "description": {
-              "text": "Initiating conditions for LOSS included under initiating conditions for loss of FPB 3.2, CONTAINMENT INTEGRITY.",
-              "ref": 3.2
-            }
-          },
-          "potential_loss": {
-            "type": "OR",
-            "children": [
-              {
-                "type": "Leaf",
-                "description": {
-                  "text": "Hydrogen greater than 4.0%"
-                }
-              },
-              {
-                "type": "Leaf",
-                "description": {
-                  "text": "Containment hydrogen concentration greater than 0.5% AND any hydrogen control equipment (Containment air recirculation/hydrogen skimmer systems, electric hydrogen recombiner OR igniters) inoperable."
-                }
-              }
-            ]
-          }
-        },
-        {
-          "name": "Containment pressure control",
-          "mode_applicability": [
-            1,
-            2,
-            3,
-            4
-          ],
-          "look_up": false,
-          "description": {
-            "text": "",
-            "ref": {
-              "page": 42,
-              "range": 2
-            }
-          },
-          "loss": {
-            "type": "Leaf",
-            "description": {
-              "text": "Initiating conditions for LOSS included under initiating conditions for loss of FPB 3.2, CONTAINMENT INTEGRITY.",
-              "ref": 3.2
-            }
-          },
-          "potential_loss": {
-            "type": "OR",
-            "children": [
-              {
-                "type": "Leaf",
-                "description": {
-                  "text": "Both containment spray systems both inoperable OR fail to automatically actuate on HI-HI containment pressure."
-                }
-              },
-              {
-                "type": "Leaf",
-                "description": {
-                  "text": "Both containment air recirculation fans inoperable OR fail to automatically actuate on HI containment pressure."
-                }
-              },
-              {
-                "type": "Leaf",
-                "description": {
-                  "text": "Containment pressure exceeds 12 psig."
-                }
-              }
-            ]
-          }
-        },
-        {
-          "name": "Core exit thermocouples",
-          "mode_applicability": [
-            1,
-            2,
-            3,
-            4
-          ],
-          "look_up": false,
-          "description": {
-            "text": "",
-            "ref": {
-              "page": 44,
-              "range": 1
-            }
-          },
-          "loss": {},
-          "potential_loss": {
-            "type": "AND",
-            "children": [
-              {
-                "type": "Leaf",
-                "description": {
-                  "text": "Core Cooling Critical Safety Function Status Tree – RED"
-                }
-              },
-              {
-                "type": "Leaf",
-                "description": {
-                  "text": "Restoration procedures not effective within 15 minutes."
-                }
-              }
-            ]
-          }
-        },
-        {
-          "name": "SEC judgment",
-          "mode_applicability": [
-            1,
-            2,
-            3,
-            4
-          ],
-          "look_up": true,
-          "description": {
-            "text": "",
-            "ref": {
-              "page": 45,
-              "range": 1
-            }
-          },
-          "loss": {
-            "type": "Leaf",
-            "description": {
-              "text": "Any condition in the opinion of the SEC that Indicates loss of the Containment barrier."
-            }
-          },
-          "potential_loss": {
-            "type": "Leaf",
-            "description": {
-              "text": "Any condition in the opinion of the SEC that indicates potential loss of the Containment barrier."
-            }
-          }
-        }
-      ]
-    }
-  ]
+				},
+				"potential_loss": {				
+					"type": "Leaf",
+					"description": {
+						"text": "Core Cooling – Red  entry conditions met for 15 minutes or longer"
+					}		
+				}
+			},
+			{
+				"name": "RCS Activity/Containment Radiation",
+				"mode_applicability": [
+					1,
+					2,
+					3,
+					4
+				],
+				"description": {
+					"text": "",
+					"ref": {
+						"page": 29,
+						"range": 1
+					}
+				},
+				"loss": {				
+				}, 
+				"potential_loss": {
+					"type": "OR",
+					"children": 
+					[
+						{
+							"type": "Leaf",
+							"description": {
+								"text": "RCB Rad Monitor RT-8050 or RT-8051 greater than 45,000 R/hr"
+							}
+						}, 
+						{
+							"type": "Leaf",
+							"description": {
+								"text": "HATCH MONITOR greater than 90,000 mR/hr"
+							}
+						}
+					]
+				}
+			},
+			{
+				"name": "Containment Integrity or Bypass",
+				"mode_applicability": [
+					1,
+					2,
+					3,
+					4
+				],
+				"look_up": false,
+				"description": {
+					"text": "",
+					"ref": {
+						"page": 30,
+						"range": 3
+					}
+				},
+				"loss": 
+				{
+					"type": "OR",
+					"children": 
+					[
+						{
+							"type": "AND",
+							"children": 
+							[
+								{
+									"type": "Leaf",
+									"description": {
+										"text": "Containment isolation is required"
+									}
+								},
+								{
+									"type": "OR",
+									"children": 
+									[
+										{
+											"type": "Leaf",
+											"description": {
+												"text": "Containment integrity has been lost based on Emergency Director judgment"
+											}
+										},
+										{
+											"type": "Leaf",
+											"description": {
+												"text": "UNISOLABLE pathway from the containment to the environment exists"
+											}
+										}
+									]
+								}
+							]
+						},
+						{
+							"type": "Leaf",
+							"description": {
+								"text": "Indications of RCS leakage outside of containment"
+							}
+						}						
+					]
+				},
+				"potential_loss": 
+				{
+					"type": "OR",
+					"children": 
+					[
+						{
+							"type": "Leaf",
+							"description": {
+								"text": "Containment - Red entry conditions met"
+							}
+						},
+						{
+							"type": "Leaf",
+							"description": {
+								"text": "Explosive mixture exists inside containment (H<sub>2</sub> > 4%)"
+							}
+						},
+						{
+							"type": "AND",
+							"children": 
+							[
+								{
+									"type": "Leaf",
+									"description": {
+										"text": "Containment – Orange entry conditions met"
+									}
+								},
+								{
+									"type": "Leaf",
+									"description": {
+										"text": "Less than one full train of Containment Spray is operating for 15 minutes or longer"
+									}
+								}
+							]
+						}
+					]
+				}		
+			},
+			{
+				"name": "Other Indications",
+				"mode_applicability": [
+					1,
+					2,
+					3,
+					4
+				],
+				"look_up": false,
+				"description": {
+					"text": "",
+					"ref": {
+						"page": 32,
+						"range": 1
+					}
+				},
+				"loss": {},
+				"potential_loss": {}
+			},
+			{
+				"name": "Emergency Director Judgement",
+				"mode_applicability": [
+					1,
+					2,
+					3,
+					4
+				],
+				"look_up": false,
+				"description": {
+					"text": "",
+					"ref": {
+						"page": 33,
+						"range": 1
+					}
+				},
+				"loss": {
+					
+					"type": "Leaf",
+					"description": {
+						"text": "ANY condition in the opinion of the Emergency Director that indicates Loss of the Containment Barrier"
+					}
+					
+				},
+				"potential_loss": {
+					
+					"type": "Leaf",
+					"description": {
+						"text": "ANY condition in the opinion of the Emergency Director that indicates Potential Loss of the Containment Barrier"
+					}
+					
+				}
+			}				
+		]
+		}
+	]
 }

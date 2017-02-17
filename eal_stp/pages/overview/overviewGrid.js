@@ -141,7 +141,7 @@ class OverviewTable extends React.Component {
   */
   getCriterionConditionNumber(criterionName)
   {
-    var conditionNumber = parseInt(criterionName.replace( /(^.+\D)(\d+)(\D.+$)/i,'$2'));
+    var conditionNumber = parseInt(criterionName.replace(/[^0-9]/g,''));
     return conditionNumber;
   }
 
@@ -168,6 +168,8 @@ class OverviewTable extends React.Component {
         }
       }
     }
+
+    conditionNumbers.sort();
 
     return conditionNumbers;
   }
