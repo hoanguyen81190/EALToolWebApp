@@ -313,7 +313,7 @@
 											{
 												"type": "Leaf",
 												"description": {
-													"text": "An UNPLANNED event results in the inability to monitor one or more of the following parameters in Table S1 from within the Control Room for 15 minutes or longer. <table border=1><thead><tr><th>Table S1: Plant Parameters</th></tr></thead><tbody><tr><td><ul><li>Reactor Power</li><li>RCS Level</li><li>RCS Pressure</li><li>Core Exit Temperature</li><li>Levels in at least two steam generators</li><li>Steam Generator Auxiliary Feed Water Flow</li></ul></td></tr></tbody></table>"
+													"text": "An UNPLANNED event results in the inability to monitor one or more of the following parameters in Table S1 from within the Control Room for 15 minutes or longer"
 												}
 											},
 											{
@@ -465,7 +465,7 @@
 									{
 										"type": "Leaf",
 										"description": {
-											"text": "An UNPLANNED event results in the inability to monitor one or more of the following parameters in Table S1 from within the Control Room for 15 minutes or longer. <table border=1><thead><tr><th>Table S1: Plant Parameters</th></tr></thead><tbody><tr><td><ul><li>Reactor Power</li><li>RCS Level</li><li>RCS Pressure</li><li>Core Exit Temperature</li><li>Levels in at least two steam generators</li><li>Steam Generator Auxiliary Feed Water Flow</li></ul></td></tr></tbody></table>"
+											"text": "An UNPLANNED event results in the inability to monitor one or more of the following parameters in Table S1 from within the Control Room for 15 minutes or longer"
 										}
 									}
 								}
