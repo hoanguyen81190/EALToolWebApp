@@ -46,7 +46,6 @@ export class Condition extends React.Component {
   }
 
   handleConditionClicked(){
-    console.log("clicked");
     this.value = !this.value;
     if(this.props.callback !== undefined) {
       this.props.callback();

@@ -41,11 +41,16 @@ class AlertLevelCard extends React.Component {
     }
   }
 
+  getLevel() {
+    return this.level;
+  }
+
   getValue() {
     return this.value;
   }
 
   render() {
+    this.level = this.props.alert_level.level;
     var color = {
       'trueColor': "mdl-color--red-400",
       'falseColor': "mdl-color--green-300"
@@ -64,22 +69,24 @@ class AlertLevelCard extends React.Component {
     }
 
     var outlineClass = "";
-    if(this.activeBarrierCellProductIndex !== null){
+    if(this.activeAlertLevelCellIndex !== null){
       outlineClass = cats.sideShadows + " " + cats.roundedOutline;
     }
     else{
       outlineClass = cats.roundedOutline;
     }
 
-    var ele = <table className={cats.barrierPropertyTable + " " + outlineClass}>
+    var ele =
+    <table className={cats.barrierPropertyTable + " " + outlineClass}
+      onClick={ () => this.setActiveAlertLevelCell(this.props.alertLevelIndex, this.props.description.ref.page, this.props.description.ref.range)}>
       <thead >
         <tr >
-          <th className={cats.barrierLoss + " " + cats.barrierCell + " " + conditionColor}>{this.props.alert_level.level}</th>
+          <th className={cats.barrierCell + " " + conditionColor}>{this.props.alert_level.level}</th>
         </tr>
       </thead>
-      <tbody >
-        <tr >
-          <td className={cats.barrierCell}>
+      <tbody>
+        <tr className={cats.borderTop}>
+          <td className={cats.barrierCell + " " + cats.borderTop}>
             <Condition firstCondition={true} ref="condition" content={this.props.alert_level.conditions}
               callback={()=>this.conditionCallbackFunc()}
               conditionColor={color}/>
@@ -96,6 +103,7 @@ class CategoryCard extends React.Component {
   constructor() {
     super();
     this.value = false;
+    this.alert_level = null;
   }
 
   categoryCardCallBack() {
@@ -111,18 +119,26 @@ class CategoryCard extends React.Component {
 
   getValue() {
     this.value = false;
+    this.alert_level = null;
     this.props.criterion.alert_level.map((p, index) => {
       var alertLevelConditionRef = 'alertLevelCondition' + index;
       if(this.refs[alertLevelConditionRef]) {
         var conditionStatus = this.refs[alertLevelConditionRef].getValue();
         if(conditionStatus) {
           this.value = conditionStatus;
-          return;
+          this.alert_level = this.refs[alertLevelConditionRef].getLevel();
+          return {
+            'value': this.value,
+            'alert_level': this.alert_level
+          }
         }
       }
     });
 
-    return this.value;
+    return {
+      'value': this.value,
+      'alert_level': this.alert_level
+    }
   }
   render() {
     var stateColor = "mdl-color--green-300";
@@ -136,10 +152,16 @@ class CategoryCard extends React.Component {
       chipContent={this.props.recognitionCategory} noCircle={true} treeCardStyling={cats.barrierCard}
       cardContentStyling={cats.barrierCardContent}
       cardContent={
-        <div>
-          {this.props.criterion.description.text}
+        <div className={cats.clickable} onClick={() => this.props.documentCallback(this.props.criterion.description.ref.page, this.props.criterion.description.ref.range)}>
+          <div className={cats.initialCondition}>
+            <div className={cats.initialConditionText}>
+              Initial Condition:
+            </div>
+            <span className={cats.initialConditionDescription} dangerouslySetInnerHTML={{__html: this.props.criterion.description.text}}/>
+          </div>
           {this.props.criterion.alert_level.map((level, index)=>{
             return <AlertLevelCard ref={'alertLevelCondition'+index}
+                                   description={this.props.criterion.description}
                                    alert_level={level}
                                    alertLevelIndex={index}
                                    clearAlertLevelHighlights={this.props.clearAlertLevelHighlights}

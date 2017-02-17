@@ -10,8 +10,8 @@ class Footer extends React.Component {
         <div className={s.footer + " mdl-mini-footer__left-section"}>
           <div className={s.footerLeftContent}>{this.props.leftContent}</div>
         </div>
-        <div className="mdl-mini-footer__right-section">
-          {this.props.rightContent}
+        <div className={s.footer + " mdl-mini-footer__right-section"}>
+          <div className={s.footerRightContent}>{this.props.rightContent}</div>
         </div>
       </footer>;
     }

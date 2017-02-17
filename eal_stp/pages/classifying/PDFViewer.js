@@ -11,7 +11,10 @@ export default class SimplePDF extends React.Component {
 
     // bind
     this.loadPDF = this.loadPDF.bind(this);
-
+    this.state = {
+      startPage: 1,
+      endPage: 1
+    }
   }
 
   loadPDF() {
@@ -27,8 +30,8 @@ export default class SimplePDF extends React.Component {
 
     // set styles
     node.style.padding = '0px';
-    var startPage = this.props.startPage;
-    var endPage = this.props.endPage;
+    var startPage = this.state.startPage;
+    var endPage = this.state.endPage;
 
     PDF.getDocument(this.props.file).then(function(pdf) {
 
@@ -68,6 +71,7 @@ export default class SimplePDF extends React.Component {
 
   updateDimensions() {
     this.loadPDF();
+    this.props.resizeCallback();
   }
 
   render() {
@@ -78,13 +82,23 @@ export default class SimplePDF extends React.Component {
     );
   }
 
+  componentWillMount() {
+    this.setState({
+      startPage: this.props.startPage,
+      endPage: this.props.endPage
+    });
+  }
+
   componentDidMount() {
     this.loadPDF();
+    this.props.resizeCallback();
+
     window.addEventListener("resize", this.updateDimensions.bind(this));
   }
 
   componentDidUpdate() {
     this.loadPDF();
+    this.props.resizeCallback();
     window.removeEventListener("resize", this.updateDimensions.bind(this));
   }
 }

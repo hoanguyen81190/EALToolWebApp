@@ -212,7 +212,7 @@ class BarrierMatrixPage extends React.Component {
             </div>
         </div>
 
-        <div className={`${s.descriptioncontent}`} id="descriptionContentContainer">
+        <div className={s.descriptioncontent} id="descriptionContentContainer">
             <img className={s.documentIconRight} src={documentIcon} alt="Document icon"/>
             <spdf.SimplePDF className={s.SimplePDF}
                 file='./STP_EAL_classification_procedure.pdf'

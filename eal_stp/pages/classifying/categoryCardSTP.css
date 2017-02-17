@@ -17,6 +17,19 @@
   background-color: #fff;
 }
 
+.initialCondition {
+  margin-bottom: 10px;
+}
+
+.initialConditionText {
+  color: black;
+  font-weight: bold;
+}
+
+.initialConditionDescription{
+  color: black;
+}
+
 .barrierCardContent{
   width: calc(100% - 20px);
   padding-left: 10px;
@@ -144,6 +157,12 @@
   width: 40%;
 }
 
+.barrierRow {
+  border-collapse: collapse;
+  margin-left: 10px;
+  border-top: 1px solid black;
+}
+
 .barrierCell {
   position: relative;
   padding: 0;
@@ -157,6 +176,7 @@
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   border: 1px solid black;
+  border-top: 1px solid black;
 }
 
 .barrierCellPadding {
@@ -165,15 +185,20 @@
   text-align: center;
 }
 
+.borderTop {
+  border-top: 2px solid black;
+}
+
 .barrierPropertyTable th, .barrierPropertyTable tr{
   padding: 0;
   margin: 0;
   min-height: 50px;
   height: 50px;
+
 }
 
 /* Indicate that an element is clickable by changing the cursor */
-.clickable{
+.clickable : hover{
   cursor:pointer;
 }
 /* Used to prevent the cursor from changing to the text hover version */

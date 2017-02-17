@@ -152,6 +152,14 @@ body, html{
   border: 1px solid black;
   background-color: lightgrey;
 }
+
+.clockStyle{
+  height: 100%;
+  position: absolute;
+  bottom: 1%;
+  right: 0;
+  left: 80vw;
+}
 /* Dialog Styling - END */
 
 /* Tablet properties */
