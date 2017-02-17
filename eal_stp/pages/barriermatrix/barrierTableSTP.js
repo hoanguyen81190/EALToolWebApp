@@ -94,7 +94,7 @@ class BarrierConditionCard extends React.Component {
 
     var ele = <table className={bs.barrierPropertyTable + " " + outlineClass}>
       <thead >
-        <tr >
+        <tr onClick={ () => this.setActiveBarrierCell(this.props.productIndex, this.props.content.description.ref.page, this.props.content.description.ref.range)}>
           <th className={bs.barrierProperty + " " + bs.barrierCell + " " + bs.barrierPropertyCell + " " + barrierPropertyColor}></th>
           <th className={bs.barrierLoss + " " + bs.barrierCell + " " + lossConditionColor}>Loss</th>
           <th className={bs.barrierPotentialLoss + " " + bs.barrierCell  + " " + potentiallossConditionColor}>Potential Loss</th>

@@ -87,8 +87,8 @@ export class Condition extends React.Component {
     // logicConditionColor = "mdl-color--indigo-50";
 
     this.children = [];
-    var element = <table className={cs.conditionTable}>
-      <tbody>
+    var element = <div className={cs.tableWrapper}><table className={cs.conditionTable}>
+      <tbody className={cs.tableSize}>
         {this.props.content.children.map((child, index) => {
           var childRef = "child" + index;
           this.children.push(childRef);
@@ -122,7 +122,7 @@ export class Condition extends React.Component {
           return row;
         })}
       </tbody>
-    </table>;
+    </table></div>;
 
     return element;
   }

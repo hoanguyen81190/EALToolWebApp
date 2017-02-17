@@ -2,6 +2,8 @@ import React, { PropTypes } from 'react';
 import Layout from '../../components/Layout';
 import Button from '../../components/Button';
 
+import documentIcon from '../../resources/Document-50.png';
+
 import s from './styles.css';
 import spdf from "./PDFViewer";
 import DialogDemo from './dialog';
@@ -211,6 +213,7 @@ class BarrierMatrixPage extends React.Component {
         </div>
 
         <div className={`${s.descriptioncontent}`} id="descriptionContentContainer">
+            <img className={s.documentIconRight} src={documentIcon} alt="Document icon"/>
             <spdf.SimplePDF className={s.SimplePDF}
                 file='./STP_EAL_classification_procedure.pdf'
                 startPage={27}

@@ -18,10 +18,6 @@
 }
 
 .barrierCardContent{
-  /*width: calc(100% - 20px);
-  margin-left: 10px;
-  margin-right: 10px;*/
-
   width: calc(100% - 20px);
   padding-left: 10px;
   padding-right: 10px;
@@ -149,19 +145,18 @@
 }
 
 .barrierCell {
+  position: relative;
   padding: 0;
   margin: 0;
-
-  box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
 
   background-color: #fff;
   color: black;
   height: 1px; /* A fix to make the child div of the barrier cell actually fill the cell. The TD resizes to fit the content anyway */
 
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
   border: 1px solid black;
-  border-spacing: 0;
 }
 
 .barrierCellPadding {
