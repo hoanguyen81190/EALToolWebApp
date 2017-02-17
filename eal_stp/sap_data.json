@@ -762,7 +762,7 @@
 			]
 		},
 		{
-			"name": "Hazards and other Conditions",
+			"name": "Hazards and Other Conditions Affecting Plant Safety",
 			"mode_applicability": [
 				1,
 				2,
@@ -1454,7 +1454,7 @@
 								"Defueled"
 							],
 							"description": {
-								"text": "Other conditions exist which in the judgment of the Emergency Director warrant declaration of a UE",
+								"text": "Other conditions exist which in the judgment of the Emergency Director warrant declaration of an UNUSUAL EVENT",
 								"ref": {
 									"page": 105,
 									"range": 2
@@ -1470,6 +1470,586 @@
 										"description": {
 											"text": "Other conditions exist which in the judgment of the Emergency Director indicate that events are in progress or have occurred which indicate a potential degradation of the level of safety of the plant or indicate a security threat to FACILITY protection has been initiated. No releases of radioactive material requiring offsite response or monitoring are expected unless further degradation of safety systems occurs"
 										}											
+									}
+								}
+							]							
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Abnormal Radiation Levels/Radiological Effluents",
+			"mode_applicability": [
+				1,
+				2,
+				3,
+				4,
+				5,
+				6,
+				"Defueled"
+			],
+			"emergency_categories": 
+			[
+				{
+					"name": "General Emergency",
+					"criterions": 
+					[
+						{
+							"name": "RG1",
+							"mode_applicability": [
+								1,
+								2,
+								3,
+								4,
+								5,
+								6,
+								"Defueled"
+							],
+							"description": {
+								"text": "Release of gaseous radioactivity resulting in offsite dose greater than 1,000 mrem TEDE or 5,000 mrem THYROID CDE",
+								"ref": {
+									"page": 111,
+									"range": 2
+								}
+							},
+							"alert_level":
+							[						
+								{ 
+									"level" : "EAL-1",
+									"conditions": 
+									{									
+										"type": "Leaf",
+										"description": {
+											"text": "Reading on <b>ANY</b> of the following radiation monitors greater than the values listed in Table R1 column “GE” for 15 minutes or longer"
+										}											
+									}
+								},
+								{ 
+									"level" : "EAL-2",
+									"conditions": 
+									{									
+										"type": "Leaf",
+										"description": {
+											"text": "Dose assessment using actual meteorology indicates doses greater than 1,000 mrem TEDE or 5,000 mrem THYROID CDE at or beyond the SITE BOUNDARY"
+										}											
+									}
+								},
+								{ 
+									"level" : "EAL-3",
+									"conditions": 
+									{	
+										"type": "OR",
+										"children":
+										[
+											{
+												"type": "Leaf",
+												"description": {
+													"text": "Field survey results indicate the following at or beyond the SITE BOUNDARY: Closed window dose rates greater than 1,000 mR/hr expected to continue for 60 minutes or longer"
+												}
+											},
+											{
+												"type": "Leaf",
+												"description": {
+													"text": "Field survey results indicate the following at or beyond the SITE BOUNDARY: Analyses of field survey samples indicate THYROID CDE greater than 5,000 mrem for one hour of inhalation"
+												}
+											}
+										]																					
+									}
+								}
+							]							
+						},
+						{
+							"name": "RG2",
+							"mode_applicability": [
+								1,
+								2,
+								3,
+								4,
+								5,
+								6,
+								"Defueled"
+							],
+							"description": {
+								"text": "Spent fuel pool level cannot be restored to at least 40’- 4” for 60 minutes or longer",
+								"ref": {
+									"page": 121,
+									"range": 2
+								}
+							},
+							"alert_level":
+							[						
+								{ 
+									"level" : "EAL-1",
+									"conditions": 
+									{									
+										"type": "Leaf",
+										"description": {
+											"text": "Spent fuel pool level cannot be restored to at least 40’- 4” for 60 minutes or longer"
+										}											
+									}
+								}
+							]							
+						}
+					]
+				},
+				{
+					"name": "Site Area Emergency",
+					"criterions": 
+					[
+						{
+							"name": "RS1",
+							"mode_applicability": [
+								1,
+								2,
+								3,
+								4,
+								5,
+								6,
+								"Defueled"
+							],
+							"description": {
+								"text": "Release of gaseous radioactivity resulting in offsite dose greater than 100 mrem TEDE or 500 mrem THYROID CDE",
+								"ref": {
+									"page": 113,
+									"range": 2
+								}
+							},
+							"alert_level":
+							[						
+								{ 
+									"level" : "EAL-1",
+									"conditions": 
+									{
+										"type": "Leaf",
+										"description": {
+											"text": "Reading on <b>ANY</b> of the following radiation monitors greater than the values listed in Table R1 column “SAE” for 15 minutes or longer"
+										}								
+									}
+								},
+								{ 
+									"level" : "EAL-2",
+									"conditions": 
+									{
+										"type": "Leaf",
+										"description": {
+											"text": "Dose assessment using actual meteorology indicates doses greater than 100 mrem TEDE or 500 mrem THYROID CDE at or beyond the SITE BOUNDARY"
+										}								
+									}
+								},
+								{ 
+									"level" : "EAL-3",
+									"conditions": 
+									{	
+										"type": "OR",
+										"children":
+										[
+											{
+												"type": "Leaf",
+												"description": {
+													"text": "Field survey results indicate the following at ot beyond the SITE BOUNDARY: Closed window dose rates greater than 100 mR/hr expected to continue for 60 minutes or longer"
+												}
+											},
+											{
+												"type": "Leaf",
+												"description": {
+													"text": "Field survey results indicate the following at ot beyond the SITE BOUNDARY: Analyses of field survey samples indicate THYROID CDE greater than 500 mrem for one hour of inhalation"
+												}
+											}
+										]																									
+									}
+								}
+							]						
+						},
+						{
+							"name": "RS2",
+							"mode_applicability": [
+								1,
+								2,
+								3,
+								4,
+								5,
+								6,
+								"Defueled"
+							],
+							"description": {
+								"text": "Spent fuel pool level at 40’- 4” or lower",
+								"ref": {
+									"page": 123,
+									"range": 2
+								}
+							},
+							"alert_level":
+							[						
+								{ 
+									"level" : "EAL-1",
+									"conditions": 
+									{									
+										"type": "Leaf",
+										"description": {
+											"text": "Lowering of spent fuel pool level to 40’- 4” or lower"
+										}											
+									}
+								}
+							]							
+						}
+					]
+				},
+				{
+					"name": "Alert",
+					"criterions": 
+					[
+						{
+							"name": "RA1",
+							"mode_applicability": [
+								1,
+								2,
+								3,
+								4,
+								5,
+								6,
+								"Defueled"
+							],
+							"description": {
+								"text": "Release of gaseous or liquid radioactivity resulting in offsite dose greater than 10 mrem TEDE or 50 mrem THYROID CDE",
+								"ref": {
+									"page": 115,
+									"range": 2
+								}
+							},
+							"alert_level":
+							[						
+								{ 
+									"level" : "EAL-1",
+									"conditions": 
+									{
+										"type": "Leaf",
+										"description": {
+											"text": "Reading on <b>ANY</b> of the following radiation monitors greater than the values listed in Table R1 column “ALERT” for 15 minutes or longer"
+										}								
+									}
+								},
+								{ 
+									"level" : "EAL-2",
+									"conditions": 
+									{
+										"type": "Leaf",
+										"description": {
+											"text": "Dose assessment using actual meteorology indicates doses greater than 10 mrem TEDE or 50 mrem THYROID CDE at or beyond the SITE BOUNDARY"
+										}								
+									}
+								},
+								{ 
+									"level" : "EAL-3",
+									"conditions": 
+									{
+										"type": "Leaf",
+										"description": {
+											"text": "Analysis of a liquid effluent sample indicates a concentration or release rate that would result in doses greater than 10 mrem TEDE or 50 mrem THYROID CDE at or beyond the SITE BOUNDARY for one hour of exposure"
+										}								
+									}
+								},
+								{ 
+									"level" : "EAL-4",
+									"conditions": 
+									{	
+										"type": "OR",
+										"children":
+										[
+											{
+												"type": "Leaf",
+												"description": {
+													"text": "Field survey results indicate the following at ot beyond the SITE BOUNDARY: Closed window dose rates greater than 10 mR/hr expected to continue for 60 minutes or longer"
+												}
+											},
+											{
+												"type": "Leaf",
+												"description": {
+													"text": "Field survey results indicate the following at ot beyond the SITE BOUNDARY: Analyses of field survey samples indicate THYROID CDE greater than 50 mrem for one hour of inhalation"
+												}
+											}
+										]																									
+									}
+								}
+							]						
+						},
+						{
+							"name": "RA2",
+							"mode_applicability": [
+								1,
+								2,
+								3,
+								4,
+								5,
+								6,
+								"Defueled"
+							],
+							"description": {
+								"text": "Significant lowering of water level above, or damage to, irradiated fuel",
+								"ref": {
+									"page": 125,
+									"range": 3
+								}
+							},
+							"alert_level":
+							[						
+								{ 
+									"level" : "EAL-1",
+									"conditions": 
+									{									
+										"type": "Leaf",
+										"description": {
+											"text": "Uncovery of irradiated fuel in the REFUELING PATHWAY"
+										}											
+									}
+								},
+								{ 
+									"level" : "EAL-2",
+									"conditions": 
+									{			
+										"type": "OR",
+										"children":
+										[
+											{
+												"type": "OR",
+												"children":
+												[
+													{
+														"type": "Leaf",
+														"description": {
+															"text": "Damage to irradiated fuel resulting in a release of radioactivity from the fuel as indicated by <b>ANY</b> of the following FHB radiation monitors: FHB Exhaust, RT-8035 or RT-8036 greater than 1.00 E-1 Ci/ml"
+														}
+													},
+													{
+														"type": "Leaf",
+														"description": {
+															"text": "Damage to irradiated fuel resulting in a release of radioactivity from the fuel as indicated by <b>ANY</b> of the following FHB radiation monitor: ARM (68’ FHB), RE-8090 greater than 1,500 mR/hr"
+														}
+													}
+												]
+											},
+											{												
+												"type": "Leaf",
+												"mode_applicability": [
+													5,
+													6
+												],
+												"description": {
+													"text": "Damage to irradiated fuel resulting in a release of radioactivity from the fuel as indicated by <b>ANY</b> of the following RCB radiation monitors readings (Mode 5 or 6 only): ARM (68’ RCB), RE-8055 or RE-8099 greater than 850 mR/hr"
+												}	
+											}
+										]
+																				
+									}
+								},
+								{ 
+									"level" : "EAL-3",
+									"conditions": 
+									{									
+										"type": "Leaf",
+										"description": {
+											"text": "Lowering of spent fuel pool level to 49’-10” or below"
+										}											
+									}
+								}
+							]							
+						},
+						{
+							"name": "RA3",
+							"mode_applicability": [
+								1,
+								2,
+								3,
+								4,
+								5,
+								6,
+								"Defueled"
+							],
+							"description": {
+								"text": "Radiation levels that impede access to equipment necessary for normal plant operations, cooldown or shutdown",
+								"ref": {
+									"page": 133,
+									"range": 3
+								}
+							},
+							"alert_level":
+							[						
+								{ 
+									"level" : "EAL-1",
+									"conditions": 
+									{			
+										"type": "OR",
+										"children": 
+										[
+											{
+												"type": "Leaf",
+												"description": {
+													"text": "Dose rate greater than 15 mR/hr in the following area: Control Room ARM (RE-8066)"
+												}	
+											},
+											{
+												"type": "Leaf",
+												"description": {
+													"text": "Dose rate greater than 15 mR/hr in the following area: Central Alarm Station (CAS) by radiation survey"
+												}	
+											}
+										]											
+									}
+								},
+								{ 
+									"level" : "EAL-2",
+									"conditions": 
+									{											
+										"type": "Leaf",
+										"description": {
+											"text": "An UNPLANNED event results in radiation levels that prohibit or impede access to <b>ANY</b> of the areas listed in Table H3/R2"
+										}																				
+									}
+								}
+							]							
+						}
+					]
+				},
+				{
+					"name": "Unusual Event",
+					"criterions": 
+					[
+						{
+							"name": "RU1",
+							"mode_applicability": [
+								1,
+								2,
+								3,
+								4,
+								5,
+								6,
+								"Defueled"
+							],
+							"description": {
+								"text": "Release of gaseous or liquid radioactivity greater than 2 times the ODCM limits for 60 minutes or longer",
+								"ref": {
+									"page": 117,
+									"range": 3
+								}
+							},
+							"alert_level":
+							[						
+								{ 
+									"level" : "EAL-1",
+									"conditions": 
+									{
+										"type": "Leaf",
+										"description": {
+											"text": "Reading on <b>ANY</b> of the following radiation monitors greater than the values listed in Table R1 column “UE” for 60 minutes or longer"
+										}								
+									}
+								},
+								{ 
+									"level" : "EAL-2",
+									"conditions": 
+									{
+										"type": "Leaf",
+										"description": {
+											"text": "Reading on gaseous effluent radiation monitor RT-8010B greater than 2 times the alarm setpoint established by a current radioactivity discharge permit for 60 minutes or longer"
+										}								
+									}
+								},
+								{ 
+									"level" : "EAL-3",
+									"conditions": 
+									{
+										"type": "Leaf",
+										"description": {
+											"text": "Sample analysis for a gaseous or liquid release indicates a concentration or release rate greater than 2 times the ODCM limits for 60 minutes or longer"
+										}								
+									}
+								}
+							]						
+						},
+						{
+							"name": "RU2",
+							"mode_applicability": [
+								1,
+								2,
+								3,
+								4,
+								5,
+								6,
+								"Defueled"
+							],
+							"description": {
+								"text": "UNPLANNED loss of water level above irradiated fuel",
+								"ref": {
+									"page": 129,
+									"range": 3
+								}
+							},
+							"alert_level":
+							[						
+								{ 
+									"level" : "EAL-1",
+									"conditions": 
+									{			
+										"type": "AND",
+										"children":
+										[
+											{
+												"type": "OR",
+												"children":
+												[
+													{
+														"type": "Leaf",
+														"description": {
+															"text": "UNPLANNED water level drop in the REFUELING PATHWAY as indicated by Visual Observation"
+														}	
+													},
+													{
+														"type": "Leaf",
+														"description": {
+															"text": "UNPLANNED water level drop in the REFUELING PATHWAY as indicated by Annunciator alarm on lampbox 22M02 Window F-5 “SFP WATER LVL HI/LO”"
+														}	
+													},
+													{
+														"type": "Leaf",
+														"description": {
+															"text": "UNPLANNED water level drop in the REFUELING PATHWAY as indicated by Spent fuel in the ICSA <b>AND</b> Annunciator alarm on lampbox 22M02 Window F-6 “SFP Trouble” <b>AND</b> Plant Computer point FCLC1420 “REFLNG CAV LVL IN CNTMT” (ICSA Water Level HI/LO) is in alarm"
+														}	
+													}
+												]
+											},
+											{
+												"type": "OR",
+												"children":
+												[
+													{
+														"type": "Leaf",
+														"mode_applicability": [
+															5,
+															6
+														],
+														"description": {
+															"text": "UNPLANNED rise in area radiation levels on the following radiation monitor: RE-8055 (68’ RCB) - Mode 5 or 6 only"
+														}	
+													},
+													{
+														"type": "Leaf",
+														"mode_applicability": [
+															5,
+															6
+														],
+														"description": {
+															"text": "UNPLANNED rise in area radiation levels on the following radiation monitor: RE-8099 (68’ RCB) - Mode 5 or 6 only"
+														}	
+													},
+													{
+														"type": "Leaf",
+														"description": {
+															"text": "UNPLANNED rise in area radiation levels on the following radiation monitor: RE-8090 (68’ FHB)"
+														}	
+													}
+												]
+											}
+										]																	
 									}
 								}
 							]							
