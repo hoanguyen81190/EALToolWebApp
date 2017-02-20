@@ -74,7 +74,7 @@ class AlertLevelCard extends React.Component {
     var ele = <table className={cats.barrierPropertyTable + " " + outlineClass}>
       <thead >
         <tr >
-          <th className={cats.barrierLoss + " " + cats.barrierCell + " " + conditionColor}>{this.props.alert_level.level}</th>
+          <th className={cats.barrierCell + " " + conditionColor}>{this.props.alert_level.level}</th>
         </tr>
       </thead>
       <tbody >

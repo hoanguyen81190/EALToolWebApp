@@ -46,7 +46,7 @@ class ClassifyingPage extends React.Component {
   * @return {Number} conditionNumber
   */
   getCriterionConditionNumber(criterionName) {
-    var conditionNumber = parseInt(criterionName.replace( /(^.+\D)(\d+)(\D.+$)/i,'$2'));
+    var conditionNumber = parseInt(criterionName.replace(/[^0-9]/g,''));
     return conditionNumber;
   }
 
@@ -63,7 +63,6 @@ class ClassifyingPage extends React.Component {
 
 
     for(var index = 0; index < regCat.emergency_categories.length; index++) {
-      console.log(selectedCriterionNumber);
       var emer_cat = regCat.emergency_categories[index];
       var hasCriterion = false;
       for (var i = 0; i < emer_cat.criterions.length; i++) {
