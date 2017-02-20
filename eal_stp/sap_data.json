@@ -313,7 +313,7 @@
 											{
 												"type": "Leaf",
 												"description": {
-													"text": "An UNPLANNED event results in the inability to monitor one or more of the following parameters in Table S1 from within the Control Room for 15 minutes or longer"
+													"text": "An UNPLANNED event results in the inability to monitor one or more of the following parameters in <b>Table S1</b> from within the Control Room for 15 minutes or longer"
 												}
 											},
 											{
@@ -381,7 +381,7 @@
 											{
 												"type": "Leaf",
 												"description": {
-													"text": "The occurrence of ANY of the following hazardous events listed in Table S3"
+													"text": "The occurrence of ANY of the following hazardous events listed in <b>Table S3</b>"
 												}
 											},
 											{
@@ -465,7 +465,7 @@
 									{
 										"type": "Leaf",
 										"description": {
-											"text": "An UNPLANNED event results in the inability to monitor one or more of the following parameters in Table S1 from within the Control Room for 15 minutes or longer"
+											"text": "An UNPLANNED event results in the inability to monitor one or more of the following parameters in <b>Table S1</b> from within the Control Room for 15 minutes or longer"
 										}
 									}
 								}
@@ -668,7 +668,7 @@
 									{
 										"type": "Leaf",
 										"description": {
-											"text": "Loss of <b>ALL</b> of the following onsite communication methods listed in Table S2"
+											"text": "Loss of <b>ALL</b> of the following onsite communication methods listed in <b>Table S2</b>"
 										}
 									}
 								},
@@ -678,7 +678,7 @@
 									{
 										"type": "Leaf",
 										"description": {
-											"text": "Loss of <b>ALL</b> of the following Offsite Response Organization (ORO) communications methods listed in Table S2"
+											"text": "Loss of <b>ALL</b> of the following Offsite Response Organization (ORO) communications methods listed in <b>Table S2</b>"
 										}
 									}
 								},
@@ -688,7 +688,7 @@
 									{
 										"type": "Leaf",
 										"description": {
-											"text": "Loss of <b>ALL</b> of the following NRC communications methods listed in Table S2"
+											"text": "Loss of <b>ALL</b> of the following NRC communications methods listed in <b>Table S2</b>"
 										}
 									}
 								}
@@ -808,7 +808,7 @@
 											{
 												"type": "Leaf",
 												"description": {
-													"text": "A HOSTILE ACTION is occurring or has occurred within the PROTECTED AREA as reported by <b>ANY</b> of the following in Table H1"
+													"text": "A HOSTILE ACTION is occurring or has occurred within the PROTECTED AREA as reported by <b>ANY</b> of the following in <b>Table H1</b>"
 												}
 											},
 											{
@@ -823,7 +823,7 @@
 														],
 														"type": "Leaf",
 														"description": {
-															"text": "<b>ANY</b> of the following safety functions in Table H2 cannot be controlled or maintained in MODES 1, 2 or 3 ONLY"
+															"text": "<b>ANY</b> of the following safety functions in <b>Table H2</b> cannot be controlled or maintained in MODES 1, 2 or 3 ONLY"
 														}
 													},
 													{
@@ -903,7 +903,7 @@
 									{
 										"type": "Leaf",
 										"description": {
-											"text": "A HOSTILE ACTION is occurring or has occurred within the PROTECTED AREA as reported by ANY of the following personnel in Table H1"
+											"text": "A HOSTILE ACTION is occurring or has occurred within the PROTECTED AREA as reported by ANY of the following personnel in <b>Table H1</b>"
 										}
 									}
 								}
@@ -950,7 +950,7 @@
 													3
 												],
 												"description": {
-													"text": "Control of <b>ANY</b> of the following key safety functions in Table H2 is not reestablished within 15 minutes in Modes 1, 2 or 3 ONLY"
+													"text": "Control of <b>ANY</b> of the following key safety functions in <b>Table H2</b> is not reestablished within 15 minutes in Modes 1, 2 or 3 ONLY"
 												}
 											}
 										]
@@ -1022,7 +1022,7 @@
 									{
 										"type": "Leaf",
 										"description": {
-											"text": "A HOSTILE ACTION is occurring or has occurred within the OWNER CONTROLLED AREA as reported by <b>ANY</b> of the following personnel in Table H1"
+											"text": "A HOSTILE ACTION is occurring or has occurred within the OWNER CONTROLLED AREA as reported by <b>ANY</b> of the following personnel in <b>Table H1</b>"
 										}
 									}
 								},
@@ -1068,7 +1068,7 @@
 											{
 												"type": "Leaf",
 												"description": {
-													"text": "Release of a toxic, corrosive, asphyxiant or flammable gas into the Control Room or <b>ANY</b> of the plant rooms or areas listed in Table H3/R2"
+													"text": "Release of a toxic, corrosive, asphyxiant or flammable gas into the Control Room or <b>ANY</b> of the plant rooms or areas listed in <b>Table H3/R2</b>"
 												}
 											},
 											{
@@ -1178,7 +1178,7 @@
 									{
 										"type": "Leaf",
 										"description": {
-											"text": "A SECURITY CONDITION that does not involve a HOSTILE ACTION as reported by <b>ANY</b> of the following personnel in Table H1"
+											"text": "A SECURITY CONDITION that does not involve a HOSTILE ACTION as reported by <b>ANY</b> of the following personnel in <b>Table H1</b>"
 										}
 									}
 								},
@@ -1218,7 +1218,7 @@
 							"description": {
 								"text": "Seismic event greater than OBE levels",
 								"ref": {
-									"page": 69,
+									"page": 83,
 									"range": 2
 								}
 							},
@@ -1386,7 +1386,7 @@
 											{
 												"type": "Leaf",
 												"description": {
-													"text": "The FIRE is located within <b>ANY</b> of the plant rooms or areas in Table H4"
+													"text": "The FIRE is located within <b>ANY</b> of the plant rooms or areas in <b>Table H4</b>"
 												}
 											}
 										]
@@ -1408,7 +1408,7 @@
 											{
 												"type": "Leaf",
 												"description": {
-													"text": "The FIRE is located within ANY of the plant rooms or areas in Table H4"
+													"text": "The FIRE is located within ANY of the plant rooms or areas in <b>Table H4</b>"
 												}
 											},
 											{
@@ -1521,7 +1521,7 @@
 									{
 										"type": "Leaf",
 										"description": {
-											"text": "Reading on <b>ANY</b> of the following radiation monitors greater than the values listed in Table R1 column “GE” for 15 minutes or longer"
+											"text": "Reading on <b>ANY</b> of the following radiation monitors greater than the values listed in <b>Table R1</b> column “GE” for 15 minutes or longer"
 										}
 									}
 								},
@@ -1623,7 +1623,7 @@
 									{
 										"type": "Leaf",
 										"description": {
-											"text": "Reading on <b>ANY</b> of the following radiation monitors greater than the values listed in Table R1 column “SAE” for 15 minutes or longer"
+											"text": "Reading on <b>ANY</b> of the following radiation monitors greater than the values listed in <b>Table R1</b> column “SAE” for 15 minutes or longer"
 										}
 									}
 								},
@@ -1725,7 +1725,7 @@
 									{
 										"type": "Leaf",
 										"description": {
-											"text": "Reading on <b>ANY</b> of the following radiation monitors greater than the values listed in Table R1 column “ALERT” for 15 minutes or longer"
+											"text": "Reading on <b>ANY</b> of the following radiation monitors greater than the values listed in <b>Table R1</b> column “ALERT” for 15 minutes or longer"
 										}
 									}
 								},
@@ -1902,7 +1902,7 @@
 									{
 										"type": "Leaf",
 										"description": {
-											"text": "An UNPLANNED event results in radiation levels that prohibit or impede access to <b>ANY</b> of the areas listed in Table H3/R2"
+											"text": "An UNPLANNED event results in radiation levels that prohibit or impede access to <b>ANY</b> of the areas listed in <b>Table H3/R2</b>"
 										}
 									}
 								}
@@ -1940,7 +1940,7 @@
 									{
 										"type": "Leaf",
 										"description": {
-											"text": "Reading on <b>ANY</b> of the following radiation monitors greater than the values listed in Table R1 column “UE” for 60 minutes or longer"
+											"text": "Reading on <b>ANY</b> of the following radiation monitors greater than the values listed in <b>Table R1</b> column “UE” for 60 minutes or longer"
 										}
 									}
 								},
@@ -2191,7 +2191,7 @@
 											{
 												"type": "Leaf",
 												"description": {
-													"text": "<b>ANY</b> indication from Table C1"
+													"text": "<b>ANY</b> indication from <b>Table C1</b>"
 												}
 											}
 										]
@@ -2229,7 +2229,7 @@
 													{
 														"type": "Leaf",
 														"description": {
-															"text": "Core uncovery is indicated by the UNPLANNED rise in <b>ANY</b> of the following sump or tank levels in Table C2 of sufficient magnitude to indicate core uncovery"
+															"text": "Core uncovery is indicated by the UNPLANNED rise in <b>ANY</b> of the following sump or tank levels in <b>Table C2</b> of sufficient magnitude to indicate core uncovery"
 														}
 													}
 												]
@@ -2237,7 +2237,7 @@
 											{
 												"type": "Leaf",
 												"description": {
-													"text": "<b>ANY</b> indication from Table C1"
+													"text": "<b>ANY</b> indication from <b>Table C1</b>"
 												}
 											}
 										]
@@ -2342,7 +2342,7 @@
 													{
 														"type": "Leaf",
 														"description": {
-															"text": "Core uncovery is indicated by the UNPLANNED rise in <b>ANY</b> of the following sump or tank levels in Table C2 of sufficient magnitude to indicate core uncovery"
+															"text": "Core uncovery is indicated by the UNPLANNED rise in <b>ANY</b> of the following sump or tank levels in <b>Table C2</b> of sufficient magnitude to indicate core uncovery"
 														}
 													}
 												]
@@ -2399,7 +2399,7 @@
 											{
 												"type": "Leaf",
 												"description": {
-													"text": "UNPLANNED rise in <b>ANY</b> of the following sump or tank levels in Table C2 due to a loss of reactor vessel/RCS inventory"
+													"text": "UNPLANNED rise in <b>ANY</b> of the following sump or tank levels in <b>Table C2</b> due to a loss of reactor vessel/RCS inventory"
 												}
 											}
 										]
@@ -2456,7 +2456,7 @@
 									{
 										"type": "Leaf",
 										"description": {
-											"text": "UNPLANNED rise in RCS temperature to greater than 200 <sup>○</sup>F (Tavg) for greater than the duration specified in Table C3"
+											"text": "UNPLANNED rise in RCS temperature to greater than 200 <sup>○</sup>F (Tavg) for greater than the duration specified in <b>Table C3</b>"
 										}
 									}
 								},
@@ -2497,7 +2497,7 @@
 											{
 												"type": "Leaf",
 												"description": {
-													"text": "The occurrence of <b>ANY</b> of the following hazardous events in Table C5"
+													"text": "The occurrence of <b>ANY</b> of the following hazardous events in <b>Table C5</b>"
 												}
 											},
 											{
@@ -2570,7 +2570,7 @@
 											{
 												"type": "Leaf",
 												"description": {
-													"text": "UNPLANNED rise in <b>ANY</b> of the following sump or tank levels in Table C2"
+													"text": "UNPLANNED rise in <b>ANY</b> of the following sump or tank levels in <b>Table C2</b>"
 												}
 											}
 										]
@@ -2704,7 +2704,7 @@
 									{
 										"type": "Leaf",
 										"description": {
-											"text": "Loss of <b>ALL</b> of the following Onsite communication methods in Table C4"
+											"text": "Loss of <b>ALL</b> of the following Onsite communication methods in <b>Table C4</b>"
 										}
 									}
 								},
@@ -2714,7 +2714,7 @@
 									{
 										"type": "Leaf",
 										"description": {
-											"text": "Loss of <b>ALL</b> of the following Offsite Response Organization (ORO) communication methods in Table C4"
+											"text": "Loss of <b>ALL</b> of the following Offsite Response Organization (ORO) communication methods in <b>Table C4</b>"
 										}
 									}
 								},
@@ -2724,7 +2724,7 @@
 									{
 										"type": "Leaf",
 										"description": {
-											"text": "Loss of <b>ALL</b> of the following NRC communication methods in Table C4"
+											"text": "Loss of <b>ALL</b> of the following NRC communication methods in <b>Table C4</b>"
 										}
 									}
 								}

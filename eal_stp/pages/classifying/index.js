@@ -107,24 +107,30 @@ class ClassifyingPage extends React.Component {
     var category;
     var emergencyLevel;
 
+    var classificationHappened = false;
+
     if(this.refs.generalEmergencyRef !== undefined && this.refs.generalEmergencyRef.getValue().value) {
+      classificationHappened = true;
       currentClassificationText = "General Emergency";
-      text = <p>A <b>{currentClassificationText}</b> emergency event with emergency level <b>{this.refs.generalEmergencyRef.getValue().alert_level}</b> has occured.</p>;
     }
 
     else if(this.refs.siteAreaEmergencyRef !== undefined && this.refs.siteAreaEmergencyRef.getValue().value) {
+      classificationHappened = true;
       currentClassificationText = "Site Area Emergency";
-      text = <p>A <b>{currentClassificationText}</b> emergency event with emergency level <b>{this.refs.siteAreaEmergencyRef.getValue().alert_level}</b> has occured.</p>;
     }
 
     else if(this.refs.alertRef !== undefined && this.refs.alertRef.getValue().value) {
+      classificationHappened = true;
       currentClassificationText = "Alert";
-      text = <p>An <b>{currentClassificationText}</b> emergency event with emergency level <b>{this.refs.alertRef.getValue().alert_level}</b> has occured.</p>;
     }
 
     else if(this.refs.unusualEventRef !== undefined && this.refs.unusualEventRef.getValue().value) {
+      classificationHappened = true;
       currentClassificationText = "Unusual Event";
-      text = <p>An <b>{currentClassificationText}</b> emergency event with emergency level <b>{this.refs.unusualEventRef.getValue().alert_level}</b> has occured.</p>;
+    }
+
+    if(classificationHappened){
+      text = <p>A <b>{currentClassificationText}</b> emergency event with <b>{this.refs.generalEmergencyRef.getValue().alert_level}</b> has occured in <b>Mode {store.getState().mode}</b> in the <b>{store.getState().recognitionCategory}</b> category</p>;
     }
 
     if(isIE || isEdge)

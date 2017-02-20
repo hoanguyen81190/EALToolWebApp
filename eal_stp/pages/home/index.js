@@ -27,7 +27,7 @@ class HomePage extends React.Component {
     var element = document.getElementById(this.state.mode);
     this.changeButtonOnClick(element);
     this.handleModeButtonDisabling(_mode);
-    document.getElementById(_mode).style.backgroundColor = 'Red';
+    document.getElementById(_mode).style.backgroundColor = "#EF5350";
     this.setState({mode: _mode});
   }
 
@@ -35,7 +35,7 @@ class HomePage extends React.Component {
     var element = document.getElementById(this.state.recognitionCategory);
     this.changeButtonOnClick(element);
     this.handleCategoriesButtonDisabling(_cat);
-    document.getElementById(_cat.name).style.backgroundColor = 'Red';
+    document.getElementById(_cat.name).style.backgroundColor = "#EF5350";
     this.setState({recognitionCategory: _cat.name});
   }
 
