@@ -16,6 +16,7 @@ import BarrierCard from './barrierTableSTP';
 import {eALDocument} from '../../database-loader';
 
 import {TextComponent} from '../../components/MDL/TextComponent';
+import {TimerComponent} from '../../components/MDL/TimerComponent';
 
 class BarrierMatrixPage extends React.Component {
   constructor(){
@@ -125,6 +126,8 @@ class BarrierMatrixPage extends React.Component {
   }
 
   handleSubmit() {
+    this.refs.LayoutRef.getFooterRef().getClockRef().resetTimer();
+
     var emergencyResult = this.calculateEmergencyLevel();
     var currentClassificationText;
     if(emergencyResult === 'None')
@@ -200,7 +203,7 @@ class BarrierMatrixPage extends React.Component {
     var currentClassification = "Current classification - " + this.state.currentClassification;
 
     return (
-      <Layout className={s.content} footerLeftContent={this.getFooterContent()}>
+      <Layout ref="LayoutRef" className={s.content} footerLeftContent={this.getFooterContent()}>
         <div className= {s.recognitionCategoryText}>
           <div className={s.categoryTextWrapper}>Mode {this.state.mode} - Fission Product Barrier Matrix</div>
           <TextComponent style={s.classificationTextWrapper} text={currentClassification} ref="classificationTextWrapperRef"/>

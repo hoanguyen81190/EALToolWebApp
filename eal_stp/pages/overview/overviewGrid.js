@@ -10,12 +10,8 @@ const React = require('react');
 class Condition extends React.Component {
   render() {
     if(this.props.object.type === "Leaf") {
-      var leafText = (this.props.index + 1) + '. ' + this.props.object.description.text;
       var element =
-      <div className={s.test3}>
-
-         <div className={s.test4} dangerouslySetInnerHTML={{__html: leafText}}/>
-      </div>;
+         <div className={s.conditionLeafText} dangerouslySetInnerHTML={{__html: this.props.object.description.text}}/>;
       return element;
     }
     else {
@@ -24,12 +20,12 @@ class Condition extends React.Component {
          {
            this.props.object.children.map((ele, index) => {
              if(index != this.props.object.children.length - 1) {
-               return <div className={s.test} key={index}>
+               return <div key={index}>
                  <Condition object = {ele} index = {index}/>
                  <div className={s.operator}>{this.props.object.type}</div>
                </div>;
              }
-             return <div className={s.test2} key={index}>
+             return <div key={index}>
                <Condition object = {ele} index = {index}/>
              </div>;
            })
@@ -37,6 +33,16 @@ class Condition extends React.Component {
       </div>;
       return element;
     }
+  }
+}
+
+class AlertLevel extends React.Component {
+  render() {
+    var ele = <div className={s.alertLevel}>
+      <div className={s.alertLevelText} dangerouslySetInnerHTML={{__html: this.props.content.level}}/>
+      <Condition object={this.props.content.conditions}/>
+    </div>;
+    return ele;
   }
 }
 
@@ -68,9 +74,13 @@ class Criterion extends React.Component {
     }
     var element =
     <div className={s.box} onClick={() => this.handleClick(this.props.criterion)}>
-      <div className={s.criterionName}>{this.props.criterion.name}</div>
-      <div className={s.criterionDescription} dangerouslySetInnerHTML={{__html: this.props.criterion.description.text}}/>
-      <div className={s.conditionText}>{condition}</div>
+      <div className={s.initialCondition}>
+        <span className={s.criterionName}>{this.props.criterion.name}</span> - Initiating Condition:
+        <div className={s.criterionDescription} dangerouslySetInnerHTML={{__html: this.props.criterion.description.text}}/>
+      </div>
+      {this.props.criterion.alert_level.map((level, index) => {
+        return <AlertLevel content={level}/>
+      })}
     </div>;
     return element;
   }

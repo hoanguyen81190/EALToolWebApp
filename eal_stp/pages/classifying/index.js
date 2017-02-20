@@ -16,7 +16,6 @@ import documentIcon from '../../resources/Document-50.png';
 
 import {TreeChip, TreeCard} from '../../components/MDL/CustomMDLComponents';
 import {TextComponent} from '../../components/MDL/TextComponent';
-import {TimerComponent} from '../../components/MDL/TimerComponent';
 
 import CategoryCard from './categoryCardSTP';
 
@@ -96,6 +95,8 @@ class ClassifyingPage extends React.Component {
   }
 
   handleSubmit(){
+    this.refs.LayoutRef.getFooterRef().getClockRef().resetTimer();
+
     // Internet Explorer 6-11
     var isIE = /*@cc_on!@*/false || !!document.documentMode;
     // Edge 20+
@@ -155,14 +156,6 @@ class ClassifyingPage extends React.Component {
     );
   }
 
-  getFooterRightContent() {
-    return (
-      <TimerComponent
-        className={s.clockStyle}
-        hours={0} minutes={15} seconds={0} type="decrement"/>
-    );
-  }
-
   openDocument(page, pageRange) {
     console.log("Hello");
     this.refs.pdfDocument.setState({
@@ -185,9 +178,9 @@ class ClassifyingPage extends React.Component {
     var currentClassification = "Current classification - " + this.state.currentClassification;
 
     return (
-      <Layout className={s.content} footerLeftContent={this.getFooterLeftContent()} footerRightContent={this.getFooterRightContent()}>
+      <Layout ref="LayoutRef" className={s.content} footerLeftContent={this.getFooterLeftContent()}>
           <div className= {s.recognitionCategoryText}>
-            <div className={s.categoryTextWrapper}>Mode {this.state.mode} - {this.state.recognitionCategory}: {store.getState().criterionObject.name}</div>
+            <div className={s.categoryTextWrapper}>Mode {this.state.mode} - {this.state.recognitionCategory}</div>
             <TextComponent style={s.classificationTextWrapper} text={currentClassification} ref="classificationTextWrapperRef"/>
 
         </div>

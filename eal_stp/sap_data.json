@@ -8,7 +8,7 @@
 		6,
 		"Defueled"
 	],
-	"recognition_categories": 
+	"recognition_categories":
 	[
 		{
 			"name": "System Malfunctions",
@@ -18,11 +18,11 @@
 				3,
 				4
 			],
-			"emergency_categories": 
+			"emergency_categories":
 			[
 				{
 					"name": "General Emergency",
-					"criterions": 
+					"criterions":
 					[
 						{
 							"name": "SG1",
@@ -40,23 +40,23 @@
 								}
 							},
 							"alert_level":
-							[						
-								{ 
+							[
+								{
 									"level" : "EAL-1",
-									"conditions": 
+									"conditions":
 									{
-										"type": "AND",					
-										"children": 
+										"type": "AND",
+										"children":
 										[
 											{
 												"type": "Leaf",
 												"description": {
 													"text": "Loss of <b>ALL</b> offsite and <b>ALL</b> onsite AC power to 4160V AC ESF Buses"
 												}
-											}, 
+											},
 											{
 												"type": "OR",
-												"children": 
+												"children":
 												[
 													{
 														"type": "Leaf",
@@ -75,7 +75,7 @@
 										]
 									}
 								}
-							]							
+							]
 						},
 						{
 							"name": "SG8",
@@ -93,36 +93,36 @@
 								}
 							},
 							"alert_level":
-							[						
-								{ 
+							[
+								{
 									"level" : "EAL-1",
-									"conditions": 
+									"conditions":
 									{
-										"type": "AND",					
-										"children": 
+										"type": "AND",
+										"children":
 										[
 											{
 												"type": "Leaf",
 												"description": {
 													"text": "Loss of <b>ALL</b> offsite and <b>ALL</b> onsite AC power to <b>ALL</b> three 4160V AC ESF buses for 15 minutes or longer"
 												}
-											}, 
-											{											
+											},
+											{
 												"type": "Leaf",
 												"description": {
 													"text": "Indicated voltage is less than 105.5 VDC on <b>ALL</b> Class 1E 125 VDC battery buses for 15 minutes or longer"
-												}												
+												}
 											}
 										]
 									}
 								}
-							]							
+							]
 						}
 					]
 				},
 				{
 					"name": "Site Area Emergency",
-					"criterions": 
+					"criterions":
 					[
 						{
 							"name": "SS1",
@@ -140,18 +140,18 @@
 								}
 							},
 							"alert_level":
-							[						
-								{ 
+							[
+								{
 									"level" : "EAL-1",
-									"conditions": 
+									"conditions":
 									{
 										"type": "Leaf",
 										"description": {
 											"text": "Loss of <b>ALL</b> offsite and <b>ALL</b> onsite AC power to <b>ALL</b> three 4160V AC ESF Buses for 15 minutes or longer"
-										}								
+										}
 									}
 								}
-							]						
+							]
 						},
 						{
 							"name": "SS5",
@@ -167,13 +167,13 @@
 								}
 							},
 							"alert_level":
-							[						
-								{ 
+							[
+								{
 									"level" : "EAL-1",
-									"conditions": 
+									"conditions":
 									{
 										"type": "AND",
-										"children": 
+										"children":
 										[
 											{
 												"type": "Leaf",
@@ -188,8 +188,8 @@
 												}
 											},
 											{
-												"type": "AND",
-												"children": 
+												"type": "OR",
+												"children":
 												[
 													{
 														"type": "Leaf",
@@ -204,11 +204,11 @@
 														}
 													}
 												]
-											}										
-										]								
+											}
+										]
 									}
 								}
-							]						
+							]
 						},
 						{
 							"name": "SS8",
@@ -226,10 +226,10 @@
 								}
 							},
 							"alert_level":
-							[						
-								{ 
+							[
+								{
 									"level" : "EAL-1",
-									"conditions": 
+									"conditions":
 									{
 										"type": "Leaf",
 										"description": {
@@ -237,15 +237,15 @@
 										}
 									}
 								}
-							]							
+							]
 						}
 					]
 				},
 				{
 					"name": "Alert",
-					"criterions": 
+					"criterions":
 					[
-						{							
+						{
 							"name": "SA1",
 							"mode_applicability": [
 								1,
@@ -259,15 +259,15 @@
 									"page": 41,
 									"range": 2
 								}
-							},							
+							},
 							"alert_level":
-							[						
-								{ 
+							[
+								{
 									"level" : "EAL-1",
-									"conditions": 
-									{					
+									"conditions":
+									{
 										"type": "AND",
-										"children": 
+										"children":
 										[
 											{
 												"type": "Leaf",
@@ -302,13 +302,13 @@
 								}
 							},
 							"alert_level":
-							[						
-								{ 
+							[
+								{
 									"level" : "EAL-1",
-									"conditions": 
+									"conditions":
 									{
 										"type": "AND",
-										"children": 
+										"children":
 										[
 											{
 												"type": "Leaf",
@@ -325,7 +325,7 @@
 										]
 									}
 								}
-							]							
+							]
 						},
 						{
 							"name": "SA5",
@@ -341,10 +341,10 @@
 								}
 							},
 							"alert_level":
-							[						
-								{ 
+							[
+								{
 									"level" : "EAL-1",
-									"conditions": 
+									"conditions":
 									{
 										"type": "Leaf",
 										"description": {
@@ -352,7 +352,7 @@
 										}
 									}
 								}
-							]							
+							]
 						},
 						{
 							"name": "SA9",
@@ -370,13 +370,13 @@
 								}
 							},
 							"alert_level":
-							[						
-								{ 
+							[
+								{
 									"level" : "EAL-1",
-									"conditions": 
+									"conditions":
 									{
 										"type": "AND",
-										"children": 
+										"children":
 										[
 											{
 												"type": "Leaf",
@@ -386,7 +386,7 @@
 											},
 											{
 												"type": "OR",
-												"children": 
+												"children":
 												[
 													{
 														"type": "Leaf",
@@ -402,16 +402,16 @@
 													}
 												]
 											}
-										]										
+										]
 									}
 								}
-							]							
+							]
 						}
 					]
 				},
 				{
 					"name": "Unusual Event",
-					"criterions": 
+					"criterions":
 					[
 						{
 							"name": "SU1",
@@ -429,10 +429,10 @@
 								}
 							},
 							"alert_level":
-							[						
-								{ 
+							[
+								{
 									"level" : "EAL-1",
-									"conditions": 
+									"conditions":
 									{
 										"type": "Leaf",
 										"description": {
@@ -458,10 +458,10 @@
 								}
 							},
 							"alert_level":
-							[						
-								{ 
+							[
+								{
 									"level" : "EAL-1",
-									"conditions": 
+									"conditions":
 									{
 										"type": "Leaf",
 										"description": {
@@ -487,10 +487,10 @@
 								}
 							},
 							"alert_level":
-							[						
-								{ 
+							[
+								{
 									"level" : "EAL-1",
-									"conditions": 
+									"conditions":
 									{
 										"type": "Leaf",
 										"description": {
@@ -498,12 +498,12 @@
 										}
 									}
 								},
-								{ 
+								{
 									"level" : "EAL-2",
-									"conditions": 
+									"conditions":
 									{
 										"type": "OR",
-										"children": 
+										"children":
 										[
 											{
 												"type": "Leaf",
@@ -514,7 +514,7 @@
 											{
 												"type": "Leaf",
 												"description": {
-													"text": "Greater than 100/ Ē bar Ci /gm gross activity"
+													"text": "Greater than 100/ Ē bar µCi /gm gross activity"
 												}
 											}
 										]
@@ -538,10 +538,10 @@
 								}
 							},
 							"alert_level":
-							[						
-								{ 
+							[
+								{
 									"level" : "EAL-1",
-									"conditions": 
+									"conditions":
 									{
 										"type": "Leaf",
 										"description": {
@@ -549,9 +549,9 @@
 										}
 									}
 								},
-								{ 
+								{
 									"level" : "EAL-2",
-									"conditions": 
+									"conditions":
 									{
 										"type": "Leaf",
 										"description": {
@@ -559,9 +559,9 @@
 										}
 									}
 								},
-								{ 
+								{
 									"level" : "EAL-3",
-									"conditions": 
+									"conditions":
 									{
 										"type": "Leaf",
 										"description": {
@@ -585,13 +585,13 @@
 								}
 							},
 							"alert_level":
-							[						
-								{ 
+							[
+								{
 									"level" : "EAL-1",
-									"conditions": 
+									"conditions":
 									{
 										"type": "AND",
-										"children": 
+										"children":
 										[
 											{
 												"type": "Leaf",
@@ -606,15 +606,15 @@
 												}
 											}
 										]
-										
+
 									}
 								},
-								{ 
+								{
 									"level" : "EAL-2",
-									"conditions": 
+									"conditions":
 									{
 										"type": "AND",
-										"children": 
+										"children":
 										[
 											{
 												"type": "Leaf",
@@ -624,7 +624,7 @@
 											},
 											{
 												"type": "OR",
-												"children": 
+												"children":
 												[
 													{
 														"type": "Leaf",
@@ -638,9 +638,9 @@
 															"text": "A subsequent automatic trip is successful in shutting down the reactor"
 														}
 													}
-												]											
+												]
 											}
-										]								
+										]
 									}
 								}
 							]
@@ -661,35 +661,35 @@
 								}
 							},
 							"alert_level":
-							[						
-								{ 
+							[
+								{
 									"level" : "EAL-1",
-									"conditions": 
+									"conditions":
 									{
 										"type": "Leaf",
 										"description": {
 											"text": "Loss of <b>ALL</b> of the following onsite communication methods listed in Table S2"
-										}									
+										}
 									}
 								},
-								{ 
+								{
 									"level" : "EAL-2",
-									"conditions": 
+									"conditions":
 									{
 										"type": "Leaf",
 										"description": {
 											"text": "Loss of <b>ALL</b> of the following Offsite Response Organization (ORO) communications methods listed in Table S2"
-										}					
+										}
 									}
 								},
-								{ 
+								{
 									"level" : "EAL-3",
-									"conditions": 
+									"conditions":
 									{
 										"type": "Leaf",
 										"description": {
 											"text": "Loss of <b>ALL</b> of the following NRC communications methods listed in Table S2"
-										}					
+										}
 									}
 								}
 							]
@@ -710,13 +710,13 @@
 								}
 							},
 							"alert_level":
-							[						
-								{ 
+							[
+								{
 									"level" : "EAL-1",
-									"conditions": 
+									"conditions":
 									{
 										"type": "AND",
-										"children": 
+										"children":
 										[
 											{
 												"type": "Leaf",
@@ -730,15 +730,15 @@
 													"text": "required penetrations are not isolated within 15 minutes of the actuation signal"
 												}
 											}
-										]																	
+										]
 									}
 								},
-								{ 
+								{
 									"level" : "EAL-2",
-									"conditions": 
+									"conditions":
 									{
 										"type": "AND",
-										"children": 
+										"children":
 										[
 											{
 												"type": "Leaf",
@@ -752,7 +752,7 @@
 													"text": "No Containment Spray train is operating per design for 15 minutes or longer"
 												}
 											}
-										]																	
+										]
 									}
 								}
 							]
@@ -772,11 +772,11 @@
 				6,
 				"Defueled"
 			],
-			"emergency_categories": 
+			"emergency_categories":
 			[
 				{
 					"name": "General Emergency",
-					"criterions": 
+					"criterions":
 					[
 						{
 							"name": "HG1",
@@ -797,20 +797,20 @@
 								}
 							},
 							"alert_level":
-							[						
-								{ 
+							[
+								{
 									"level" : "EAL-1",
-									"conditions": 
+									"conditions":
 									{
-										"type": "AND",					
-										"children": 
+										"type": "AND",
+										"children":
 										[
 											{
 												"type": "Leaf",
 												"description": {
 													"text": "A HOSTILE ACTION is occurring or has occurred within the PROTECTED AREA as reported by <b>ANY</b> of the following in Table H1"
 												}
-											}, 
+											},
 											{
 												"type": "OR",
 												"children":
@@ -833,11 +833,11 @@
 														}
 													}
 												]
-											}					
+											}
 										]
 									}
 								}
-							]							
+							]
 						},
 						{
 							"name": "HG7",
@@ -858,24 +858,24 @@
 								}
 							},
 							"alert_level":
-							[						
-								{ 
+							[
+								{
 									"level" : "EAL-1",
-									"conditions": 
-									{							
+									"conditions":
+									{
 										"type": "Leaf",
 										"description": {
 											"text": "Other conditions exist which in the judgment of the Emergency Director indicate that events are in progress or have occurred which involve actual or IMMINENT substantial core degradation or melting with potential for loss of containment integrity or HOSTILE ACTION that results in an actual loss of physical control of the FACILITY. Releases can be reasonably expected to exceed EPA PROTECTIVE ACTION GUIDELINE exposure levels offsite for more than the immediate site area"
-										}											
+										}
 									}
 								}
-							]							
+							]
 						}
 					]
 				},
 				{
 					"name": "Site Area Emergency",
-					"criterions": 
+					"criterions":
 					[
 						{
 							"name": "HS1",
@@ -896,18 +896,18 @@
 								}
 							},
 							"alert_level":
-							[						
-								{ 
+							[
+								{
 									"level" : "EAL-1",
-									"conditions": 
+									"conditions":
 									{
 										"type": "Leaf",
 										"description": {
 											"text": "A HOSTILE ACTION is occurring or has occurred within the PROTECTED AREA as reported by ANY of the following personnel in Table H1"
-										}								
+										}
 									}
 								}
-							]						
+							]
 						},
 						{
 							"name": "HS6",
@@ -928,35 +928,35 @@
 								}
 							},
 							"alert_level":
-							[						
-								{ 
+							[
+								{
 									"level" : "EAL-1",
-									"conditions": 
+									"conditions":
 									{
 										"type": "AND",
-										"children": 
+										"children":
 										[
 											{
 												"type": "Leaf",
 												"description": {
 													"text": "An event has resulted in plant control being transferred from the Control Room to the Auxiliary Shutdown Panel (ASP)"
-												}	
+												}
 											},
-											{									
+											{
 												"type": "Leaf",
 												"mode_applicability": [
 													1,
 													2,
 													3
-												],	
+												],
 												"description": {
 													"text": "Control of <b>ANY</b> of the following key safety functions in Table H2 is not reestablished within 15 minutes in Modes 1, 2 or 3 ONLY"
-												}	
+												}
 											}
-										]													
+										]
 									}
 								}
-							]						
+							]
 						},
 						{
 							"name": "HS7",
@@ -977,26 +977,26 @@
 								}
 							},
 							"alert_level":
-							[						
-								{ 
+							[
+								{
 									"level" : "EAL-1",
-									"conditions": 
-									{							
+									"conditions":
+									{
 										"type": "Leaf",
 										"description": {
 											"text": "Other conditions exist which in the judgment of the Emergency Director indicate that events are in progress or have occurred which involve actual or likely major failures of plant functions needed for protection of the public or HOSTILE ACTION that results in intentional damage or malicious acts, (1) toward site personnel or equipment that could lead to the likely failure of or, (2) that prevent effective access to equipment needed for the protection of the public. ANY releases are not expected to result in exposure levels which exceed EPA PROTECTIVE ACTION GUIDELINE exposure levels beyond the SITE BOUNDARY"
-										}											
+										}
 									}
 								}
-							]							
+							]
 						}
 					]
 				},
 				{
 					"name": "Alert",
-					"criterions": 
+					"criterions":
 					[
-						{							
+						{
 							"name": "HA1",
 							"mode_applicability": [
 								1,
@@ -1013,23 +1013,23 @@
 									"page": 77,
 									"range": 3
 								}
-							},							
+							},
 							"alert_level":
-							[						
-								{ 
+							[
+								{
 									"level" : "EAL-1",
-									"conditions": 
-									{					
+									"conditions":
+									{
 										"type": "Leaf",
 										"description": {
 											"text": "A HOSTILE ACTION is occurring or has occurred within the OWNER CONTROLLED AREA as reported by <b>ANY</b> of the following personnel in Table H1"
 										}
 									}
 								},
-								{ 
+								{
 									"level" : "EAL-2",
-									"conditions": 
-									{					
+									"conditions":
+									{
 										"type": "Leaf",
 										"description": {
 											"text": "A validated notification from NRC of an aircraft attack threat within 30 minutes of the site"
@@ -1038,7 +1038,7 @@
 								}
 							]
 						},
-						{							
+						{
 							"name": "HA5",
 							"mode_applicability": [
 								1,
@@ -1055,13 +1055,13 @@
 									"page": 91,
 									"range": 3
 								}
-							},							
+							},
 							"alert_level":
-							[						
-								{ 
+							[
+								{
 									"level" : "EAL-1",
-									"conditions": 
-									{		
+									"conditions":
+									{
 										"type": "AND",
 										"children":
 										[
@@ -1077,7 +1077,7 @@
 													"text": "Entry into the room or area is prohibited or impeded"
 												}
 											}
-										]					
+										]
 									}
 								}
 							]
@@ -1101,18 +1101,18 @@
 								}
 							},
 							"alert_level":
-							[						
-								{ 
+							[
+								{
 									"level" : "EAL-1",
-									"conditions": 
+									"conditions":
 									{
 										"type": "Leaf",
 										"description": {
 											"text": "An event has resulted in plant control being transferred from the Control Room to the Auxiliary Shutdown Panel (ASP)"
-										}														
+										}
 									}
 								}
-							]						
+							]
 						},
 						{
 							"name": "HA7",
@@ -1133,24 +1133,24 @@
 								}
 							},
 							"alert_level":
-							[						
-								{ 
+							[
+								{
 									"level" : "EAL-1",
-									"conditions": 
-									{							
+									"conditions":
+									{
 										"type": "Leaf",
 										"description": {
 											"text": "Other conditions exist which, in the judgment of the Emergency Director, indicate that events are in progress or have occurred which involve an actual or potential substantial degradation of the level of safety of the plant or a SECURITY EVENT that involves probable life threatening risk to site personnel or damage to site equipment because of HOSTILE ACTION. ANY releases are expected to be limited to small fractions of the EPA PROTECTIVE ACTION GUIDELINE exposure levels"
-										}											
+										}
 									}
 								}
-							]							
+							]
 						}
 					]
 				},
 				{
 					"name": "Unusual Event",
-					"criterions": 
+					"criterions":
 					[
 						{
 							"name": "HU1",
@@ -1171,10 +1171,10 @@
 								}
 							},
 							"alert_level":
-							[						
-								{ 
+							[
+								{
 									"level" : "EAL-1",
-									"conditions": 
+									"conditions":
 									{
 										"type": "Leaf",
 										"description": {
@@ -1182,9 +1182,9 @@
 										}
 									}
 								},
-								{ 
+								{
 									"level" : "EAL-2",
-									"conditions": 
+									"conditions":
 									{
 										"type": "Leaf",
 										"description": {
@@ -1192,9 +1192,9 @@
 										}
 									}
 								},
-								{ 
+								{
 									"level" : "EAL-3",
-									"conditions": 
+									"conditions":
 									{
 										"type": "Leaf",
 										"description": {
@@ -1223,17 +1223,17 @@
 								}
 							},
 							"alert_level":
-							[						
-								{ 
+							[
+								{
 									"level" : "EAL-1",
-									"conditions": 
+									"conditions":
 									{
 										"type": "AND",
 										"children":
 										[
 											{
 												"type": "OR",
-												"children": 
+												"children":
 												[
 													{
 														"type": "Leaf",
@@ -1255,7 +1255,7 @@
 													"text": "The occurrence of a seismic event is confirmed in manner deemed appropriate by the Shift Manager or Emergency Director"
 												}
 											}
-										]										
+										]
 									}
 								}
 							]
@@ -1279,10 +1279,10 @@
 								}
 							},
 							"alert_level":
-							[						
-								{ 
+							[
+								{
 									"level" : "EAL-1",
-									"conditions": 
+									"conditions":
 									{
 										"type": "Leaf",
 										"description": {
@@ -1290,9 +1290,9 @@
 										}
 									}
 								},
-								{ 
+								{
 									"level" : "EAL-2",
-									"conditions": 
+									"conditions":
 									{
 										"type": "Leaf",
 										"description": {
@@ -1300,9 +1300,9 @@
 										}
 									}
 								},
-								{ 
+								{
 									"level" : "EAL-3",
-									"conditions": 
+									"conditions":
 									{
 										"type": "Leaf",
 										"description": {
@@ -1310,9 +1310,9 @@
 										}
 									}
 								},
-								{ 
+								{
 									"level" : "EAL-4",
-									"conditions": 
+									"conditions":
 									{
 										"type": "Leaf",
 										"description": {
@@ -1320,9 +1320,9 @@
 										}
 									}
 								},
-								{ 
+								{
 									"level" : "EAL-5",
-									"conditions": 
+									"conditions":
 									{
 										"type": "Leaf",
 										"description": {
@@ -1351,17 +1351,17 @@
 								}
 							},
 							"alert_level":
-							[						
-								{ 
+							[
+								{
 									"level" : "EAL-1",
-									"conditions": 
+									"conditions":
 									{
 										"type": "AND",
 										"children":
 										[
 											{
 												"type": "OR",
-												"children": 
+												"children":
 												[
 													{
 														"type": "Leaf",
@@ -1380,7 +1380,7 @@
 														"description": {
 															"text": "Field verification of a single fire alarm"
 														}
-													}													
+													}
 												]
 											},
 											{
@@ -1392,9 +1392,9 @@
 										]
 									}
 								},
-								{ 
+								{
 									"level" : "EAL-2",
-									"conditions": 
+									"conditions":
 									{
 										"type": "AND",
 										"children":
@@ -1417,12 +1417,12 @@
 													"text": "The existence of a FIRE is not verified within 30-minutes of alarm receipt"
 												}
 											}
-										]					
+										]
 									}
 								},
-								{ 
+								{
 									"level" : "EAL-3",
-									"conditions": 
+									"conditions":
 									{
 										"type": "Leaf",
 										"description": {
@@ -1430,9 +1430,9 @@
 										}
 									}
 								},
-								{ 
+								{
 									"level" : "EAL-4",
-									"conditions": 
+									"conditions":
 									{
 										"type": "Leaf",
 										"description": {
@@ -1461,18 +1461,18 @@
 								}
 							},
 							"alert_level":
-							[						
-								{ 
+							[
+								{
 									"level" : "EAL-1",
-									"conditions": 
-									{							
+									"conditions":
+									{
 										"type": "Leaf",
 										"description": {
 											"text": "Other conditions exist which in the judgment of the Emergency Director indicate that events are in progress or have occurred which indicate a potential degradation of the level of safety of the plant or indicate a security threat to FACILITY protection has been initiated. No releases of radioactive material requiring offsite response or monitoring are expected unless further degradation of safety systems occurs"
-										}											
+										}
 									}
 								}
-							]							
+							]
 						}
 					]
 				}
@@ -1489,11 +1489,11 @@
 				6,
 				"Defueled"
 			],
-			"emergency_categories": 
+			"emergency_categories":
 			[
 				{
 					"name": "General Emergency",
-					"criterions": 
+					"criterions":
 					[
 						{
 							"name": "RG1",
@@ -1514,31 +1514,31 @@
 								}
 							},
 							"alert_level":
-							[						
-								{ 
+							[
+								{
 									"level" : "EAL-1",
-									"conditions": 
-									{									
+									"conditions":
+									{
 										"type": "Leaf",
 										"description": {
 											"text": "Reading on <b>ANY</b> of the following radiation monitors greater than the values listed in Table R1 column “GE” for 15 minutes or longer"
-										}											
+										}
 									}
 								},
-								{ 
+								{
 									"level" : "EAL-2",
-									"conditions": 
-									{									
+									"conditions":
+									{
 										"type": "Leaf",
 										"description": {
 											"text": "Dose assessment using actual meteorology indicates doses greater than 1,000 mrem TEDE or 5,000 mrem THYROID CDE at or beyond the SITE BOUNDARY"
-										}											
+										}
 									}
 								},
-								{ 
+								{
 									"level" : "EAL-3",
-									"conditions": 
-									{	
+									"conditions":
+									{
 										"type": "OR",
 										"children":
 										[
@@ -1554,10 +1554,10 @@
 													"text": "Field survey results indicate the following at or beyond the SITE BOUNDARY: Analyses of field survey samples indicate THYROID CDE greater than 5,000 mrem for one hour of inhalation"
 												}
 											}
-										]																					
+										]
 									}
 								}
-							]							
+							]
 						},
 						{
 							"name": "RG2",
@@ -1578,24 +1578,24 @@
 								}
 							},
 							"alert_level":
-							[						
-								{ 
+							[
+								{
 									"level" : "EAL-1",
-									"conditions": 
-									{									
+									"conditions":
+									{
 										"type": "Leaf",
 										"description": {
 											"text": "Spent fuel pool level cannot be restored to at least 40’- 4” for 60 minutes or longer"
-										}											
+										}
 									}
 								}
-							]							
+							]
 						}
 					]
 				},
 				{
 					"name": "Site Area Emergency",
-					"criterions": 
+					"criterions":
 					[
 						{
 							"name": "RS1",
@@ -1616,31 +1616,31 @@
 								}
 							},
 							"alert_level":
-							[						
-								{ 
+							[
+								{
 									"level" : "EAL-1",
-									"conditions": 
+									"conditions":
 									{
 										"type": "Leaf",
 										"description": {
 											"text": "Reading on <b>ANY</b> of the following radiation monitors greater than the values listed in Table R1 column “SAE” for 15 minutes or longer"
-										}								
+										}
 									}
 								},
-								{ 
+								{
 									"level" : "EAL-2",
-									"conditions": 
+									"conditions":
 									{
 										"type": "Leaf",
 										"description": {
 											"text": "Dose assessment using actual meteorology indicates doses greater than 100 mrem TEDE or 500 mrem THYROID CDE at or beyond the SITE BOUNDARY"
-										}								
+										}
 									}
 								},
-								{ 
+								{
 									"level" : "EAL-3",
-									"conditions": 
-									{	
+									"conditions":
+									{
 										"type": "OR",
 										"children":
 										[
@@ -1656,10 +1656,10 @@
 													"text": "Field survey results indicate the following at ot beyond the SITE BOUNDARY: Analyses of field survey samples indicate THYROID CDE greater than 500 mrem for one hour of inhalation"
 												}
 											}
-										]																									
+										]
 									}
 								}
-							]						
+							]
 						},
 						{
 							"name": "RS2",
@@ -1680,24 +1680,24 @@
 								}
 							},
 							"alert_level":
-							[						
-								{ 
+							[
+								{
 									"level" : "EAL-1",
-									"conditions": 
-									{									
+									"conditions":
+									{
 										"type": "Leaf",
 										"description": {
 											"text": "Lowering of spent fuel pool level to 40’- 4” or lower"
-										}											
+										}
 									}
 								}
-							]							
+							]
 						}
 					]
 				},
 				{
 					"name": "Alert",
-					"criterions": 
+					"criterions":
 					[
 						{
 							"name": "RA1",
@@ -1718,41 +1718,41 @@
 								}
 							},
 							"alert_level":
-							[						
-								{ 
+							[
+								{
 									"level" : "EAL-1",
-									"conditions": 
+									"conditions":
 									{
 										"type": "Leaf",
 										"description": {
 											"text": "Reading on <b>ANY</b> of the following radiation monitors greater than the values listed in Table R1 column “ALERT” for 15 minutes or longer"
-										}								
+										}
 									}
 								},
-								{ 
+								{
 									"level" : "EAL-2",
-									"conditions": 
+									"conditions":
 									{
 										"type": "Leaf",
 										"description": {
 											"text": "Dose assessment using actual meteorology indicates doses greater than 10 mrem TEDE or 50 mrem THYROID CDE at or beyond the SITE BOUNDARY"
-										}								
+										}
 									}
 								},
-								{ 
+								{
 									"level" : "EAL-3",
-									"conditions": 
+									"conditions":
 									{
 										"type": "Leaf",
 										"description": {
 											"text": "Analysis of a liquid effluent sample indicates a concentration or release rate that would result in doses greater than 10 mrem TEDE or 50 mrem THYROID CDE at or beyond the SITE BOUNDARY for one hour of exposure"
-										}								
+										}
 									}
 								},
-								{ 
+								{
 									"level" : "EAL-4",
-									"conditions": 
-									{	
+									"conditions":
+									{
 										"type": "OR",
 										"children":
 										[
@@ -1768,10 +1768,10 @@
 													"text": "Field survey results indicate the following at ot beyond the SITE BOUNDARY: Analyses of field survey samples indicate THYROID CDE greater than 50 mrem for one hour of inhalation"
 												}
 											}
-										]																									
+										]
 									}
 								}
-							]						
+							]
 						},
 						{
 							"name": "RA2",
@@ -1792,21 +1792,21 @@
 								}
 							},
 							"alert_level":
-							[						
-								{ 
+							[
+								{
 									"level" : "EAL-1",
-									"conditions": 
-									{									
+									"conditions":
+									{
 										"type": "Leaf",
 										"description": {
 											"text": "Uncovery of irradiated fuel in the REFUELING PATHWAY"
-										}											
+										}
 									}
 								},
-								{ 
+								{
 									"level" : "EAL-2",
-									"conditions": 
-									{			
+									"conditions":
+									{
 										"type": "OR",
 										"children":
 										[
@@ -1817,7 +1817,7 @@
 													{
 														"type": "Leaf",
 														"description": {
-															"text": "Damage to irradiated fuel resulting in a release of radioactivity from the fuel as indicated by <b>ANY</b> of the following FHB radiation monitors: FHB Exhaust, RT-8035 or RT-8036 greater than 1.00 E-1 Ci/ml"
+															"text": "Damage to irradiated fuel resulting in a release of radioactivity from the fuel as indicated by <b>ANY</b> of the following FHB radiation monitors: FHB Exhaust, RT-8035 or RT-8036 greater than 1.00 E-1 μCi/ml"
 														}
 													},
 													{
@@ -1828,7 +1828,7 @@
 													}
 												]
 											},
-											{												
+											{
 												"type": "Leaf",
 												"mode_applicability": [
 													5,
@@ -1836,23 +1836,23 @@
 												],
 												"description": {
 													"text": "Damage to irradiated fuel resulting in a release of radioactivity from the fuel as indicated by <b>ANY</b> of the following RCB radiation monitors readings (Mode 5 or 6 only): ARM (68’ RCB), RE-8055 or RE-8099 greater than 850 mR/hr"
-												}	
+												}
 											}
 										]
-																				
+
 									}
 								},
-								{ 
+								{
 									"level" : "EAL-3",
-									"conditions": 
-									{									
+									"conditions":
+									{
 										"type": "Leaf",
 										"description": {
 											"text": "Lowering of spent fuel pool level to 49’-10” or below"
-										}											
+										}
 									}
 								}
-							]							
+							]
 						},
 						{
 							"name": "RA3",
@@ -1873,46 +1873,46 @@
 								}
 							},
 							"alert_level":
-							[						
-								{ 
+							[
+								{
 									"level" : "EAL-1",
-									"conditions": 
-									{			
+									"conditions":
+									{
 										"type": "OR",
-										"children": 
+										"children":
 										[
 											{
 												"type": "Leaf",
 												"description": {
 													"text": "Dose rate greater than 15 mR/hr in the following area: Control Room ARM (RE-8066)"
-												}	
+												}
 											},
 											{
 												"type": "Leaf",
 												"description": {
 													"text": "Dose rate greater than 15 mR/hr in the following area: Central Alarm Station (CAS) by radiation survey"
-												}	
+												}
 											}
-										]											
+										]
 									}
 								},
-								{ 
+								{
 									"level" : "EAL-2",
-									"conditions": 
-									{											
+									"conditions":
+									{
 										"type": "Leaf",
 										"description": {
 											"text": "An UNPLANNED event results in radiation levels that prohibit or impede access to <b>ANY</b> of the areas listed in Table H3/R2"
-										}																				
+										}
 									}
 								}
-							]							
+							]
 						}
 					]
 				},
 				{
 					"name": "Unusual Event",
-					"criterions": 
+					"criterions":
 					[
 						{
 							"name": "RU1",
@@ -1933,38 +1933,38 @@
 								}
 							},
 							"alert_level":
-							[						
-								{ 
+							[
+								{
 									"level" : "EAL-1",
-									"conditions": 
+									"conditions":
 									{
 										"type": "Leaf",
 										"description": {
 											"text": "Reading on <b>ANY</b> of the following radiation monitors greater than the values listed in Table R1 column “UE” for 60 minutes or longer"
-										}								
+										}
 									}
 								},
-								{ 
+								{
 									"level" : "EAL-2",
-									"conditions": 
+									"conditions":
 									{
 										"type": "Leaf",
 										"description": {
 											"text": "Reading on gaseous effluent radiation monitor RT-8010B greater than 2 times the alarm setpoint established by a current radioactivity discharge permit for 60 minutes or longer"
-										}								
+										}
 									}
 								},
-								{ 
+								{
 									"level" : "EAL-3",
-									"conditions": 
+									"conditions":
 									{
 										"type": "Leaf",
 										"description": {
 											"text": "Sample analysis for a gaseous or liquid release indicates a concentration or release rate greater than 2 times the ODCM limits for 60 minutes or longer"
-										}								
+										}
 									}
 								}
-							]						
+							]
 						},
 						{
 							"name": "RU2",
@@ -1985,11 +1985,11 @@
 								}
 							},
 							"alert_level":
-							[						
-								{ 
+							[
+								{
 									"level" : "EAL-1",
-									"conditions": 
-									{			
+									"conditions":
+									{
 										"type": "AND",
 										"children":
 										[
@@ -2001,19 +2001,19 @@
 														"type": "Leaf",
 														"description": {
 															"text": "UNPLANNED water level drop in the REFUELING PATHWAY as indicated by Visual Observation"
-														}	
+														}
 													},
 													{
 														"type": "Leaf",
 														"description": {
 															"text": "UNPLANNED water level drop in the REFUELING PATHWAY as indicated by Annunciator alarm on lampbox 22M02 Window F-5 “SFP WATER LVL HI/LO”"
-														}	
+														}
 													},
 													{
 														"type": "Leaf",
 														"description": {
 															"text": "UNPLANNED water level drop in the REFUELING PATHWAY as indicated by Spent fuel in the ICSA <b>AND</b> Annunciator alarm on lampbox 22M02 Window F-6 “SFP Trouble” <b>AND</b> Plant Computer point FCLC1420 “REFLNG CAV LVL IN CNTMT” (ICSA Water Level HI/LO) is in alarm"
-														}	
+														}
 													}
 												]
 											},
@@ -2029,7 +2029,7 @@
 														],
 														"description": {
 															"text": "UNPLANNED rise in area radiation levels on the following radiation monitor: RE-8055 (68’ RCB) - Mode 5 or 6 only"
-														}	
+														}
 													},
 													{
 														"type": "Leaf",
@@ -2039,20 +2039,20 @@
 														],
 														"description": {
 															"text": "UNPLANNED rise in area radiation levels on the following radiation monitor: RE-8099 (68’ RCB) - Mode 5 or 6 only"
-														}	
+														}
 													},
 													{
 														"type": "Leaf",
 														"description": {
 															"text": "UNPLANNED rise in area radiation levels on the following radiation monitor: RE-8090 (68’ FHB)"
-														}	
+														}
 													}
 												]
 											}
-										]																	
+										]
 									}
 								}
-							]							
+							]
 						}
 					]
 				}
@@ -2069,29 +2069,29 @@
 				6,
 				"Defueled"
 			],
-			"emergency_categories": 
+			"emergency_categories":
 			[
 				{
 					"name": "General Emergency",
-					"criterions": 
-					[					
+					"criterions":
+					[
 					]
 				},
 				{
 					"name": "Site Area Emergency",
-					"criterions": 
-					[					
+					"criterions":
+					[
 					]
 				},
 				{
 					"name": "Alert",
-					"criterions": 
-					[					
+					"criterions":
+					[
 					]
 				},
 				{
 					"name": "Unusual Event",
-					"criterions": 
+					"criterions":
 					[
 						{
 							"name": "E-HU1",
@@ -2112,10 +2112,10 @@
 								}
 							},
 							"alert_level":
-							[						
-								{ 
+							[
+								{
 									"level" : "EAL-1",
-									"conditions": 
+									"conditions":
 									{
 										"type": "OR",
 										"children":
@@ -2138,10 +2138,10 @@
 													"text": "Damage to a loaded cask CONFINEMENT BOUNDARY as indicated by an on-contact radiation reading greater than: 7000 mrem/hr (gamma + neutron) on the side surface of the transfer cask"
 												}
 											}
-										]																		
+										]
 									}
 								}
-							]						
+							]
 						}
 					]
 				}
@@ -2154,12 +2154,12 @@
 				6,
 				"Defueled"
 			],
-			"emergency_categories": 
+			"emergency_categories":
 			[
 				{
 					"name": "General Emergency",
-					"criterions": 
-					[		
+					"criterions":
+					[
 						{
 							"name": "CG1",
 							"mode_applicability": [
@@ -2174,10 +2174,10 @@
 								}
 							},
 							"alert_level":
-							[						
-								{ 
+							[
+								{
 									"level" : "EAL-1",
-									"conditions": 
+									"conditions":
 									{
 										"type": "AND",
 										"children":
@@ -2194,12 +2194,12 @@
 													"text": "<b>ANY</b> indication from Table C1"
 												}
 											}
-										]																		
+										]
 									}
 								},
-								{ 
+								{
 									"level" : "EAL-2",
-									"conditions": 
+									"conditions":
 									{
 										"type": "AND",
 										"children":
@@ -2240,17 +2240,17 @@
 													"text": "<b>ANY</b> indication from Table C1"
 												}
 											}
-										]																		
+										]
 									}
 								}
-							]						
+							]
 						}
 					]
 				},
 				{
 					"name": "Site Area Emergency",
-					"criterions": 
-					[		
+					"criterions":
+					[
 						{
 							"name": "CS1",
 							"mode_applicability": [
@@ -2265,10 +2265,10 @@
 								}
 							},
 							"alert_level":
-							[						
-								{ 
+							[
+								{
 									"level" : "EAL-1",
-									"conditions": 
+									"conditions":
 									{
 										"type": "AND",
 										"children":
@@ -2285,12 +2285,12 @@
 													"text": "RCS level less than 33% of plenum"
 												}
 											}
-										]																		
+										]
 									}
 								},
-								{ 
+								{
 									"level" : "EAL-2",
-									"conditions": 
+									"conditions":
 									{
 										"type": "AND",
 										"children":
@@ -2307,12 +2307,12 @@
 													"text": "RCS level less than 0% of plenum"
 												}
 											}
-										]																		
+										]
 									}
 								},
-								{ 
+								{
 									"level" : "EAL-3",
-									"conditions": 
+									"conditions":
 									{
 										"type": "AND",
 										"children":
@@ -2347,17 +2347,17 @@
 													}
 												]
 											}
-										]																		
+										]
 									}
 								}
-							]						
+							]
 						}
 					]
 				},
 				{
 					"name": "Alert",
-					"criterions": 
-					[	
+					"criterions":
+					[
 						{
 							"name": "CA1",
 							"mode_applicability": [
@@ -2372,20 +2372,20 @@
 								}
 							},
 							"alert_level":
-							[						
-								{ 
+							[
+								{
 									"level" : "EAL-1",
-									"conditions": 
+									"conditions":
 									{
 										"type": "Leaf",
 										"description": {
 											"text": "Loss of RCS inventory as indicated by level less than 32 ft. 9 inch (+ 6 inches above hot leg centerline)"
-										}																	
+										}
 									}
 								},
-								{ 
+								{
 									"level" : "EAL-2",
-									"conditions": 
+									"conditions":
 									{
 										"type": "AND",
 										"children":
@@ -2402,10 +2402,10 @@
 													"text": "UNPLANNED rise in <b>ANY</b> of the following sump or tank levels in Table C2 due to a loss of reactor vessel/RCS inventory"
 												}
 											}
-										]																		
+										]
 									}
 								}
-							]						
+							]
 						},
 						{
 							"name": "CA2",
@@ -2422,18 +2422,18 @@
 								}
 							},
 							"alert_level":
-							[						
-								{ 
+							[
+								{
 									"level" : "EAL-1",
-									"conditions": 
+									"conditions":
 									{
 										"type": "Leaf",
 										"description": {
 											"text": "Loss of <b>ALL</b> offsite <b>AND ALL</b> onsite AC Power to <b>ALL</b> three 4160V AC ESF Busses for 15 minutes or longer"
-										}																	
+										}
 									}
 								}
-							]						
+							]
 						},
 						{
 							"name": "CA3",
@@ -2449,28 +2449,28 @@
 								}
 							},
 							"alert_level":
-							[						
-								{ 
+							[
+								{
 									"level" : "EAL-1",
-									"conditions": 
+									"conditions":
 									{
 										"type": "Leaf",
 										"description": {
 											"text": "UNPLANNED rise in RCS temperature to greater than 200 <sup>○</sup>F (Tavg) for greater than the duration specified in Table C3"
-										}																							
+										}
 									}
 								},
-								{ 
+								{
 									"level" : "EAL-2",
-									"conditions": 
+									"conditions":
 									{
 										"type": "Leaf",
 										"description": {
 											"text": "UNPLANNED RCS pressure rise greater than 10 psig. (This EAL does not apply during water-solid plant conditions.)"
-										}																							
+										}
 									}
 								}
-							]						
+							]
 						},
 						{
 							"name": "CA6",
@@ -2486,23 +2486,23 @@
 								}
 							},
 							"alert_level":
-							[						
-								{ 
+							[
+								{
 									"level" : "EAL-1",
-									"conditions": 
+									"conditions":
 									{
 										"type": "AND",
-										"children": 
+										"children":
 										[
 											{
 												"type": "Leaf",
 												"description": {
 													"text": "The occurrence of <b>ANY</b> of the following hazardous events in Table C5"
-												}	
+												}
 											},
 											{
 												"type": "OR",
-												"children": 
+												"children":
 												[
 													{
 														"type": "Leaf",
@@ -2517,17 +2517,17 @@
 														}
 													}
 												]
-											}											
-										]																															
+											}
+										]
 									}
 								}
-							]						
+							]
 						}
 					]
 				},
 				{
 					"name": "Unusual Event",
-					"criterions": 
+					"criterions":
 					[
 						{
 							"name": "CU1",
@@ -2543,20 +2543,20 @@
 								}
 							},
 							"alert_level":
-							[						
-								{ 
+							[
+								{
 									"level" : "EAL-1",
-									"conditions": 
+									"conditions":
 									{
 										"type": "Leaf",
 										"description": {
 											"text": "UNPLANNED loss of reactor coolant results in RCS level below the procedurally required limit for 15 minutes or longer"
-										}																	
+										}
 									}
 								},
-								{ 
+								{
 									"level" : "EAL-2",
-									"conditions": 
+									"conditions":
 									{
 										"type": "AND",
 										"children":
@@ -2573,10 +2573,10 @@
 													"text": "UNPLANNED rise in <b>ANY</b> of the following sump or tank levels in Table C2"
 												}
 											}
-										]																		
+										]
 									}
 								}
-							]						
+							]
 						},
 						{
 							"name": "CU2",
@@ -2593,10 +2593,10 @@
 								}
 							},
 							"alert_level":
-							[						
-								{ 
+							[
+								{
 									"level" : "EAL-1",
-									"conditions": 
+									"conditions":
 									{
 										"type": "AND",
 										"children":
@@ -2613,10 +2613,10 @@
 													"text": "<b>ANY</b> additional single power source failure will result in loss of <b>ALL</b> AC power to SAFETY SYSTEMS"
 												}
 											}
-										]																											
+										]
 									}
 								}
-							]						
+							]
 						},
 						{
 							"name": "CU3",
@@ -2632,28 +2632,28 @@
 								}
 							},
 							"alert_level":
-							[						
-								{ 
+							[
+								{
 									"level" : "EAL-1",
-									"conditions": 
+									"conditions":
 									{
 										"type": "Leaf",
 										"description": {
 											"text": "UNPLANNED rise in RCS temperature to greater than 200 <sup>○</sup>F (Tavg)"
-										}																							
+										}
 									}
 								},
-								{ 
+								{
 									"level" : "EAL-2",
-									"conditions": 
+									"conditions":
 									{
 										"type": "Leaf",
 										"description": {
 											"text": "Loss of <b>ALL</b> RCS temperature and RCS level indication for 15 minutes or longer"
-										}																							
+										}
 									}
 								}
-							]						
+							]
 						},
 						{
 							"name": "CU4",
@@ -2669,18 +2669,18 @@
 								}
 							},
 							"alert_level":
-							[						
-								{ 
+							[
+								{
 									"level" : "EAL-1",
-									"conditions": 
+									"conditions":
 									{
 										"type": "Leaf",
 										"description": {
 											"text": "Indicated voltage is less than 105.5 VDC on required Vital DC buses for 15 minutes or longer"
-										}																							
+										}
 									}
 								}
-							]						
+							]
 						},
 						{
 							"name": "CU5",
@@ -2697,38 +2697,38 @@
 								}
 							},
 							"alert_level":
-							[						
-								{ 
+							[
+								{
 									"level" : "EAL-1",
-									"conditions": 
+									"conditions":
 									{
 										"type": "Leaf",
 										"description": {
 											"text": "Loss of <b>ALL</b> of the following Onsite communication methods in Table C4"
-										}																							
+										}
 									}
 								},
-								{ 
+								{
 									"level" : "EAL-2",
-									"conditions": 
+									"conditions":
 									{
 										"type": "Leaf",
 										"description": {
 											"text": "Loss of <b>ALL</b> of the following Offsite Response Organization (ORO) communication methods in Table C4"
-										}																							
+										}
 									}
 								},
-								{ 
+								{
 									"level" : "EAL-3",
-									"conditions": 
+									"conditions":
 									{
 										"type": "Leaf",
 										"description": {
 											"text": "Loss of <b>ALL</b> of the following NRC communication methods in Table C4"
-										}																							
+										}
 									}
 								}
-							]						
+							]
 						}
 					]
 				}
@@ -2739,7 +2739,7 @@
 	[
 		{
 			"name": "Fuel Clad Barrier",
-			"products": 
+			"products":
 			[
 				{
 					"name": "RCS or SG Tube Leakage",
@@ -2764,7 +2764,7 @@
 							"text": "Core Cooling - Orange entry conditions met"
 						}
 					}
-				},			
+				},
 				{
 					"name": "Inadequate Heat Removal",
 					"mode_applicability": [
@@ -2820,18 +2820,18 @@
 					},
 					"loss": {
 						"type": "OR",
-						"children": 
+						"children":
 						[
 							{
 								"type": "OR",
-								"children": 
+								"children":
 								[
 									{
 										"type": "Leaf",
 										"description": {
 											"text": "RCB Rad Monitor RT-8050 or RT-8051 greater than 2100 R/hr"
 										}
-									}, 
+									},
 									{
 										"type": "Leaf",
 										"description": {
@@ -2847,7 +2847,7 @@
 								}
 							}
 						]
-					}, 
+					},
 					"potential_loss": {
 					}
 				},
@@ -2906,27 +2906,27 @@
 						}
 					},
 					"loss": {
-						
+
 						"type": "Leaf",
 						"description": {
 							"text": "ANY condition in the opinion of the Emergency Director that indicates Loss of the Fuel Clad Barrier"
 						}
-						
+
 					},
 					"potential_loss": {
-						
+
 						"type": "Leaf",
 						"description": {
 							"text": "ANY condition in the opinion of the Emergency Director that indicates Potential Loss of the Fuel Clad Barrier"
 						}
-						
+
 					}
-				}				
+				}
 			]
 		},
 		{
 		"name": "RCS Barrier",
-		"products": 
+		"products":
 		[
 			{
 				"name": "RCS or SG Tube Leakage",
@@ -2944,10 +2944,10 @@
 						"range": 1
 					}
 				},
-				"loss": 
+				"loss":
 				{
 					"type": "OR",
-					"children": 
+					"children":
 					[
 						{
 							"type": "Leaf",
@@ -2963,14 +2963,14 @@
 						}
 					]
 				},
-				"potential_loss": 
+				"potential_loss":
 				{
 					"type": "OR",
-					"children": 
+					"children":
 					[
 						{
 							"type": "OR",
-							"children": 
+							"children":
 							[
 								{
 									"type": "Leaf",
@@ -2994,7 +2994,7 @@
 						}
 					]
 				}
-			},			
+			},
 			{
 				"name": "Inadequate Heat Removal",
 				"mode_applicability": [
@@ -3014,11 +3014,11 @@
 				"loss": {
 
 				},
-				"potential_loss": {				
+				"potential_loss": {
 					"type": "Leaf",
 					"description": {
 						"text": "Heat Sink - Red entry conditions met"
-					}		
+					}
 				}
 			},
 			{
@@ -3038,14 +3038,14 @@
 				},
 				"loss": {
 					"type": "OR",
-					"children": 
+					"children":
 					[
 						{
 							"type": "Leaf",
 							"description": {
 								"text": "RCB Rad Monitor RT-8050 or RT-8051 greater than 10 R/hr"
 							}
-						}, 
+						},
 						{
 							"type": "Leaf",
 							"description": {
@@ -3053,7 +3053,7 @@
 							}
 						}
 					]
-				}, 
+				},
 				"potential_loss": {
 				}
 			},
@@ -3112,27 +3112,27 @@
 					}
 				},
 				"loss": {
-					
+
 					"type": "Leaf",
 					"description": {
 						"text": "ANY condition in the opinion of the Emergency Director that indicates Loss of the RCS Barrier"
 					}
-					
+
 				},
 				"potential_loss": {
-					
+
 					"type": "Leaf",
 					"description": {
 						"text": "ANY condition in the opinion of the Emergency Director that indicates Potential Loss of the RCS Barrier"
 					}
-					
+
 				}
-			}				
+			}
 		]
 		},
 		{
 		"name": "Containment Barrier",
-		"products": 
+		"products":
 		[
 			{
 				"name": "RCS or SG Tube Leakage",
@@ -3150,19 +3150,19 @@
 						"range": 2
 					}
 				},
-				"loss": 
+				"loss":
 				{
-					
+
 					"type": "Leaf",
 					"description": {
 						"text": "A Leaking or RUPTURED SG is FAULTED outside of containment"
 					}
-					
+
 				},
-				"potential_loss": 
-				{				
+				"potential_loss":
+				{
 				}
-			},			
+			},
 			{
 				"name": "Inadequate Heat Removal",
 				"mode_applicability": [
@@ -3182,11 +3182,11 @@
 				"loss": {
 
 				},
-				"potential_loss": {				
+				"potential_loss": {
 					"type": "Leaf",
 					"description": {
 						"text": "Core Cooling – Red  entry conditions met for 15 minutes or longer"
-					}		
+					}
 				}
 			},
 			{
@@ -3204,18 +3204,18 @@
 						"range": 1
 					}
 				},
-				"loss": {				
-				}, 
+				"loss": {
+				},
 				"potential_loss": {
 					"type": "OR",
-					"children": 
+					"children":
 					[
 						{
 							"type": "Leaf",
 							"description": {
 								"text": "RCB Rad Monitor RT-8050 or RT-8051 greater than 45,000 R/hr"
 							}
-						}, 
+						},
 						{
 							"type": "Leaf",
 							"description": {
@@ -3241,14 +3241,14 @@
 						"range": 3
 					}
 				},
-				"loss": 
+				"loss":
 				{
 					"type": "OR",
-					"children": 
+					"children":
 					[
 						{
 							"type": "AND",
-							"children": 
+							"children":
 							[
 								{
 									"type": "Leaf",
@@ -3258,7 +3258,7 @@
 								},
 								{
 									"type": "OR",
-									"children": 
+									"children":
 									[
 										{
 											"type": "Leaf",
@@ -3281,13 +3281,13 @@
 							"description": {
 								"text": "Indications of RCS leakage outside of containment"
 							}
-						}						
+						}
 					]
 				},
-				"potential_loss": 
+				"potential_loss":
 				{
 					"type": "OR",
-					"children": 
+					"children":
 					[
 						{
 							"type": "Leaf",
@@ -3303,7 +3303,7 @@
 						},
 						{
 							"type": "AND",
-							"children": 
+							"children":
 							[
 								{
 									"type": "Leaf",
@@ -3320,7 +3320,7 @@
 							]
 						}
 					]
-				}		
+				}
 			},
 			{
 				"name": "Other Indications",
@@ -3358,22 +3358,22 @@
 					}
 				},
 				"loss": {
-					
+
 					"type": "Leaf",
 					"description": {
 						"text": "ANY condition in the opinion of the Emergency Director that indicates Loss of the Containment Barrier"
 					}
-					
+
 				},
 				"potential_loss": {
-					
+
 					"type": "Leaf",
 					"description": {
 						"text": "ANY condition in the opinion of the Emergency Director that indicates Potential Loss of the Containment Barrier"
 					}
-					
+
 				}
-			}				
+			}
 		]
 		}
 	]

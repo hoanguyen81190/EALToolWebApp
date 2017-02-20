@@ -2,6 +2,8 @@ import React from 'react';
 
 import cs from './ConditionComponents.css';
 
+import store from '../../core/store';
+
 import greenCheck from '../../resources/green_check.png';
 import redCheck from '../../resources/red_check.png';
 
@@ -54,6 +56,17 @@ export class Condition extends React.Component {
 
   renderLeafNode(){
     var checkImage;
+    if(this.props.content.mode_applicability !== undefined) {
+      if(this.props.content.mode_applicability.indexOf(store.getState().mode) === -1) {
+        var treeCardContent =
+          <div className={cs.leafContainer + " " + cs.disableConditionLeaf} >
+            <div className={cs.conditionTextWrapper}>
+              <span dangerouslySetInnerHTML={{__html: this.props.content.description.text}}/>
+            </div>
+          </div>;
+        return treeCardContent;
+      }
+    }
 
     if(this.value){
       checkImage = redCheck;
@@ -84,7 +97,10 @@ export class Condition extends React.Component {
     }
 
     // logicConditionColor = "mdl-color--indigo-50";
-
+    var style = '';
+    if(this.props.firstCondition) {
+      style = this.props.conditionStyle;
+    }
     this.children = [];
     var element = <div className={cs.tableWrapper}><table className={cs.conditionTable}>
       <tbody className={cs.tableSize}>
@@ -108,7 +124,7 @@ export class Condition extends React.Component {
           if(index === 0){
             var row = <tr>
               <td rowSpan={this.props.content.children.length}
-                className={cs.logicConditionText + " " + cs.conditionCell + " " + logicConditionColor + " " + cs.logicCell}>
+                className={cs.logicConditionText + " " + cs.conditionCell + " " + logicConditionColor + " " + cs.logicCell + " " + style}>
                 {this.props.content.type}
               </td>
 
@@ -130,7 +146,7 @@ export class Condition extends React.Component {
     var ele;
     this.type = this.props.content.type;
     if(this.type === undefined) {
-      ele = <td className={cs.conditionCell}><div className={cs.notApplicableCell}>Not Applicable</div></td>;
+      ele = <div className={cs.notApplicableCell}>Not Applicable</div>;
     }
     else if(this.type === "Leaf") {
       ele = this.renderLeafNode();

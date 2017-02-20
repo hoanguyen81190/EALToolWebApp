@@ -68,6 +68,8 @@ body, html{
 
 .criterionDescription{
   font-weight: normal;
+  margin-left: 5px;
+  margin-top: 5px;
 }
 
 .conditionText{
@@ -161,6 +163,20 @@ body, html{
 .gridCell:hover{
   background: rgba(0,0,255,0.1);
   cursor: pointer;
+}
+
+.initialCondition {
+  font-size: 1.2em;
+}
+
+.alertLevel {
+  margin-top: 10px;
+  position: relative;
+  margin-left: 15px;
+}
+
+.alertLevelText {
+  font-weight: bold;
 }
 
 @media screen and (max-width: 1024px) {

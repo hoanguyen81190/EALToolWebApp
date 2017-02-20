@@ -53,6 +53,8 @@
 
 .notApplicableCell{
   padding-left: 5px;
+  height: 100%;
+  cursor: default;
 }
 
 .leafContainer {
@@ -75,4 +77,10 @@
   height: 20px;
   bottom: 2px;
   right: 2px;
+}
+
+.disableConditionLeaf {
+  background-color: rgba(125,125,125,0.5);
+  color: rgb(100,100,100);
+  cursor: default;
 }

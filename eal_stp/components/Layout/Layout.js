@@ -20,6 +20,10 @@ class Layout extends React.Component {
     window.componentHandler.downgradeElements(this.root);
   }
 
+  getFooterRef() {
+    return this.refs.FooterRef;
+  }
+
   render() {
     const { footerLeftContent, footerRightContent, ...newProps } = this.props; //exclude footer properties from props because we cannot pass them to the div tag in main content
     return (
@@ -29,7 +33,7 @@ class Layout extends React.Component {
           <main className="mdl-layout__content">
             <div {...newProps} className={cx(s.content, this.props.className)} />
           </main>
-          <Footer className={s.footerlayout} leftContent={this.props.footerLeftContent} rightContent={this.props.footerRightContent}/>
+          <Footer ref="FooterRef" className={s.footerlayout} leftContent={this.props.footerLeftContent} rightContent={this.props.footerRightContent}/>
         </div>
       </div>
     );
