@@ -69,7 +69,7 @@ class Criterion extends React.Component {
     var element =
     <div className={s.box} onClick={() => this.handleClick(this.props.criterion)}>
       <div className={s.criterionName}>{this.props.criterion.name}</div>
-      <div className={s.criterionDescription}>{this.props.criterion.description.text}</div>
+      <div className={s.criterionDescription} dangerouslySetInnerHTML={{__html: this.props.criterion.description.text}}/>
       <div className={s.conditionText}>{condition}</div>
     </div>;
     return element;

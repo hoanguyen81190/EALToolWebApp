@@ -123,12 +123,12 @@
 }
 
 /* Remove the border between the first header cell and the table data cell below. Give the appearance of a merged cell */
-.roundedOutline>thead>tr:first-child>th:first-child{
+/*.roundedOutline>thead>tr:first-child>th:first-child{
   border-bottom: none;
 }
 .roundedOutline>tbody>tr:first-child>td:first-child{
   border-top: none;
-}
+}*/
 
 .sideShadows{
   border-radius: 10px;
