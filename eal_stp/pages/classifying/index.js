@@ -112,25 +112,44 @@ class ClassifyingPage extends React.Component {
     if(this.refs.generalEmergencyRef !== undefined && this.refs.generalEmergencyRef.getValue().value) {
       classificationHappened = true;
       currentClassificationText = "General Emergency";
+      emergencyLevel = this.refs.generalEmergencyRef.getValue().alert_level;
     }
 
     else if(this.refs.siteAreaEmergencyRef !== undefined && this.refs.siteAreaEmergencyRef.getValue().value) {
       classificationHappened = true;
       currentClassificationText = "Site Area Emergency";
+      emergencyLevel = this.refs.siteAreaEmergencyRef.getValue().alert_level;
     }
 
     else if(this.refs.alertRef !== undefined && this.refs.alertRef.getValue().value) {
       classificationHappened = true;
       currentClassificationText = "Alert";
+      emergencyLevel = this.refs.alertRef.getValue().alert_level;
     }
 
     else if(this.refs.unusualEventRef !== undefined && this.refs.unusualEventRef.getValue().value) {
       classificationHappened = true;
       currentClassificationText = "Unusual Event";
+      emergencyLevel = this.refs.unusualEventRef.getValue().alert_level;
     }
 
     if(classificationHappened){
-      text = <p>A <b>{currentClassificationText}</b> emergency event with <b>{this.refs.generalEmergencyRef.getValue().alert_level}</b> has occured in <b>Mode {store.getState().mode}</b> in the <b>{store.getState().recognitionCategory}</b> category</p>;
+      var lvltext = "";
+      emergencyLevel.map((lvl, ind) => {
+        if(emergencyLevel.length === 1) {
+          lvltext = lvl;
+        }
+        else if(ind === emergencyLevel.length - 1 && ind !== 0) {
+          lvltext += " and " + lvl;
+        }
+        else if(ind === emergencyLevel.length - 2){
+          lvltext += lvl;
+        }
+        else{
+          lvltext += lvl + ", ";
+        }
+      })
+      text = <p>A <b>{currentClassificationText}</b> emergency event with <b>{lvltext}</b> has occured in <b>Mode {store.getState().mode}</b> in the <b>{store.getState().recognitionCategory}</b> category</p>;
     }
 
     if(isIE || isEdge)
@@ -163,7 +182,6 @@ class ClassifyingPage extends React.Component {
   }
 
   openDocument(page, pageRange) {
-    console.log("Hello");
     this.refs.pdfDocument.setState({
       startPage: page,
       endPage: (page + pageRange - 1)

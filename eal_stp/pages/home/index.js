@@ -43,7 +43,6 @@ class HomePage extends React.Component {
     var recognitionCategories = eALDocument.data.recognition_categories;
 
     for(var i = 0; i < recognitionCategories.length; i++){
-        console.log(recognitionCategories[i]);
         document.getElementById(recognitionCategories[i].name).disabled = (recognitionCategories[i].mode_applicability.indexOf(mode) === -1);
     }
 

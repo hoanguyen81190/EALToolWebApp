@@ -101,18 +101,14 @@ class CategoryCard extends React.Component {
 
   getValue() {
     this.value = false;
-    this.alert_level = null;
+    this.alert_level = [];
     this.props.criterion.alert_level.map((p, index) => {
       var alertLevelConditionRef = 'alertLevelCondition' + index;
       if(this.refs[alertLevelConditionRef]) {
         var conditionStatus = this.refs[alertLevelConditionRef].getValue();
         if(conditionStatus) {
           this.value = conditionStatus;
-          this.alert_level = this.refs[alertLevelConditionRef].getLevel();
-          return {
-            'value': this.value,
-            'alert_level': this.alert_level
-          }
+          this.alert_level.push(this.refs[alertLevelConditionRef].getLevel());
         }
       }
     });
