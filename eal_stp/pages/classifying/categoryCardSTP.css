@@ -2,11 +2,6 @@
   margin-bottom: 0;
   width: 98%;
   margin-left: 1%;
-
-  box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  border-radius: 28px;
 }
 
 .barrierCard {
@@ -214,7 +209,7 @@
 
 /* Indicate that an element is clickable by changing the cursor */
 .clickable{
-  cursor:pointer;
+  
 }
 /* Used to prevent the cursor from changing to the text hover version */
 .noTextCursorChange{
