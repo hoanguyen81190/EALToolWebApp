@@ -6,7 +6,6 @@ import store from '../../core/store';
 
 class Footer extends React.Component {
   getFooterRightContent() {
-    console.log(store.getState());
     return (
       <span>
         <span className={s.clockTextStyle}>Time since last classification: </span>
