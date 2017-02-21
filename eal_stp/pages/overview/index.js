@@ -14,7 +14,8 @@ class OverviewPage extends React.Component {
     super();
     this.state = {
       mode: store.getState().mode,
-      recognitionCategory: store.getState().recognitionCategory
+      recognitionCategory: store.getState().recognitionCategory,
+      view: 'gridView'
     }
   }
 
@@ -22,15 +23,23 @@ class OverviewPage extends React.Component {
     document.title = title;
   }
 
+  switchView() {
+    this.refs.overView.switchView();
+  }
+
+  getFooterRightContent() {
+    return (<Button onClick={() => this.switchView()}> switch view </Button>);
+  }
+
   render() {
     //<div className= {s.recognitionCategoryText}> {this.state.recognitionCategory} - Mode {this.state.mode}</div>
     return (
-      <Layout className={s.content}>
+      <Layout className={s.content} footerRightContent={this.getFooterRightContent()}>
         <div className= {s.recognitionCategoryText}>
           <div className={s.categoryTextWrapper}>Mode {this.state.mode} - {this.state.recognitionCategory}</div>
         </div>
         <div className={s.tableWrapper}>
-          <OverviewTable />
+          <OverviewTable ref="overView"/>
         </div>
       </Layout>
     );

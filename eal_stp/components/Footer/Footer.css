@@ -8,6 +8,13 @@
   bottom: 1.75%;
 }
 
+.footerCenterContent {
+  position: absolute;;
+  right: 50%;
+  transform: translateX(50%);
+  bottom: 1.75%;
+}
+
 .clockTextStyle {
   font-size: 2em;
   font-weight: bold;

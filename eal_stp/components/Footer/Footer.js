@@ -5,7 +5,7 @@ import {TimerComponent} from '../MDL/TimerComponent';
 import store from '../../core/store';
 
 class Footer extends React.Component {
-  getFooterRightContent() {
+  getFooterCenterContent() {
     console.log(store.getState());
     return (
       <span>
@@ -29,14 +29,17 @@ class Footer extends React.Component {
           <div className={s.footerLeftContent}>{this.props.leftContent}</div>
         </div>
         <div className={s.footer + " mdl-mini-footer__right-section"}>
-          <div className={s.footerRightContent}>{this.getFooterRightContent()}</div>
+          <div className={s.footerCenterContent}>{this.getFooterCenterContent()}</div>
+        </div>
+        <div className={s.footer + " mdl-mini-footer__right-section"}>
+          <div className={s.footerRightContent}>{this.props.rightContent}</div>
         </div>
       </footer>;
     }
     else {
       footer = <footer className={s.footer + " mdl-mini-footer"}>
         <div className={s.footer + " mdl-mini-footer__right-section"}>
-          <div className={s.footerRightContent}>{this.getFooterRightContent()}</div>
+          <div className={s.footerCenterContent}>{this.getFooterCenterContent()}</div>
         </div>
       </footer>;
     }

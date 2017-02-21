@@ -1,5 +1,6 @@
 import store from '../../core/store';
 import {eALDocument} from '../../database-loader';
+import Button from '../../components/Button';
 
 import s from './styles.css';
 
@@ -91,7 +92,11 @@ class OverviewTable extends React.Component {
     super(props);
 
     this.state = {
-      conditionNumbers : []
+      conditionNumbers : [],
+      view: 0
+      //0: detailed grid view
+      //1: short grid view
+      //2: button view
     }
   }
 
@@ -251,11 +256,12 @@ class OverviewTable extends React.Component {
     return tableData;
   }
 
-  render() {
+  getShortGridView(recognitionCategories) {
+    return (<div></div>);
+  }
 
-    var recognitionCategoryData = this.getTableData();
-
-    var table =
+  getDetailedGridView(recognitionCategoryData) {
+    return (
     <div className={s.overviewGridContainer}>
       <div className={s.headerContainer}><div className="mdl-grid mdl-grid--no-spacing">
         <div className="mdl-cell mdl-cell--3-col "><div className={s.headerCell}> General Emergency </div> </div>
@@ -266,8 +272,46 @@ class OverviewTable extends React.Component {
       <div className={s.dataContainer}>
         {this.getRecognitionCategoryDataGrid(recognitionCategoryData)}
       </div>
-    </div>
-    return(table);
+    </div>);
+  }
+
+  getConditionButton(number) {
+    return (<Button className={s.buttonStyle}>{number}</Button>);
+  }
+
+  getButtonView(recognitionCategoryData) {
+    //Add all the rows to this container div
+    console.log(this.state.conditionNumbers);
+    var ele = <div>
+      {this.state.conditionNumbers.map((number, index) => {
+        return this.getConditionButton(number);
+      })}
+    </div>;
+    return (ele);
+  }
+
+  switchView() {
+    this.setState({view: (this.state.view + 1) % 3});
+  }
+
+  getView() {
+    return this.state.view;
+  }
+
+  render() {
+    var recognitionCategoryData = this.getTableData();
+    var content;
+    if(this.state.view === 0) {
+      content = this.getDetailedGridView(recognitionCategoryData);
+    }
+    else if(this.state.view === 1) {
+      content = this.getShortGridView(recognitionCategoryData)
+    }
+    else {
+      content = this.getButtonView(recognitionCategoryData);
+    }
+
+    return(content);
   }
 }
 
