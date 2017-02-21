@@ -53,6 +53,38 @@ class ClassifyingPage extends React.Component {
 
   componentDidMount() {
     document.title = title;
+    this.scrollCardIntoView();
+  }
+
+  scrollCardIntoView() {
+    console.log(this.state.emergencyLevel);
+
+    var EmergencyCardElement;
+    var EmergencyCard;
+    switch (this.state.emergencyLevel) {
+      case "General Emergency":
+        EmergencyCard = this.refs["generalEmergencyRef"];
+        EmergencyCardElement = document.getElementById("GEBarrierCard");
+        break;
+      case "Site Area Emergency":
+        EmergencyCard = this.refs["siteAreaEmergencyRef"];
+        EmergencyCardElement = document.getElementById("SABarrierCard");
+        break;
+      case "Alert":
+        EmergencyCard = this.refs["alertRef"];
+        EmergencyCardElement = document.getElementById("ABarrierCard");
+        break;
+      case "Unusual Event":
+        EmergencyCard = this.refs["unusualEventRef"];
+        EmergencyCardElement = document.getElementById("UEBarrierCard");
+        break;
+      }
+      EmergencyCardElement.scrollIntoView();
+
+      if(this.state.emergencyLevel !== "Unusual Event"){
+        var MainContentDIV = document.getElementById("maincontentId");
+        MainContentDIV.scrollTop = MainContentDIV.scrollTop - 50;
+      }
   }
 
   extractSelectedCriterion() {
@@ -168,9 +200,6 @@ class ClassifyingPage extends React.Component {
     }
     currentClassificationText = "Current Classification - " + currentClassificationText;
     this.refs.classificationTextWrapperRef.setState({text : currentClassificationText});
-    // this.setState({
-    //   currentClassification: currentClassificationText
-    // })
   }
 
   getFooterLeftContent() {
@@ -202,31 +231,38 @@ class ClassifyingPage extends React.Component {
     var currentClassification = "Current classification - " + this.state.currentClassification;
 
     return (
-      <Layout ref="LayoutRef" className={s.content} footerLeftContent={this.getFooterLeftContent()}>
+      <Layout ref="LayoutRef" className={s.content} footerLeftContent={this.getFooterLeftContent()} onload="scrollCardIntoView();">
           <div className= {s.recognitionCategoryText}>
             <div className={s.categoryTextWrapper}>Mode {this.state.mode} - {this.state.recognitionCategory}</div>
             <TextComponent style={s.classificationTextWrapper} text={currentClassification} ref="classificationTextWrapperRef"/>
 
         </div>
-          <div className={s.maincontent}>
+          <div id="maincontentId" className={s.maincontent}>
             {stpCategories.map((card, index)=>{
+              var refName = "";
+              var cardId = "";
               switch (card.recognitionCategory) {
                 case "General Emergency":
-                  var refName = "generalEmergencyRef";
+                  refName = "generalEmergencyRef";
+                  cardId = "GEBarrierCard";
                   break;
                 case "Site Area Emergency":
-                  var refName = "siteAreaEmergencyRef";
+                  refName = "siteAreaEmergencyRef";
+                  cardId = "SABarrierCard";
                   break;
                 case "Alert":
-                  var refName = "alertRef";
+                  refName = "alertRef";
+                  cardId = "ABarrierCard";
                   break;
                 case "Unusual Event":
-                  var refName = "unusualEventRef";
+                  refName = "unusualEventRef";
+                  cardId = "UEBarrierCard";
                   break;
                 default:
               }
               return <CategoryCard
                 ref={refName}
+                cardID = {cardId}
                 recognitionCategory={card.recognitionCategory}
                 criterion={card.criterion}
                 clearAlertLevelHighlights={this.clearAlertLevelHighlights.bind(this)}

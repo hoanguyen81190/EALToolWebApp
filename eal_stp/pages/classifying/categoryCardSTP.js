@@ -140,7 +140,7 @@ class CategoryCard extends React.Component {
       outlineClass = cats.sideShadows;
     }
 
-    var ele = <div onClick={()=>this.handleOnClick()} className={cats.treeCardWrapper + " " + outlineClass + " " + cats.clickable}>
+    var ele = <div onClick={()=>this.handleOnClick()} id={this.props.cardID} className={cats.treeCardWrapper + " " + outlineClass + " " + cats.clickable}>
       <TreeCard
       color={stateColor}
       chipStyling={cats.barrierNameChip}

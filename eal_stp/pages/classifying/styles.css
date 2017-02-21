@@ -15,7 +15,6 @@ body, html{
     -ms-user-select: none; /* IE10+ */
 }
 
-
 /* Positions the Fission product barrier matrix text and the current mode on the tp of the page, and keeps it there when scrolling */
 .recognitionCategoryText{
   height: 50px;
