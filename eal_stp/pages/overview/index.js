@@ -7,6 +7,10 @@ import s from './styles.css';
 import { title, html } from './index.md';
 import store from '../../core/store';
 
+import showDetailsIcon from '../../resources/showdetails.png';
+import hideDetailsIcon from '../../resources/hidedetails.png';
+import showButtonsIcon from '../../resources/showbuttons.png';
+
 import OverviewTable from './overviewGrid';
 
 class OverviewPage extends React.Component {
@@ -28,7 +32,7 @@ class OverviewPage extends React.Component {
   }
 
   getFooterRightContent() {
-    return (<Button onClick={() => this.switchView()}> switch view </Button>);
+    return (<Button onClick={() => this.switchView()} > switch view </Button>);
   }
 
   render() {

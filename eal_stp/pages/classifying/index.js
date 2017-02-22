@@ -87,7 +87,7 @@ class ClassifyingPage extends React.Component {
       }
   }
 
-  extractSelectedCriterion() {
+  extractSelectedCriterions() {
     var regCat = eALDocument.getRecognitionCategoryData(store.getState().recognitionCategory);
     var selectedCriterionNumber = this.getCriterionConditionNumber(store.getState().criterionObject.name);
     var categoryList = [];
@@ -227,7 +227,7 @@ class ClassifyingPage extends React.Component {
   }
 
   render() {
-    var stpCategories = this.extractSelectedCriterion();
+    var stpCategories = this.extractSelectedCriterions();
     var currentClassification = "Current classification - " + this.state.currentClassification;
 
     return (

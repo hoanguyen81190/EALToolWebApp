@@ -8,6 +8,7 @@ const initialState = {
   emergencyLevel: null,
   criterionObject: null,
   selectedCriterionState: null,
+  overviewPageStyle: 0,
   hours: 0,
   minutes: 0,
   seconds: 0
@@ -29,7 +30,8 @@ const store = createStore((state = initialState, action) => {
                 minutes: action.minutes,
                 seconds: action.seconds
               }
-
+    case 'SET_OVERVIEW_PAGE_STYLE':
+      return {...state, overviewPageStyle: action.overviewPageStyle}
     default:
       return state;
   }
