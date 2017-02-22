@@ -184,7 +184,21 @@ body, html{
   font-size: 1.5em;
   max-width: 300px;
 
+  margin-top: 3%;
   margin-bottom: 3%;
+}
+
+.switchViewButton {
+  width: 65px;
+  height: 65px;
+  background-color: lightgray;
+}
+
+.buttonIcon {
+  width: 75%;
+  height: 75%;
+  position: relative;
+  align-self: center;
 }
 
 .alertLevelText {

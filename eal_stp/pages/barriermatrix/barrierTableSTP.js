@@ -15,14 +15,23 @@ const React = require('react');
 class BarrierConditionCard extends React.Component {
   constructor() {
     super();
-    this.loss = false;
-    this.potential_loss = false;
     this.activeBarrierCellProductIndex = null;
   }
+
+  componentWillMount() {
+    if(this.props.content.loss.value === undefined) {
+      this.props.content.loss.value = false;
+    }
+
+    if(this.props.content.potential_loss.value === undefined) {
+      this.props.content.potential_loss.value = false;
+    }
+  }
+
   conditionCallbackFunc() {
     //update barrier when condition is triggered
-    this.loss = this.refs["loss"].getValue();
-    this.potential_loss = this.refs["potential_loss"].getValue();
+    this.props.content.loss.value = this.refs["loss"].getValue();
+    this.props.content.potential_loss.value = this.refs["potential_loss"].getValue();
     this.props.barrierCallBack();
   }
 
@@ -44,8 +53,8 @@ class BarrierConditionCard extends React.Component {
 
   getValue() {
     return {
-      'loss': this.loss,
-      'potential_loss': this.potential_loss
+      'loss': this.props.content.loss.value,
+      'potential_loss': this.props.content.potential_loss.value
     }
   }
 
@@ -63,7 +72,7 @@ class BarrierConditionCard extends React.Component {
     var barrierPropertyColor;
 
     var lossConditionColor;
-    if(this.loss){
+    if(this.props.content.loss.value){
      lossConditionColor = "mdl-color--red-400";
      barrierPropertyColor = "mdl-color--red-400";
     }
@@ -73,14 +82,14 @@ class BarrierConditionCard extends React.Component {
     }
 
     var potentiallossConditionColor;
-    if(this.potential_loss){
+    if(this.props.content.potential_loss.value){
      potentiallossConditionColor = "mdl-color--amber-600";
     }
     else{
       potentiallossConditionColor = "mdl-color--green-300";
     }
 
-    if(!this.loss){
+    if(!this.props.content.loss.value){
       barrierPropertyColor = potentiallossConditionColor;
     }
 
@@ -131,6 +140,12 @@ class BarrierCard extends React.Component {
   constructor() {
     super();
     this.status = 'normal';
+  }
+
+  componentWillMount() {
+    if(this.props.barrier["value"] !== undefined) {
+      this.status = this.props.barrier["value"];
+    }
   }
 
   barrierCardCallBack() {

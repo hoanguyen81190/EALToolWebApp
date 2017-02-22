@@ -61,10 +61,21 @@ class Criterion extends React.Component {
       criterionObject: criterion
     }
     store.dispatch(action);
+
     history.push("/classifying");
   }
 
   render() {
+    var details;
+    if (this.props.showDetails === 0) {
+      details = <div>{this.props.criterion.alert_level.map((level, index) => {
+        return <AlertLevel content={level}/>
+      })}</div>;
+    }
+    else {
+      details = <div/>;
+    }
+
     if(typeof(this.props.criterion.conditions) == "undefined" ||
         (Object.keys(this.props.criterion.conditions).length === 0 && this.props.criterion.conditions.constructor === Object)) {
       var condition = <div/>;
@@ -79,9 +90,7 @@ class Criterion extends React.Component {
         <span className={s.criterionName}>{this.props.criterion.name}</span> - Initiating Condition:
         <div className={s.criterionDescription} dangerouslySetInnerHTML={{__html: this.props.criterion.description.text}}/>
       </div>
-      {this.props.criterion.alert_level.map((level, index) => {
-        return <AlertLevel content={level}/>
-      })}
+      {details}
     </div>;
     return element;
   }
@@ -98,6 +107,10 @@ class OverviewTable extends React.Component {
       //1: short grid view
       //2: button view
     }
+  }
+
+  componentWillMount() {
+    this.setState({view: store.getState().overviewPageStyle});
   }
 
   createRowData(emergencyCat, content)
@@ -133,7 +146,8 @@ class OverviewTable extends React.Component {
             }
             else {
               cellContent = <div key={emergencyCategoryIndex} className="mdl-cell mdl-cell--3-col"><div className={s.gridCell}>
-                <Criterion criterion={tableDataCell.content}  key={emergencyCategoryIndex} emergencyLevel = {tableDataCell.emergencyLevel}/>
+                <Criterion criterion={tableDataCell.content}  key={emergencyCategoryIndex} emergencyLevel = {tableDataCell.emergencyLevel}
+                  showDetails={this.state.view}/>
               </div> </div>;
             }
 
@@ -256,11 +270,8 @@ class OverviewTable extends React.Component {
     return tableData;
   }
 
-  getShortGridView(recognitionCategories) {
-    return (<div></div>);
-  }
 
-  getDetailedGridView(recognitionCategoryData) {
+  getGridView(recognitionCategoryData) {
     return (
     <div className={s.overviewGridContainer}>
       <div className={s.headerContainer}><div className="mdl-grid mdl-grid--no-spacing">
@@ -275,13 +286,48 @@ class OverviewTable extends React.Component {
     </div>);
   }
 
+  findCriterion(number) {
+    //Get the emergency criterion data of the selected emergency category
+    var emergencyCategories = eALDocument.getRecognitionCategoryData(store.getState().recognitionCategory).emergency_categories;
+
+    //Go through every emergency category
+    for(var y = 0; y < emergencyCategories.length; y++)
+    {
+      for(var z = 0; z < emergencyCategories[y].criterions.length; z++)
+      {
+        var criterionNumber = this.getCriterionConditionNumber(emergencyCategories[y].criterions[z].name);
+        if(criterionNumber === number)
+        {
+          return {
+            emergencyCategory: emergencyCategories[y],
+            criterion: emergencyCategories[y].criterions[z]
+          };
+        }
+      }
+    }
+    return null;
+  }
+
+  handleButtonClick(number) {
+    var clickedItem = this.findCriterion(number);
+    var action = {
+      type : 'SET_STATE',
+      mode : store.getState().mode,
+      recognitionCategory : store.getState().recognitionCategory,
+      emergencyLevel : clickedItem.emergencyCategory.name,
+      criterionObject: clickedItem.criterion
+    }
+    store.dispatch(action);
+
+    history.push("/classifying");
+  }
+
   getConditionButton(number) {
-    return (<Button className={s.buttonStyle}>{number}</Button>);
+    return (<Button className={s.buttonStyle} onClick={()=> this.handleButtonClick(number)}>{number}</Button>);
   }
 
   getButtonView(recognitionCategoryData) {
     //Add all the rows to this container div
-    console.log(this.state.conditionNumbers);
     var ele = <div>
       {this.state.conditionNumbers.map((number, index) => {
         return this.getConditionButton(number);
@@ -292,23 +338,21 @@ class OverviewTable extends React.Component {
 
   switchView() {
     this.setState({view: (this.state.view + 1) % 3});
-  }
-
-  getView() {
-    return this.state.view;
+    var actionStyle = {
+      type: 'SET_OVERVIEW_PAGE_STYLE',
+      overviewPageStyle: this.state.view
+    }
+    store.dispatch(actionStyle);
   }
 
   render() {
     var recognitionCategoryData = this.getTableData();
     var content;
-    if(this.state.view === 0) {
-      content = this.getDetailedGridView(recognitionCategoryData);
-    }
-    else if(this.state.view === 1) {
-      content = this.getShortGridView(recognitionCategoryData)
+    if(this.state.view === 0 || this.state.view === 1) { //show full details in grid view
+      content = this.getGridView(recognitionCategoryData);
     }
     else {
-      content = this.getButtonView(recognitionCategoryData);
+      content = this.getButtonView(recognitionCategoryData); //show buttons representing each situations
     }
 
     return(content);

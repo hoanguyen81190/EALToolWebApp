@@ -15,13 +15,20 @@ const React = require('react');
 class AlertLevelCard extends React.Component {
   constructor() {
     super();
-    this.value = false;
     this.activeAlertLevelCellIndex = null;
     this.level = null;
   }
+
+  componentWillMount() {
+    if(this.props.alert_level["value"] === undefined) {
+      this.props.alert_level["value"] = false;
+    }
+  }
+
+
   conditionCallbackFunc() {
     //update barrier when condition is triggered
-    this.value = this.refs["condition"].getValue();
+    this.props.alert_level["value"] = this.refs["condition"].getValue();
     this.props.categoryCallBack();
   }
 
@@ -37,7 +44,7 @@ class AlertLevelCard extends React.Component {
   }
 
   getValue() {
-    return this.value;
+    return this.props.alert_level["value"];
   }
 
   render() {
@@ -50,7 +57,7 @@ class AlertLevelCard extends React.Component {
     var alerLevelPropertyColor;
 
     var conditionColor;
-    if(this.value){
+    if(this.props.alert_level["value"]){
      conditionColor = "mdl-color--red-400";
      alerLevelPropertyColor = "mdl-color--red-400";
     }
@@ -84,9 +91,14 @@ class AlertLevelCard extends React.Component {
 class CategoryCard extends React.Component {
   constructor() {
     super();
-    this.value = false;
     this.alert_level = null;
     this.active_card = false;
+  }
+
+  componentWillMount() {
+    if(this.props.criterion["value"] === undefined) {
+      this.props.criterion["value"] = false;
+    }
   }
 
   categoryCardCallBack() {
@@ -100,21 +112,21 @@ class CategoryCard extends React.Component {
   }
 
   getValue() {
-    this.value = false;
+    this.props.criterion["value"] = false;
     this.alert_level = [];
     this.props.criterion.alert_level.map((p, index) => {
       var alertLevelConditionRef = 'alertLevelCondition' + index;
       if(this.refs[alertLevelConditionRef]) {
         var conditionStatus = this.refs[alertLevelConditionRef].getValue();
         if(conditionStatus) {
-          this.value = conditionStatus;
+          this.props.criterion["value"] = conditionStatus;
           this.alert_level.push(this.refs[alertLevelConditionRef].getLevel());
         }
       }
     });
 
     return {
-      'value': this.value,
+      'value': this.props.criterion["value"],
       'alert_level': this.alert_level
     }
   }
@@ -131,7 +143,7 @@ class CategoryCard extends React.Component {
 
   render() {
     var stateColor = "mdl-color--green-300";
-    if(this.value){
+    if(this.props.criterion["value"]){
      stateColor = "mdl-color--red-400";
     }
 

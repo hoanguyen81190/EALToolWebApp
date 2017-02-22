@@ -1,12 +1,16 @@
 import React, { PropTypes } from 'react';
 import Layout from '../../components/Layout';
 import Button from '../../components/Button';
+import {ResetButton} from '../../components/MDL/CustomMDLComponents';
+
 import s from './styles.css';
 import { title, html } from './index.md';
 import {eALDocument} from '../../database-loader';
 
 import store from '../../core/store';
 import history from '../../core/history';
+
+import resetIcon from '../../resources/reset_icon.png';
 
 class HomePage extends React.Component {
   constructor(){
@@ -124,9 +128,20 @@ class HomePage extends React.Component {
     );
   }
 
+  onClickReset() {
+    eALDocument.resetValues();
+    this.forceUpdate();
+  }
+
+  getFooterRightContent() {
+    return(
+      <ResetButton onClickCallBack={()=>this.onClickReset()} />
+    );
+  }
+
   renderWithFooter(){
     return (
-      <Layout className={s.content} footerLeftContent={this.getFooterContent()}>
+      <Layout className={s.content} footerLeftContent={this.getFooterContent()} >
         <h4>Choose Modes</h4>
           {eALDocument.data.modes.map((mode, i) =>
             {
@@ -145,13 +160,13 @@ class HomePage extends React.Component {
     );
   }
 
-  renderNoFooter(){
+  renderRightFooter(){
     var barrierMatrix = {
       name: "barriermatrix"
     };
 
     return (
-      <Layout className={s.content}>
+      <Layout className={s.content} footerRightContent={this.getFooterRightContent()}>
         <div className={s.modeContainer}>
           <h4>Select Mode</h4>
             {eALDocument.data.modes.map((mode, i) =>
@@ -184,7 +199,7 @@ class HomePage extends React.Component {
   }
 
   render() {
-    return this.renderNoFooter();
+    return this.renderRightFooter();
   }
 
   componentDidUpdate(prevProps, prevState){

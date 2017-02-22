@@ -7,7 +7,39 @@ import s from './styles.css';
 import { title, html } from './index.md';
 import store from '../../core/store';
 
+import showDetailsIcon from '../../resources/showdetails.png';
+import hideDetailsIcon from '../../resources/hidedetails.png';
+import showButtonsIcon from '../../resources/showbuttons.png';
+
 import OverviewTable from './overviewGrid';
+
+class SwitchViewButton extends React.Component {
+  componentWillMount() {
+    this.setState({view: store.getState().overviewPageStyle});
+  }
+
+  handleClick() {
+    this.props.onClickCallBack();
+    this.setState({view: (this.state.view + 1)%3});
+  }
+
+  render() {
+    var image;
+    switch ((this.state.view + 1)%3) {
+      case 0: image = showDetailsIcon;
+        break;
+      case 1: image = hideDetailsIcon;
+        break;
+      case 2: image = showButtonsIcon;
+        break;
+      default:
+    }
+    var ele = <Button className={s.switchViewButton} onClick={() => this.handleClick()} type='icon'>
+              <img className={s.buttonIcon} src={image} alt="Switch View"/>
+            </Button>;
+    return ele;
+  }
+}
 
 class OverviewPage extends React.Component {
   constructor(){
@@ -15,7 +47,6 @@ class OverviewPage extends React.Component {
     this.state = {
       mode: store.getState().mode,
       recognitionCategory: store.getState().recognitionCategory,
-      view: 'gridView'
     }
   }
 
@@ -28,7 +59,7 @@ class OverviewPage extends React.Component {
   }
 
   getFooterRightContent() {
-    return (<Button onClick={() => this.switchView()}> switch view </Button>);
+    return (<SwitchViewButton onClickCallBack={()=>this.switchView()}/>);
   }
 
   render() {
