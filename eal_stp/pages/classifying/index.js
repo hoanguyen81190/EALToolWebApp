@@ -40,7 +40,6 @@ class ClassifyingPage extends React.Component {
     };
   }
 
-
   /**
   * Extracts the condition number from the criterion header name
   * @param {String} criterionName
@@ -57,25 +56,18 @@ class ClassifyingPage extends React.Component {
   }
 
   scrollCardIntoView() {
-    console.log(this.state.emergencyLevel);
-
     var EmergencyCardElement;
-    var EmergencyCard;
     switch (this.state.emergencyLevel) {
       case "General Emergency":
-        EmergencyCard = this.refs["generalEmergencyRef"];
         EmergencyCardElement = document.getElementById("GEBarrierCard");
         break;
       case "Site Area Emergency":
-        EmergencyCard = this.refs["siteAreaEmergencyRef"];
         EmergencyCardElement = document.getElementById("SABarrierCard");
         break;
       case "Alert":
-        EmergencyCard = this.refs["alertRef"];
         EmergencyCardElement = document.getElementById("ABarrierCard");
         break;
       case "Unusual Event":
-        EmergencyCard = this.refs["unusualEventRef"];
         EmergencyCardElement = document.getElementById("UEBarrierCard");
         break;
       }
@@ -198,7 +190,7 @@ class ClassifyingPage extends React.Component {
         callback: this.refs.mainPanelRef
       });
     }
-    currentClassificationText = "Current Classification - " + currentClassificationText;
+    currentClassificationText = "Current EAL - " + currentClassificationText;
     this.refs.classificationTextWrapperRef.setState({text : currentClassificationText});
   }
 
@@ -228,15 +220,14 @@ class ClassifyingPage extends React.Component {
 
   render() {
     var stpCategories = this.extractSelectedCriterion();
-    var currentClassification = "Current classification - " + this.state.currentClassification;
+    var currentClassification = "Current EAL - " + this.state.currentClassification;
 
     return (
-      <Layout ref="LayoutRef" className={s.content} footerLeftContent={this.getFooterLeftContent()} onload="scrollCardIntoView();">
+      <Layout ref="LayoutRef" className={s.content} footerLeftContent={this.getFooterLeftContent()}>
           <div className= {s.recognitionCategoryText}>
-            <div className={s.categoryTextWrapper}>Mode {this.state.mode} - {this.state.recognitionCategory}</div>
+            <div className={s.categoryTextWrapper}>Mode {this.state.mode} - {this.state.recognitionCategory} <span className={s.categoryArrow}>&rarr;</span></div>
             <TextComponent style={s.classificationTextWrapper} text={currentClassification} ref="classificationTextWrapperRef"/>
-
-        </div>
+          </div>
           <div id="maincontentId" className={s.maincontent}>
             {stpCategories.map((card, index)=>{
               var refName = "";

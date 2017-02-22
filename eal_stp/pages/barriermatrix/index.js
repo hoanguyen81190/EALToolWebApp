@@ -160,7 +160,7 @@ class BarrierMatrixPage extends React.Component {
       });
     }
 
-    currentClassificationText = "Current Classification - " + currentClassificationText;
+    currentClassificationText = "Current EAL - " + currentClassificationText;
     this.refs.classificationTextWrapperRef.setState({text : currentClassificationText});
   }
 
@@ -200,12 +200,12 @@ class BarrierMatrixPage extends React.Component {
       <BarrierCard barrier={eALDocument.data.fission_product_barriers[2]} ref="containment" clearBarrierHighights={this.clearBarrierHighlights.bind(this)}  documentCallback={(startPage, pageRange) => this.openDocument(startPage, pageRange)}/>
     </div>;
 
-    var currentClassification = "Current classification - " + this.state.currentClassification;
+    var currentClassification = "Current EAL - " + this.state.currentClassification;
 
     return (
       <Layout ref="LayoutRef" className={s.content} footerLeftContent={this.getFooterContent()}>
         <div className= {s.recognitionCategoryText}>
-          <div className={s.categoryTextWrapper}>Mode {this.state.mode} - Fission Product Barrier Matrix</div>
+          <div className={s.categoryTextWrapper}>Mode {this.state.mode} - Fission Product Barrier Matrix <span className={s.categoryArrow}>&rarr;</span></div>
           <TextComponent style={s.classificationTextWrapper} text={currentClassification} ref="classificationTextWrapperRef"/>
         </div>
         <div className={s.maincontent}>

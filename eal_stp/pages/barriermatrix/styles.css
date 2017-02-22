@@ -48,6 +48,13 @@ body, html{
   left: 2%;
 }
 
+.categoryArrow{
+  position: relative;
+  font-size: 1.5em;
+  left: 4%;
+  top: 0;
+}
+
 /* Wrapper element for the classificationheader text */
 .classificationTextWrapper{
   position: absolute;

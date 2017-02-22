@@ -63,7 +63,7 @@ class AlertLevelCard extends React.Component {
     <table className={cats.barrierPropertyTable + " " + cats.roundedOutline}>
       <thead >
         <tr >
-          <th className={cats.barrierCell + " " + conditionColor}>{this.props.alert_level.level}</th>
+          <th className={cats.barrierCell + " " + conditionColor + " " + cats.alertLevelText}>{this.props.alert_level.level}</th>
         </tr>
       </thead>
       <tbody>
@@ -140,11 +140,13 @@ class CategoryCard extends React.Component {
       outlineClass = cats.sideShadows;
     }
 
+    var chipContent = <div className={cats.emergencyLevelText}>{this.props.recognitionCategory}</div>;
+
     var ele = <div onClick={()=>this.handleOnClick()} id={this.props.cardID} className={cats.treeCardWrapper + " " + outlineClass + " " + cats.clickable}>
       <TreeCard
       color={stateColor}
       chipStyling={cats.barrierNameChip}
-      chipContent={this.props.recognitionCategory} noCircle={true} treeCardStyling={cats.barrierCard}
+      chipContent={chipContent} noCircle={true} treeCardStyling={cats.barrierCard}
       cardContentStyling={cats.barrierCardContent}
       cardContent={
         <div className={cats.clickable}>

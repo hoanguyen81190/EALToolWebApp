@@ -6,6 +6,7 @@ import store from '../../core/store';
 
 import greenCheck from '../../resources/green_check.png';
 import redCheck from '../../resources/red_check.png';
+import greyCheck from '../../resources/grey_icon.png';
 
 let uniqueID = 0;
 function generateID(){
@@ -15,8 +16,8 @@ function generateID(){
 
 export class Condition extends React.Component {
   componentWillMount(){
-    this.id = generateID();
   }
+
   constructor() {
     super();
     this.type = "Leaf";
@@ -72,11 +73,10 @@ export class Condition extends React.Component {
       checkImage = redCheck;
     }
     else{
-      checkImage = greenCheck;
+      checkImage = greyCheck;
     }
 
     var treeCardContent =
-
       <div className={cs.leafContainer} onClick={this.handleConditionClicked.bind(this)}>
         <div className={cs.conditionTextWrapper}>
           <span dangerouslySetInnerHTML={{__html: this.props.content.description.text}}/>
@@ -112,8 +112,6 @@ export class Condition extends React.Component {
           {
             borderBottomStyle = cs.cellBorderBottom;
           }
-
-
 
           var conditionContent = <Condition ref={childRef} content={child} callback={this.props.callback} conditionColor={this.props.conditionColor}/>;
 

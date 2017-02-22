@@ -17,11 +17,25 @@
   margin-bottom: 3%;
 }
 
+.fullscreenButtonWrapper{
+  position: absolute;
+  right: 1%;
+  bottom: 1%;
+  height: 180px;
+  width: 250px;
+}
+
 .fullscreenButton{
   position: absolute;
-  right: 3%;
-  bottom: 5%;
-  height: 70px;
+  margin: auto;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  width: 80%;
+  height: 100px;
+  font-size: 1.5em;
   background-color: lightgray;
 }
 
