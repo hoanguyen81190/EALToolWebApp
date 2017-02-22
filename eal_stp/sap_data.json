@@ -2819,7 +2819,7 @@
 					}
 				},
 				{
-					"name": "RCS Activity/Containment Radiation",
+					"name": "RCS Activity / Containment Radiation",
 					"mode_applicability": [
 						1,
 						2,
@@ -3037,7 +3037,7 @@
 				}
 			},
 			{
-				"name": "RCS Activity/Containment Radiation",
+				"name": "RCS Activity / Containment Radiation",
 				"mode_applicability": [
 					1,
 					2,
@@ -3205,7 +3205,7 @@
 				}
 			},
 			{
-				"name": "RCS Activity/Containment Radiation",
+				"name": "RCS Activity / Containment Radiation",
 				"mode_applicability": [
 					1,
 					2,

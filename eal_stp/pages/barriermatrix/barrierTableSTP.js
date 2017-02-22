@@ -104,19 +104,20 @@ class BarrierConditionCard extends React.Component {
     var ele = <table className={bs.barrierPropertyTable + " " + outlineClass + " " + bs.clickable}>
       <thead >
         <tr onClick={ () => this.setActiveBarrierCell(this.props.productIndex, this.props.content.description.ref.page, this.props.content.description.ref.range)}>
-          <th className={bs.barrierProperty + " " + bs.barrierCell + " " + bs.barrierPropertyCell + " " + barrierPropertyColor}></th>
-          <th className={bs.barrierLoss + " " + bs.barrierCell + " " + lossConditionColor}>Loss</th>
-          <th className={bs.barrierPotentialLoss + " " + bs.barrierCell  + " " + potentiallossConditionColor}>Potential Loss</th>
+          <th colSpan="2" className={bs.barrierCell + " " + bs.barrierPropertyCell + " " + barrierPropertyColor}>
+            <div className={bs.barrierPropertyWrapper}>
+              <div className={bs.barrierPropertyTextWrapper}>{this.props.productIndex + 1 + ". " + this.props.content.name}</div>
+              <img className={bs.documentIcon} src={documentIcon} alt="Document icon"/>
+            </div>
+          </th>
         </tr>
       </thead>
       <tbody >
         <tr onClick={ () => this.setActiveBarrierCell(this.props.productIndex, this.props.content.description.ref.page, this.props.content.description.ref.range)}>
-          <td className={bs.barrierCell + " " + bs.barrierPropertyCell + " " + barrierPropertyColor}>
-               <div className={bs.barrierPropertyWrapper}>
-                 <div className={bs.barrierPropertyTextWrapper}>{this.props.productIndex + 1 + ". " + this.props.content.name}</div>
-                 <img className={bs.documentIcon} src={documentIcon} alt="Document icon"/>
-               </div>
-           </td>
+          <td className={bs.lossHeader + " " + bs.barrierCell + " " + lossConditionColor}>Loss</td>
+          <td className={bs.lossHeader + " " + bs.barrierCell  + " " + potentiallossConditionColor}>Potential Loss</td>
+        </tr>
+        <tr onClick={ () => this.setActiveBarrierCell(this.props.productIndex, this.props.content.description.ref.page, this.props.content.description.ref.range)}>
           <td className={bs.barrierCell}>
             <Condition firstCondition={true} ref="loss" content={this.props.content.loss}
               callback={()=>this.conditionCallbackFunc()}
@@ -196,10 +197,12 @@ class BarrierCard extends React.Component {
       stateColor = "mdl-color--green-300";
     }
 
+    var barrierNameContent = <div className={bs.barrierNameText}>{this.props.barrier.name}</div>;
+
     var ele = <TreeCard
       color={stateColor}
       chipStyling={bs.barrierNameChip}
-      chipContent={this.props.barrier.name} noCircle={true} treeCardStyling={bs.barrierCard}
+      chipContent={barrierNameContent} noCircle={true} treeCardStyling={bs.barrierCard}
       cardContentStyling={bs.barrierCardContent}
       cardContent={this.props.barrier.products.map((card, index)=>{
         return <BarrierConditionCard ref={'barrierCondition'+index} content={card}

@@ -4,7 +4,7 @@ export class TextComponent extends React.Component{
   constructor() {
     super();
     this.state = {
-      text : "Current Classification - No Emergency"
+      text : "Current EAL - No Emergency"
     }
   }
   // static defaultProps = {

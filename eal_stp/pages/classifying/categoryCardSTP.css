@@ -132,14 +132,6 @@
     border-top-right-radius: 10px;
 }
 
-/* Remove the border between the first header cell and the table data cell below. Give the appearance of a merged cell */
-/*.roundedOutline>thead>tr:first-child>th:first-child{
-  border-bottom: none;
-}
-.roundedOutline>tbody>tr:first-child>td:first-child{
-  border-top: none;
-}*/
-
 .sideShadows{
   border-radius: 28px;
   background-color: #eed;
@@ -204,7 +196,6 @@
   margin: 0;
   min-height: 50px;
   height: 50px;
-
 }
 
 /* Indicate that an element is clickable by changing the cursor */
@@ -214,4 +205,27 @@
 /* Used to prevent the cursor from changing to the text hover version */
 .noTextCursorChange{
   cursor: context-menu;
+}
+
+/* Retina Query for Surface Pro */
+@media
+(-webkit-min-device-pixel-ratio: 1.3), (min-resolution: 124.8dpi){
+  .initialConditionText {
+    font-size: 1.75em;
+    margin-bottom: 10px;
+  }
+
+  .initialConditionDescription{
+    font-size: 1.5em;
+  }
+
+  .alertLevelText{
+    font-size: 1.5em;
+  }
+
+  .emergencyLevelText{
+    font-size: 3em;
+    font-family: sans-serif;
+    font-weight: 600;
+  }
 }

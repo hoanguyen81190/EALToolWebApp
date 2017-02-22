@@ -190,7 +190,9 @@ class HomePage extends React.Component {
         </div>
 
 
-        <Button className={s.fullscreenButton} id='barriermatrix' type='raised' key={0} onClick={() => this.toggleFullscreen()} >Fullscreen</Button>
+        <div className={s.fullscreenButtonWrapper} onClick={() => this.toggleFullscreen()}>
+          <Button className={s.fullscreenButton} id='fullscreenButton' type='raised' key={0}>Fullscreen</Button>
+        </div>
 
       </Layout>
     );

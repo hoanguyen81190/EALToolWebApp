@@ -34,18 +34,16 @@
 }
 
 .barrierPropertyWrapper{
-  position: relative;
   height: 100%;
-  padding: 0;
-  margin: 0;
   min-height: 50px;
 }
 
 .barrierPropertyTextWrapper{
-  position: relative;
-  margin-bottom: 24px;
-  padding-left: 5px;
-  padding-right: 5px;
+  font-weight: bold;
+  font-size: 1.3em;
+  color: black;
+  padding-top: 15px;
+  text-align: center;
 }
 
 .documentIcon {
@@ -54,10 +52,6 @@
   position:absolute;
   bottom:3px;
   right: 0px;
-}
-
-.barrierCardName {
-
 }
 
 .barrierPropertyTable {
@@ -75,16 +69,22 @@
 }
 
 /* Make the outer borders the same thickness as the combined inner borders */
-.roundedOutline>thead>tr:last-child>th {
+/* Condition header borders*/
+.roundedOutline>thead>tr:last-child>th{
     border-top: 2px solid black;
-}
-.roundedOutline>thead>tr:last-child>th:first-child {
     border-left: 2px solid black;
-}
-.roundedOutline>thead>tr:last-child>th:last-child {
     border-right: 2px solid black;
 }
 
+/* loss and pot loss borders*/
+.roundedOutline>tbody>tr:first-child>td:first-child{
+    border-left: 2px solid black;
+}
+.roundedOutline>tbody>tr:first-child>td:last-child{
+    border-right: 2px solid black;
+}
+
+/* Condition borders */
 .roundedOutline>tbody>tr:last-child>td {
     border-bottom: 2px solid black;
 }
@@ -109,14 +109,6 @@
     border-top-right-radius: 10px;
 }
 
-/* Remove the border between the first header cell and the table data cell below. Give the appearance of a merged cell */
-.roundedOutline>thead>tr:first-child>th:first-child{
-  border-bottom: none;
-}
-.roundedOutline>tbody>tr:first-child>td:first-child{
-  border-top: none;
-}
-
 .sideShadows{
   border-radius: 10px;
   background-color: #eed;
@@ -126,22 +118,14 @@
   -o-box-shadow: 8px 0 15px -4px rgba(31, 73, 125, 0.8), -8px 0 8px -4px rgba(31, 73, 125, 0.8);
 }
 
-.barrierProperty {
-  width: 20%;
-}
-
 .barrierPropertyCell {
+
+}
+
+.lossHeader{
+  font-size: 1.3em;
   font-weight: bold;
-  font-size: 1.20em;
-  color: black;
-}
-
-.barrierLoss {
-  width: 40%;
-}
-
-.barrierPotentialLoss {
-  width: 40%;
+  text-align: center;
 }
 
 .barrierCell {
@@ -179,4 +163,26 @@
 /* Used to prevent the cursor from changing to the text hover version */
 .noTextCursorChange{
   cursor: context-menu;
+}
+
+/* Retina Query for Surface Pro */
+@media
+(-webkit-min-device-pixel-ratio: 1.3), (min-resolution: 124.8dpi){
+  .barrierNameText{
+    font-size: 3em;
+    font-family: sans-serif;
+    font-weight: 600;
+  }
+
+  .barrierPropertyCell {
+    font-size: 1.5em;
+  }
+
+  .lossHeader{
+    font-size: 1.6em;
+  }
+
+  .barrierCell{
+    min-height: 80px;
+  }
 }
