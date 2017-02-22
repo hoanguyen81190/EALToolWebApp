@@ -14,8 +14,10 @@ import DialogDemo from './dialog';
 
 import documentIcon from '../../resources/Document-50.png';
 
-import {TreeChip, TreeCard} from '../../components/MDL/CustomMDLComponents';
+import {TreeChip, TreeCard, ResetButton} from '../../components/MDL/CustomMDLComponents';
 import {TextComponent} from '../../components/MDL/TextComponent';
+
+import resetIcon from '../../resources/reset_icon.png';
 
 import CategoryCard from './categoryCardSTP';
 
@@ -54,6 +56,11 @@ class ClassifyingPage extends React.Component {
   componentDidMount() {
     document.title = title;
     this.scrollCardIntoView();
+    this.calculateEmergencyLevel();
+  }
+
+  componentWillUpdate() {
+    this.calculateEmergencyLevel();
   }
 
   scrollCardIntoView() {
@@ -126,14 +133,7 @@ class ClassifyingPage extends React.Component {
     }
   }
 
-  handleSubmit(){
-    this.refs.LayoutRef.getFooterRef().getClockRef().resetTimer();
-
-    // Internet Explorer 6-11
-    var isIE = /*@cc_on!@*/false || !!document.documentMode;
-    // Edge 20+
-    var isEdge = !isIE && !!window.StyleMedia;
-
+  calculateEmergencyLevel() {
     var text = "There is no emergency event";
     var currentClassificationText = "No Emergency";
     var category;
@@ -183,6 +183,20 @@ class ClassifyingPage extends React.Component {
       })
       text = <p>A <b>{currentClassificationText}</b> emergency event with <b>{lvltext}</b> has occured in <b>Mode {store.getState().mode}</b> in the <b>{store.getState().recognitionCategory}</b> category</p>;
     }
+    currentClassificationText = "Current Classification - " + currentClassificationText;
+    this.refs.classificationTextWrapperRef.setState({text : currentClassificationText});
+    return text;
+  }
+
+  handleSubmit(){
+    this.refs.LayoutRef.getFooterRef().getClockRef().resetTimer();
+
+    // Internet Explorer 6-11
+    var isIE = /*@cc_on!@*/false || !!document.documentMode;
+    // Edge 20+
+    var isEdge = !isIE && !!window.StyleMedia;
+
+    var text = this.calculateEmergencyLevel();
 
     if(isIE || isEdge)
     {
@@ -198,8 +212,21 @@ class ClassifyingPage extends React.Component {
         callback: this.refs.mainPanelRef
       });
     }
-    currentClassificationText = "Current Classification - " + currentClassificationText;
-    this.refs.classificationTextWrapperRef.setState({text : currentClassificationText});
+  }
+
+  onClickReset() {
+    var stpCategories = this.extractSelectedCriterions();
+    stpCategories.map((item, index) => {
+      eALDocument.resetCriterion(item.criterion);
+    });
+
+    this.forceUpdate();
+  }
+
+  getFooterRightContent() {
+    return(
+      <ResetButton onClickCallBack={()=>this.onClickReset()} />
+    );
   }
 
   getFooterLeftContent() {
@@ -231,7 +258,7 @@ class ClassifyingPage extends React.Component {
     var currentClassification = "Current classification - " + this.state.currentClassification;
 
     return (
-      <Layout ref="LayoutRef" className={s.content} footerLeftContent={this.getFooterLeftContent()} onload="scrollCardIntoView();">
+      <Layout ref="LayoutRef" className={s.content} footerLeftContent={this.getFooterLeftContent()} footerRightContent={this.getFooterRightContent()} onload="scrollCardIntoView();">
           <div className= {s.recognitionCategoryText}>
             <div className={s.categoryTextWrapper}>Mode {this.state.mode} - {this.state.recognitionCategory}</div>
             <TextComponent style={s.classificationTextWrapper} text={currentClassification} ref="classificationTextWrapperRef"/>

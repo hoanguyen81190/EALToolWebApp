@@ -62,12 +62,6 @@ class Criterion extends React.Component {
     }
     store.dispatch(action);
 
-    var actionStyle = {
-      type: 'SET_OVERVIEW_PAGE_STYLE',
-      overviewPageStyle: this.props.showDetails
-    }
-    store.dispatch(actionStyle);
-
     history.push("/classifying");
   }
 
@@ -325,11 +319,6 @@ class OverviewTable extends React.Component {
     }
     store.dispatch(action);
 
-    var actionStyle = {
-      type: 'SET_OVERVIEW_PAGE_STYLE',
-      overviewPageStyle: this.state.view
-    }
-    store.dispatch(actionStyle);
     history.push("/classifying");
   }
 
@@ -349,10 +338,11 @@ class OverviewTable extends React.Component {
 
   switchView() {
     this.setState({view: (this.state.view + 1) % 3});
-  }
-
-  getView() {
-    return this.state.view;
+    var actionStyle = {
+      type: 'SET_OVERVIEW_PAGE_STYLE',
+      overviewPageStyle: this.state.view
+    }
+    store.dispatch(actionStyle);
   }
 
   render() {

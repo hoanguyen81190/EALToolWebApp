@@ -1,5 +1,8 @@
 import React, { PropTypes } from 'react';
+import Button from '../../components/Button';
+import s from './CustomMDLComponents.css';
 
+import resetIcon from '../../resources/reset_icon.png';
 /**
 *  Displays a MDL Chip element with the provided props. Takes optional props
 *   that can be used to set the classnames of the different parts of the chip for css styling.
@@ -84,5 +87,11 @@ export class TreeCard extends React.Component{
    </div>;
 
     return treeCard;
+  }
+}
+
+export class ResetButton extends React.Component {
+  render() {
+    return <Button type='icon' className={s.resetButtonStyle} onClick={()=>this.props.onClickCallBack()}><img className={s.resetIcon} src={resetIcon} alt="Reset"/></Button>;
   }
 }

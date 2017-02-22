@@ -14,19 +14,22 @@ function generateID(){
 }
 
 export class Condition extends React.Component {
-  componentWillMount(){
-    this.id = generateID();
-  }
   constructor() {
     super();
     this.type = "Leaf";
-    this.value = false;
     this.children = [];
+  }
+
+  componentWillMount(){
+    this.id = generateID();
+    if(this.props.content["value"] === undefined) {
+      this.props.content["value"] = false;
+    }
   }
 
   getValue() {
     if (this.type === 'Leaf') {
-      return this.value;
+      return this.props.content["value"];
     }
 
     var children = [];
@@ -34,21 +37,21 @@ export class Condition extends React.Component {
 
     switch (this.type) {
       case 'OR':
-        this.value = children.reduce((a, b) => a || b);
-        return this.value;
+        this.props.content["value"] = children.reduce((a, b) => a || b);
+        return this.props.content["value"];
       case 'AND':
-        this.value = children.reduce((a, b) => a && b);
-        return this.value;
+        this.props.content["value"] = children.reduce((a, b) => a && b);
+        return this.props.content["value"];
       case 'XOR':
-        this.value = children.reduce((a, b) => a ^ b);
-        return this.value;
+        this.props.content["value"] = children.reduce((a, b) => a ^ b);
+        return this.props.content["value"];
       default:
         return false;
     }
   }
 
   handleConditionClicked(){
-    this.value = !this.value;
+    this.props.content["value"] = !this.props.content["value"];
     if(this.props.callback !== undefined) {
       this.props.callback();
     }
@@ -68,7 +71,7 @@ export class Condition extends React.Component {
       }
     }
 
-    if(this.value){
+    if(this.props.content["value"]){
       checkImage = redCheck;
     }
     else{
@@ -89,7 +92,7 @@ export class Condition extends React.Component {
 
   renderLogicNode(){
     var logicConditionColor;
-    if(this.value){
+    if(this.props.content["value"]){
      logicConditionColor = this.props.conditionColor.trueColor;
     }
     else{

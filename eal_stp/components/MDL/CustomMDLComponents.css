@@ -1,0 +1,12 @@
+.resetButtonStyle {
+  width: 65px;
+  height: 65px;
+  background-color: lightgray;
+}
+
+.resetIcon {
+  width: 50%;
+  height: 50%;
+  position: relative;
+  align-self: center;
+}

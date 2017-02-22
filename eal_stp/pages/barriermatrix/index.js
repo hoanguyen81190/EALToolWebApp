@@ -17,6 +17,9 @@ import {eALDocument} from '../../database-loader';
 
 import {TextComponent} from '../../components/MDL/TextComponent';
 import {TimerComponent} from '../../components/MDL/TimerComponent';
+import {ResetButton} from '../../components/MDL/CustomMDLComponents';
+
+import resetIcon from '../../resources/reset_icon.png';
 
 class BarrierMatrixPage extends React.Component {
   constructor(){
@@ -30,6 +33,11 @@ class BarrierMatrixPage extends React.Component {
 
   componentDidMount() {
     document.title = title;
+    this.calculateEmergencyLevelText();
+  }
+
+  componentWillUpdate() {
+    this.calculateEmergencyLevelText();
   }
 
   calculateEmergencyLevel() {
@@ -81,7 +89,7 @@ class BarrierMatrixPage extends React.Component {
       nmbPotLoss++;
     }
 
-    var barrierStatus = <p><ul>{fuelText}{rcsText}{containmentText}</ul></p>;
+    var barrierStatus = <ul>{fuelText}{rcsText}{containmentText}</ul>;
     result.barrierStatus = barrierStatus;
 
     //calculate emergencyLevel
@@ -123,6 +131,20 @@ class BarrierMatrixPage extends React.Component {
       return (result);
     }
     return ('None');
+  }
+
+  calculateEmergencyLevelText() {
+    var emergencyResult = this.calculateEmergencyLevel();
+    var currentClassificationText;
+    if(emergencyResult === 'None') {
+      currentClassificationText = "No Emergency";
+    }
+    else {
+      currentClassificationText = emergencyResult.emergencyLevel;
+    }
+
+    currentClassificationText = "Current Classification - " + currentClassificationText;
+    this.refs.classificationTextWrapperRef.setState({text : currentClassificationText});
   }
 
   handleSubmit() {
@@ -179,6 +201,17 @@ class BarrierMatrixPage extends React.Component {
     );
   }
 
+  onClickReset() {
+    eALDocument.resetFissionProductBarriers();
+    this.forceUpdate();
+  }
+
+  getFooterRightContent() {
+    return(
+      <ResetButton type='icon' onClickCallBack={()=>this.onClickReset()}/>
+    );
+  }
+
   //TODO see if we can set the horizontal scroll of the document. Prolly need to set scroll after it has been rendered.
   scrollDocument(){
     var documentDiv = document.getElementById("descriptionContentContainer");
@@ -203,7 +236,7 @@ class BarrierMatrixPage extends React.Component {
     var currentClassification = "Current classification - " + this.state.currentClassification;
 
     return (
-      <Layout ref="LayoutRef" className={s.content} footerLeftContent={this.getFooterContent()}>
+      <Layout ref="LayoutRef" className={s.content} footerLeftContent={this.getFooterContent()} footerRightContent={this.getFooterRightContent()}>
         <div className= {s.recognitionCategoryText}>
           <div className={s.categoryTextWrapper}>Mode {this.state.mode} - Fission Product Barrier Matrix</div>
           <TextComponent style={s.classificationTextWrapper} text={currentClassification} ref="classificationTextWrapperRef"/>
