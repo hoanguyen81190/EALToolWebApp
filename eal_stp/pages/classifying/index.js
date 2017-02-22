@@ -183,6 +183,13 @@ class ClassifyingPage extends React.Component {
       })
       text = <p>A <b>{currentClassificationText}</b> emergency event with <b>{lvltext}</b> has occured in <b>Mode {store.getState().mode}</b> in the <b>{store.getState().recognitionCategory}</b> category</p>;
     }
+
+    var actionSetHighestClassification = {
+      type: 'SET_HIGHEST_CLASSIFICATION',
+      highestClassification: currentClassificationText
+    }
+    store.dispatch(actionSetHighestClassification);
+
     currentClassificationText = "Current Classification - " + currentClassificationText;
     this.refs.classificationTextWrapperRef.setState({text : currentClassificationText});
     return text;
@@ -212,6 +219,8 @@ class ClassifyingPage extends React.Component {
         callback: this.refs.mainPanelRef
       });
     }
+
+    this.refs.LayoutRef.getFooterRef().updateEAL();
   }
 
   onClickReset() {

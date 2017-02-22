@@ -5,13 +5,23 @@ import {TimerComponent} from '../MDL/TimerComponent';
 import store from '../../core/store';
 
 class Footer extends React.Component {
+  componentWillMount() {
+    this.setState({EAL: store.getState().highestClassification});
+  }
+
+  updateEAL() {
+    console.log("EAL" + store.getState().highestClassification);
+    this.setState({EAL: store.getState().highestClassification});
+  }
+
   getFooterCenterContent() {
     return (
       <span>
-        <span className={s.clockTextStyle}>Time since last classification: </span>
+        <span className={s.clockTextStyle}>EAL - {this.state.EAL} (last evaluated: </span>
         <TimerComponent
           ref="clockRef"
           hours={store.getState().hours} minutes={store.getState().minutes} seconds={store.getState().seconds} type="increment"/>
+        <span className={s.clockTextStyle}>m)</span>
       </span>
     );
   }
