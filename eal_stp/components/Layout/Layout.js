@@ -58,20 +58,11 @@ class Layout extends React.Component {
   }
 
   startTouch(ev){
-    /*if(ev.touches.item(0).target.id === "fullscreenButton"){
-      return;
-    }*/
-
     if(!this.startTouchElementSet){
       this.startTouchElement = ev.touches.item(0).target;
       this.startTouchTime = new Date();
       this.startTouchElementSet = true;
     }
-
-
-    //ev.preventDefault();
-
-    //console.log(ev.touches.item(0).target);
 
     if (ev.touches.item(0).target === ev.targetTouches.item(0).target)
     {
@@ -82,7 +73,7 @@ class Layout extends React.Component {
          * entire surface, TouchEvent.touches >= TouchEvents.targetTouches
          * is always true.
          */
-         //ev.target.click();
+
     }
     else if (ev.touches.length === ev.targetTouches.length)
     {
@@ -91,7 +82,6 @@ class Layout extends React.Component {
          * element, the length properties should be the same.
          */
 
-         console.log('All points are on target element');
     }
     else if (ev.touches.length > 1)
     {

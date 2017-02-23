@@ -213,6 +213,7 @@
   .initialConditionText {
     font-size: 1.75em;
     margin-bottom: 10px;
+    line-height: 1.75em;
   }
 
   .initialConditionDescription{

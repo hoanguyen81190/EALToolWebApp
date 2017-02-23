@@ -217,12 +217,14 @@ body, html{
 
   .initialCondition{
     font-size: 1.5em;
+    line-height: 1.3em;
     margin-bottom: 20px;
     margin-right: 5px;
   }
 
   .alertLevelText{
     font-size: 1.4em;
+    line-height: 1.4em;
   }
 
   .operator{
@@ -232,6 +234,7 @@ body, html{
 
   .conditionLeafText{
     font-size: 1.3em;
+    line-height: 1.3em;
   }
 
   .conditionLeafText:last-of-type{
