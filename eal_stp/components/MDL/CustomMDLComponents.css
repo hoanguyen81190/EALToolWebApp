@@ -21,6 +21,11 @@
   height: 5%;
 }
 
+.resetButtonTextStyle:hover{
+  border: 1px solid gray;
+  background-color: lightgrey;
+}
+
 .resetButtonText {
 
 }
