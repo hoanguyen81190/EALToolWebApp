@@ -43,78 +43,67 @@ class Layout extends React.Component {
 
   removeTouchListeners(){
     var touchElement = document.getElementById("TouchLayout");
-    touchElement.removeEventListener('touchstart', this.startTouch, false);
-    touchElement.removeEventListener('touchend', this.endTouch, false);
+    touchElement.removeEventListener('touchstart', this.startTouch, true);
+    touchElement.removeEventListener('touchmove', this.touchMove, true);
+    touchElement.removeEventListener('touchend', this.endTouch, true);
   }
 
   /* Touch configuration */
   setupTouchListeners(){
-    var touchedElement = document.getElementById("TouchLayout");
-    touchedElement.addEventListener('touchstart', this.startTouch, false);
-    touchedElement.addEventListener('touchend', this.endTouch, false);
+    var touchElement = document.getElementById("TouchLayout");
+    touchElement.addEventListener('touchstart', this.startTouch, true);
+    touchElement.addEventListener('touchmove', this.touchMove, true);
+    touchElement.addEventListener('touchend', this.endTouch, true);
     this.startTouchElement = null;
     this.startTouchElementSet = false;
     this.startTouchTime = null;
+    this.startTouchLocation = null;
+    this.endTouchLocation = null;
   }
 
   startTouch(ev){
-    if(!this.startTouchElementSet){
-      this.startTouchElement = ev.touches.item(0).target;
-      this.startTouchTime = new Date();
-      this.startTouchElementSet = true;
-    }
+    this.startTouchElement = ev.touches.item(0).target;
+    this.startTouchTime = new Date();
+    this.startTouchLocation = ev.touches.item(0).pageY;
+    this.endTouchLocation = this.startTouchLocation;
 
-    if (ev.touches.item(0).target === ev.targetTouches.item(0).target)
-    {
-        /**
-         * If the first touch on the surface is also targeting the
-         * "touchable" element, the code below should execute.
-         * Since targetTouches is a subset of touches which covers the
-         * entire surface, TouchEvent.touches >= TouchEvents.targetTouches
-         * is always true.
-         */
-
-    }
-    else if (ev.touches.length === ev.targetTouches.length)
-    {
-        /**
-         * If all of the active touch points are on the "touchable"
-         * element, the length properties should be the same.
-         */
-
-    }
-    else if (ev.touches.length > 1)
+    //Multi Touch
+    if (ev.touches.length > 1)
     {
         /**
          * On a single touch input device, there can only be one point
          * of contact on the surface, so the following code can only
          * execute when the terminal supports multiple touches.
          */
+         console.log('Hello Multiple Touch!');
          for(var i = 0; i < ev.touches.length; i++){
            console.log(ev.touches[i].target.class)
          }
-         console.log('Hello Multiple Touch!');
     }
   }
 
-  endTouch(ev){
-    console.log(ev);
+  touchMove(ev){
+    this.endTouchLocation = ev.touches.item(0).pageY;
+  }
 
+  endTouch(ev){
     if(ev.target.id === "fullscreenButton"){
       return;
     }
 
-    console.log(ev.target);
     if(this.startTouchElement === ev.target){
       if(ev.target.id !== "fullscreenButton"){
-        if(new Date() - this.startTouchTime < 200) //if less than 200ms it was a tap
+        if(new Date() - this.startTouchTime < 200) //if the touch duration was less than 200ms it could be a tap
         {
-          ev.preventDefault();
-          ev.target.click();
+          var locationDifference = Math.abs(this.endTouchLocation - this.startTouchLocation); //Check the location difference of the start and end touch
+          if(locationDifference <= 10){ //If the difference is lower than or equal to this threshold it is considered as a tap
+            ev.preventDefault();
+            ev.target.click();
+          }
         }
       }
     }
-    this.startTouchElementSet = false;
+    //this.startTouchElementSet = false;
 
     //Check if the element has a class.
     //console.log(ev.target.classList.contains("Touchable"));
