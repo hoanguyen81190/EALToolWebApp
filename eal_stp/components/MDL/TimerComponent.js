@@ -138,9 +138,12 @@ export class TimerComponent extends React.Component {
     else {
       var secondsText = this.state.seconds;
     }
+    // var ele = <span className={timers.clockStyle}>
+    //   {hoursText}:{minutesText}:{secondsText}
+    // </span>;
     var ele = <span className={timers.clockStyle}>
-      {hoursText}:{minutesText}:{secondsText}
-    </span>;
+      {minutesText}
+    </span>
     return ele;
   }
 }

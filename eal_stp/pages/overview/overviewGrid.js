@@ -111,6 +111,15 @@ class OverviewTable extends React.Component {
 
   componentWillMount() {
     this.setState({view: store.getState().overviewPageStyle});
+    console.log(this.state.view);
+  }
+
+  componentWillUnmount() {
+    var actionStyle = {
+      type: 'SET_OVERVIEW_PAGE_STYLE',
+      overviewPageStyle: this.state.view
+    }
+    store.dispatch(actionStyle);
   }
 
   createRowData(emergencyCat, content)
@@ -338,11 +347,6 @@ class OverviewTable extends React.Component {
 
   switchView() {
     this.setState({view: (this.state.view + 1) % 3});
-    var actionStyle = {
-      type: 'SET_OVERVIEW_PAGE_STYLE',
-      overviewPageStyle: this.state.view
-    }
-    store.dispatch(actionStyle);
   }
 
   render() {

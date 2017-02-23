@@ -9,6 +9,7 @@ const initialState = {
   criterionObject: null,
   selectedCriterionState: null,
   overviewPageStyle: 0,
+  highestClassification: "No Emergency",
   hours: 0,
   minutes: 0,
   seconds: 0
@@ -32,6 +33,30 @@ const store = createStore((state = initialState, action) => {
               }
     case 'SET_OVERVIEW_PAGE_STYLE':
       return {...state, overviewPageStyle: action.overviewPageStyle}
+    case 'SET_HIGHEST_CLASSIFICATION':
+
+      var text = state.highestClassification;
+      if(action.highestClassification === "General Emergency") {
+        text = action.highestClassification;
+      }
+      else if (action.highestClassification === "Site Area Emergency") {
+        if (text !== "General Emergency") {
+          text = action.highestClassification;
+        }
+      }
+      else if (action.highestClassification === "Alert") {
+        if (text !== "General Emergency" && text !== "Site Area Emergency") {
+          text = action.highestClassification;
+        }
+      }
+      else if (action.highestClassification === "Unusual Event") {
+        if (text === "No Emergency") {
+          text = action.highestClassification;
+        }
+      }
+      console.log(action.highestClassification)
+      console.log(text);
+      return {...state, highestClassification: text};
     default:
       return state;
   }
