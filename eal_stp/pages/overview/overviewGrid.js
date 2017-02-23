@@ -111,7 +111,6 @@ class OverviewTable extends React.Component {
 
   componentWillMount() {
     this.setState({view: store.getState().overviewPageStyle});
-    console.log(this.state.view);
   }
 
   componentWillUnmount() {
@@ -332,7 +331,16 @@ class OverviewTable extends React.Component {
   }
 
   getConditionButton(number) {
-    return (<Button className={s.buttonStyle} onClick={()=> this.handleButtonClick(number)}>{number}</Button>);
+    var recognitionCategory = eALDocument.getRecognitionCategoryData(store.getState().recognitionCategory);
+    var text = number;
+    for (var i = 0; i < recognitionCategory.subcategory_names.length; i++) {
+      if(recognitionCategory.subcategory_names[i].number === number) {
+        text = text + ". " + recognitionCategory.subcategory_names[i].label;
+        break;
+      }
+    }
+
+    return (<Button className={s.buttonStyle} onClick={()=> this.handleButtonClick(number)}>{text}</Button>);
   }
 
   getButtonView(recognitionCategoryData) {

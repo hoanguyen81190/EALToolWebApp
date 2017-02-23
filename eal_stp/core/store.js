@@ -54,8 +54,6 @@ const store = createStore((state = initialState, action) => {
           text = action.highestClassification;
         }
       }
-      console.log(action.highestClassification)
-      console.log(text);
       return {...state, highestClassification: text};
     default:
       return state;

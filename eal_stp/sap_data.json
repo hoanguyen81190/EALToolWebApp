@@ -18,8 +18,16 @@
 				3,
 				4
 			],
-			"subcategory_names": [
-
+			"subcategory_names":
+			[
+				{
+					"number": 1,
+					"label": "This is an example"
+				},
+				{
+					"number": 2,
+					"label": "This is an example"
+				}
 			],
 			"emergency_categories":
 			[
