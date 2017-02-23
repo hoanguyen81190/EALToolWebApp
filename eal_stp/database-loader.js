@@ -100,10 +100,10 @@ export class EALDocument {
 
   resetProduct(product, mode) {
     if(product.loss.value !== undefined) {
-      this.resetConditionWithMode(product.loss, mode);
+      this.resetCondition(product.loss, mode);
     }
     if(product.potential_loss.value !== undefined) {
-      this.resetConditionWithMode(product.potential_loss, mode);
+      this.resetCondition(product.potential_loss, mode);
     }
   }
 }

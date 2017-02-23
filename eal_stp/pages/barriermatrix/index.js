@@ -182,8 +182,14 @@ class BarrierMatrixPage extends React.Component {
       });
     }
 
-    currentClassificationText = "Current EAL - " + currentClassificationText;
-    this.refs.classificationTextWrapperRef.setState({text : currentClassificationText});
+    this.refs.classificationTextWrapperRef.setState({text : "Current EAL - " + currentClassificationText});
+
+    var actionSetHighestClassification = {
+      type: 'SET_HIGHEST_CLASSIFICATION',
+      highestClassification: currentClassificationText
+    }
+    store.dispatch(actionSetHighestClassification);
+    this.refs.LayoutRef.getFooterRef().updateEAL();
   }
 
   openDocument(page, pageRange) {

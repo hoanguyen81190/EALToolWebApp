@@ -130,7 +130,12 @@ class HomePage extends React.Component {
 
   onClickReset() {
     eALDocument.resetValues();
-    this.forceUpdate();
+    var actionSetHighestClassification = {
+      type: 'RESET_HIGHEST_CLASSIFICATION'
+    }
+    store.dispatch(actionSetHighestClassification);
+    this.refs.LayoutRef.getFooterRef().getClockRef().resetTimer();
+    this.refs.LayoutRef.getFooterRef().updateEAL();
   }
 
   getFooterRightContent() {
@@ -139,26 +144,26 @@ class HomePage extends React.Component {
     );
   }
 
-  renderWithFooter(){
-    return (
-      <Layout className={s.content} footerLeftContent={this.getFooterContent()} >
-        <h4>Choose Modes</h4>
-          {eALDocument.data.modes.map((mode, i) =>
-            {
-              return <Button className={s.home_button} id={mode} type='raised' key={i} onClick={() => this.handleModes(mode)} >{mode}</Button>}
-          )}
-        <h4>Choose Categories</h4>
-
-        <Button className={s.home_button} id='barriermatrix' type='raised' key={0} onClick={() => this.handleCategories('barriermatrix')} >FISSION PRODUCT BARRIER MATRIX</Button>
-
-
-          {eALDocument.data.recognition_categories.map((cat, i) =>
-            {
-              return <Button className={s.home_button} id={cat.name} type='raised' key={i+1} onClick={() => this.handleCategories(cat.name)} >{cat.name}</Button>}
-        )}
-      </Layout>
-    );
-  }
+  // renderWithFooter(){
+  //   return (
+  //     <Layout  className={s.content} footerLeftContent={this.getFooterContent()} >
+  //       <h4>Choose Modes</h4>
+  //         {eALDocument.data.modes.map((mode, i) =>
+  //           {
+  //             return <Button className={s.home_button} id={mode} type='raised' key={i} onClick={() => this.handleModes(mode)} >{mode}</Button>}
+  //         )}
+  //       <h4>Choose Categories</h4>
+  //
+  //       <Button className={s.home_button} id='barriermatrix' type='raised' key={0} onClick={() => this.handleCategories('barriermatrix')} >FISSION PRODUCT BARRIER MATRIX</Button>
+  //
+  //
+  //         {eALDocument.data.recognition_categories.map((cat, i) =>
+  //           {
+  //             return <Button className={s.home_button} id={cat.name} type='raised' key={i+1} onClick={() => this.handleCategories(cat.name)} >{cat.name}</Button>}
+  //       )}
+  //     </Layout>
+  //   );
+  // }
 
   renderRightFooter(){
     var barrierMatrix = {
@@ -166,7 +171,7 @@ class HomePage extends React.Component {
     };
 
     return (
-      <Layout className={s.content} footerRightContent={this.getFooterRightContent()}>
+      <Layout ref="LayoutRef" className={s.content} footerRightContent={this.getFooterRightContent()}>
         <div className={s.modeContainer}>
           <h4>Select Mode</h4>
             {eALDocument.data.modes.map((mode, i) =>

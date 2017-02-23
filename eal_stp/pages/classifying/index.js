@@ -177,15 +177,9 @@ class ClassifyingPage extends React.Component {
       text = <p>A <b>{currentClassificationText}</b> emergency event with <b>{lvltext}</b> has occured in <b>Mode {store.getState().mode}</b> in the <b>{store.getState().recognitionCategory}</b> category</p>;
     }
 
-    var actionSetHighestClassification = {
-      type: 'SET_HIGHEST_CLASSIFICATION',
-      highestClassification: currentClassificationText
-    }
-    store.dispatch(actionSetHighestClassification);
-
-    currentClassificationText = "Current Classification - " + currentClassificationText;
-    this.refs.classificationTextWrapperRef.setState({text : currentClassificationText});
-    return text;
+    this.refs.classificationTextWrapperRef.setState({text : "Current Classification - " + currentClassificationText});
+    return {label: currentClassificationText,
+            fullText: text};
   }
 
   handleSubmit(){
@@ -200,18 +194,24 @@ class ClassifyingPage extends React.Component {
 
     if(isIE || isEdge)
     {
-      alert(text);
+      alert(text.fullText);
     }
     else
     {
       this.refs.classificationDialog.setState({
         openDialog: true,
-        content: text,
+        content: text.fullText,
         title: "Classification Result",
         buttonText: "OK",
         callback: this.refs.mainPanelRef
       });
     }
+
+    var actionSetHighestClassification = {
+      type: 'SET_HIGHEST_CLASSIFICATION',
+      highestClassification: text.label
+    }
+    store.dispatch(actionSetHighestClassification);
 
     this.refs.LayoutRef.getFooterRef().updateEAL();
   }

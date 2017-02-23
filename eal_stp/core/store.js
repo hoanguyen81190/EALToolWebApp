@@ -30,9 +30,9 @@ const store = createStore((state = initialState, action) => {
                 hours: action.hours,
                 minutes: action.minutes,
                 seconds: action.seconds
-              }
+              };
     case 'SET_OVERVIEW_PAGE_STYLE':
-      return {...state, overviewPageStyle: action.overviewPageStyle}
+      return {...state, overviewPageStyle: action.overviewPageStyle};
     case 'SET_HIGHEST_CLASSIFICATION':
 
       var text = state.highestClassification;
@@ -55,6 +55,8 @@ const store = createStore((state = initialState, action) => {
         }
       }
       return {...state, highestClassification: text};
+    case 'RESET_HIGHEST_CLASSIFICATION':
+      return {...state, highestClassification: "No Emergency"};
     default:
       return state;
   }

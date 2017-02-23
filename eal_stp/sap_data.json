@@ -22,11 +22,39 @@
 			[
 				{
 					"number": 1,
-					"label": "This is an example"
+					"label": "Loss of AC Power"
 				},
 				{
 					"number": 2,
-					"label": "This is an example"
+					"label": "Loss of control room indications"
+				},
+				{
+					"number": 3,
+					"label": "reactor cooling activity"
+				},
+				{
+					"number": 4,
+					"label": "RCS leakage"
+				},
+				{
+					"number": 5,
+					"label": "reactor trip failure"
+				},
+				{
+					"number": 6,
+					"label": "loss of communications capabilities"
+				},
+				{
+					"number": 7,
+					"label": "containment isolation/pressure failure"
+				},
+				{
+					"number": 8,
+					"label": "loss of AC or DC power"
+				},
+				{
+					"number": 9,
+					"label": "Hazardous event"
 				}
 			],
 			"emergency_categories":
@@ -784,7 +812,34 @@
 				"Defueled"
 			],
 			"subcategory_names": [
-
+				{
+					"number" : 1,
+					"label": "Hostile action"
+				},
+				{
+					"number" : 2,
+					"label": "Seismic event"
+				},
+				{
+					"number" : 3,
+					"label": "Hazardous event"
+				},
+				{
+					"number" : 4,
+					"label": "Fire event"
+				},
+				{
+					"number" : 5,
+					"label": "Gaseous release"
+				},
+				{
+					"number" : 6,
+					"label": "Control room evacuations"
+				},
+				{
+					"number" : 7,
+					"label": "SEC Judgement"
+				}
 			],
 			"emergency_categories":
 			[
@@ -1504,7 +1559,18 @@
 				"Defueled"
 			],
 			"subcategory_names": [
-
+				{
+					"number": 1,
+					"label": "Radioactivity Release"
+				},
+				{
+					"number": 2,
+					"label": "Spent fuel pool"
+				},
+				{
+					"number": 3,
+					"label": "Radiation in the plant"
+				}
 			],
 			"emergency_categories":
 			[
@@ -2087,7 +2153,10 @@
 				"Defueled"
 			],
 			"subcategory_names": [
-
+				{
+					"number": 1,
+					"label" : "Damage to cask confinement boundary "
+				}
 			],
 			"emergency_categories":
 			[
@@ -2175,7 +2244,30 @@
 				"Defueled"
 			],
 			"subcategory_names": [
-
+				{
+					"number": 1,
+					"label": "Loss of RCS Inventory"
+				},
+				{
+					"number": 2,
+					"label": "Loss of AC power"
+				},
+				{
+					"number": 3,
+					"label": "Maintaining shutdown margin"
+				},
+				{
+					"number": 4,
+					"label": "Loss of DC power"
+				},
+				{
+					"number": 5,
+					"label": "Loss of communication capabilities"
+				},
+				{
+					"number": 6,
+					"label": "Threat to safety system"
+				}
 			],
 			"emergency_categories":
 			[
