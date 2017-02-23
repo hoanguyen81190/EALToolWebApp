@@ -19,6 +19,11 @@
   color: white;
 }
 
+.historyBox {
+  position: relative;
+  bottom: 200px;
+}
+
 /* Tablet properties */
 @media screen and (max-width: 1400px) {
   .footer {

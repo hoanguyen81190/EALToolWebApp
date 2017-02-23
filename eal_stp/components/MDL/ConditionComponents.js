@@ -87,11 +87,13 @@ export class Condition extends React.Component {
     }
 
     var treeCardContent =
-      <div className={cs.leafContainer} onClick={this.handleConditionClicked.bind(this)}>
+      <div className={cs.leafContainer}>
         <div className={cs.conditionTextWrapper}>
           <span dangerouslySetInnerHTML={{__html: this.props.content.description.text}}/>
         </div>
-        <img className={cs.checkImage} src={checkImage} alt="Check icon"/>
+        <div className={cs.imageWrapper} onClick={this.handleConditionClicked.bind(this)}>
+          <img className={cs.checkImage} src={checkImage} alt="Check icon"/>
+        </div>
       </div>;
 
     return treeCardContent;

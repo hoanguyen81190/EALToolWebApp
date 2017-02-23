@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react';
+import {Snackbar} from 'react-mdl';
 import Button from '../../components/Button';
 import s from './CustomMDLComponents.css';
 
@@ -91,8 +92,31 @@ export class TreeCard extends React.Component{
 }
 
 export class ResetButton extends React.Component {
+  componentWillMount() {
+    this.setState({showSnackbar: false});
+    this.handleTimeoutSnackbar = this.handleTimeoutSnackbar.bind(this);
+  }
+  handleTimeoutSnackbar() {
+    this.setState({ showSnackbar: false });
+  }
+  handleOnClick() {
+    this.props.onClickCallBack();
+    this.setState({showSnackbar: true});
+  }
   render() {
+    // <Snackbar
+    //   className={s.snackBarStyle}
+    //   show={this.state.showSnackbar}
+    //   snackBarText="Done!"
+    //   timer={2000}
+    // />
   //   return <Button type='icon' className={s.resetButtonStyle} onClick={()=>this.props.onClickCallBack()}><img className={s.resetIcon} src={resetIcon} alt="Reset"/></Button>;
-    return <Button type='raised' className={s.resetButtonTextStyle} onClick={()=>this.props.onClickCallBack()}><span className={s.resetButtonText}>{this.props.buttonText}</span></Button>;
+    return <div><Button type='raised' className={s.resetButtonTextStyle} onClick={()=>this.handleOnClick()}>
+      <span className={s.resetButtonText}>{this.props.buttonText}</span></Button>
+        <Snackbar
+            active={this.state.showSnackbar}
+            onTimeout={this.handleTimeoutSnackbar}>
+            Reset.</Snackbar>
+      </div>;
   }
 }

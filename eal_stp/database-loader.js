@@ -1,9 +1,27 @@
 
 import jsonData from './sap_data.json';
+
+// const jsonfile = require('jsonfile');
 export class EALDocument {
   constructor() {
     // this.data = require('json!./data.json');
     this.data = jsonData;
+    this.history = {};
+    this.history["eventList"] = [];
+  }
+
+  // saveHistoryToFile() {
+  //
+  //   var fileName = './history.json';
+  //   // jsonfile.writeFile(fileName, this.history, function(err) {
+  //   //   console.error(err);
+  //   // });
+  // }
+
+  logEvent(evt) {
+    var dt = new Date().toLocaleString()
+    this.history.eventList.push({timestamp: dt, event: evt}); //need to save loss and potential loss status
+    console.log(this.history);
   }
 
   getRecognitionCategoryData(name) {

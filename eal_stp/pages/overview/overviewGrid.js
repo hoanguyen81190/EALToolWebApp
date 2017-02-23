@@ -345,7 +345,7 @@ class OverviewTable extends React.Component {
 
   getButtonView(recognitionCategoryData) {
     //Add all the rows to this container div
-    var ele = <div>
+    var ele = <div className={s.buttonWrapper}>
       {this.state.conditionNumbers.map((number, index) => {
         return this.getConditionButton(number);
       })}

@@ -73,12 +73,26 @@
   margin-bottom: 20px;
 }
 
-.checkImage{
+.imageWrapper {
   position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 60px;
+  height: 50px;
+  z-index: 1000;
+}
+
+.checkImage{
+  /*position: relative;
   width: 20px;
   height: 20px;
   bottom: 2px;
-  right: 2px;
+  right: 2px;*/
+  position: relative;
+  width: 20px;
+  height: 20px;
+  top: 28px;
+  left: 36px;
 }
 
 .disableConditionLeaf {

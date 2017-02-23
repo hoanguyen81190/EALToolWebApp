@@ -179,7 +179,10 @@ class ClassifyingPage extends React.Component {
 
     this.refs.classificationTextWrapperRef.setState({text : "Current Classification - " + currentClassificationText});
     return {label: currentClassificationText,
-            fullText: text};
+            fullText: text,
+            category: store.getState().recognitionCategory,
+            mode: store.getState().mode,
+            eal_level: emergencyLevel};
   }
 
   handleSubmit(){
@@ -212,6 +215,7 @@ class ClassifyingPage extends React.Component {
       highestClassification: text.label
     }
     store.dispatch(actionSetHighestClassification);
+    eALDocument.logEvent({type: 'recognitionCategory', eal: text.label, category: text.category, eal_level: text.eal_level});
 
     this.refs.LayoutRef.getFooterRef().updateEAL();
   }

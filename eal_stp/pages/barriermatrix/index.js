@@ -190,6 +190,11 @@ class BarrierMatrixPage extends React.Component {
     }
     store.dispatch(actionSetHighestClassification);
     this.refs.LayoutRef.getFooterRef().updateEAL();
+
+    eALDocument.logEvent({type: 'barrier',
+      eal: currentClassificationText,
+      category: "Barrier products",
+      mode: store.getState().mode});
   }
 
   openDocument(page, pageRange) {
