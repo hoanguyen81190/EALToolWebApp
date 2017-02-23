@@ -218,7 +218,7 @@ class ClassifyingPage extends React.Component {
   onClickReset() {
     var stpCategories = this.extractSelectedCriterions();
     stpCategories.map((item, index) => {
-      eALDocument.resetCriterion(item.criterion);
+      eALDocument.resetCriterion(item.criterion, store.getState().mode);
     });
 
     this.forceUpdate();
@@ -226,7 +226,7 @@ class ClassifyingPage extends React.Component {
 
   getFooterRightContent() {
     return(
-      <ResetButton onClickCallBack={()=>this.onClickReset()} />
+      <ResetButton onClickCallBack={()=>this.onClickReset()} buttonText="Reset Page"/>
     );
   }
 

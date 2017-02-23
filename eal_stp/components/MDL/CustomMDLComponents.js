@@ -92,6 +92,7 @@ export class TreeCard extends React.Component{
 
 export class ResetButton extends React.Component {
   render() {
-    return <Button type='icon' className={s.resetButtonStyle} onClick={()=>this.props.onClickCallBack()}><img className={s.resetIcon} src={resetIcon} alt="Reset"/></Button>;
+  //   return <Button type='icon' className={s.resetButtonStyle} onClick={()=>this.props.onClickCallBack()}><img className={s.resetIcon} src={resetIcon} alt="Reset"/></Button>;
+    return <Button type='raised' className={s.resetButtonTextStyle} onClick={()=>this.props.onClickCallBack()}><span className={s.resetButtonText}>{this.props.buttonText}</span></Button>;
   }
 }

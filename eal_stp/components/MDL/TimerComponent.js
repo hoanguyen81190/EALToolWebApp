@@ -37,7 +37,7 @@ export class TimerComponent extends React.Component {
       finished: false
     }
 
-    var intervalId = setInterval(this.timer.bind(this), 1000);
+    var intervalId = setInterval(this.timer.bind(this), 60000); //update every 60 seconds
     this.setState({intervalId: intervalId});
   }
 
@@ -69,15 +69,16 @@ export class TimerComponent extends React.Component {
       }
      }
      else if (this.state.type === "increment") {
-      this.setState({ seconds: this.state.seconds + 1});
-      if(this.state.seconds >= 60) {
-        this.setState({ seconds: 0});
-        this.setState({ minutes: this.state.minutes + 1});
-      }
-      if(this.state.minutes >= 60) {
-        this.setState({ minutes: 0});
-        this.setState({ hours: this.state.hours + 1});
-      }
+      // this.setState({ seconds: this.state.seconds + 1});
+      // if(this.state.seconds >= 60) {
+      //   this.setState({ seconds: 0});
+      //   this.setState({ minutes: this.state.minutes + 1});
+      // }
+      // if(this.state.minutes >= 60) {
+      //   this.setState({ minutes: 0});
+      //   this.setState({ hours: this.state.hours + 1});
+      // }
+      this.setState({minutes: this.state.minutes + 1});
      }
     if(this.state.finished) {
       clearInterval(this.state.intervalId);
@@ -124,25 +125,25 @@ export class TimerComponent extends React.Component {
   }
 
   render () {
-    if(this.state.hours < 10)
-      var hoursText = '0' + this.state.hours;
-    else
-      var hoursText = this.state.hours;
-    if(this.state.minutes < 10)
-      var minutesText = '0' + this.state.minutes;
-    else {
-      var minutesText = this.state.minutes;
-    }
-    if(this.state.seconds < 10)
-      var secondsText = '0' + this.state.seconds;
-    else {
-      var secondsText = this.state.seconds;
-    }
+    // if(this.state.hours < 10)
+    //   var hoursText = '0' + this.state.hours;
+    // else
+    //   var hoursText = this.state.hours;
+    // if(this.state.minutes < 10)
+    //   var minutesText = '0' + this.state.minutes;
+    // else {
+    //   var minutesText = this.state.minutes;
+    // }
+    // if(this.state.seconds < 10)
+    //   var secondsText = '0' + this.state.seconds;
+    // else {
+    //   var secondsText = this.state.seconds;
+    // }
     // var ele = <span className={timers.clockStyle}>
     //   {hoursText}:{minutesText}:{secondsText}
     // </span>;
     var ele = <span className={timers.clockStyle}>
-      {minutesText}
+      {this.state.minutes}
     </span>
     return ele;
   }

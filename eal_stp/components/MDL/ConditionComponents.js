@@ -24,14 +24,20 @@ export class Condition extends React.Component {
 
   componentWillMount(){
     this.id = generateID();
-    if(this.props.content["value"] === undefined) {
-      this.props.content["value"] = false;
+    if(this.props.content.value === undefined) {
+      this.props.content.value = {};
+      this.props.content.value[this.props.mode] = false;
+    }
+    else {
+      if(!(this.props.mode in this.props.content.value)) {
+        this.props.content.value[this.props.mode] = false;
+      }
     }
   }
 
   getValue() {
     if (this.type === 'Leaf') {
-      return this.props.content["value"];
+      return this.props.content.value[this.props.mode];
     }
 
     var children = [];
@@ -39,21 +45,21 @@ export class Condition extends React.Component {
 
     switch (this.type) {
       case 'OR':
-        this.props.content["value"] = children.reduce((a, b) => a || b);
-        return this.props.content["value"];
+        this.props.content.value[this.props.mode] = children.reduce((a, b) => a || b);
+        return this.props.content.value[this.props.mode];
       case 'AND':
-        this.props.content["value"] = children.reduce((a, b) => a && b);
-        return this.props.content["value"];
+        this.props.content.value[this.props.mode] = children.reduce((a, b) => a && b);
+        return this.props.content.value[this.props.mode];
       case 'XOR':
-        this.props.content["value"] = children.reduce((a, b) => a ^ b);
-        return this.props.content["value"];
+        this.props.content.value[this.props.mode] = children.reduce((a, b) => a ^ b);
+        return this.props.content.value[this.props.mode];
       default:
         return false;
     }
   }
 
   handleConditionClicked(){
-    this.props.content["value"] = !this.props.content["value"];
+    this.props.content.value[this.props.mode] = !this.props.content.value[this.props.mode];
     if(this.props.callback !== undefined) {
       this.props.callback();
     }
@@ -73,7 +79,7 @@ export class Condition extends React.Component {
       }
     }
 
-    if(this.props.content["value"]){
+    if(this.props.content.value[this.props.mode]){
       checkImage = redCheck;
     }
     else{
@@ -93,7 +99,7 @@ export class Condition extends React.Component {
 
   renderLogicNode(){
     var logicConditionColor;
-    if(this.props.content["value"]){
+    if(this.props.content.value[this.props.mode]){
      logicConditionColor = this.props.conditionColor.trueColor;
     }
     else{
@@ -117,7 +123,7 @@ export class Condition extends React.Component {
             borderBottomStyle = cs.cellBorderBottom;
           }
 
-          var conditionContent = <Condition ref={childRef} content={child} callback={this.props.callback} conditionColor={this.props.conditionColor}/>;
+          var conditionContent = <Condition ref={childRef} content={child} callback={this.props.callback} conditionColor={this.props.conditionColor} mode={this.props.mode}/>;
 
           if(!this.props.firstChild){
             conditionContent = <td className={cs.conditionCell + " " + borderBottomStyle}>{conditionContent}</td>

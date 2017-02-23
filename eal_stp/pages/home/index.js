@@ -135,7 +135,7 @@ class HomePage extends React.Component {
 
   getFooterRightContent() {
     return(
-      <ResetButton onClickCallBack={()=>this.onClickReset()} />
+      <ResetButton onClickCallBack={()=>this.onClickReset()} buttonText="Reset"/>
     );
   }
 

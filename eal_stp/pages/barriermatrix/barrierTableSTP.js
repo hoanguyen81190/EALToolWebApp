@@ -20,18 +20,30 @@ class BarrierConditionCard extends React.Component {
 
   componentWillMount() {
     if(this.props.content.loss.value === undefined) {
-      this.props.content.loss.value = false;
+      this.props.content.loss.value = {};
+      this.props.content.loss.value[store.getState().mode] = false;
+    }
+    else {
+      if(!(store.getState().mode in this.props.content.loss.value)) {
+        this.props.content.loss.value[store.getState().mode] = false;
+      }
     }
 
     if(this.props.content.potential_loss.value === undefined) {
-      this.props.content.potential_loss.value = false;
+      this.props.content.potential_loss.value = {};
+      this.props.content.potential_loss.value[store.getState().mode] = false;
+    }
+    else {
+      if(!(store.getState().mode in this.props.content.potential_loss.value)) {
+        this.props.content.potential_loss.value[store.getState().mode] = false;
+      }
     }
   }
 
   conditionCallbackFunc() {
     //update barrier when condition is triggered
-    this.props.content.loss.value = this.refs["loss"].getValue();
-    this.props.content.potential_loss.value = this.refs["potential_loss"].getValue();
+    this.props.content.loss.value[store.getState().mode] = this.refs["loss"].getValue();
+    this.props.content.potential_loss.value[store.getState().mode] = this.refs["potential_loss"].getValue();
     this.props.barrierCallBack();
   }
 
@@ -53,8 +65,8 @@ class BarrierConditionCard extends React.Component {
 
   getValue() {
     return {
-      'loss': this.props.content.loss.value,
-      'potential_loss': this.props.content.potential_loss.value
+      'loss': this.props.content.loss.value[store.getState().mode],
+      'potential_loss': this.props.content.potential_loss.value[store.getState().mode]
     }
   }
 
@@ -72,7 +84,7 @@ class BarrierConditionCard extends React.Component {
     var barrierPropertyColor;
 
     var lossConditionColor;
-    if(this.props.content.loss.value){
+    if(this.props.content.loss.value[store.getState().mode]){
      lossConditionColor = "mdl-color--red-400";
      barrierPropertyColor = "mdl-color--red-400";
     }
@@ -82,14 +94,14 @@ class BarrierConditionCard extends React.Component {
     }
 
     var potentiallossConditionColor;
-    if(this.props.content.potential_loss.value){
+    if(this.props.content.potential_loss.value[store.getState().mode]){
      potentiallossConditionColor = "mdl-color--amber-600";
     }
     else{
       potentiallossConditionColor = "mdl-color--green-300";
     }
 
-    if(!this.props.content.loss.value){
+    if(!this.props.content.loss.value[store.getState().mode]){
       barrierPropertyColor = potentiallossConditionColor;
     }
 
@@ -121,12 +133,14 @@ class BarrierConditionCard extends React.Component {
           <td className={bs.barrierCell}>
             <Condition firstCondition={true} ref="loss" content={this.props.content.loss}
               callback={()=>this.conditionCallbackFunc()}
-              conditionColor={lossColor}/>
+              conditionColor={lossColor}
+              mode={store.getState().mode}/>
           </td>
           <td className={bs.barrierCell}>
             <Condition firstCondition={true} ref="potential_loss" content={this.props.content.potential_loss}
               callback={()=>this.conditionCallbackFunc()}
-              conditionColor={potential_lossColor}/>
+              conditionColor={potential_lossColor}
+              mode={store.getState().mode}/>
           </td>
         </tr>
       </tbody>
@@ -139,12 +153,17 @@ class BarrierConditionCard extends React.Component {
 class BarrierCard extends React.Component {
   constructor() {
     super();
-    this.status = 'normal';
   }
 
-  componentWillMount() {
-    if(this.props.barrier["value"] !== undefined) {
-      this.status = this.props.barrier["value"];
+  componentWillMount(){
+    if(this.props.barrier.value === undefined) {
+      this.props.barrier.value = {};
+      this.props.barrier.value[store.getState().mode] = 'normal';
+    }
+    else {
+      if(!(store.getState().mode in this.props.barrier.value)) {
+        this.props.barrier.value[store.getState().mode] = 'normal';
+      }
     }
   }
 
@@ -171,13 +190,13 @@ class BarrierCard extends React.Component {
       }
     });
     if (numberOfLoss > 0) {
-      this.status = 'loss';
+      this.props.barrier.value[store.getState().mode] = 'loss';
     }
     else if (numberOfPotentialLoss > 0) {
-      this.status = 'potential_loss';
+      this.props.barrier.value[store.getState().mode] = 'potential_loss';
     }
     else {
-      this.status = 'normal';
+      this.props.barrier.value[store.getState().mode] = 'normal';
     }
     var result = {
       loss: (numberOfLoss > 0),
@@ -187,10 +206,10 @@ class BarrierCard extends React.Component {
   }
   render() {
     var stateColor = "mdl-color--green-300";
-    if(this.status === 'loss'){
+    if(this.props.barrier.value[store.getState().mode] === 'loss'){
      stateColor = "mdl-color--red-400";
     }
-    else if(this.status === 'potential_loss') {
+    else if(this.props.barrier.value[store.getState().mode] === 'potential_loss') {
       stateColor = "mdl-color--amber-600";
     }
     else{

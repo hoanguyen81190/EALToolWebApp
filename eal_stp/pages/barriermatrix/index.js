@@ -202,13 +202,13 @@ class BarrierMatrixPage extends React.Component {
   }
 
   onClickReset() {
-    eALDocument.resetFissionProductBarriers();
+    eALDocument.resetFissionProductBarriers(store.getState().mode);
     this.forceUpdate();
   }
 
   getFooterRightContent() {
     return(
-      <ResetButton type='icon' onClickCallBack={()=>this.onClickReset()}/>
+      <ResetButton type='icon' onClickCallBack={()=>this.onClickReset()} buttonText="Reset Page"/>
     );
   }
 
