@@ -23,7 +23,11 @@
 
 .resetButtonTextStyle:hover{
   border: 1px solid gray;
-  background-color: lightgrey;
+  background-color: #E0E0E0;
+}
+.resetButtonTextStyle:active{
+  border: 1px solid gray;
+  background-color: #BDBDBD;
 }
 
 .resetButtonText {

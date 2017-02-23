@@ -199,9 +199,14 @@ body, html{
   height: 5%;
 }
 
-.switchViewButton:hover{
+.switchViewButton:hover {
   border: 1px solid gray;
-  background-color: lightgrey;
+  background-color: #E0E0E0;
+}
+
+.switchViewButton:active{
+  border: 1px solid gray;
+  background-color: #BDBDBD;
 }
 
 .buttonIcon {
