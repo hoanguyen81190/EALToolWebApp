@@ -47,7 +47,7 @@ export class HistoryComponent extends React.Component {
 
   render() {
     var ele = <Snackbar
-          className={s.snackBarStyle}
+
           active={this.state.isSnackbarActive}
           onClick={this.handleClickActionSnackbar}
           onTimeout={this.handleTimeoutSnackbar}
