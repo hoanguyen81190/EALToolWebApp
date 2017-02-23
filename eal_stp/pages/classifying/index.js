@@ -79,6 +79,7 @@ class ClassifyingPage extends React.Component {
         break;
       }
       EmergencyCardElement.scrollIntoView();
+      EmergencyCardElement.click();
 
       if(this.state.emergencyLevel !== "Unusual Event"){
         var MainContentDIV = document.getElementById("maincontentId");
