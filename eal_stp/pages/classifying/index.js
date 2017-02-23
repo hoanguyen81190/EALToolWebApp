@@ -233,7 +233,7 @@ class ClassifyingPage extends React.Component {
   getFooterLeftContent() {
     return (
       <Button id='classSubmitButton' className={s.submitButton} type='raised' onClick={()=>{this.handleSubmit()}}>
-          Submit
+          Evaluate
       </Button>
     );
   }
@@ -259,7 +259,7 @@ class ClassifyingPage extends React.Component {
     var currentClassification = "Current EAL - " + this.state.currentClassification;
 
     return (
-      <Layout ref="LayoutRef" className={s.content} footerLeftContent={this.getFooterLeftContent()} footerRightContent={this.getFooterRightContent()} onload="scrollCardIntoView();">
+      <Layout ref="LayoutRef" className={s.content} footerLeftContent={this.getFooterLeftContent()} footerRightContent={this.getFooterRightContent()}>
           <div className= {s.recognitionCategoryText}>
             <div className={s.categoryTextWrapper}>Mode {this.state.mode} - {this.state.recognitionCategory} <span className={s.categoryArrow}>&rarr;</span></div>
             <TextComponent style={s.classificationTextWrapper} text={currentClassification} ref="classificationTextWrapperRef"/>

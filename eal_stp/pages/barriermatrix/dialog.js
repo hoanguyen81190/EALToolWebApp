@@ -21,21 +21,14 @@ class DialogDemo extends React.Component {
     this.setState({
       openDialog: false
     });
-
-    //Fixes issue where scrolling stops working after dialog is closed
-    // document.getElementsByClassName('mdl-layout__inner-container')[0].style.overflowX='auto';
-    // document.getElementsByClassName('mdl-layout__inner-container')[0].style.overflowX='';
-    // document.getElementsByClassName('mdl-layout__inner-container')[0].style.overflowY='';
-    // document.getElementsByClassName('mdl-layout__inner-container')[0].style.overflowY='auto';
-    // this.state.callback.forceUpdate();
   }
 
   render() {
     var dialog = <div>
       <Dialog open={this.state.openDialog} className={s.dialogDiv}>
-        <DialogTitle>{this.state.title}</DialogTitle>
+        <DialogTitle><div className={s.dialogTitleText}>{this.state.title}</div></DialogTitle>
         <DialogContent>
-          {this.state.content}
+          <div className={s.dialogText}>{this.state.content}</div>
         </DialogContent>
         <DialogActions>
           <Button className={s.dialogButton} type='button' onClick={this.handleCloseDialog}>{this.state.buttonText}</Button>

@@ -181,7 +181,7 @@
 											{
 												"type": "Leaf",
 												"description": {
-													"text": "Entry into 0POP05-EO-FRS1, Response to Nuclear Power Generation – ATWS"
+													"text": "Entry into 0POP05&#8209;EO&#8209;FRS1, Response to Nuclear Power Generation – ATWS"
 												}
 											},
 											{
@@ -203,7 +203,7 @@
 													{
 														"type": "Leaf",
 														"description": {
-															"text": "Heat Sink- Red entry conditions met"
+															"text": "Heat Sink - Red entry conditions met"
 														}
 													}
 												]
@@ -351,7 +351,7 @@
 									{
 										"type": "Leaf",
 										"description": {
-											"text": "Entry into 0POP05-EO-FRS1, Response to Nuclear Power Generation – ATWS"
+											"text": "Entry into 0POP05&#8209;EO&#8209;FRS1, Response to Nuclear Power Generation – ATWS"
 										}
 									}
 								}
@@ -497,7 +497,7 @@
 									{
 										"type": "Leaf",
 										"description": {
-											"text": "RT-8039 reading greater than 30 µCi/ml"
+											"text": "RT&#8209;8039 reading greater than 30 µCi/ml"
 										}
 									}
 								},
@@ -511,7 +511,7 @@
 											{
 												"type": "Leaf",
 												"description": {
-													"text": "Greater than 1µCi/gm Dose Equivalent I-131"
+													"text": "Greater than 1µCi/gm Dose Equivalent I&&#8209;131"
 												}
 											},
 											{
@@ -1244,7 +1244,7 @@
 													{
 														"type": "Leaf",
 														"description": {
-															"text": "“SEISMIC EVENT” alarm in Unit 1 Control Room (Lampbox 9M01, Window E-8)"
+															"text": "“SEISMIC EVENT” alarm in Unit 1 Control Room (Lampbox 9M01, Window E&#8209;8)"
 														}
 													},
 													{
@@ -1322,7 +1322,7 @@
 									{
 										"type": "Leaf",
 										"description": {
-											"text": "A hazardous event that results in on-site conditions sufficient to prohibit the plant staff from accessing the site via personal vehicles"
+											"text": "A hazardous event that results in on&#8209;site conditions sufficient to prohibit the plant staff from accessing the site via personal vehicles"
 										}
 									}
 								},
@@ -1420,7 +1420,7 @@
 											{
 												"type": "Leaf",
 												"description": {
-													"text": "The existence of a FIRE is not verified within 30-minutes of alarm receipt"
+													"text": "The existence of a FIRE is not verified within 30 minutes of alarm receipt"
 												}
 											}
 										]
@@ -1432,7 +1432,7 @@
 									{
 										"type": "Leaf",
 										"description": {
-											"text": "A FIRE within the ISFSI <b>OR</b> plant PROTECTED AREA not extinguished within 60-minutes of the initial report, alarm or indication"
+											"text": "A FIRE within the ISFSI <b>OR</b> plant PROTECTED AREA not extinguished within 60 minutes of the initial report, alarm or indication"
 										}
 									}
 								},
@@ -1580,7 +1580,7 @@
 								"Defueled"
 							],
 							"description": {
-								"text": "Spent fuel pool level cannot be restored to at least 40’- 4” for 60 minutes or longer",
+								"text": "Spent fuel pool level cannot be restored to at least 40’&#8209;4” for 60 minutes or longer",
 								"ref": {
 									"page": 121,
 									"range": 2
@@ -1594,7 +1594,7 @@
 									{
 										"type": "Leaf",
 										"description": {
-											"text": "Spent fuel pool level cannot be restored to at least 40’- 4” for 60 minutes or longer"
+											"text": "Spent fuel pool level cannot be restored to at least 40’&#8209;4” for 60 minutes or longer"
 										}
 									}
 								}
@@ -1682,7 +1682,7 @@
 								"Defueled"
 							],
 							"description": {
-								"text": "Spent fuel pool level at 40’- 4” or lower",
+								"text": "Spent fuel pool level at 40’&#8209;4” or lower",
 								"ref": {
 									"page": 123,
 									"range": 2
@@ -1696,7 +1696,7 @@
 									{
 										"type": "Leaf",
 										"description": {
-											"text": "Lowering of spent fuel pool level to 40’- 4” or lower"
+											"text": "Lowering of spent fuel pool level to 40’&#8209;4” or lower"
 										}
 									}
 								}
@@ -1826,13 +1826,13 @@
 													{
 														"type": "Leaf",
 														"description": {
-															"text": "Damage to irradiated fuel resulting in a release of radioactivity from the fuel as indicated by <b>ANY</b> of the following FHB radiation monitors: FHB Exhaust, RT-8035 or RT-8036 greater than 1.00 E-1 μCi/ml"
+															"text": "Damage to irradiated fuel resulting in a release of radioactivity from the fuel as indicated by <b>ANY</b> of the following FHB radiation monitors: FHB Exhaust, RT&#8209;8035 or RT&#8209;8036 greater than 1.00 E&#8209;1 μCi/ml"
 														}
 													},
 													{
 														"type": "Leaf",
 														"description": {
-															"text": "Damage to irradiated fuel resulting in a release of radioactivity from the fuel as indicated by <b>ANY</b> of the following FHB radiation monitor: ARM (68’ FHB), RE-8090 greater than 1,500 mR/hr"
+															"text": "Damage to irradiated fuel resulting in a release of radioactivity from the fuel as indicated by <b>ANY</b> of the following FHB radiation monitor: ARM (68’ FHB), RE&#8209;8090 greater than 1,500 mR/hr"
 														}
 													}
 												]
@@ -1844,7 +1844,7 @@
 													6
 												],
 												"description": {
-													"text": "Damage to irradiated fuel resulting in a release of radioactivity from the fuel as indicated by <b>ANY</b> of the following RCB radiation monitors readings (Mode 5 or 6 only): ARM (68’ RCB), RE-8055 or RE-8099 greater than 850 mR/hr"
+													"text": "Damage to irradiated fuel resulting in a release of radioactivity from the fuel as indicated by <b>ANY</b> of the following RCB radiation monitors readings (Mode 5 or 6 only): ARM (68’ RCB), RE&#8209;8055 or RE&#8209;8099 greater than 850 mR/hr"
 												}
 											}
 										]
@@ -1857,7 +1857,7 @@
 									{
 										"type": "Leaf",
 										"description": {
-											"text": "Lowering of spent fuel pool level to 49’-10” or below"
+											"text": "Lowering of spent fuel pool level to 49’&#8209;10” or below"
 										}
 									}
 								}
@@ -1893,7 +1893,7 @@
 											{
 												"type": "Leaf",
 												"description": {
-													"text": "Dose rate greater than 15 mR/hr in the following area: Control Room ARM (RE-8066)"
+													"text": "Dose rate greater than 15 mR/hr in the following area: Control Room ARM (RE&#8209;8066)"
 												}
 											},
 											{
@@ -1959,7 +1959,7 @@
 									{
 										"type": "Leaf",
 										"description": {
-											"text": "Reading on gaseous effluent radiation monitor RT-8010B greater than 2 times the alarm setpoint established by a current radioactivity discharge permit for 60 minutes or longer"
+											"text": "Reading on gaseous effluent radiation monitor RT&#8209;8010B greater than 2 times the alarm setpoint established by a current radioactivity discharge permit for 60 minutes or longer"
 										}
 									}
 								},
@@ -2015,13 +2015,13 @@
 													{
 														"type": "Leaf",
 														"description": {
-															"text": "UNPLANNED water level drop in the REFUELING PATHWAY as indicated by Annunciator alarm on lampbox 22M02 Window F-5 “SFP WATER LVL HI/LO”"
+															"text": "UNPLANNED water level drop in the REFUELING PATHWAY as indicated by Annunciator alarm on lampbox 22M02 Window F&#8209;5 “SFP WATER LVL HI/LO”"
 														}
 													},
 													{
 														"type": "Leaf",
 														"description": {
-															"text": "UNPLANNED water level drop in the REFUELING PATHWAY as indicated by Spent fuel in the ICSA <b>AND</b> Annunciator alarm on lampbox 22M02 Window F-6 “SFP Trouble” <b>AND</b> Plant Computer point FCLC1420 “REFLNG CAV LVL IN CNTMT” (ICSA Water Level HI/LO) is in alarm"
+															"text": "UNPLANNED water level drop in the REFUELING PATHWAY as indicated by Spent fuel in the ICSA <b>AND</b> Annunciator alarm on lampbox 22M02 Window F&#8209;6 “SFP Trouble” <b>AND</b> Plant Computer point FCLC1420 “REFLNG CAV LVL IN CNTMT” (ICSA Water Level HI/LO) is in alarm"
 														}
 													}
 												]
@@ -2037,7 +2037,7 @@
 															6
 														],
 														"description": {
-															"text": "UNPLANNED rise in area radiation levels on the following radiation monitor: RE-8055 (68’ RCB) - Mode 5 or 6 only"
+															"text": "UNPLANNED rise in area radiation levels on the following radiation monitor: RE&#8209;8055 (68’ RCB) - Mode 5 or 6 only"
 														}
 													},
 													{
@@ -2047,13 +2047,13 @@
 															6
 														],
 														"description": {
-															"text": "UNPLANNED rise in area radiation levels on the following radiation monitor: RE-8099 (68’ RCB) - Mode 5 or 6 only"
+															"text": "UNPLANNED rise in area radiation levels on the following radiation monitor: RE&#8209;8099 (68’ RCB) - Mode 5 or 6 only"
 														}
 													},
 													{
 														"type": "Leaf",
 														"description": {
-															"text": "UNPLANNED rise in area radiation levels on the following radiation monitor: RE-8090 (68’ FHB)"
+															"text": "UNPLANNED rise in area radiation levels on the following radiation monitor: RE&#8209;8090 (68’ FHB)"
 														}
 													}
 												]
@@ -2232,7 +2232,7 @@
 													{
 														"type": "Leaf",
 														"description": {
-															"text": "Core uncovery is indicated by the Reactor Containment Building, 68’-0” Area Radiation Monitors RE-8055 or RE-8099 reading greater than 9,000 mR/hr"
+															"text": "Core uncovery is indicated by the Reactor Containment Building, 68’&#8209;0” Area Radiation Monitors RE&#8209;8055 or RE&#8209;8099 reading greater than 9,000 mR/hr"
 														}
 													},
 													{
@@ -2345,7 +2345,7 @@
 													{
 														"type": "Leaf",
 														"description": {
-															"text": "Core uncovery is indicated by the Reactor Containment Building, 68’-0” Area Radiation Monitors RE-8055 or RE-8099 reading greater than 9,000 mR/hr"
+															"text": "Core uncovery is indicated by the Reactor Containment Building, 68’&#8209;0” Area Radiation Monitors RE&#8209;8055 or RE&#8209;8099 reading greater than 9,000 mR/hr"
 														}
 													},
 													{
@@ -2844,7 +2844,7 @@
 									{
 										"type": "Leaf",
 										"description": {
-											"text": "RCB Rad Monitor RT-8050 or RT-8051 greater than 2100 R/hr"
+											"text": "RCB Rad Monitor RT&#8209;8050 or RT&#8209;8051 greater than 2100 R/hr"
 										}
 									},
 									{
@@ -2858,7 +2858,7 @@
 							{
 								"type": "Leaf",
 								"description": {
-									"text": "Sample analysis indicates that reactor coolant activity is greater than 300 µCi/gm dose equivalent I-131"
+									"text": "Sample analysis indicates that reactor coolant activity is greater than 300 µCi/gm dose equivalent I&&#8209;131"
 								}
 							}
 						]
@@ -3058,7 +3058,7 @@
 						{
 							"type": "Leaf",
 							"description": {
-								"text": "RCB Rad Monitor RT-8050 or RT-8051 greater than 10 R/hr"
+								"text": "RCB Rad Monitor RT&#8209;8050 or RT&#8209;8051 greater than 10 R/hr"
 							}
 						},
 						{
@@ -3228,7 +3228,7 @@
 						{
 							"type": "Leaf",
 							"description": {
-								"text": "RCB Rad Monitor RT-8050 or RT-8051 greater than 45,000 R/hr"
+								"text": "RCB Rad Monitor RT#8209;8050 or RT#8209;8051 greater than 45,000 R/hr"
 							}
 						},
 						{

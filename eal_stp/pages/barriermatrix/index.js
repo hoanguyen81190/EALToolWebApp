@@ -159,7 +159,7 @@ class BarrierMatrixPage extends React.Component {
     }
     else {
       currentClassificationText = emergencyResult.emergencyLevel;
-      var text = <p>A Fission Product Barrier Matrix emergency with classification <b>{emergencyResult.emergencyLevel}</b> has occured. <br/><br/>Barrier status:<br/> {emergencyResult.barrierStatus}</p>;
+      var text = <p>A Fission Product Barrier Matrix emergency with <b>EAL-{emergencyResult.emergencyLevel}</b> has occured. <br/><br/>Barrier status:<br/> {emergencyResult.barrierStatus}</p>;
     }
 
     var isIE = /*@cc_on!@*/false || !!document.documentMode;
@@ -168,7 +168,7 @@ class BarrierMatrixPage extends React.Component {
 
     if(isIE || isEdge)
     {
-      text = "A Fission Product Barrier Matrix emergency with classification " + emergencyResult.emergencyLevel + " has occured." ;
+      text = <p>A Fission Product Barrier Matrix emergency with classification {emergencyResult.emergencyLevel} has occured.</p>
       alert(text);
     }
     else
@@ -176,7 +176,7 @@ class BarrierMatrixPage extends React.Component {
       this.refs.classificationDialog.setState({
         openDialog: true,
         content: text,
-        title: "Classification Result",
+        title: "Evaluation Result",
         buttonText: "OK",
         callback: this
       });
@@ -196,7 +196,7 @@ class BarrierMatrixPage extends React.Component {
   getFooterContent() {
     return (
       <Button className={s.submitButton} type='raised' onClick={()=>this.handleSubmit()}>
-          Submit
+          Evaluate
       </Button>
     );
   }

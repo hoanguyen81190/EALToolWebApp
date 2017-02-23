@@ -109,6 +109,11 @@
     border-top-right-radius: 10px;
 }
 
+/* Round the logic cell of the inner table */
+.roundedOutline>tbody>tr:last-child>td:first-child>div>table>tbody>tr:first-child>td:first-child{
+    border-bottom-left-radius: 8px;
+}
+
 .sideShadows{
   border-radius: 10px;
   background-color: #eed;
@@ -116,10 +121,6 @@
   -moz-box-shadow: 8px 0 15px -4px rgba(31, 73, 125, 0.8), -8px 0 8px -4px rgba(31, 73, 125, 0.8);
   -webkit-box-shadow: 8px 0 15px -4px rgba(31, 73, 125, 0.8), -8px 0 8px -4px rgba(31, 73, 125, 0.8);
   -o-box-shadow: 8px 0 15px -4px rgba(31, 73, 125, 0.8), -8px 0 8px -4px rgba(31, 73, 125, 0.8);
-}
-
-.barrierPropertyCell {
-
 }
 
 .lossHeader{
@@ -172,6 +173,10 @@
     font-size: 3em;
     font-family: sans-serif;
     font-weight: 600;
+  }
+
+  .barrierCell{
+      line-height: 1.5em;
   }
 
   .barrierPropertyCell {
