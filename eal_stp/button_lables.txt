@@ -1,0 +1,35 @@
+I: System Malfunctions
+1. Loss of AC Power
+2. Loss of control room indications
+3. reactor cooling activity
+4. RCS leakage
+5. reactor trip failure
+6. loss of communications capabiliies
+7. containment isolation/pressure failure
+8. loss of AC or DC power
+9. Hazardous event
+
+II: Hazards and other
+1. Hostile action
+2. Seismic event
+3. Hazardous event
+4. Fire event
+5. Gaseous release
+6. Control room evacuations
+7. SEC Judgement
+
+III: Abnormal radiation
+1. Radioactivity Release
+2. Spent fuel pool
+3. Radiation in the plant
+
+IV: Fuel Storage
+1. Damage to cask confinement boundary 
+
+V: Cold Shutdown
+1. Loss of RCS Inventory
+2. Loss of AC power
+3. Maintaining shutdown margin
+4. Loss of DC power
+5. Loss of communication capabilities
+6. Threat to safety system
